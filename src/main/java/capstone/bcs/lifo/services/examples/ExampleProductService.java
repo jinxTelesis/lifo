@@ -5,6 +5,8 @@ import capstone.bcs.lifo.model.examples.Product;
 
 import java.util.List;
 
+
+
 public interface ExampleProductService {
 
     List<Product> listAll();
