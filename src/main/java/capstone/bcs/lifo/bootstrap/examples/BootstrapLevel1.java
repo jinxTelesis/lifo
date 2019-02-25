@@ -31,8 +31,8 @@ public class BootstrapLevel1 implements ApplicationListener<ContextRefreshedEven
         pub1.setName("Bobby");
         publisherRepository.save(pub1);
 
-        Author timmy = new Author("Eric", "Evans");
-        Book TheGreatGatsby = new Book("Domain Driven Design", "1234", pub1);
+        Author timmy = new Author("Biff", "barker");
+        Book TheGreatGatsby = new Book("This to shale pass", "911", pub1);
         timmy.getBooks().add(TheGreatGatsby);
         TheGreatGatsby.getAuthors().add(timmy);
 
@@ -41,20 +41,13 @@ public class BootstrapLevel1 implements ApplicationListener<ContextRefreshedEven
         authorRepository.save(timmy);
         bookRepository.save(TheGreatGatsby);
 
-        //Rod
         Author Dick = new Author("Dick", "Johnson");
         Book whaleTales = new Book("Java Rules", "9999", pub1);
         Dick.getBooks().add(whaleTales);
 
         authorRepository.save(Dick);
         bookRepository.save(whaleTales);
-
-
     }
-
-
-
-
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
