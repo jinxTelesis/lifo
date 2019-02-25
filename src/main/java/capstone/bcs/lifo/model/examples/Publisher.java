@@ -8,15 +8,15 @@ import java.util.Objects;
 import java.util.Set;
 
 
-@Entity
+@Entity // makes h2 entity can log into h2 database
 public class Publisher {
 
-    @Id
+    @Id // auto generated id for database
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
-    private String address;
+    private String name; // fields
+    private String address; // fields
 
     public Long getId() {
         return id;

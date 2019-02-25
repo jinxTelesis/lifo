@@ -13,9 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class BootstrapLevel1 implements ApplicationListener<ContextRefreshedEvent> {
 
+    // == these are instantiations of the repo with crud operations ==
+    // == filled with the bootstrap data
     private AuthorRepository authorRepository;
     private BookRepository bookRepository;
+    private PublisherRepository publisherRepository;
 
+    // == just a constructor ==
     public BootstrapLevel1(AuthorRepository authorRepository,
                            BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
@@ -23,8 +27,8 @@ public class BootstrapLevel1 implements ApplicationListener<ContextRefreshedEven
         this.publisherRepository = publisherRepository;
     }
 
-    private PublisherRepository publisherRepository;
 
+    // == bootstrap data ==
     private void initData(){
 
         Publisher pub1 = new Publisher();
@@ -49,7 +53,7 @@ public class BootstrapLevel1 implements ApplicationListener<ContextRefreshedEven
         bookRepository.save(whaleTales);
     }
 
-    @Override
+    @Override // == calls on refresh ==
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         initData();
     }

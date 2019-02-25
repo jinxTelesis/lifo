@@ -6,20 +6,20 @@ import java.util.Objects;
 import java.util.Set;
 
 
-@Entity
+@Entity // makes h2 entity can log into h2 database
 public class Book {
 
-    @Id
+    @Id // auto generated id for database
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String title;
-    private String isbn;
+    private String title; //fields
+    private String isbn; //fields
 
     @OneToOne
     private Publisher publisher;
 
-    @ManyToMany
+    @ManyToMany // == crossover table ==
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private  Set<Author> authors = new HashSet<>();

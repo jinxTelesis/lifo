@@ -6,10 +6,10 @@ import java.util.Objects;
 import java.util.Set;
 
 
-@Entity
+@Entity // makes h2 entity can log into h2 database
 public class Author {
 
-    @Id
+    @Id // auto generated id for database
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -17,7 +17,7 @@ public class Author {
     private String lastName;
 
 
-
+    // the database relation
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
