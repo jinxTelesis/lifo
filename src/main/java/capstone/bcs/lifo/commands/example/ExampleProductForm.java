@@ -2,9 +2,7 @@ package capstone.bcs.lifo.commands.example;
 
 import java.math.BigDecimal;
 
-/**
- * Created by jt on 1/10/17.
- */
+
 
 public class ExampleProductForm {
     private Long id;
