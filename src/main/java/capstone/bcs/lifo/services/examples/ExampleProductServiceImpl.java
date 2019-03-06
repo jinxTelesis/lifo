@@ -10,17 +10,22 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Service // == tells spring this is a bean
 public class ExampleProductServiceImpl implements ExampleProductService {
-    private ProductRepository productRepository;
+
+
+    private ProductRepository productRepository; // == repo , the service provides a lay of abstraction to model/repos
     private ProductFormToProduct productFormToProduct;
 
-    @Autowired
+    @Autowired // == this is just a constructor following best DI practices
     public ExampleProductServiceImpl(ProductRepository productRepository, ProductFormToProduct productFormToProduct) {
         this.productRepository = productRepository;
         this.productFormToProduct = productFormToProduct;
     }
 
+    // == everything below this is basically getters, setters and operations aka some sort of method to access the data ==
+    // == in various ways, list all. it does not have to be these methods it can be anything that serves the data up ==
+    // == in a way that makes sense. ==
 
     @Override
     public List<Product> listAll() {
@@ -46,6 +51,8 @@ public class ExampleProductServiceImpl implements ExampleProductService {
 
     }
 
+    // == this accesses a converter, a converter will change a POST object into something usable by the java code ==
+    // == converters go both ways ==
     @Override
     public Product saveOrUpdateProductForm(ExampleProductForm productForm) {
         Product savedProduct = saveOrUpdate(productFormToProduct.convert(productForm));

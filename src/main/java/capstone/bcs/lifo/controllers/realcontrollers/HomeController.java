@@ -3,7 +3,7 @@ package capstone.bcs.lifo.controllers.realcontrollers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("realprojectpages")
+//@RequestMapping("realprojectpages")
 @Controller // == applies to all of them
 public class HomeController {
 

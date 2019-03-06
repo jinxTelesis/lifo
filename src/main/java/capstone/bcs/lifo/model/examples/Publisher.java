@@ -7,9 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-/**
- * Created by jt on 1/10/17.
- */
+
 
 @Entity // makes h2 entity can log into h2 database
 public class Publisher {
