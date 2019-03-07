@@ -31,6 +31,18 @@ public class TestHibernateEntity {
     // == 6 is home ==
     // == toys ==
 
+    public TestHibernateEntity(){
+
+    }
+
+    public TestHibernateEntity(Integer category, String productName, double price, Integer numberInStock, String description, String image) {
+        this.category = category;
+        this.productName = productName;
+        this.price = price;
+        this.numberInStock = numberInStock;
+        this.description = description;
+        this.image = image;
+    }
 
     // == for testing only serve up specific categories in the thymeleaf dont use toString() ==
     @Override
