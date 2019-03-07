@@ -1,6 +1,6 @@
 package capstone.bcs.lifo.converters.examples;
 
-import capstone.bcs.lifo.commands.example.ExampleProductForm;
+import capstone.bcs.lifo.commands.ExampleProductForm;
 import capstone.bcs.lifo.model.examples.Product;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
