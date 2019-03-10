@@ -110,6 +110,37 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
+
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/templates/css</directory>
+                            <includes>
+                                <includes>**/*.css</includes>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <directory>src/main/templates/images</directory>
+                            <includes>
+                                <includes>**/*.png</includes>
+                            </includes>
+                            <includes>
+                                <includes>**/*.jpg</includes>
+                            </includes>
+                            <includes>
+                                <includes>**/*.gif</includes>
+                            </includes>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
