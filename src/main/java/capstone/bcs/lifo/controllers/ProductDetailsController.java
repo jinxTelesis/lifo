@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ProductDetailsController {
 
-    @RequestMapping("/compare")
+    @RequestMapping("/products")
     public String getPage(){
-        return "compare";
+        return "products";
     }
 }

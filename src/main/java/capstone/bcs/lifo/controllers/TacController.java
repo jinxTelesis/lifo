@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TacController {
 
-    @RequestMapping("/compare")
+    @RequestMapping("/tac")
     public String getPage() {
-        return "compare";
+        return "tac";
     }
 
 }

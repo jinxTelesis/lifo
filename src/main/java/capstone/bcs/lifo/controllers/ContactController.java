@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ContactController {
 
-    @RequestMapping("/compare")
+    @RequestMapping("/contact")
     public String getPage(){
-        return "compare";
+        return "contact";
     }
 }

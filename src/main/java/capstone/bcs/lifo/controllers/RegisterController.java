@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RegisterController {
 
-    @RequestMapping("/compare")
+    @RequestMapping("/register")
     public String getPage(){
-        return "compare";
+        return "register";
     }
 }

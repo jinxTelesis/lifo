@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SpecialOffer {
 
-    @RequestMapping("/compare")
+    @RequestMapping("/special_offer")
     public String getPage(){
-        return "compare";
+        return "special_offer";
     }
 }

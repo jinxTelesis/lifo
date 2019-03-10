@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class NormalController {
 
-    @RequestMapping("/compare")
+    @RequestMapping("/normal")
     public String getPage(){
-        return "compare";
+        return "normal";
     }
 }

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LegalNoticeController {
 
-    @RequestMapping("/compare")
+    @RequestMapping("/legal_notice")
     public String getPage(){
-        return "compare";
+        return "legal_notice";
     }
 }

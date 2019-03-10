@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HeaderController {
 
-    @RequestMapping("/compare")
+    @RequestMapping("/header")
     public String getPage(){
-        return "compare";
+        return "header";
     }
 }

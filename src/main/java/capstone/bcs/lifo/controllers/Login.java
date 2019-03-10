@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Login {
 
-    @RequestMapping("/compare")
+    @RequestMapping("/login")
     public String getPage(){
-        return "compare";
+        return "login";
     }
 }
