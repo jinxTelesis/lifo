@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        body {
+            font-family: "Lato", sans-serif;
+        }
+        .sidenav {
+            height: 100%;
+            width: 160px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+        .sidenav a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+        }
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+        .main {
+            margin-left: 160px; /* Same as the width of the sidenav */
+            font-size: 28px; /* Increased text to enable scrolling */
+            padding: 0px 10px;
+        }
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+<h1> home!!!</h1>
+
+</body>
+<div class="sidenav">
+    <a align="right" href="home.html">Accessories</a>
+    <a align="right" href="home.html">Appliances</a>
+    <a align="right" href="home.html">Cleaning</a>
+    <a align="right" href="home.html">Cooking</a>
+    <a align="right" href="home.html">Hardware</a>
+    <a align="right" href="home.html">Health & Beauty</a>
+    <a align="right" href="home.html">Home</a>
+    <a align="right" href="home.html">Toys</a>
+</div>
+
+<div class="main">
+    <table style="width:100%">
+        <p align="center">Welcome to LIFO</p>
+        <tr>
+
+            <td style="padding:10px" th:remove="all">Jill</td>
+            <td style="padding:10px" th:remove="all">Smith</td>
+            <td style="padding:10px" th:remove="all">50</td>
+        </tr>
+        <tr>
+            <td style="padding:10px" th:remove="all">Eve</td>
+            <td style="padding:10px" th:remove="all">Jackson</td>
+            <td style="padding:10px" th:remove="all">94</td>
+        </tr>
+        <tr>
+            <td style="padding:10px" th:remove="all">John</td>
+            <td style="padding:10px" th:remove="all">Doe</td>
+            <td style="padding:10px" th:remove="all">80</td>
+        </tr>
+    </table>
+
+</div>
+</body>
+
+
+</html>
