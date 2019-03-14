@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
-    // got mikes change
+    // == the main page should have /.html
     @RequestMapping({"/","/index","/.html","/index.html"})
     public String index(){
         return "index";
