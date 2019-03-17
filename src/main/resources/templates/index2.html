@@ -348,13 +348,13 @@
 
                 <!-- need to add a margin to this -->
                 <!-- this is the end of the carousel ===========================================================================================-->
-                <div class="container">
+                <!--<div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4>Latest Products</h4><!-- category types -->
+                            <h4>Latest Products</h4>
                         </div>
                     </div>
-                    <!-- row closed -->
+
 
                     <div class="row product-list list">
 
@@ -371,6 +371,271 @@
                                     </p>
 
                                     <a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Latest Products</h1>
+                        </div>
+                    </div>
+
+                    <div class="row course-list list">
+                        <div class='row course-list list'>
+                            <div th:each="product,it : ${products}">
+                                <div th:if="${(it.count gt 0 and it.count lt 4)}">
+                                    <div th:replace="fragments/productdiv :: productdiv">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row course-list list">
+                        <div class='row course-list list'>
+                            <div th:each="product,it : ${products}">
+                                <div th:if="${(it.count gt 3 and it.count lt 7)}">
+                                    <div th:replace="fragments/productdiv :: productdiv">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row course-list list"> <!-- th:remove="all" remove all-->
+                        <div class="col-md-4">
+                            <div class="course-listing">
+                                <div class="row">
+                                    <a href="product_details"> <!-- th:href="@{/product/1}" -->
+                                        <div class="col-lg-12">
+                                            <div class="course-box-image-container">
+                                                <img role="presentation"
+                                                     src="images/products/6.jpg"
+                                                     class="course-box-image"/>
+                                            </div>
+                                            <div class="caption">
+                                                <h5>Product name</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text.
+                                                </p>
+
+                                                <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="row course-listing-extra-info col-xs-12">
+                                    <div class="col-xs-8">
+                                        <img align="left" alt="product"
+                                             img src="images/products/7.jpg"
+                                             class="img-circle"/>
+                                        <div class="small course-author-name">
+                                            John Thompson
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="small course-price">
+                                            FREE
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="course-listing">
+                                <div class="row">
+                                    <a data-role="course-box-link" href="product_details"> <!-- th:href="@{/product/4}" -->
+                                        <div class="col-lg-12">
+                                            <div class="course-box-image-container">
+                                                <img role="presentation"
+                                                     img src="images/products/8.jpg"
+                                                     class="course-box-image"/>
+                                            </div>
+                                            <div class="caption">
+                                                <h5>Product name</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text.
+                                                </p>
+
+                                                <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="row course-listing-extra-info col-xs-12">
+                                    <div class="col-xs-8">
+                                        <img align="left" alt="product"
+                                             img src="images/products/9.jpg"
+                                             class="img-circle"/>
+                                        <div class="small course-author-name">
+                                            John Thompson
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="small course-price">
+                                            $99
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="course-listing">
+                                <div class="row">
+                                    <a data-role="course-box-link" href="products"> <!-- th:href="@{/product/5}" -->
+                                        <div class="col-lg-12">
+                                            <div class="course-box-image-container">
+                                                <img role="presentation"
+                                                     img src="images/products/10.jpg"
+                                                     class="course-box-image"/>
+                                            </div>
+                                            <div class="caption">
+                                                <h5>Product name</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text.
+                                                </p>
+
+                                                <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="row course-listing-extra-info col-xs-12">
+                                    <div class="col-xs-8">
+                                        <img align="left" alt="product"
+                                             img src="images/products/11.jpg"
+                                             class="img-circle"/>
+                                        <div class="small course-author-name">
+                                            John Thompson
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="small course-price">
+                                            $99
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row course-list list"> <!-- th:remove="all" remove all-->
+                        <div class="col-md-4">
+                            <div class="course-listing">
+                                <div class="row">
+                                    <a data-role="course-box-link" href="products"> <!-- th:href="@{/product/6}" -->
+                                        <div class="col-lg-12">
+                                            <div class="course-box-image-container">
+                                                <img role="presentation"
+                                                     img src="images/products/11.jpg"
+                                                     class="course-box-image"/>
+                                            </div>
+                                            <div class="caption">
+                                                <h5>Product name</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text.
+                                                </p>
+
+                                                <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="row course-listing-extra-info col-xs-12">
+                                    <div class="col-xs-8">
+                                        <img align="left" alt="Product"
+                                             img src="images/products/11.jpg"
+                                             class="img-circle"/>
+                                        <div class="small course-author-name">
+                                            John Thompson
+                                        </div>
+
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="small course-price">
+                                            $15
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="course-listing">
+                                <div class="row">
+                                    <a data-role="course-box-link" href="products"> <!--  th:href="@{/product/2}" -->
+                                        <div class="col-lg-12">
+                                            <div class="course-box-image-container">
+                                                <img role="presentation"
+                                                     img src="images/products/11.jpg"
+                                                     class="course-box-image"/>
+                                            </div>
+                                            <div class="caption">
+                                                <h5>Product name</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text.
+                                                </p>
+
+                                                <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="row course-listing-extra-info col-xs-12">
+                                    <div class="col-xs-8">
+                                        <div class="small course-bundle">
+                                            5 Course Bundle
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="small course-price">
+                                            $147
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="course-listing">
+                                <div class="row">
+                                    <a data-role="course-box-link" href="products"> <!--  th:href="@{/product/3}" -->
+                                        <div class="col-lg-12">
+                                            <div class="course-box-image-container">
+                                                <img role="presentation"
+                                                     img src="images/products/11.jpg"
+                                                     class="course-box-image"/>
+                                            </div>
+                                            <div class="caption">
+                                                <h5>Product name</h5>
+                                                <p>
+                                                    Lorem Ipsum is simply dummy text.
+                                                </p>
+
+                                                <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="row course-listing-extra-info col-xs-12">
+                                    <div class="col-xs-8">
+                                        <img align="left" alt="Product"
+                                             img src="images/products/11.jpg"
+                                             class="img-circle"/>
+                                        <div class="small course-author-name">
+                                            John Thompson
+                                        </div>
+
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="small course-price">
+                                            $15
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
