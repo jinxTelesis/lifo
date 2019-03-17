@@ -14,6 +14,7 @@ public class Product {
     private String productName;
     private double productPrice;
     private String productImage;
+    private String productDimensions;
     private String description1;
     private String description2;
     private String description3;
@@ -67,8 +68,13 @@ public class Product {
         this.description4 = description4;
     }
 
+    public String getProductDimensions() {
+        return productDimensions;
+    }
 
-
+    public void setProductDimensions(String productDimensions) {
+        this.productDimensions = productDimensions;
+    }
 
 
     public Long getId() {
