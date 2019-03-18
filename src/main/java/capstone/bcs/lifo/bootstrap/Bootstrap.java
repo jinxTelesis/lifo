@@ -92,7 +92,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         Product p7Snuggie = new Product();
         p7Snuggie.setProductName("Snuggie");
         p7Snuggie.setProductPrice(19.99);
-        p7Snuggie.setProductImage("Snuggie.jpg");
+        p7Snuggie.setProductImage("snuggie.jpg");
         p7Snuggie.setProductDimensions("12.3 x 11.3 x 5.6 inches ; 1.26 pounds");
         p7Snuggie.setDescription1("A warm blanket you can wear.");
         p7Snuggie.setDescription2("The Snuggie Blanket keeps you totally warm and gives you the freedom to use your hands. Work the remote, use your laptop or do some reading in total warmth and comfort! ");
@@ -113,7 +113,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         Product p9WearableTowel = new Product();
         p9WearableTowel.setProductName("Wearable Towel");
         p9WearableTowel.setProductPrice(19.99);
-        p9WearableTowel.setProductImage("WearableTowel.jpg");
+        p9WearableTowel.setProductImage("wearable_towel.jpg");
         p9WearableTowel.setProductDimensions(" ");
         p9WearableTowel.setDescription1("A towel that you can wear, alleviates the issue of holding up towel after shower.");
         p9WearableTowel.setDescription2("The Wearable Towel has three arm openings placed along the side and does not employ the use of any fasteners. It is for unisex and can be worn in either a tunic style or a toga style.");
