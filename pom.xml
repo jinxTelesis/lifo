@@ -12,7 +12,7 @@
     <artifactId>lifo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>lifo</name>
-    <description1>capstone project for BCS 430</description1>
+    
 
     <properties>
         <java.version>1.8</java.version>
@@ -129,34 +129,7 @@
             </plugin>
 
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.2</version>
 
-                <configuration>
-                    <webResources>
-                        <resource>
-                            <directory>src/main/templates/css</directory>
-                            <includes>
-                                <includes>**/*.css</includes>
-                            </includes>
-                        </resource>
-                        <resource>
-                            <directory>src/main/templates/images</directory>
-                            <includes>
-                                <includes>**/*.png</includes>
-                            </includes>
-                            <includes>
-                                <includes>**/*.jpg</includes>
-                            </includes>
-                            <includes>
-                                <includes>**/*.gif</includes>
-                            </includes>
-                        </resource>
-                    </webResources>
-                </configuration>
-            </plugin>
 
         </plugins>
     </build>
