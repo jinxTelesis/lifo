@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header">
 
@@ -18,12 +18,12 @@
 		</div>
 		<!-- Sidebar Section End =============================================== -->
 
-	<div class="span9">
+	<div class="span9" id="mainCol">
     <ul class="breadcrumb">
-		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
-		<li class="active">Terms and Conditions</li>
+		<li><a href="index">Home</a> <span class="divider">/</span></li>
+		<li class="active">Page Title</li>
     </ul>
-	<h3> Terms and Conditions</h3>	
+	<h3> Title of the page</h3>	
 	<hr class="soft"/>
 	<h5>Lorem ipsum dolor sit amet</h5><br/>
 	<p>
@@ -57,7 +57,6 @@ Aliquam interdum, ipsum a posuere dictum, tellus risus blandit dolor, at tristiq
 </div></div>
 </div>
 <!-- MainBody End ============================= -->
-
 <!-- Footer section start =============================================== -->
 <div class="container" th:replace="fragments/footer :: footer">
 </div>
@@ -67,7 +66,7 @@ Aliquam interdum, ipsum a posuere dictum, tellus risus blandit dolor, at tristiq
 <div class="container" th:replace="fragments/sitescripts :: sitescripts">
 </div>
 <!-- Site script section end =============================================== -->
-
+	
 
 </body>
 </html>
