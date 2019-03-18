@@ -73,7 +73,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         Product p5Energize10SolarLandscape = new Product();
         p5Energize10SolarLandscape.setProductName("Energize Solar landscape light");
         p5Energize10SolarLandscape.setProductPrice(79.99);
-        p5Energize10SolarLandscape.setProductImage("Solar.jpg");
+        p5Energize10SolarLandscape.setProductImage("solar.jpg");
         p5Energize10SolarLandscape.setProductDimensions(" ");
         p5Energize10SolarLandscape.setDescription1("Need to light up your yard? Well with this set of solar lights you can do just that.");
         p5Energize10SolarLandscape.setDescription2("Brighten the night with this 10-piece Energizer landscape light set. Each one is equipped with a crystalline solar panel that charges the light during the day, and then powers its gentle glow for up to eight hours a night.");
