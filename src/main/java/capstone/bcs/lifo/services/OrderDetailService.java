@@ -5,7 +5,7 @@ import capstone.bcs.lifo.model.OrderDetail;
 
 import java.util.List;
 
-public interface OrderDetailRepository {
+public interface OrderDetailService {
 
     List<OrderDetail> getProducts();
 
