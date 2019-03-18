@@ -18,28 +18,27 @@ public class OrderDetailServiceImpl implements OrderDetailService{
         this.orderDetailRepository = orderDetailRepository;
     }
 
-
     @Override
-    public List<OrderDetail> getProducts() {
+    public List<OrderDetail> getOrderDetails() {
         List<OrderDetail> orderDetailList = new ArrayList<>();
         orderDetailRepository.findAll().iterator().forEachRemaining(orderDetailList::add);
         return orderDetailList;
     }
 
     @Override
-    public Optional<OrderDetail> findById(Long l) {
+    public OrderDetail findById(Long l) {
         Optional<OrderDetail> orderDetailOptional = orderDetailRepository.findById(l);
 
         if(!orderDetailOptional.isPresent()){
             throw new NotFoundException();
         }
-        return orderDetailOptional;
+        return orderDetailOptional.get();
     }
 
     @Override
     public void deleteById(Long idToDelete) {
         orderDetailRepository.deleteById(idToDelete);
     }
-    
+
 
 }
