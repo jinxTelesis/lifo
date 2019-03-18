@@ -10,7 +10,7 @@ public class IndexController {
     // == the main page should have /.html
     @RequestMapping({"/","/index","/.html","/index.html"})
     public String index(){
-        return "index2";
+        return "index";
     }
 
 }
