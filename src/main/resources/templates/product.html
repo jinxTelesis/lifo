@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+
+<div class="container" style="height: 100vh;">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 th:text="${product.productName}">Our Great Product</h1>
+        </div>
+    </div>
+    <div class="row course-listing">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="/images/products/panasonic.jpg"
+                         th:src="@{'/images/realproducts/'+${product.productImage}}"
+                         class="center-block"/>
+                </div>
+            </div>
+            <div class="row course-listing-extra-info col-xs-12">
+                <div class="col-xs-8">
+                    <img align="left" alt="product image"
+                         th:src="@{'/images/realproducts/'+${product.productImage}}"
+                         class="img-circle"/>
+                    <div class="small course-author-name" th:text="${(product.productName)
+                                                          + ' ' + (product.productPrice)}">
+                        Product pricing
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div>
+                <h2 th:text="${product.productName}">Our Product</h2>
+                <p th:text="${product.description1}">Adipiscing magna vestibulum fringilla tristique ad a primis ante mi inceptos condimentum curabitur
+                    curabitur eu sed nullam ridiculus nunc montes id nostra dui inceptos scelerisque posuere ipsum mus.
+                    A scelerisque libero viverra eu condimentum mollis suscipit mi consectetur semper dis ipsum nisi
+                    in nullam aliquet iaculis in eros euismod bibendum. Adipiscing volutpat fringilla bibendum duis a
+                    maecenas eu lorem accumsan fames sem faucibus ad mauris aliquam nam. Torquent amet adipiscing fusce
+                    fringilla venenatis tristique scelerisque natoque malesuada nostra duis nam augue ridiculus
+                    pulvinar ultrices laoreet in condimentum justo id. Nascetur condimentum maecenas magna metus curae
+                    est odio ad dui fames quam a aenean consequat faucibus nostra lorem adipiscing vestibulum
+                    ullamcorper etiam consectetur. </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
