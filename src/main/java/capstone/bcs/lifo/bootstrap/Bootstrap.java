@@ -134,6 +134,33 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         p9WearableTowel.setDescription2("The Wearable Towel has three arm openings placed along the side and does not employ the use of any fasteners. It is for unisex and can be worn in either a tunic style or a toga style.");
         products.add(p9WearableTowel);
 
+        Product p10GLHHairSystem = new Product();
+        p10GLHHairSystem.setProductName("GLH Hair System");
+        p10GLHHairSystem.setProductPrice(39.99);
+        p10GLHHairSystem.setProductImage("GLH.jpg");
+        p10GLHHairSystem.setProductDimensions(" ");
+        p10GLHHairSystem.setDescription1("A powder that attaches to the smallest of hair follicles and builds on itself to act like hair.");
+        p10GLHHairSystem.setDescription2("Glh is the very latest breakthrough and contains almost life-like fibers that instantly give added body to your hair. Glh will take away that wispy look. Fill in those thin see-through spots and for men it can even cover bald spots.");
+        products.add(p10GLHHairSystem);
+
+        Product p11ShakeWeight = new Product();
+        p11ShakeWeight.setProductName("Shake Weight");
+        p11ShakeWeight.setProductPrice(19.99);
+        p11ShakeWeight.setProductImage("shake_weight.jpg");
+        p11ShakeWeight.setProductDimensions(" ");
+        p11ShakeWeight.setDescription1("A training tool for the arms.");
+        p11ShakeWeight.setDescription2("Get incredible results in just 6 minutes a day using the revolutionary new way to shape and tone your arms, shoulders and chest It's fun and easy to use. ");
+        products.add(p11ShakeWeight);
+
+        Product p12ShoeDini = new Product();
+        p12ShoeDini.setProductName("ShoeDini");
+        p12ShoeDini.setProductPrice(9.99);
+        p12ShoeDini.setProductImage("shoedini.jpg");
+        p12ShoeDini.setProductDimensions(" ");
+        p12ShoeDini.setDescription1("The simple tool used to get your shoes on and off whithout the need to bend down. Perfect for those whith back issues.");
+        p12ShoeDini.setDescription2("Shoedini Shoe Horn extends to almost 3 feet to give you the extra reach you need!");
+        products.add(p12ShoeDini);
+
         return products;
     }
 

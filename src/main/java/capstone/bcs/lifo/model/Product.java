@@ -44,6 +44,7 @@ public class Product {
         this.productImage = productImage;
     }
 
+    @Column (updatable = true,name="description2",columnDefinition = "text")
     public String getDescription2() {
         return description2;
     }
@@ -52,6 +53,7 @@ public class Product {
         this.description2 = description2;
     }
 
+    @Column (updatable = true,name="description3",columnDefinition = "text")
     public String getDescription3() {
         return description3;
     }
@@ -60,6 +62,7 @@ public class Product {
         this.description3 = description3;
     }
 
+    @Column (updatable = true,name="description4",columnDefinition = "text")
     public String getDescription4() {
         return description4;
     }
