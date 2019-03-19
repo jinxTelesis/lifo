@@ -7,12 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ProductsController {
 
-
-
-    @RequestMapping("/product_details")
+    @RequestMapping("/products")
     public String getPage(){
-        return "product_details";
+        return "products";
     }
-
 
 }
