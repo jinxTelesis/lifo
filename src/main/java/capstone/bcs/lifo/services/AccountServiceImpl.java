@@ -20,7 +20,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<Account> getProducts() {
+    public List<Account> getAccounts() {
         List<Account> accountList = new ArrayList<>();
         accountRepository.findAll().iterator().forEachRemaining(accountList::add);
         return accountList;
