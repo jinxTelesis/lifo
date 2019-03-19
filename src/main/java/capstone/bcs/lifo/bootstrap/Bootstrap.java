@@ -1,6 +1,12 @@
 package capstone.bcs.lifo.bootstrap;
 
+import capstone.bcs.lifo.model.Account;
+import capstone.bcs.lifo.model.Order;
+import capstone.bcs.lifo.model.OrderDetail;
 import capstone.bcs.lifo.model.Product;
+import capstone.bcs.lifo.repositories.AccountRepository;
+import capstone.bcs.lifo.repositories.OrderDetailRepository;
+import capstone.bcs.lifo.repositories.OrderRepository;
 import capstone.bcs.lifo.repositories.ProductRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -14,9 +20,15 @@ import java.util.List;
 public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private final ProductRepository productRepository;
+    private final AccountRepository accountRepository;
+    private final OrderRepository orderRepository;
+    private final OrderDetailRepository orderDetailRepository;
 
-    public Bootstrap(ProductRepository productRepository) {
+    public Bootstrap(ProductRepository productRepository, AccountRepository accountRepository, OrderRepository orderRepository, OrderDetailRepository orderDetailRepository) {
         this.productRepository = productRepository;
+        this.accountRepository = accountRepository;
+        this.orderRepository = orderRepository;
+        this.orderDetailRepository = orderDetailRepository;
     }
 
 
@@ -24,6 +36,9 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         productRepository.saveAll(getProducts());
+        accountRepository.saveAll(getAccounts());
+        orderRepository.saveAll(getOrders());
+        orderDetailRepository.saveAll(getOrderDetails());
 
     }
 
@@ -121,6 +136,22 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
         return products;
     }
+
+    private List<Account> getAccounts(){
+        List<Account> accounts = new ArrayList<Account>();
+        return accounts;
+    }
+
+    private List<Order> getOrders(){
+        List<Order> orders = new ArrayList<Order>();
+        return orders;
+    }
+
+    private  List<OrderDetail> getOrderDetails(){
+        List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+        return  orderDetails;
+    }
+
 
 
 }
