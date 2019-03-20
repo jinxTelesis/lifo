@@ -19,10 +19,9 @@ public class ProductControllerNOTPRODUCTS {
         this.productService = productService;
     }
 
-
-
     //@RequestMapping("/product")
     public String getProduct(){
+
         return "redirect:/index";
     }
 

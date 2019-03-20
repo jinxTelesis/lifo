@@ -1,6 +1,12 @@
 package capstone.bcs.lifo.bootstrap;
 
+import capstone.bcs.lifo.model.Account;
+import capstone.bcs.lifo.model.Order;
+import capstone.bcs.lifo.model.OrderDetail;
 import capstone.bcs.lifo.model.Product;
+import capstone.bcs.lifo.repositories.AccountRepository;
+import capstone.bcs.lifo.repositories.OrderDetailRepository;
+import capstone.bcs.lifo.repositories.OrderRepository;
 import capstone.bcs.lifo.repositories.ProductRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -14,9 +20,15 @@ import java.util.List;
 public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private final ProductRepository productRepository;
+    private final AccountRepository accountRepository;
+    private final OrderRepository orderRepository;
+    private final OrderDetailRepository orderDetailRepository;
 
-    public Bootstrap(ProductRepository productRepository) {
+    public Bootstrap(ProductRepository productRepository, AccountRepository accountRepository, OrderRepository orderRepository, OrderDetailRepository orderDetailRepository) {
         this.productRepository = productRepository;
+        this.accountRepository = accountRepository;
+        this.orderRepository = orderRepository;
+        this.orderDetailRepository = orderDetailRepository;
     }
 
 
@@ -24,6 +36,9 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         productRepository.saveAll(getProducts());
+        accountRepository.saveAll(getAccounts());
+        orderRepository.saveAll(getOrders());
+        orderDetailRepository.saveAll(getOrderDetails());
 
     }
 
@@ -119,8 +134,51 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         p9WearableTowel.setDescription2("The Wearable Towel has three arm openings placed along the side and does not employ the use of any fasteners. It is for unisex and can be worn in either a tunic style or a toga style.");
         products.add(p9WearableTowel);
 
+        Product p10GLHHairSystem = new Product();
+        p10GLHHairSystem.setProductName("GLH Hair System");
+        p10GLHHairSystem.setProductPrice(39.99);
+        p10GLHHairSystem.setProductImage("GLH.jpg");
+        p10GLHHairSystem.setProductDimensions(" ");
+        p10GLHHairSystem.setDescription1("A powder that attaches to the smallest of hair follicles and builds on itself to act like hair.");
+        p10GLHHairSystem.setDescription2("Glh is the very latest breakthrough and contains almost life-like fibers that instantly give added body to your hair. Glh will take away that wispy look. Fill in those thin see-through spots and for men it can even cover bald spots.");
+        products.add(p10GLHHairSystem);
+
+        Product p11ShakeWeight = new Product();
+        p11ShakeWeight.setProductName("Shake Weight");
+        p11ShakeWeight.setProductPrice(19.99);
+        p11ShakeWeight.setProductImage("shake_weight.jpg");
+        p11ShakeWeight.setProductDimensions(" ");
+        p11ShakeWeight.setDescription1("A training tool for the arms.");
+        p11ShakeWeight.setDescription2("Get incredible results in just 6 minutes a day using the revolutionary new way to shape and tone your arms, shoulders and chest It's fun and easy to use. ");
+        products.add(p11ShakeWeight);
+
+        Product p12ShoeDini = new Product();
+        p12ShoeDini.setProductName("ShoeDini");
+        p12ShoeDini.setProductPrice(9.99);
+        p12ShoeDini.setProductImage("shoedini.jpg");
+        p12ShoeDini.setProductDimensions(" ");
+        p12ShoeDini.setDescription1("The simple tool used to get your shoes on and off whithout the need to bend down. Perfect for those whith back issues.");
+        p12ShoeDini.setDescription2("Shoedini Shoe Horn extends to almost 3 feet to give you the extra reach you need!");
+        products.add(p12ShoeDini);
+
         return products;
     }
+
+    private List<Account> getAccounts(){
+        List<Account> accounts = new ArrayList<Account>();
+        return accounts;
+    }
+
+    private List<Order> getOrders(){
+        List<Order> orders = new ArrayList<Order>();
+        return orders;
+    }
+
+    private  List<OrderDetail> getOrderDetails(){
+        List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+        return  orderDetails;
+    }
+
 
 
 }

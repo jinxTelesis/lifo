@@ -20,13 +20,6 @@ public class OrderDetail {
     private String productID;
 
 
-    public OrderDetail(Double amount, Double price, Integer quantity, String orderID, String productID) {
-        this.amount = amount;
-        this.price = price;
-        this.quantity = quantity;
-        this.orderID = orderID;
-        this.productID = productID;
-    }
 
     public Long getId() {
         return id;

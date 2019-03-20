@@ -8,6 +8,6 @@ public class ComponentsController {
 
     @RequestMapping("/components")
     public String getPage(){
-        return "components";
+        return "examples/components";
     }
 }

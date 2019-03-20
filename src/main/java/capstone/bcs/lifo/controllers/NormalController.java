@@ -9,6 +9,6 @@ public class NormalController {
 
     @RequestMapping("/normal")
     public String getPage(){
-        return "normal";
+        return "examples/normal";
     }
 }
