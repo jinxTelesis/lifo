@@ -12,6 +12,9 @@ public class Product {
     private Long id;
 
     private String productName;
+
+    private Integer productCat;
+
     private double productPrice;
     private String productImage;
     private String productDimensions;
@@ -91,6 +94,17 @@ public class Product {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Integer getProductCat() {
+        return productCat;
+    }
+
+    public void setProductCat(Integer productCat) {
+        this.productCat = productCat;
+    }
+
+
+
 
 
 }
