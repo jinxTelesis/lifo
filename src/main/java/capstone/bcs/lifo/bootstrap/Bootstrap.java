@@ -249,7 +249,27 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         // added
         products.add(p18Rej);
 
-        
+        Product p19Sweatin = new Product();
+        p19Sweatin.setProductCat(4);
+        p19Sweatin.setProductName("Sweatin’ to the oldies");
+        p19Sweatin.setProductPrice(9.99);
+        p19Sweatin.setProductImage("sweatin_to_the_oldies.jpg");
+        p19Sweatin.setDescription1("A classic work out video featuring Richard Simmons, and some classy music. Lose yourself and some pounds by tuning into this vigorous work out.");
+        p19Sweatin.setDescription2("Turn back time with America's Favorite Fitness Expert, Richard Simmons! Celebrating 25 years since the original Sweatin' to the Oldies, fall in love with fun fitness all over again");
+        p19Sweatin.setDescription3("with this low impact routine guaranteed to get you off the couch and getting into shape.");
+        // added
+        products.add(p19Sweatin);
+
+        Product p20ThighMaster = new Product();
+        p20ThighMaster.setProductCat(4);
+        p20ThighMaster.setProductName("ThighMaster");
+        p20ThighMaster.setProductPrice(12.99);
+        p20ThighMaster.setProductImage("ThighMaster.jpg");
+        p20ThighMaster.setDescription1("A product that can be used to tone legs and arms for multiple work outs.");
+        p20ThighMaster.setDescription2("It's the ThighMaster Gold and the ButtMaster (LBX) together for the ultimate lower body workout. This is the only original ThighMaster straight from Suzanne. Don't accept any knock-off brands.");
+        p20ThighMaster.setDescription3(" Both tools aid in sculpting arms, shoulders, chest and back. It's the fast, easy, and inexpensive way to get in shape. Comes with an instructional DVD.");
+        // added
+        products.add(p20ThighMaster);
 
 
 
