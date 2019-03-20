@@ -62,6 +62,7 @@
 						<div th:each="product, it : ${products}">
 							<div th:if="${(it.count gt 0 and it.count lt 4)}">
 								<div th:replace="fragments/products_div :: products_div_grid">
+									</br>
 								</div>
 							</div>
 						</div>
@@ -71,6 +72,7 @@
 						<div th:each="product, it : ${products}">
 							<div th:if="${(it.count gt 3 and it.count lt 7)}">
 								<div th:replace="fragments/products_div :: products_div_grid">
+									</br>
 								</div>
 							</div>
 						</div>
@@ -80,6 +82,7 @@
 						<div th:each="product, it : ${products}">
 							<div th:if="${(it.count gt 6 and it.count lt 10)}">
 								<div th:replace="fragments/products_div :: products_div_grid">
+									</br>
 								</div>
 							</div>
 						</div>
