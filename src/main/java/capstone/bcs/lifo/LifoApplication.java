@@ -9,5 +9,4 @@ public class LifoApplication {
     public static void main(String[] args) {
         SpringApplication.run(LifoApplication.class, args);
     }
-
 }
