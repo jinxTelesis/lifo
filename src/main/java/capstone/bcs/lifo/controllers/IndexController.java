@@ -13,7 +13,7 @@ public class IndexController {
     // == the main page should have /.html
     //@RequestMapping({"/","/index","/.html","/index.html"})
     public String index(){
-        return "index2";
+        return "index";
     }
 
     private ProductService productService;
@@ -26,7 +26,7 @@ public class IndexController {
     @RequestMapping({"/","/index","/.html","/index.html"})
     public String getIndex(Model model){
         model.addAttribute("products", productService.getProducts());
-        return "index2";
+        return "index";
     }
 
 }

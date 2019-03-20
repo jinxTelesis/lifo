@@ -21,13 +21,6 @@ public class Account {
     private String userRole;
 
 
-    public Account(String userName, boolean active, String password, String userRole) {
-        this.userName = userName;
-        this.active = active;
-        this.password = password;
-        this.userRole = userRole;
-    }
-
     public Long getId() {
         return id;
     }
