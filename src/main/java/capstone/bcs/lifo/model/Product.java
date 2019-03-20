@@ -44,14 +44,19 @@ public class Product {
         this.productImage = productImage;
     }
 
+    @Column (updatable = true,name="description1",columnDefinition = "text")
+    public String getDescription1() {
+        return description1;
+    }
+
+    public void setDescription1(String description1) { this.description1 = description1; }
+
     @Column (updatable = true,name="description2",columnDefinition = "text")
     public String getDescription2() {
         return description2;
     }
 
-    public void setDescription2(String description2) {
-        this.description2 = description2;
-    }
+    public void setDescription2(String description2) { this.description2 = description2; }
 
     @Column (updatable = true,name="description3",columnDefinition = "text")
     public String getDescription3() {
@@ -79,7 +84,6 @@ public class Product {
         this.productDimensions = productDimensions;
     }
 
-
     public Long getId() {
         return id;
     }
@@ -88,11 +92,5 @@ public class Product {
         this.id = id;
     }
 
-    public String getDescription1() {
-        return description1;
-    }
 
-    public void setDescription1(String description1) {
-        this.description1 = description1;
-    }
 }

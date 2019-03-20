@@ -5,42 +5,21 @@
 </head>
 
 <body>
-<div th:fragment="productdiv">
-    <div class="thumbnail" href="product.html" th:href="@{'/product/'+${product.id}}" >
-    <a  href="product_details"><img th:src="@{'/images/thumbs/'+${product.productImage}}" alt=""/></a>
-        <div class="caption" style="text-align: center">
-            <h5 th:text="${product.productName}">Product name</h5>
-            <p>
-            Lorem Ipsum is simply dummy text.
-            </p>
-            <h4 style="text-align: center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a>
-                                          <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a>
-                                          <a class="btn btn-primary" th:text="${product.productPrice}">$222.00</a></h4>
+    <div th:fragment="productdiv">
+        <div class="thumbnail" href="product.html" th:href="@{'/product/'+${product.id}}" >
+        <a  href="product_details"><img th:src="@{'/images/thumbs/'+${product.productImage}}" alt=""/></a>
+            <div class="caption" style="text-align: center">
+                <h5 th:text="${product.productName}">Product name</h5>
+                <p>
+                Lorem Ipsum is simply dummy text.
+                </p>
+                <h4 style="text-align: center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a>
+                                              <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a>
+                                              <a class="btn btn-primary" th:text="${product.productPrice}">$222.00</a></h4>
+            </div>
         </div>
+        </br>
     </div>
-    </br>
-</div>
-
-
-    <!--<div class="course-listing">-->
-        <!--<div class="row">-->
-            <!--<a href="product.html" th:href="@{'/product/'+${product.id}}"> &lt;!&ndash; this needs to be a number &ndash;&gt;-->
-
-                <!--<div class="thumbnail">-->
-                    <!--<a  href="product_details"><img th:src="@{'/images/realproducts/'+${product.productImage}}"  alt=""/></a>-->
-                    <!--<div class="caption">-->
-                        <!--<h5 th:text="${product.productName}">Product name</h5>-->
-                        <!--<p>-->
-                            <!--Lorem Ipsum is simply dummy text.-->
-                        <!--</p>-->
-                        <!--<h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a>-->
-                                                      <!--<a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a>-->
-                                                      <!--<a class="btn btn-primary" th:text="${product.productPrice}"></a></h4>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</a>-->
-        <!--</div>-->
-    <!--</div>-->
 </div>
 
 </body>
