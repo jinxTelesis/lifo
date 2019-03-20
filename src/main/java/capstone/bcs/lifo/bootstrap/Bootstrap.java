@@ -37,7 +37,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     public void onApplicationEvent(ContextRefreshedEvent event) {
         productRepository.saveAll(getProducts());
         accountRepository.saveAll(getAccounts());
-        orderRepository.saveAll(getOrders());
+        //orderRepository.saveAll(getOrders());
         orderDetailRepository.saveAll(getOrderDetails());
 
     }
@@ -152,6 +152,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         p11ShakeWeight.setDescription2("Get incredible results in just 6 minutes a day using the revolutionary new way to shape and tone your arms, shoulders and chest It's fun and easy to use. ");
         products.add(p11ShakeWeight);
 
+        // == this is a duplicate left it in for now == the squiggly lines are telling you it is repeat code ==
         Product p12ShoeDini = new Product();
         p12ShoeDini.setProductName("ShoeDini");
         p12ShoeDini.setProductPrice(9.99);
@@ -161,24 +162,114 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         p12ShoeDini.setDescription2("Shoedini Shoe Horn extends to almost 3 feet to give you the extra reach you need!");
         products.add(p12ShoeDini);
 
+
+
         return products;
     }
 
     private List<Account> getAccounts(){
         List<Account> accounts = new ArrayList<Account>();
+        Account jimsAccount = new Account();
+
+
+        jimsAccount.setActive(true);
+        jimsAccount.setUserName("Biffman1000");
+        jimsAccount.setUserName("macNCheese");
+        jimsAccount.setUserRole("Customer");
+
+        accounts.add(jimsAccount);
+
+        Account bethsAccount = new Account();
+        bethsAccount.setActive(true);
+        bethsAccount.setUserName("Chelseaseasea");
+        bethsAccount.setUserRole("lovethatmacnCheese");
+        bethsAccount.setUserRole("Customer");
+
+        accounts.add(bethsAccount);
+
         return accounts;
     }
 
     private List<Order> getOrders(){
         List<Order> orders = new ArrayList<Order>();
+
+//        Order F1000 = new Order();
+//        F1000.setAmount(100.00);
+//        F1000.setAddress1("10 Parker street");
+//        F1000.setAddress2("upstairs apt");
+//        F1000.setCountry("United States");
+//        F1000.setCustomerEmail("farklank10@hotmail.com");
+//        F1000.setCustomerName("billy");
+//        F1000.setCustomerPhone("517-2788-1281");
+//
+//        Date ordeDate = new Date();
+//        ordeDate.setTime(10213131);
+//        F1000.setOrderDate(ordeDate);
+//
+//        Date ordertime = new Date();
+//        ordertime.setTime(1213131);
+//        F1000.setOrderTime(ordertime);
+//        F1000.setState("NY");
+//        F1000.setZip(10001);
+//        orders.add(F1000);
+//
+//        Order F1001 = new Order();
+//        F1001.setAmount(105.17);
+//        F1001.setAddress1("17 Parker street");
+//        F1001.setAddress2("back apt");
+//        F1001.setCountry("United States");
+//        F1001.setCustomerEmail("Bifarklank10@hotmail.com");
+//        F1001.setCustomerName("lisy");
+//        F1001.setCustomerPhone("518-2788-1281");
+//
+//        Date ordeDate1 = new Date();
+//        ordeDate.setTime(1021131);
+//        F1001.setOrderDate(ordeDate1);
+//
+//        Date ordertime2 = new Date();
+//        ordertime.setTime(113131);
+//        F1001.setOrderTime(ordertime2);
+//        F1001.setState("NY");
+//        F1001.setZip(11001);
+//        orders.add(F1001);
+
+
         return orders;
     }
 
-    private  List<OrderDetail> getOrderDetails(){
+    // last one to do
+    private  List<OrderDetail> getOrderDetails() {
         List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
-        return  orderDetails;
+
+        OrderDetail orderDetail1 = new OrderDetail();
+        orderDetail1.setAmount(100.07);
+        orderDetail1.setOrderID("100cahbx");
+        orderDetail1.setPrice(10.1);
+        orderDetail1.setProductID("hb1c");
+        orderDetail1.setQuantity(2);
+
+        // == added to the list == //
+        orderDetails.add(orderDetail1);
+
+        OrderDetail orderDetai2 = new OrderDetail();
+        orderDetai2.setAmount(78.1);
+        orderDetai2.setOrderID("100cabhx");
+        orderDetai2.setPrice(10.8);
+        orderDetai2.setProductID("blunkjk");
+        orderDetai2.setQuantity(3);
+
+        // == added to the list == /
+        orderDetails.add(orderDetai2);
+
+        OrderDetail orderDetai3 = new OrderDetail();
+        orderDetai3.setAmount(100.07);
+        orderDetai3.setProductID("100cads");
+        orderDetai3.setPrice(10.4);
+        orderDetai3.setProductID("spiff");
+        orderDetai3.setQuantity(4);
+
+
+        return orderDetails;
     }
-
-
 
 }
