@@ -2,10 +2,15 @@ package capstone.bcs.lifo.model;
 
 
 import javax.persistence.*;
+import java.util.Comparator;
+import java.util.function.Function;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
+import java.util.function.ToLongFunction;
 
 
 @Entity
-public class Product {
+public class Product implements Comparator<Product>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -104,7 +109,47 @@ public class Product {
     }
 
 
+    @Override
+    public int compare(Product o1, Product o2) {
 
+        String strComp1 = o1.getProductName();
+        String strComp2 = o2.getProductName();
 
+        return strComp1.compareTo(strComp2);
+    }
 
+    @Override
+    public Comparator<Product> reversed() {
+        return null;
+    }
+
+    @Override
+    public Comparator<Product> thenComparing(Comparator<? super Product> other) {
+        return null;
+    }
+
+    @Override
+    public <U> Comparator<Product> thenComparing(Function<? super Product, ? extends U> keyExtractor, Comparator<? super U> keyComparator) {
+        return null;
+    }
+
+    @Override
+    public <U extends Comparable<? super U>> Comparator<Product> thenComparing(Function<? super Product, ? extends U> keyExtractor) {
+        return null;
+    }
+
+    @Override
+    public Comparator<Product> thenComparingInt(ToIntFunction<? super Product> keyExtractor) {
+        return null;
+    }
+
+    @Override
+    public Comparator<Product> thenComparingLong(ToLongFunction<? super Product> keyExtractor) {
+        return null;
+    }
+
+    @Override
+    public Comparator<Product> thenComparingDouble(ToDoubleFunction<? super Product> keyExtractor) {
+        return null;
+    }
 }
