@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <script src="webjars/jquery/3.3.1-2 /jquery.js"></script>
+</head>
+<body>
+<!-- Navigation section start ====================================================================== -->
+<div th:replace="fragments/navigation :: navigation">
+</div>
+<!-- Navigation section end ====================================================================== -->
+
+<!-- Carousel section start ====================================================================== -->
+<div id="carouselBlk" th:replace="fragments/carousel :: carousel">
+</div>
+<!-- Carousel section end ====================================================================== -->
+
+<button id="bt1">Load Fragment 1</button>
+<button id="bt2">Load Fragment 2</button>
+
+<div id="mainBody">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Section Start ================================================== -->
+            <!-- this is where it the sidebar goes -->
+            <div id="sidebar" class="span3">
+                <div class="well well-small"><a id="myCart" href="product_summary"><img src="/images/ico-cart.png" alt="cart">0 Items in your cart  <span class="badge badge-warning pull-right">$0.00</span></a></div>
+                <ul id="sideManu" class="nav nav-tabs nav-stacked">
+                    <li class="subMenu open"><a> ELECTRONICS</a>
+                        <ul>
+                            <li><a class="active"></a><a id="ref1" class="active" href="javascript:;"><i class="icon-chevron-right"></i>Cameras</a></li>
+                            <li><a href="javascript:;"><i id="ref2" class="icon-chevron-right"></i>Computers, Tablets & laptop</a></li>
+                            <li><a href="javascript:;"><i id="ref3" class="icon-chevron-right"></i>Mobile Phone</a></li>
+                            <li><a href="javascript:;"><i id="ref4"class="icon-chevron-right"></i>Sound & Vision</a></li>
+                        </ul>
+                    </li>
+                    <li class="subMenu"><a> CLOTHES</a>
+                        <ul style="display:none">
+                            <script>
+                                /*<![CDATA[*/
+                                javascript:alert("hello world");
+
+                                /*]]>*/
+                            </script>
+                            <li><a href="javascript:;"><i id="ref5" class="icon-chevron-right"></i>Women's Clothing</a></li>
+                            <li><a href="javascript:;"><i id="ref6" class="icon-chevron-right"></i>Women's Shoes</a></li>
+                            <li><a href="javascript:;"><i id="ref7" class="icon-chevron-right"></i>Women's Hand Bags</a></li>
+                            <li><a href="javascript:;"><i id="ref8" class="icon-chevron-right"></i>Men's Clothings</a></li>
+                            <li><a href="javascript:;"><i id="ref9" class="icon-chevron-right"></i>Men's Shoes</a></li>
+                            <li><a href="javascript:;"><i id="ref10" class="icon-chevron-right"></i>Kids Clothing</a></li>
+                            <li><a href="javascript:;"><i id="ref11" class="icon-chevron-right"></i>Kids Shoes</a></li>
+                        </ul>
+                    </li>
+                    <li class="subMenu"><a>FOOD AND BEVERAGES</a>
+                        <ul style="display:none">
+                            <li><a href="javascript:;"><i id="ref12" class="icon-chevron-right"></i>Angoves</a></li>
+                            <li><a href="javascript:;"><i id="ref13" class="icon-chevron-right"></i>Bouchard Aine & Fils</a></li>
+                            <li><a href="javascript:;"><i id="ref14" class="icon-chevron-right"></i>French Rabbit</a></li>
+                            <li><a href="javascript:;"><i id="ref15" class="icon-chevron-right"></i>Louis Bernard</a></li>
+                            <li><a href="javascript:;"><i id="ref16" class="icon-chevron-right"></i>BIB Wine (Bag in Box)</a></li>
+                            <li><a href="javascript:;"><i id="ref17" class="icon-chevron-right"></i>Other Liquors & Wine</a></li>
+                            <li><a href="javascript:;"><i id="ref18" class="icon-chevron-right"></i>Garden</a></li>
+                            <li><a href="javascript:;"><i id="ref19" class="icon-chevron-right"></i>Khao Shong</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:;">HEALTH & BEAUTY</a></li>
+                    <li><a href="javascript:;">SPORTS & LEISURE</a></li>
+                    <li><a href="javascript:;">BOOKS & ENTERTAINMENTS</a></li>
+                </ul>
+                <br/>
+                <div class="thumbnail">
+                    <img src="/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera"/>
+                    <div class="caption">
+                        <h5>Panasonic</h5>
+                        <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                    </div>
+                </div><br/>
+                <div class="thumbnail">
+                    <img src="/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
+                    <div class="caption">
+                        <h5>Kindle</h5>
+                        <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                    </div>
+                </div><br/>
+                <div class="thumbnail">
+                    <img src="/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
+                    <div class="caption">
+                        <h5>Payment Methods</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- this is where the sidebar goes -->
+            <!-- Sidebar Section End =============================================== -->
+
+            <!-- Main body section start =============================================== -->
+            <div class="span9">
+                <div class="well well-small">
+                    <h4>Featured Products</h4>
+                    <div th:replace="fragments/featured_carousel :: featured_carousel">
+
+                    </div>
+
+                </div>
+                <div class="container" id="swap" th:replace="fragments/productdiv2 :: productdiv2"></div>
+
+            </div>   <!-- <div class="span9"> -->
+            <!-- Main body section end =============================================== -->
+
+        </div>		<!-- <div class="row"> -->
+    </div>  <!--<div class="container"> -->
+
+    <!-- Footer section start =============================================== -->
+    <div class="container" th:replace="fragments/footer :: footer">
+    </div>
+    <!-- Footer section end =============================================== -->
+
+    <!-- Site script section start =============================================== -->
+    <div class="container" th:replace="fragments/sitescripts :: sitescripts">
+    </div>
+    <!-- Site script section end =============================================== -->
+</div>
+
+<script>
+    /*<![CDATA[*/
+    javascript:alert("hello world");
+    $("#bt1").on("click", function () {
+        $("#swap").load("/frag/1");
+    });
+    $("#bt2").on("click", function () {
+        $("#swap").load("/frag/2");
+    });
+    $("#ref3").on("click", function () {
+        $("#swap").load("/index2");
+    });
+    $("#ref4").on("click", function () {
+        $("#swap").load("/index2");
+    });
+    $("#ref5").on("click", function () {
+        $("#swap").load("/index2");
+    });
+    $("#ref6").on("click", function () {
+        $("#swap").load("/index2");
+    });
+    $("#ref7").on("click", function () {
+        $("#swap").load("/frag/7");
+    });
+    $("#ref8").on("click", function () {
+        $("#swap").load("/frag/8");
+    });
+    $("#ref9").on("click", function () {
+        $("#swap").load("/frag/9");
+    });
+    $("#ref10").on("click", function () {
+        $("#swap").load("/frag/10");
+    });
+    $("#ref11").on("click", function () {
+        $("#swap").load("/frag/11");
+    });
+    /*]]>*/
+</script>
+
+
+</body>
+</html>
