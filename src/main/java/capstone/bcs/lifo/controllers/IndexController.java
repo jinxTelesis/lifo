@@ -27,7 +27,7 @@ public class IndexController {
     @RequestMapping({"/","/index","/.html","/index.html"})
     public String getIndex(Model model){
         model.addAttribute("products", productService.getProductsAsce());
-        return "index";
+        return "index2";
     }
 
     @RequestMapping({"/indexRev"})
@@ -35,13 +35,28 @@ public class IndexController {
         //model.addAttribute("products", productService.getProductsByCategory(4));
 
         model.addAttribute("products", productService.getProductsDesc());
-        return "index";
+        return "index2";
     }
 
-    @RequestMapping("index/{productCat}")
-    public String getPage(@PathVariable String productCat, Model model){
-        model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
-        return "index";
+    // change this back dude
+//    @RequestMapping("/index2/{productCat}")
+//    public String getPage(@PathVariable String productCat, Model model){
+//        model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
+//        return "index2";
+//    }
+
+    @RequestMapping("/index2")
+    public String getPage2(Model model){
+        model.addAttribute("products", productService.getProducts());
+        return "index2";
     }
+
+    @RequestMapping("/frag/1")
+    public String fixedFrag1(Model model) {
+        model.addAttribute("products",productService.getProducts());
+        return "fragments/productdiv2 :: productdiv2";
+    }
+
+
 
 }

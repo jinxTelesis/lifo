@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+</head>
+
+<div>
+
+<h4>Latest Products </h4>
+    <div th:fragment="productdiv2">
+    <div class="thumbnails">
+        <div th:each="product, it : ${products}">
+            <div class="span3" th:if="${(it.count gt 0 and it.count lt 4)}">
+                <div class="row" th:replace="fragments/productdiv :: productdiv">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="thumbnails">
+        <div th:each="product, it : ${products}">
+            <div class="span3" th:if="${(it.count gt 3 and it.count lt 7)}">
+                <div class="row" th:replace="fragments/productdiv :: productdiv">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="thumbnails">
+        <div th:each="product, it : ${products}">
+            <div class="span3" th:if="${(it.count gt 6 and it.count lt 10)}">
+                <div class="row" th:replace="fragments/productdiv :: productdiv">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
