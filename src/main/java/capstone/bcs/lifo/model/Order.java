@@ -10,6 +10,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // adding and address object so most of this can be removed
+
     private Double amount;
     // should this be split up
     private String address1;

@@ -11,4 +11,6 @@ public class RegisterController {
     public String getPage(){
         return "register";
     }
+
+    //
 }
