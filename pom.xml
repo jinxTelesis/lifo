@@ -81,24 +81,24 @@
             <artifactId>spring-boot-devtools</artifactId>
             <!--<scope>runtime</scope>-->
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.h2database</groupId>-->
-            <!--<artifactId>h2</artifactId>-->
-            <!--<scope>runtime</scope>-->
-        <!--</dependency>-->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <!-- this is not from spring boot -->
-            <!-- check MVN repo if we have issues -->
-            <version>1.1.9</version>
-            <!-- this is not from spring boot -->
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>mysql</groupId>-->
+            <!--<artifactId>mysql-connector-java</artifactId>-->
+            <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.mariadb.jdbc</groupId>-->
+            <!--<artifactId>mariadb-java-client</artifactId>-->
+            <!--&lt;!&ndash; this is not from spring boot &ndash;&gt;-->
+            <!--&lt;!&ndash; check MVN repo if we have issues &ndash;&gt;-->
+            <!--<version>1.1.9</version>-->
+            <!--&lt;!&ndash; this is not from spring boot &ndash;&gt;-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
