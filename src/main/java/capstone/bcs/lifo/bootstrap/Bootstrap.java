@@ -58,7 +58,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p1GeorgeFormanGrill);
 
         Product p2GinsuKnives = new Product();
-        p2GinsuKnives.setProductCat(1);
+        p2GinsuKnives.setProductCat(0);
         p2GinsuKnives.setProductName("Ginsu Knives");
         p2GinsuKnives.setProductPrice(79.99);
         p2GinsuKnives.setProductImage("ginsu_knives.jpg");
@@ -79,7 +79,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p3SlapChop);
 
         Product p4ChiaPet = new Product();
-        p4ChiaPet.setProductCat(3);
+        p4ChiaPet.setProductCat(0);
         p4ChiaPet.setProductName("China pet");
         p4ChiaPet.setProductPrice(17.99);
         p4ChiaPet.setProductImage("chia_pets.jpg");
@@ -91,7 +91,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p4ChiaPet);
 
         Product p5Energize10SolarLandscape = new Product();
-        p5Energize10SolarLandscape.setProductCat(4);
+        p5Energize10SolarLandscape.setProductCat(1);
         p5Energize10SolarLandscape.setProductName("Energize Solar landscape light");
         p5Energize10SolarLandscape.setProductPrice(79.99);
         p5Energize10SolarLandscape.setProductImage("solar.jpg");
@@ -103,7 +103,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p5Energize10SolarLandscape);
 
         Product p6ShoeDini = new Product();
-        p6ShoeDini.setProductCat(5);
+        p6ShoeDini.setProductCat(1);
         p6ShoeDini.setProductName("ShowDini");
         p6ShoeDini.setProductPrice(9.99);
         p6ShoeDini.setProductImage("shoedini.jpg");
@@ -114,7 +114,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p6ShoeDini);
 
         Product p7Snuggie = new Product();
-        p7Snuggie.setProductCat(6);
+        p7Snuggie.setProductCat(1);
         p7Snuggie.setProductName("Snuggie");
         p7Snuggie.setProductPrice(19.99);
         p7Snuggie.setProductImage("snuggie.jpg");
@@ -126,7 +126,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p7Snuggie);
 
         Product p8TubShroom = new Product();
-        p8TubShroom.setProductCat(7);
+        p8TubShroom.setProductCat(1);
         p8TubShroom.setProductName("Tub Shroom");
         p8TubShroom.setProductPrice(9.99);
         p8TubShroom.setProductImage("tub_shroom.jpg");
@@ -139,7 +139,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p8TubShroom);
 
         Product p9WearableTowel = new Product();
-        p9WearableTowel.setProductCat(8);
+        p9WearableTowel.setProductCat(1);
         p9WearableTowel.setProductName("Wearable Towel");
         p9WearableTowel.setProductPrice(19.99);
         p9WearableTowel.setProductImage("wearable_towel.jpg");
@@ -156,7 +156,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         //
 
         Product p10GLHHairSystem = new Product();
-        p10GLHHairSystem.setProductCat(9);
+        p10GLHHairSystem.setProductCat(2);
         p10GLHHairSystem.setProductName("GLH Hair System");
         p10GLHHairSystem.setProductPrice(39.99);
         p10GLHHairSystem.setProductImage("glh.jpg");
@@ -167,7 +167,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p10GLHHairSystem);
 
         Product p11ShakeWeight = new Product();
-        p11ShakeWeight.setProductCat(10);
+        p11ShakeWeight.setProductCat(2);
         p11ShakeWeight.setProductName("Shake Weight");
         p11ShakeWeight.setProductPrice(19.99);
         p11ShakeWeight.setProductImage("shake_weight.jpg");
@@ -178,7 +178,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p11ShakeWeight);
 
         Product p13Bowflex = new Product();
-        p13Bowflex.setProductCat(11);
+        p13Bowflex.setProductCat(2);
         p13Bowflex.setProductName("Bowflex");
         p13Bowflex.setProductPrice(539.99);
         p13Bowflex.setProductImage("bowflex.png");
@@ -190,7 +190,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p13Bowflex);
 
         Product p14HawaiiChair = new Product();
-        p14HawaiiChair.setProductCat(12);
+        p14HawaiiChair.setProductCat(2);
         p14HawaiiChair.setProductImage("hula_chair.jpg");
         p14HawaiiChair.setProductPrice(49.99);
         p14HawaiiChair.setProductName("Hawaii Chair");
@@ -201,7 +201,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p14HawaiiChair);
 
         Product p15InStylerMax = new Product();
-        p15InStylerMax.setProductCat(13);
+        p15InStylerMax.setProductCat(3);
         p15InStylerMax.setProductName("InStyler Max 2");
         p15InStylerMax.setProductPrice(19.99);
         p15InStylerMax.setProductImage("instyler.jpg");
@@ -213,7 +213,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p15InStylerMax);
 
         Product p16Kush = new Product();
-        p16Kush.setProductCat(14);
+        p16Kush.setProductCat(3);
         p16Kush.setProductName("Kush");
         p16Kush.setProductPrice(39.99);
         p16Kush.setProductImage("kush.jpg");
@@ -225,7 +225,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p16Kush);
 
         Product p17Proactiv = new Product();
-        p17Proactiv.setProductCat(15);
+        p17Proactiv.setProductCat(3);
         p17Proactiv.setProductName("Proactiv");
         p17Proactiv.setProductPrice(34.99);
         p17Proactiv.setProductImage("proactiv.jpg");
@@ -237,7 +237,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p17Proactiv);
 
         Product p18Rej = new Product();
-        p18Rej.setProductCat(16);
+        p18Rej.setProductCat(3);
         p18Rej.setProductName("Rejuvenique Electric Facial Mask");
         p18Rej.setProductPrice(99.99);
         p18Rej.setProductImage("rejuvenique.jpg");
@@ -249,7 +249,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p18Rej);
 
         Product p19Sweatin = new Product();
-        p19Sweatin.setProductCat(17);
+        p19Sweatin.setProductCat(3);
         p19Sweatin.setProductName("Sweatin’ to the oldies");
         p19Sweatin.setProductPrice(9.99);
         p19Sweatin.setProductImage("sweatin_to_the_oldies.jpg");
@@ -260,7 +260,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         products.add(p19Sweatin);
 
         Product p20ThighMaster = new Product();
-        p20ThighMaster.setProductCat(18);
+        p20ThighMaster.setProductCat(3);
         p20ThighMaster.setProductName("ThighMaster");
         p20ThighMaster.setProductPrice(12.99);
         p20ThighMaster.setProductImage("thigh_master.jpg");

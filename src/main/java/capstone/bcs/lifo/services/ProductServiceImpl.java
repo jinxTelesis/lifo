@@ -1,6 +1,5 @@
 package capstone.bcs.lifo.services;
 
-
 import capstone.bcs.lifo.Exceptions.NotFoundException;
 import capstone.bcs.lifo.model.Product;
 import capstone.bcs.lifo.repositories.ProductRepository;
@@ -79,7 +78,7 @@ public class ProductServiceImpl implements ProductService {
         }
 
         return results;
-}
+    }
 
     @Override
     public void deleteById(Long idToDelete) {

@@ -28,7 +28,7 @@ public class ProductsController {
     @RequestMapping("products/{productCat}")
     public String getPage(@PathVariable String productCat, Model model){
         model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
-        return "index";
+        return "products";
     }
 
 }

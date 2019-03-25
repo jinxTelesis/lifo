@@ -23,9 +23,13 @@ public class Product implements Comparator<Product>{
     private double productPrice;
     private String productImage;
     private String productDimensions;
+    @Lob
     private String description1;
+    @Lob
     private String description2;
+    @Lob
     private String description3;
+    @Lob
     private String description4;
 
     public String getProductName() {
