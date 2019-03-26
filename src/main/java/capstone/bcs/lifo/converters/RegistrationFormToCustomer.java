@@ -3,7 +3,10 @@ package capstone.bcs.lifo.converters;
 import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.model.Address;
 import capstone.bcs.lifo.model.Customer;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class RegistrationFormToCustomer {
 
     public Customer convert(RegistrationForm registrationForm) {
