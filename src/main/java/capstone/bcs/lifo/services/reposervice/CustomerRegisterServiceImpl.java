@@ -1,6 +1,7 @@
 package capstone.bcs.lifo.services.reposervice;
 
 import capstone.bcs.lifo.commands.RegistrationForm;
+import capstone.bcs.lifo.model.Account;
 import capstone.bcs.lifo.model.Customer;
 import capstone.bcs.lifo.repositories.CustomerRepository;
 import capstone.bcs.lifo.services.CustomerService;
@@ -13,21 +14,23 @@ public class CustomerRegisterServiceImpl implements CustomerService {
 
     //ToDO add the Converters
 
-
-
-
     @Override
-    public List<Customer> listAll() {
+    public List<Customer> getCustomers() {
         return null;
     }
 
     @Override
-    public Customer getById(Integer id) {
+    public List<Account> getAccounts() {
         return null;
     }
 
     @Override
-    public Customer saveOrUpdateCustomerForm(RegistrationForm registrationForm) {
+    public Customer getById(Long l) {
+        return null;
+    }
+
+    @Override
+    public Customer saveOrUpdateRegistrationForm(RegistrationForm registrationForm) {
         return null;
     }
 
@@ -37,7 +40,8 @@ public class CustomerRegisterServiceImpl implements CustomerService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long l) {
 
     }
+
 }

@@ -3,16 +3,14 @@ package capstone.bcs.lifo.converters;
 import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.model.Address;
 import capstone.bcs.lifo.model.Customer;
-import org.springframework.core.convert.converter.Converter;
 
-public class RegistrationFormToCustomer implements Converter<RegistrationForm, Customer> {
+public class RegistrationFormToCustomer {
 
-    @Override
     public Customer convert(RegistrationForm registrationForm) {
 
         // == this class takes in the registration form and converts it to
         // == an address object and a customer object ==
-        // == the address object is embedded in the Customer object == 
+        // == the address object is embedded in the Customer object ==
 
         Customer customer = new Customer(); // has an address object embedded in it - composition - hibernate embeddable
         // maybe add role or user object here later --
@@ -26,7 +24,7 @@ public class RegistrationFormToCustomer implements Converter<RegistrationForm, C
         Address address = new Address();
         address.setaFirstName(registrationForm.getaFirstName());
         address.setaLastName(registrationForm.getaLastName());
-        address.setaCompnay(registrationForm.getaCompnay());
+        address.setaCompnay(registrationForm.getaCompany());
         address.setaAddress(registrationForm.getaAddress());
         address.setaAddress2(registrationForm.getaAddress2());
         address.setaCity(registrationForm.getaCity());

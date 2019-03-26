@@ -8,14 +8,16 @@ import java.util.List;
 
 public interface CustomerService {
 
-    List<Customer> listAll();
+    List<Customer> getCustomers();
 
-    Customer getById(Integer id);
+    List<Account> getAccounts();
 
-    Customer saveOrUpdateCustomerForm(RegistrationForm registrationForm);
+    Customer getById(Long l);
 
-    Customer saveOrUpdate(Customer domainObject);
+    Customer saveOrUpdateRegistrationForm(RegistrationForm registrationForm);
 
-    void delete(Integer id);
+    Customer saveOrUpdate(Customer customer);
+
+    void delete(Long l);
 
 }

@@ -10,7 +10,7 @@ public class RegistrationForm {
 
     private String aFirstName;
     private String aLastName;
-    private String aCompnay;
+    private String aCompany;
     private String aAddress;
     private String aAddress2;
     private String aCity;
@@ -77,12 +77,12 @@ public class RegistrationForm {
         this.aLastName = aLastName;
     }
 
-    public String getaCompnay() {
-        return aCompnay;
+    public String getaCompany() {
+        return aCompany;
     }
 
-    public void setaCompnay(String aCompnay) {
-        this.aCompnay = aCompnay;
+    public void setaCompany(String aCompany) {
+        this.aCompany = aCompany;
     }
 
     public String getaAddress() {
