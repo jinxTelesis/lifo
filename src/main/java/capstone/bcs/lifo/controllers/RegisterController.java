@@ -1,7 +1,6 @@
 package capstone.bcs.lifo.controllers;
 
 
-import capstone.bcs.lifo.commands.CustomerForm;
 import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.services.CustomerService;
 import org.springframework.stereotype.Controller;
@@ -22,24 +21,13 @@ public class RegisterController {
         this.customerService = customerService;
     }
 
-    @RequestMapping("/register")
-    public String getPage(){
-        return "register";
-    }
 
-
-//    @RequestMapping("/new")
-//    public String newCustomer(Model model){
-//        model.addAttribute("customerForm", new CustomerForm());
-//        return "customerform";
-//    }
 
     // keep as customer for now
-    @RequestMapping("/old")
+    @RequestMapping("/register2")
     public String oldCustomer(Model model){
         model.addAttribute("registrationForm", new RegistrationForm());
-        return "customerform";
+        return "register2";
     }
 
-    //
 }

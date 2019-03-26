@@ -24,7 +24,6 @@ public class RegistrationFormToCustomer {
         Address address = new Address();
         address.setaFirstName(registrationForm.getaFirstName());
         address.setaLastName(registrationForm.getaLastName());
-        address.setaCompnay(registrationForm.getaCompany());
         address.setaAddress(registrationForm.getaAddress());
         address.setaAddress2(registrationForm.getaAddress2());
         address.setaCity(registrationForm.getaCity());

@@ -18,11 +18,8 @@ public class Customer {
     @Embedded
     private Address customerAddress = new Address();
 
-
-
-
-
-
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    private Account account;
 
     public Address getCustomerAddress() {
         return customerAddress;

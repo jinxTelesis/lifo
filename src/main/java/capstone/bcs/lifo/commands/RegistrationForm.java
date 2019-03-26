@@ -10,7 +10,6 @@ public class RegistrationForm {
 
     private String aFirstName;
     private String aLastName;
-    private String aCompany;
     private String aAddress;
     private String aAddress2;
     private String aCity;
@@ -75,14 +74,6 @@ public class RegistrationForm {
 
     public void setaLastName(String aLastName) {
         this.aLastName = aLastName;
-    }
-
-    public String getaCompany() {
-        return aCompany;
-    }
-
-    public void setaCompany(String aCompany) {
-        this.aCompany = aCompany;
     }
 
     public String getaAddress() {

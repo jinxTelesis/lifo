@@ -1,15 +1,12 @@
 package capstone.bcs.lifo.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Account {
 
-    // needs some sort of link to order
+// needs some sort of link to order
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +14,13 @@ public class Account {
 
     private String userName;
     private Boolean active;
+
     private String password;
+    private String encryptedPassword;
     private String userRole;
 
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private Customer customer;
 
     public Long getId() {
         return id;
@@ -62,5 +63,24 @@ public class Account {
     }
 
 
+    public Boolean getActive() {
+        return active;
+    }
+
+    public String getEncryptedPassword() {
+        return encryptedPassword;
+    }
+
+    public void setEncryptedPassword(String encryptedPassword) {
+        this.encryptedPassword = encryptedPassword;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
 }
