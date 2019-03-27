@@ -1,9 +1,8 @@
 package capstone.bcs.lifo.bootstrap;
 
-import capstone.bcs.lifo.model.Account;
-import capstone.bcs.lifo.model.OrderDetail;
-import capstone.bcs.lifo.model.Product;
+import capstone.bcs.lifo.model.*;
 import capstone.bcs.lifo.repositories.AccountRepository;
+import capstone.bcs.lifo.repositories.CustomerRepository;
 import capstone.bcs.lifo.repositories.OrderDetailRepository;
 import capstone.bcs.lifo.repositories.ProductRepository;
 import org.springframework.context.ApplicationListener;
@@ -22,11 +21,16 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     //private final OrderRepository orderRepository;
     private final OrderDetailRepository orderDetailRepository;
 
-    public Bootstrap(ProductRepository productRepository, AccountRepository accountRepository, OrderDetailRepository orderDetailRepository) {
+    // == testing remove ==
+    private final CustomerRepository customerRepository;
+
+    public Bootstrap(ProductRepository productRepository, AccountRepository accountRepository, OrderDetailRepository orderDetailRepository, CustomerRepository customerRepository) {
         this.productRepository = productRepository;
         this.accountRepository = accountRepository;
         //this.orderRepository = orderRepository;
         this.orderDetailRepository = orderDetailRepository;
+        // == testing remove ==
+        this.customerRepository = customerRepository;
     }
 
 
@@ -518,6 +522,52 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 //        products.add(p12ShoeDini);
 
         return products;
+    }
+
+    private List<Customer> getCustomers()
+    {
+        List<Customer> customers = new ArrayList<>();
+
+        Customer customer1 = new Customer();
+        customer1.setpFirstName("Bob");
+        customer1.setpLastName("frank");
+        customer1.setpPassword("zzsdadas"); // the encryption will be set soon ==
+        customer1.setpEmail("ziplinemook@hotmail.com");
+        customer1.setpDoB("1911-28-19");
+
+        Address address1 = new Address();
+        address1.setaFirstName("Bob");
+        address1.setaLastName("frank");
+        address1.setaCompnay("NA");
+        address1.setaCity("Melville");
+        address1.setaState("Florida");
+        address1.setaAdditionalInfo("blah blah blah blah");
+        address1.setaHomePhone("608-999-1213");
+        address1.setaMobilePhone("121-918-1213");
+
+        customer1.setCustomerAddress(address1);
+        customers.add(customer1);
+
+        Customer customer2 = new Customer();
+        customer2.setpFirstName("Timmy");
+        customer2.setpLastName("Yorkshire");
+        customer2.setpPassword("fdsfdsfdsfd"); // the encryption will be set soon ==
+        customer2.setpEmail("beefcare@hotmail.com");
+
+        Address address2 = new Address();
+        address2.setaFirstName("Timmy");
+        address2.setaLastName("Greg");
+        address2.setaCompnay("NA");
+        address2.setaCity("Melville");
+        address2.setaState("Texas");
+        address2.setaAdditionalInfo("On the back steps");
+        address2.setaHomePhone("191-121-1211");
+        address2.setaMobilePhone("129-121-1213");
+
+        customer2.setCustomerAddress(address2);
+        customers.add(customer2);
+
+        return customers;
     }
 
     private List<Account> getAccounts(){

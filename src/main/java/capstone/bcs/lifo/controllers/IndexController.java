@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+// start a registration page -
+
 
 @Controller
 public class IndexController {
@@ -27,7 +29,7 @@ public class IndexController {
     @RequestMapping({"/","/index","/.html","/index.html"})
     public String getIndex(Model model){
         model.addAttribute("products", productService.getProductsAsce());
-        return "index2";
+        return "index";
     }
 
     @RequestMapping({"/indexRev"})
@@ -38,24 +40,21 @@ public class IndexController {
         return "index2";
     }
 
-    // change this back dude
-//    @RequestMapping("/index2/{productCat}")
-//    public String getPage(@PathVariable String productCat, Model model){
-//        model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
+    // == does it but turns off javascript?? wtf ==
+//    @RequestMapping({"/index/{product}"})
+//    public String getPage(@PathVariable String product, Model model) {
+//        model.addAttribute("products",productService.getProductsByCategory(Integer.valueOf(product)));
 //        return "index2";
 //    }
 
-    @RequestMapping("/index2")
-    public String getPage2(Model model){
-        model.addAttribute("products", productService.getProducts());
-        return "index2";
-    }
 
-    @RequestMapping("/frag/1")
-    public String fixedFrag1(Model model) {
-        model.addAttribute("products",productService.getProducts());
-        return "fragments/productdiv2 :: productdiv2";
-    }
+//    @RequestMapping("/index/{productCat}")
+//    public String getPage(@PathVariable String productCat, Model model){
+//        model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
+//        return "index";
+//    }
+
+
 
 
 
