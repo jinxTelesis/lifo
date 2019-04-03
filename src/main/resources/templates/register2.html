@@ -48,7 +48,7 @@
 						<div class="form-group" th:class="${#fields.hasErrors('pLastName')} ? 'form-group has-error' : 'form-group'">
 							<label class="col-sm-2 control-label">Last Name:</label>
 							<div class="col-sm-10">
-								<input type="password" class="form-control" th:field="*{pLastName}" th:errorclass="has-error"/>
+								<input type="text" class="form-control" th:field="*{pLastName}" th:errorclass="has-error"/>
 
 								<span class="help-block">
                        <ul>
@@ -60,7 +60,7 @@
 						<div class="form-group" th:class="${#fields.hasErrors('pEmail')} ? 'form-group has-error' : 'form-group'">
 							<label class="col-sm-2 control-label">Email:</label>
 							<div class="col-sm-10">
-								<input type="password" class="form-control" th:field="*{pEmail}" th:errorclass="has-error"/>
+								<input type="text" class="form-control" th:field="*{pEmail}" th:errorclass="has-error"/>
 
 								<span class="help-block">
                        <ul>

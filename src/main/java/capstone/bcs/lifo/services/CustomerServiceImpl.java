@@ -17,10 +17,12 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final RegistrationFormToCustomer registrationFormToCustomer;
     private final AccountRepository accountRepository; // think about removing
 
-    public CustomerServiceImpl(CustomerRepository customerRepository, AccountRepository accountRepository) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, RegistrationFormToCustomer registrationFormToCustomer, AccountRepository accountRepository) {
         this.customerRepository = customerRepository;
+        this.registrationFormToCustomer = registrationFormToCustomer;
         this.accountRepository = accountRepository;
     }
 
@@ -52,9 +54,13 @@ public class CustomerServiceImpl implements CustomerService {
         RegistrationFormToCustomer registrationFormToCustomer = new RegistrationFormToCustomer();
 
         Customer customer = registrationFormToCustomer.convert(registrationForm);
+        customerRepository.save(customer);
+
+        Account dummyAccount = new Account();
+        accountRepository.save(dummyAccount);
+        // == this is a dummy account == //
 
         //ToDo this needs to be implemented at some point does not check if there was an existing user
-
 
         return customer;
     }
@@ -62,8 +68,9 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer saveOrUpdate(Customer customer) {
 
+
         // wait for the forms be completed hard to test like this
-        return null;
+        return customerRepository.save(customer);
     }
 
     @Override
