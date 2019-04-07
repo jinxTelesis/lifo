@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Everything worked</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+
 </head>
 <body>
+<!-- Navigation section start ====================================================================== -->
+<div th:replace="fragments/navigation :: navigation">
+</div>
+<!-- Navigation section end ====================================================================== -->
+
+<!-- Header End====================================================================== -->
+<div id="mainBody">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Section Start ================================================== -->
+            <div th:replace="fragments/sidebar :: sidebar">
+            </div>
+            <!-- Sidebar Section End =============================================== -->
+            <div class="span9">
+                <h1>Valid user login. Congo rats your site worked!!!</h1>
+                </div>
+        </div>
+</div>
+<!-- MainBody End ============================= -->
+
+<!-- Footer section start =============================================== -->
+<div class="container" th:replace="fragments/footer :: footer">
+</div>
+<!-- Footer section end =============================================== -->
+
+<!-- Site script section start =============================================== -->
+<div class="container" th:replace="fragments/sitescripts :: sitescripts">
+</div>
+<!-- Site script section end =============================================== -->
+
+</body>
+</html>
 
 </body>
 </html>

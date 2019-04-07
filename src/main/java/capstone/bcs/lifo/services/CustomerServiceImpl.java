@@ -105,27 +105,4 @@ public class CustomerServiceImpl implements CustomerService {
 
         return customerReturn;
     }
-
-//    @Override
-//    public Customer getByUserName(String pFirstName) {
-//        // load all of them?
-//
-//        // put this in a try catch
-//        Customer customerReturn = customerRepository.findBypFirstName(pFirstName);
-//        // this does not work
-//
-//
-//
-//        EntityManager em = entityManagerFactory.createEntityManager();
-//        //userName
-//        Customer customer = em.createQuery("from Customer where user_name = :username", Customer.class).getSingleResult();
-//
-//        System.out.println(customer.getAccount().getUsername());
-//
-//
-//        // might be from account class
-//        return customerReturn;
-//        //return em.createQuery("from Customer where user_name =:user_name",Customer.class).getSingleResult();//   }
-//    }
-//}
 }
