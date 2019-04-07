@@ -2,6 +2,7 @@ package capstone.bcs.lifo.controllers;
 
 
 import capstone.bcs.lifo.commands.LoginForm;
+import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.model.Account;
 import capstone.bcs.lifo.model.Customer;
 import capstone.bcs.lifo.services.CustomerService;
@@ -31,6 +32,13 @@ public class ProductSummaryController {
         model.addAttribute("LoginForm", new LoginForm());
         return "product_summary";
     }
+
+    @RequestMapping("/loginproduct_summary")
+    public String getPageLogin(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "product_summary";
+    }
+
 
     @RequestMapping(value = "/loginproduct_summary",method = RequestMethod.POST) // two post methods have mapping issues
     public String validateUser2(Model model, @Valid LoginForm loginForm, BindingResult bindingResult){
@@ -77,5 +85,4 @@ public class ProductSummaryController {
             }
         }
     }
-
 }
