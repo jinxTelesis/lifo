@@ -8,7 +8,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long orderId;
 
     // adding and address object so most of this can be removed
 
@@ -23,13 +23,8 @@ public class Order {
     private String customerName;
     private String customerPhone;
 
-//    @Basic
-//    @Temporal(TemporalType.DATE)
-//    private java.util.Date orderDate;
-//
-//    @Basic
-//    @Temporal(TemporalType.TIME)
-//    private java.util.Date orderTime;
+
+
 
     public Double getAmount() {
         return amount;
@@ -103,21 +98,7 @@ public class Order {
         this.customerPhone = customerPhone;
     }
 
-//    public Date getOrderDate() {
-//        return orderDate;
-//    }
-//
-//    public void setOrderDate(Date orderDate) {
-//        this.orderDate = orderDate;
-//    }
-//
-//    public Date getOrderTime() {
-//        return orderTime;
-//    }
-//
-//    public void setOrderTime(Date orderTime) {
-//        this.orderTime = orderTime;
-//    }
+
 
 
 

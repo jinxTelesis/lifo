@@ -7,12 +7,20 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long customerId;
 
     private String pFirstName;
     private String pLastName;
     private String pEmail;
     private String pDoB;
+
+    @OneToOne
+    @JoinColumn(name = "cartId")
+    private Cart cart;
+
+    @OneToOne
+    @JoinColumn(name = "cartProductsId")
+    private CartProducts cartProducts;
 
     //make an embedded type for address
     @Embedded
@@ -20,6 +28,9 @@ public class Customer {
 
     @Embedded
     private Account account = new Account();
+
+
+
 
     public Address getCustomerAddress() {
         return customerAddress;
@@ -29,12 +40,12 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
-    public Long getId() {
-        return id;
+    public long getCustomerId() {
+        return customerId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
     }
 
     public String getpFirstName() {
