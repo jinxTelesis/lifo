@@ -21,7 +21,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private final OrderDetailRepository orderDetailRepository;
 
     // == testing remove ==
-    private final CustomerRepository customerRepository;
+    //private final CustomerRepository customerRepository;
 
     public Bootstrap(ProductRepository productRepository, OrderDetailRepository orderDetailRepository, CustomerRepository customerRepository) {
         this.productRepository = productRepository;
@@ -29,7 +29,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         //this.orderRepository = orderRepository;
         this.orderDetailRepository = orderDetailRepository;
         // == testing remove ==
-        this.customerRepository = customerRepository;
+        //this.customerRepository = customerRepository;
     }
 
 
@@ -40,7 +40,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         //accountRepository.saveAll(getAccounts());
         //orderRepository.saveAll(getOrders());
         orderDetailRepository.saveAll(getOrderDetails());
-        customerRepository.saveAll(getCustomers());
+        //customerRepository.saveAll(getCustomers());
 
     }
 

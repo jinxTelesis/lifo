@@ -47,6 +47,7 @@ public class RegisterController {
         {
             System.out.println("The new customer form got called");
             Customer newCustomer = customerService.saveOrUpdateRegistrationForm(registrationForm);
+
             return "register"; // this needs to be a new page for success
         }
     }

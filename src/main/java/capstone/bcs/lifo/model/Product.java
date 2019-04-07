@@ -1,6 +1,5 @@
 package capstone.bcs.lifo.model;
 
-
 import javax.persistence.*;
 import java.util.Comparator;
 import java.util.function.Function;
@@ -21,12 +20,30 @@ public class Product implements Comparator<Product>{
     private Integer productCat;
 
     private double productPrice;
+
     private String productImage;
     private String productDimensions;
     private String description1;
     private String description2;
     private String description3;
     private String description4;
+
+    // why does the constructor have an access modifier?
+    public Product(){
+
+    }
+
+    Product(String productName, Integer productCat, double productPrice, String productImage, String productDimensions, String description1, String description2, String description3) {
+        this.productName = productName;
+        this.productCat = productCat;
+        this.productPrice = productPrice;
+        this.productImage = productImage;
+        this.productDimensions = productDimensions;
+        this.description1 = description1;
+        this.description2 = description2;
+        this.description3 = description3;
+    }
+
 
     public String getProductName() {
         return productName;

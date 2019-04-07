@@ -14,7 +14,6 @@ public class Cart {
     @JoinColumn(name = "customerId")
     private Customer customer;
 
-
     @OneToOne
     @JoinColumn(name = "cartProductsId")
     private CartProducts cartProducts;
@@ -45,6 +44,14 @@ public class Cart {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public CartProducts getCartProducts() {
+        return cartProducts;
+    }
+
+    public void setCartProducts(CartProducts cartProducts) {
+        this.cartProducts = cartProducts;
     }
 
 
