@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -11,15 +12,14 @@ public class Customer {
     private String pFirstName;
     private String pLastName;
     private String pEmail;
-    private String pPassword;
     private String pDoB;
 
     //make an embedded type for address
     @Embedded
     private Address customerAddress = new Address();
 
-    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    private Account account;
+    @Embedded
+    private Account account = new Account();
 
     public Address getCustomerAddress() {
         return customerAddress;
@@ -61,12 +61,12 @@ public class Customer {
         this.pEmail = pEmail;
     }
 
-    public String getpPassword() {
-        return pPassword;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setpPassword(String pPassword) {
-        this.pPassword = pPassword;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public String getpDoB() {

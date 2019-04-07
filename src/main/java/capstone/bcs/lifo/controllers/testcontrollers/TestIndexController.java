@@ -40,7 +40,7 @@ public class TestIndexController {
     public String testCustomerPage(Model model)
     {
         //model.addAttribute("blank",customerService.getById(1l));
-        return "register";
+        return "register3";
     }
 
 }

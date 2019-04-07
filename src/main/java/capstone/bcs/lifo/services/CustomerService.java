@@ -10,8 +10,6 @@ public interface CustomerService {
 
     List<Customer> getCustomers();
 
-    List<Account> getAccounts();
-
     Customer getById(Long l);
 
     Customer saveOrUpdateRegistrationForm(RegistrationForm registrationForm);
@@ -19,5 +17,7 @@ public interface CustomerService {
     Customer saveOrUpdate(Customer customer);
 
     void delete(Long l);
+
+    Customer getByUserName(String userName);
 
 }

@@ -1,23 +1,84 @@
 package capstone.bcs.lifo.commands;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class RegistrationForm {
 
+    // == account ==
+    @NotEmpty
+    @Size(min = 6, max = 100)
+    private String username;
+
+    @NotEmpty
+    @Size(min = 8)
+    @Size(max = 80)
+    private String passwordPlain;
+
+    @NotEmpty
+    @Size(min =8)
+    @Size(max = 80)
+    private String passwordConformation;
+
+    // customer
+    @NotEmpty
+    @Size(min =2)
+    @Size(max = 100)
     private String pFirstName;
+
+    @NotEmpty
+    @Size(min = 3)
+    @Size(max = 100)
     private String pLastName;
+
+    @NotEmpty
+    @Size(min = 3)
+    @Size(max = 100)
     private String pEmail;
-    private String pPassword;
+
+    @NotEmpty
+    @Size(min = 6)
+    @Size(max = 15)
     private String pDoB;
 
-    private String aFirstName;
-    private String aLastName;
+    // == this is for the address ==
+    @NotEmpty
+    @Size(min = 5)
+    @Size(max = 200)
     private String aAddress;
+
+    // == can be empty ==
     private String aAddress2;
+
+    @NotEmpty
+    @Size(min =3)
+    @Size(max = 50)
     private String aCity;
+
+    @NotEmpty
+    @Size(min = 2)
+    @Size(max = 20)
     private String aState;
+
+    @NotEmpty
+    @Size(min = 5)
+    @Size(max = 10)
     private String aZip;
+
+    // == can be empty ==
     private String aCountry;
+
+    // == can be empty ==
     private String aAdditionalInfo;
+
+    @NotEmpty
+    @Size(min = 7)
+    @Size(min = 9)
     private String aHomePhone;
+
+    @NotEmpty
+    @Size(min = 7)
+    @Size(max = 14)
     private String aMobilePhone;
 
     public String getpFirstName() {
@@ -44,12 +105,20 @@ public class RegistrationForm {
         this.pEmail = pEmail;
     }
 
-    public String getpPassword() {
-        return pPassword;
+    public String getPasswordPlain() {
+        return passwordPlain;
     }
 
-    public void setpPassword(String pPassword) {
-        this.pPassword = pPassword;
+    public void setPasswordPlain(String passwordPlain) {
+        this.passwordPlain = passwordPlain;
+    }
+
+    public String getPasswordConformation() {
+        return passwordConformation;
+    }
+
+    public void setPasswordConformation(String passwordConformation) {
+        this.passwordConformation = passwordConformation;
     }
 
     public String getpDoB() {
@@ -60,20 +129,12 @@ public class RegistrationForm {
         this.pDoB = pDoB;
     }
 
-    public String getaFirstName() {
-        return aFirstName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setaFirstName(String aFirstName) {
-        this.aFirstName = aFirstName;
-    }
-
-    public String getaLastName() {
-        return aLastName;
-    }
-
-    public void setaLastName(String aLastName) {
-        this.aLastName = aLastName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getaAddress() {

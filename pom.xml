@@ -124,9 +124,16 @@
         <!-- password encryption library -->
         <dependency>
             <groupId>org.jasypt</groupId>
-            <artifactId>jasypt</artifactId>
+            <artifactId>jasypt-springsecurity3</artifactId>
             <version>1.9.2</version>
         </dependency>
+
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>-->
+
+
 
 
         <dependency>

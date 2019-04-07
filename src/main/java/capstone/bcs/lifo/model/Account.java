@@ -3,39 +3,25 @@ package capstone.bcs.lifo.model;
 
 import javax.persistence.*;
 
-@Entity
+@Embeddable
 public class Account {
 
-// needs some sort of link to order
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // PK
-
-    private String userName;
+    private String username;
     private Boolean active;
 
+    @Transient
     private String password;
-    private String encryptedPassword;
+
+    private String encryptedPassword; // decrypt this to check for username pass
     private String userRole;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    private Customer customer;
 
-    public Long getId() {
-        return id;
+    public String getUsername() {
+        return username;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Boolean isActive() {
@@ -75,12 +61,5 @@ public class Account {
         this.encryptedPassword = encryptedPassword;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
 }
