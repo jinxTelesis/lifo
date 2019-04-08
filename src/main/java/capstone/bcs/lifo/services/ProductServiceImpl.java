@@ -7,7 +7,6 @@ import capstone.bcs.lifo.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -27,7 +26,10 @@ public class ProductServiceImpl implements ProductService {
         List<Product> productList = new ArrayList<>();
         productRepository.findAll().iterator().forEachRemaining(productList::add);
         return productList;
+        //productRepository.findAll().iterator().forEachRemaining(productSet::add);
+        //return productSet;
     }
+
 
     @Override
     public Product findById(Long l) {
@@ -39,6 +41,13 @@ public class ProductServiceImpl implements ProductService {
         }
 
         return productOptional.get();
+    }
+
+    @Override
+    public Set<Product> getProductSet() {
+        Set<Product> productSet = new HashSet<>();
+        productRepository.findAll().iterator().forEachRemaining(productSet::add);
+        return productSet;
     }
 
     @Override

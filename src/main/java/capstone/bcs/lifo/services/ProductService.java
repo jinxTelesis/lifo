@@ -11,6 +11,8 @@ public interface ProductService {
 
     Product findById(Long l);
 
+    Set<Product> getProductSet();
+
     List<Product> getProductsAsce();
 
     List<Product> getProductsDesc();

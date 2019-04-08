@@ -17,9 +17,12 @@ public class ProductsController {
         this.productService = productService;
     }
 
+    // change this back if you don't want them sorted
+
     @RequestMapping("/products")
     public String getPage(Model model){
-        model.addAttribute("products", productService.getProducts());
+        //model.addAttribute("products", productService.getProducts());
+        model.addAttribute("products",productService.getProductSet());
         return "products";
     }
 
