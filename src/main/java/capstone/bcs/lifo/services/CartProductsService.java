@@ -1,6 +1,5 @@
 package capstone.bcs.lifo.services;
 
-import capstone.bcs.lifo.model.Cart;
 import capstone.bcs.lifo.model.CartProducts;
 
 import java.util.List;

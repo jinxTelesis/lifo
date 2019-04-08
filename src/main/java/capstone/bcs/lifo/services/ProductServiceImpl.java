@@ -32,13 +32,13 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product findById(Long l) {
 
-        Optional<Product> recipeOptional = productRepository.findById(l);
+        Optional<Product> productOptional = productRepository.findById(l);
 
-        if (!recipeOptional.isPresent()) {
+        if (!productOptional.isPresent()) {
             throw new NotFoundException();
         }
 
-        return recipeOptional.get();
+        return productOptional.get();
     }
 
     @Override
@@ -81,10 +81,14 @@ public class ProductServiceImpl implements ProductService {
         return results;
 }
 
+
     @Override
     public void deleteById(Long idToDelete) {
         productRepository.deleteById(idToDelete);
     }
+
+
+
 
     class LexicographicComparator implements Comparator<Product>
     {
