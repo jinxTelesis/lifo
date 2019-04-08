@@ -2,28 +2,45 @@ package capstone.bcs.lifo.services;
 
 import capstone.bcs.lifo.Exceptions.NotFoundException;
 import capstone.bcs.lifo.commands.RegistrationForm;
-import capstone.bcs.lifo.converters.RegistrationFormToCustomer;
+import capstone.bcs.lifo.converters.RegistrationFormToCustomerNAccount;
 import capstone.bcs.lifo.model.Account;
 import capstone.bcs.lifo.model.Customer;
-import capstone.bcs.lifo.repositories.AccountRepository;
 import capstone.bcs.lifo.repositories.CustomerRepository;
+import org.hibernate.Session;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.springframework.stereotype.Service;
 
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+    private final PasswordEncryptionService passwordEncryptionService;
     private final CustomerRepository customerRepository;
-    private final RegistrationFormToCustomer registrationFormToCustomer;
-    private final AccountRepository accountRepository; // think about removing
+    private final RegistrationFormToCustomerNAccount registrationFormToCustomerNAccount;
+    protected EntityManagerFactory entityManagerFactory;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository, RegistrationFormToCustomer registrationFormToCustomer, AccountRepository accountRepository) {
+
+    // == this is not being used right now ==
+    @PersistenceUnit
+    public void setEmf(EntityManagerFactory entityManagerFactory) {
+        this.entityManagerFactory = entityManagerFactory;
+    }
+
+
+    public CustomerServiceImpl(PasswordEncryptionService passwordEncryptionService, CustomerRepository customerRepository, RegistrationFormToCustomerNAccount registrationFormToCustomerNAccount) {
+        this.passwordEncryptionService = passwordEncryptionService;
         this.customerRepository = customerRepository;
-        this.registrationFormToCustomer = registrationFormToCustomer;
-        this.accountRepository = accountRepository;
+        this.registrationFormToCustomerNAccount = registrationFormToCustomerNAccount;
     }
 
     @Override
@@ -33,34 +50,26 @@ public class CustomerServiceImpl implements CustomerService {
         return customersList;
     }
 
-    public List<Account> getAccounts(){
-        List<Account> accountList = new ArrayList<>();
-        accountRepository.findAll().iterator().forEachRemaining(accountList::add);
-        return accountList;
-    }
 
     @Override
     public Customer getById(Long l) {
         Optional<Customer> customerOptional = customerRepository.findById(l);
 
-        if(!customerOptional.isPresent()) {
-            throw  new NotFoundException();
+        if (!customerOptional.isPresent()) {
+            throw new NotFoundException();
         }
         return customerOptional.get();
     }
 
     @Override
     public Customer saveOrUpdateRegistrationForm(RegistrationForm registrationForm) {
-        RegistrationFormToCustomer registrationFormToCustomer = new RegistrationFormToCustomer();
+        RegistrationFormToCustomerNAccount registrationFormToCustomerNAccount = new RegistrationFormToCustomerNAccount();
 
-        Customer customer = registrationFormToCustomer.convert(registrationForm);
+        // prob have to check some stuff here still
+        Customer customer = registrationFormToCustomerNAccount.convert(registrationForm);
+        Account account = customer.getAccount();
+        account.setEncryptedPassword(passwordEncryptionService.encryptString(account.getPassword()));
         customerRepository.save(customer);
-
-        Account dummyAccount = new Account();
-        accountRepository.save(dummyAccount);
-        // == this is a dummy account == //
-
-        //ToDo this needs to be implemented at some point does not check if there was an existing user
 
         return customer;
     }
@@ -73,10 +82,27 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.save(customer);
     }
 
+
     @Override
     public void delete(Long l) {
         customerRepository.deleteById(l);
 
     }
 
+    // remove this soon
+    @Override
+    public Customer getByUserName(String userName) {
+        // write this to service layer
+        List<Customer> customersList = new ArrayList<>();
+        customerRepository.findAll().iterator().forEachRemaining(customersList::add);
+        //customersList.forEach(customer -> customer.getpFirstName());
+
+        List<Customer> customerResultList = customersList.stream()
+                .filter(customer -> customer.getAccount().getUsername().equals(userName))
+                .collect(Collectors.toList());
+
+        Customer customerReturn = customerResultList.get(0);
+
+        return customerReturn;
+    }
 }

@@ -36,11 +36,5 @@ public class TestIndexController {
         return "testpages/bootstrapindextest";
     }
 
-    @RequestMapping("/customerform")
-    public String testCustomerPage(Model model)
-    {
-        //model.addAttribute("blank",customerService.getById(1l));
-        return "register";
-    }
 
 }

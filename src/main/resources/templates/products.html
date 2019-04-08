@@ -12,105 +12,91 @@
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 	<div class="container">
-	<div class="row">
-		<!-- Sidebar Section Start ================================================== -->
-		<div th:replace="fragments/sidebar :: sidebar">
-		</div>
-		<!-- Sidebar Section End =============================================== -->
+		<div class="row">
+			<!-- Sidebar Section Start ================================================== -->
+			<div th:replace="fragments/sidebar :: sidebar">
+			</div>
+			<!-- Sidebar Section End =============================================== -->
 
-	<div class="span9">
-    <ul class="breadcrumb">
-		<li><a href="index">Home</a> <span class="divider">/</span></li>
-		<li class="active">Products Name</li>
-    </ul>
-	<h3> Products Name <small class="pull-right"> 40 products are available </small></h3>	
-	<hr class="soft"/>
-	<p>
-		Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies - that is why our goods are so popular and we have a great number of faithful customers all over the country.
-	</p>
-	<hr class="soft"/>
-	<form class="form-horizontal span6">
-		<div class="control-group">
-		  <label class="control-label alignL">Sort By </label>
-			<select>
-              <option>Name: A to Z</option>
-              <option>Name: Z - A</option>
-              <option>Price: low to high</option>
-              <option>Price: high to low</option>
-            </select>
-		</div>
-	  </form>
+			<div class="span9">
+				<ul class="breadcrumb">
+					<li><a href="index">Home</a> <span class="divider">/</span></li>
+					<li class="active">Products Name</li>
+				</ul>
+				<h3> Products Name <small class="pull-right"> 40 products are available </small></h3>
+				<hr class="soft"/>
+				<p>
+					Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies - that is why our goods are so popular and we have a great number of faithful customers all over the country.
+				</p>
+				<hr class="soft"/>
+				<form class="form-horizontal span6">
+					<div class="control-group">
+						<label class="control-label alignL">Sort By </label>
+						<select>
+							<option>Name: A to Z</option>
+							<option>Name: Z - A</option>
+							<option>Price: low to high</option>
+							<option>Price: high to low</option>
+						</select>
+					</div>
+				</form>
 
-		<div id="myTab" class="pull-right">
-			<a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
-			<a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
-		</div>
-		<br class="clr"/>
-		<div class="tab-content">
-			<div class="tab-pane" id="listView">
-				<div th:each="product, it : ${products}">
-					<div th:if="${(it.count gt 0 and it.count lt 10)}">
-						<div th:replace="fragments/products_div :: products_div_list">
+				<div id="myTab" class="pull-right">
+					<a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
+					<a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
+				</div>
+				<br class="clr"/>
+				<div class="tab-content">
+					<div class="tab-pane" id="listView">
+						<div th:each="product, it : ${products}">
+							<div th:if="${(it.count gt 0 and it.count lt 10)}">
+								<div th:replace="fragments/products_div :: products_div_list">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-pane  active" id="blockView">
+						<div class="thumbnails">
+							<div class="span3" >
+								<div th:each="product, it : ${products}">
+									<div th:if="${(it.count gt 0 and it.count lt 4)}">
+										<div th:replace="fragments/products_div :: products_div_grid">
+											</br>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="span3">
+								<div th:each="product, it : ${products}">
+									<div th:if="${(it.count gt 3 and it.count lt 7)}">
+										<div th:replace="fragments/products_div :: products_div_grid">
+											</br>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="span3">
+								<div th:each="product, it : ${products}">
+									<div th:if="${(it.count gt 6 and it.count lt 10)}">
+										<div th:replace="fragments/products_div :: products_div_grid">
+											</br>
+										</div>
+									</div>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="tab-pane  active" id="blockView">
-				<div class="thumbnails">
-					<div class="span3" >
-						<div th:each="product, it : ${products}">
-							<div th:if="${(it.count gt 0 and it.count lt 4)}">
-								<div th:replace="fragments/products_div :: products_div_grid">
-									</br>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="span3">
-						<div th:each="product, it : ${products}">
-							<div th:if="${(it.count gt 3 and it.count lt 7)}">
-								<div th:replace="fragments/products_div :: products_div_grid">
-									</br>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="span3">
-						<div th:each="product, it : ${products}">
-							<div th:if="${(it.count gt 6 and it.count lt 10)}">
-								<div th:replace="fragments/products_div :: products_div_grid">
-									</br>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
 		</div>
+	</div>
+</div>
 
 
-
-	<a href="compare" class="btn btn-large pull-right">Compare Product</a>
-	<div class="pagination">
-			<ul>
-			<li><a href="#">&lsaquo;</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">...</a></li>
-			<li><a href="#">&rsaquo;</a></li>
-			</ul>
-			</div>
-			<br class="clr"/>
-</div>
-</div>
-</div>
-</div>
 <!-- MainBody End ============================= -->
 <!-- Footer section start =============================================== -->
 <div class="container" th:replace="fragments/footer :: footer">
@@ -119,8 +105,10 @@
 
 <!-- Site script section start =============================================== -->
 <div class="container" th:replace="fragments/sitescripts :: sitescripts">
+
 </div>
 <!-- Site script section end =============================================== -->
+
 
 </body>
 </html>

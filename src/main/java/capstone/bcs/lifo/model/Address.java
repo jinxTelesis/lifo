@@ -1,14 +1,16 @@
 package capstone.bcs.lifo.model;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Embeddable;
 
 
 @Embeddable
 public class Address {
 
-    private String aFirstName;
-    private String aLastName;
-    private String aCompnay;
     private String aAddress;
     private String aAddress2;
     private String aCity;
@@ -19,33 +21,12 @@ public class Address {
     private String aHomePhone;
     private String aMobilePhone;
 
-    public String getaFirstName() {
-        return aFirstName;
-    }
-
-    public void setaFirstName(String aFirstName) {
-        this.aFirstName = aFirstName;
-    }
-
-    public String getaLastName() {
-        return aLastName;
-    }
-
-    public void setaLastName(String aLastName) {
-        this.aLastName = aLastName;
-    }
-
-    public String getaCompnay() {
-        return aCompnay;
-    }
-
-    public void setaCompnay(String aCompnay) {
-        this.aCompnay = aCompnay;
-    }
 
     public String getaAddress() {
         return aAddress;
     }
+
+
 
     public void setaAddress(String aAddress) {
         this.aAddress = aAddress;
