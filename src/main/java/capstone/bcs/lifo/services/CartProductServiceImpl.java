@@ -21,6 +21,7 @@ public class CartProductServiceImpl implements CartProductsService {
         this.cartProductsRepository = cartProductsRepository;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<CartProducts> getCartProducts() {
         List<CartProducts> cartProductsList= new ArrayList<>();
@@ -28,6 +29,7 @@ public class CartProductServiceImpl implements CartProductsService {
         return cartProductsList;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public CartProducts findById(Long longId) {
         Optional<CartProducts> cartProductsOptional = cartProductsRepository.findById(longId);

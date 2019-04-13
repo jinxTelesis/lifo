@@ -43,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
         return productOptional.get();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Set<Product> getProductSet() {
         Set<Product> productSet = new HashSet<>();
@@ -50,6 +51,7 @@ public class ProductServiceImpl implements ProductService {
         return productSet;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Product> getProductsAsce() {
         List<Product> productList = new ArrayList<>();
@@ -59,7 +61,7 @@ public class ProductServiceImpl implements ProductService {
         return productList;
     }
 
-    @SuppressWarnings("1")
+    @SuppressWarnings("unchecked")
     @Override
     public List<Product> getProductsDesc() {
 
@@ -70,6 +72,7 @@ public class ProductServiceImpl implements ProductService {
         return productList;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Product> getProductsByCategory(Integer integerPara) {
         List<Product> productList = new ArrayList<>();

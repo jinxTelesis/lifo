@@ -18,6 +18,7 @@ public class OrderDetailServiceImpl implements OrderDetailService{
         this.orderDetailRepository = orderDetailRepository;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<OrderDetail> getOrderDetails() {
         List<OrderDetail> orderDetailList = new ArrayList<>();
@@ -25,6 +26,7 @@ public class OrderDetailServiceImpl implements OrderDetailService{
         return orderDetailList;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public OrderDetail findById(Long l) {
         Optional<OrderDetail> orderDetailOptional = orderDetailRepository.findById(l);
