@@ -10,7 +10,7 @@ public class OrderDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long orderDetailId;
 
     // all not null
     private Double amount;
@@ -19,22 +19,6 @@ public class OrderDetail {
     private String orderID;
     private String productID;
 
-
-    public OrderDetail(Double amount, Double price, Integer quantity, String orderID, String productID) {
-        this.amount = amount;
-        this.price = price;
-        this.quantity = quantity;
-        this.orderID = orderID;
-        this.productID = productID;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Double getAmount() {
         return amount;

@@ -69,6 +69,18 @@
             <artifactId>spring-session-jdbc</artifactId>
         </dependency>-->
 
+        <!--<dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.3.1-2</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>npm</artifactId>
+            <version>5.0.0-2</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -109,6 +121,21 @@
             <version>2.9.2</version>
         </dependency>
 
+        <!-- password encryption library -->
+        <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt-springsecurity3</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>-->
+
+
+
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
@@ -127,9 +154,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
-
-
 
         </plugins>
     </build>

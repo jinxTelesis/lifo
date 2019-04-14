@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head >
-
+    <link href="../../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../../static/css/base.css"
+          th:href="@{css/base.css}" rel="stylesheet" media="screen"/>
+    <!-- Bootstrap style responsive -->
+    <link href="../../static/css/bootstrap-responsive.min.css"
+          th:href="@{css/bootstrap-responsive.min.css}" rel="stylesheet"/>
+    <link href="../../static/css/font-awesome.css"
+          th:href="@{css/font-awesome.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
 <!-- Sidebar ================================================== -->
 <div id="sidebar" class="span3" th:fragment="sidebar">
-    <div class="well well-small"><a id="myCart" href="product_summary"><img src="/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
+    <div class="well well-small"><a id="myCart" href="product_summary"><img src="/images/ico-cart.png" alt="cart">0 Items in your cart  <span class="badge badge-warning pull-right">$0.00</span></a></div>
     <ul id="sideManu" class="nav nav-tabs nav-stacked">
-        <li class="subMenu open"><a> ELECTRONICS [230]</a>
+        <li class="subMenu open"><a> ELECTRONICS</a>
             <ul>
-                <li><a class="active" href="products"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
+                <li><a id="ref1" class="active"></a><a class="active" th:href="@{'/products_accessories'}" ><i class="icon-chevron-right"></i>Cameras</a></li>
+                <li><a id="ref2" th:href="@{'/products_appliances'}"><i class="icon-chevron-right"></i>Computers, Tablets & laptop</a></li>
+                <li><a th:href="@{'/products_cleaning'}"><i class="icon-chevron-right"></i>Mobile Phone</a></li>
+                <li><a href="product_details" th:href="@{'/products_hardware'}"><i class="icon-chevron-right"></i>Sound & Vision</a></li>
             </ul>
         </li>
-        <li class="subMenu"><a> CLOTHES [840] </a>
+        <li class="subMenu"><a> CLOTHES</a>
             <ul style="display:none">
-                <li><a href="products"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Women's Hand Bags (5)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Men's Clothings  (45)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Men's Shoes (6)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Kids Clothing (5)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>
+                <li><a href="product_details" th:href="@{'/products_health'}"><i class="icon-chevron-right"></i>Women's Clothing</a></li>
+                <li><a href="product_details" th:href="@{'/products_home'}"><i class="icon-chevron-right"></i>Women's Shoes</a></li>
+                <li><a href="product_details" th:href="@{'/products_toys'}"><i class="icon-chevron-right"></i>Women's Hand Bags</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>Men's Clothings</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>Men's Shoes</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>Kids Clothing</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>Kids Shoes</a></li>
             </ul>
         </li>
-        <li class="subMenu"><a>FOOD AND BEVERAGES [1000]</a>
+        <li class="subMenu"><a>FOOD AND BEVERAGES</a>
             <ul style="display:none">
-                <li><a href="products"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>French Rabbit (5)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Louis Bernard  (45)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box) (8)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Other Liquors & Wine (5)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Garden (3)</a></li>
-                <li><a href="products"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>Angoves</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>Bouchard Aine & Fils</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>French Rabbit</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>Louis Bernard</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box)</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>Other Liquors & Wine</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>Garden</a></li>
+                <li><a href="product_details" th:href="@{'/products'}"><i class="icon-chevron-right"></i>Khao Shong</a></li>
             </ul>
         </li>
-        <li><a href="products">HEALTH & BEAUTY [18]</a></li>
-        <li><a href="products">SPORTS & LEISURE [58]</a></li>
-        <li><a href="products">BOOKS & ENTERTAINMENTS [14]</a></li>
+        <li><a href="product_details" th:href="@{'/products'}">HEALTH & BEAUTY</a></li>
+        <li><a href="product_details" th:href="@{'/products'}">SPORTS & LEISURE</a></li>
+        <li><a href="product_details" th:href="@{'/products'}">BOOKS & ENTERTAINMENTS</a></li>
     </ul>
     <br/>
     <div class="thumbnail">
@@ -67,6 +75,7 @@
     </div>
 </div>
 <!-- Sidebar end=============================================== -->
+
 
 </body>
 </html>
