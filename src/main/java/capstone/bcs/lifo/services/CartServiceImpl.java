@@ -25,7 +25,7 @@ public class CartServiceImpl implements CartService{
     }
 
 
-    @SuppressWarnings("unchecked")
+    //@SuppressWarnings("unchecked")
     @Override
     public Cart findById(Long l) {
         Optional<Cart> cartOptional = cartRespository.findById(l);
