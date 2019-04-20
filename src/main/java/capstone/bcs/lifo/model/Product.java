@@ -28,7 +28,6 @@ public class Product implements Comparator<Product>{
     private String description3;
     private String description4;
 
-    // why does the constructor have an access modifier?
     public Product(){
 
     }
