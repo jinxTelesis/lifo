@@ -1,6 +1,7 @@
 package capstone.bcs.lifo.controllers;
 
 
+import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.model.Cart;
 import capstone.bcs.lifo.model.CartProducts;
@@ -48,6 +49,7 @@ public class RegisterController {
     public String oldCustomer(Model model){
         System.out.println("the general page got called");
         model.addAttribute("registrationForm", new RegistrationForm());
+        model.addAttribute("LoginForm", new LoginForm());
         return "register";
     }
 

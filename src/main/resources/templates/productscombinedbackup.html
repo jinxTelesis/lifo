@@ -68,12 +68,12 @@
                                 <h3>Login Block</h3>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
+                                <form class="form-horizontal loginFrm">
                                     <div class="control-group">
-                                        <input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
+                                        <input type="text" id="inputEmail" placeholder="Email">
                                     </div>
                                     <div class="control-group">
-                                        <input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
+                                        <input type="password" id="inputPassword" placeholder="Password">
                                     </div>
                                     <div class="control-group">
                                         <label class="checkbox">
@@ -88,9 +88,9 @@
                     </li>
                 </ul>
             </div>
-
         </div>
     </div>
+</div>
 </div>
 <!-- Navigation section end ====================================================================== -->
 
