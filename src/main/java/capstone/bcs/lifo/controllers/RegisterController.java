@@ -61,6 +61,10 @@ public class RegisterController {
         return "register";
     }
 
+    //HttpServletRequest request
+    //String referer = request.getHeader("Referer");
+    //return "redirect:" + referer;
+
 
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)

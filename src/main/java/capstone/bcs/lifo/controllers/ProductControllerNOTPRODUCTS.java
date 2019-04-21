@@ -28,10 +28,12 @@ public class ProductControllerNOTPRODUCTS {
 
     @RequestMapping("/product/{id}")
     public String getProductById(@PathVariable Integer id, Model model){
-
         model.addAttribute("product", productService.findById(Integer.toUnsignedLong(id)));
         model.addAttribute("LoginForm", new LoginForm());
-            return "product";
-
+        return "product";
     }
+
+    //HttpServletRequest request
+    //String referer = request.getHeader("Referer");
+    //return "redirect:" + referer;
 }

@@ -21,4 +21,8 @@ public class SpecialOffer {
         model.addAttribute("LoginForm", new LoginForm());
         return "special_offer";
     }
+
+    //HttpServletRequest request
+    //String referer = request.getHeader("Referer");
+    //return "redirect:" + referer;
 }

@@ -19,13 +19,13 @@ import javax.validation.Valid;
 
 
 @Controller
-public class Login {
+public class LoginTestController {
 
     private CustomerService customerService;
     private PasswordEncryptionService passwordEncryptionService;
 
 
-    Login(CustomerService customerService, PasswordEncryptionService passwordEncryptionService){
+    LoginTestController(CustomerService customerService, PasswordEncryptionService passwordEncryptionService){
         this.passwordEncryptionService = passwordEncryptionService;
         this.customerService = customerService;
     }

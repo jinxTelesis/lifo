@@ -22,4 +22,8 @@ public class ProductDetailsController {
         return "product_details";
     }
 
+    //HttpServletRequest request
+    //String referer = request.getHeader("Referer");
+    //return "redirect:" + referer;
+
 }
