@@ -3,14 +3,14 @@
 <head>
     <!-- Bootstrap style -->
     <link href="../../static/css/bootstrap.min.css"
-          th:href="@{css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
+          th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
     <link href="../../static/css/base.css"
-          th:href="@{css/base.css}" rel="stylesheet" media="screen"/>
+          th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>
     <!-- Bootstrap style responsive -->
     <link href="../../static/css/bootstrap-responsive.min.css"
-          th:href="@{css/bootstrap-responsive.min.css}" rel="stylesheet"/>
+          th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>
     <link href="../../static/css/font-awesome.css"
-          th:href="@{css/font-awesome.css}" rel="stylesheet" type="text/css">
+          th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">
     <!-- Google-code-prettify -->
 
     <!--<link href="../js/google-code-prettify/prettify.css"
@@ -21,6 +21,16 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <script src="webjars/jquery/3.3.1-2 /jquery.js"></script>
+
+    <script>
+        window.fetch('localhost:8080/cart')
+            .then(r =>{
+                if(r.meta.code === 424){
+                    console.eror('user not logged in')
+                    alert("Please login before using cart!")
+                }
+            })
+    </script>
 
 
 </head>
@@ -116,17 +126,35 @@
                     <tr><th> I AM ALREADY REGISTERED  </th></tr>
                     <tr>
                         <td>
-                            <form class="form-horizontal">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputUsername">Username</label>
-                                    <div class="controls">
-                                        <input type="text" id="inputUsername" placeholder="Username">
+                            <form class="form-horizontal" th:object="${LoginForm}" th:action="@{/loginproduct_summary}" method="post">
+
+                                <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                    <p >One or more fields are invalid</p>
+                                </div>
+
+                                <div class="form-group"  th:class="${#fields.hasErrors('userName')} ? 'form-group has-error' : 'form-group'">
+                                    <label class="col-sm-2 control-label">User Name: *	</label>
+                                    <div class="col-sm-10 ">
+                                        <input type="text" class="form-control" th:field="*{userName}" th:errorclass="has-error"/>
+
+                                        <span class="help-block">
+                       					<ul>
+                           					<li th:each="err : ${#fields.errors('userName')}" th:text="${err}" />
+                       					</ul>
+                    				</span>
                                     </div>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputPassword1">Password</label>
-                                    <div class="controls">
-                                        <input type="password" id="inputPassword1" placeholder="Password">
+
+                                <div class="form-group"  th:class="${#fields.hasErrors('passwordPlain')} ? 'form-group has-error' : 'form-group'">
+                                    <label class="col-sm-2 control-label">Enter password: *	</label>
+                                    <div class="col-sm-10 ">
+                                        <input type="text" class="form-control" th:field="*{passwordPlain}" th:errorclass="has-error"/>
+
+                                        <span class="help-block">
+                       					<ul>
+                           				<li th:each="err : ${#fields.errors('passwordPlain')}" th:text="${err}" />
+                       					</ul>
+                    				</span>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -161,7 +189,11 @@
                         <td> <img width="60" src="images/products/4.jpg" alt=""/></td>
                         <td>MASSA AST<br/>Color : black, Material : metal</td>
                         <td>
-                            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+                            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text">
+                                <button class="btn" type="button" onclick="window.location.href = '/cart/1';"><i class="icon-minus"></i></button>
+                                <button class="btn" type="button" onclick="window.location.href =  '/cart/1';"><i class="icon-plus"></i></button>
+                                <button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart/1';"><i class="icon-remove icon-white"></i></button>
+                            </div>
                         </td>
                         <td>$120.00</td>
                         <td>$25.00</td>
@@ -172,7 +204,11 @@
                         <td> <img width="60" src="images/products/8.jpg" alt=""/></td>
                         <td>MASSA AST<br/>Color : black, Material : metal</td>
                         <td>
-                            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+                            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text">
+                                <button class="btn" type="button" onclick="window.location.href = '/cart';"><i class="icon-minus"></i></button>
+                                <button class="btn" type="button" onclick="window.location.href =  '/cart';"><i class="icon-plus"></i></button>
+                                <button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart';"><i class="icon-remove icon-white"></i></button>
+                            </div>
                         </td>
                         <td>$7.00</td>
                         <td>--</td>
@@ -183,7 +219,10 @@
                         <td> <img width="60" src="images/products/3.jpg" alt=""/></td>
                         <td>MASSA AST<br/>Color : black, Material : metal</td>
                         <td>
-                            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+                            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text">
+                                <button class="btn" type="button" onclick="window.location.href = '/cart';"><i class="icon-minus"></i></button>
+                                <button class="btn" type="button" onclick="window.location.href = '/cart';"><i class="icon-plus"></i></button>
+                                <button class="btn btn-danger" type="button" onclick="window.location.href = '/cart';"><i class="icon-remove icon-white"></i></button>				</div>
                         </td>
                         <td>$120.00</td>
                         <td>$25.00</td>

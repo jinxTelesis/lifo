@@ -289,7 +289,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         pA2CleverGrip.setProductCat(0);
         pA2CleverGrip.setProductName("Clever Grip");
         pA2CleverGrip.setProductPrice(9.99);
-        pA2CleverGrip.setProductImage("clever_grap.jpg");
+        pA2CleverGrip.setProductImage("cle.png");
         pA2CleverGrip.setProductDimensions(" ");
         pA2CleverGrip.setDescription1("One way to keep your phone available for it's features in your car, and keep you hands free while you access the important things. Like the GPS. Should not be used as an excuse to read or text while driving.");
         pA2CleverGrip.setDescription2("Introducing Clever Grip, the most portable smartphone car mount we’ve ever seen.Just attach Clever Grip on to any air vent and insert your smartphone. It's that simple. ");
@@ -300,7 +300,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         pA3TiddyBear.setProductCat(0);
         pA3TiddyBear.setProductName("Tiddy Bear");
         pA3TiddyBear.setProductPrice(9.95);
-        pA3TiddyBear.setProductImage("tiddybear.jpg");
+        pA3TiddyBear.setProductImage("tiddy_bear.jpg");
         pA3TiddyBear.setDescription1("An item used to provide comfort in the care from the safety belt");
         pA3TiddyBear.setDescription2("Introducing the Tiddy Bear, the cute little guy made with the finest soft plush eliminates all these problems. Tiddy Bear is designed to make driving more comfortable.");
         pA3TiddyBear.setDescription3("Just snap the Tiddy Bear onto the shoulder strap of your seat belt and adjust up and down to remove pressure where you need it. ");
@@ -463,7 +463,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         pH3MightPutty.setProductCat(3);
         pH3MightPutty.setProductName("Mighty Putty");
         pH3MightPutty.setProductPrice(9.95);
-        pH3MightPutty.setProductImage("mighty_putty.jpg");
+        pH3MightPutty.setProductImage("mighty_putty.jpeg");
         pH3MightPutty.setProductDimensions("1.2 x 5.8 x 6.8 inches ; 5.8 ounces");
         pH3MightPutty.setDescription1("A strong putty that is useful for sealing holes and other such things.");
         pH3MightPutty.setDescription2("Now you can repair any job big or small, thanks to Mighty Putty. Mighty Putty is great for anything from your smallest craft projects to your largest home improvements. ");
