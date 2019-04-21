@@ -60,7 +60,13 @@ public class IndexController {
 
         model.addAttribute("products", productService.getProductsDesc());
         model.addAttribute("LoginForm", new LoginForm());
-        return "index2";
+        return "index";
+    }
+
+    @RequestMapping("/indexRev/{id}")
+    public String getPageVar(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("LoginForm", new LoginForm());
+        return "index";
     }
 
 

@@ -9,6 +9,7 @@ import capstone.bcs.lifo.services.PasswordEncryptionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,6 +39,13 @@ public class InvalidProductSummary {
 
         @RequestMapping("/loginproduct_summary2")
         public String getPageLogin(Model model){
+            model.addAttribute("LoginForm", new LoginForm());
+            return "product_summary";
+        }
+
+
+        @RequestMapping("/loginproduct_summary2/{id}")
+        public String getPageVar(@PathVariable("id") Integer id, Model model) {
             model.addAttribute("LoginForm", new LoginForm());
             return "product_summary";
         }

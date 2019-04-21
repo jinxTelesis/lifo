@@ -14,6 +14,7 @@ import capstone.bcs.lifo.services.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -52,6 +53,15 @@ public class RegisterController {
         model.addAttribute("LoginForm", new LoginForm());
         return "register";
     }
+
+    @RequestMapping("/register/{id}")
+    public String getPageVar(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("LoginForm", new LoginForm());
+        model.addAttribute("registrationForm", new RegistrationForm());
+        return "register";
+    }
+
+
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String saveOrUpdate(Model model,@Valid RegistrationForm registrationForm, BindingResult bindingResult) {

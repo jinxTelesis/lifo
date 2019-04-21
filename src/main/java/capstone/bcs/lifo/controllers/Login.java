@@ -8,6 +8,7 @@ import capstone.bcs.lifo.services.PasswordEncryptionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpSession;
@@ -31,6 +32,12 @@ public class Login {
 
     @RequestMapping("/loginstart")
     public String getLogin(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "loginstart";
+    }
+
+    @RequestMapping("/loginstart/{id}")
+    public String getPageVar(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("LoginForm", new LoginForm());
         return "loginstart";
     }

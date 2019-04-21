@@ -2,7 +2,6 @@ package capstone.bcs.lifo.controllers;
 
 
 import capstone.bcs.lifo.commands.LoginForm;
-import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.model.Account;
 import capstone.bcs.lifo.model.Cart;
 import capstone.bcs.lifo.model.Customer;
@@ -11,6 +10,7 @@ import capstone.bcs.lifo.services.PasswordEncryptionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,8 +29,16 @@ public class ProductSummaryController {
         this.customerService = customerService;
     }
 
+
     @RequestMapping("/product_summary")
     public String getPageInalid(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "product_summary";
+    }
+
+    // == test controller remove after ==
+    @RequestMapping("/product_summary/{id}")
+    public String getPageVar(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("LoginForm", new LoginForm());
         return "product_summary";
     }
