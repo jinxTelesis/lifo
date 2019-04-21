@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -55,16 +56,11 @@ public class RegisterController {
     }
 
     @RequestMapping("/register/{id}")
-    public String getPageVar(@PathVariable("id") Integer id, Model model) {
+    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
         model.addAttribute("LoginForm", new LoginForm());
         model.addAttribute("registrationForm", new RegistrationForm());
-        return "register";
+        return "redirect:" + "register";
     }
-
-    //HttpServletRequest request
-    //String referer = request.getHeader("Referer");
-    //return "redirect:" + referer;
-
 
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)

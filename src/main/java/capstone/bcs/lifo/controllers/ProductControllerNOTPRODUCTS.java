@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 public class ProductControllerNOTPRODUCTS {
@@ -27,13 +29,10 @@ public class ProductControllerNOTPRODUCTS {
     }
 
     @RequestMapping("/product/{id}")
-    public String getProductById(@PathVariable Integer id, Model model){
+    public String getProductById(HttpServletRequest request, @PathVariable Integer id, Model model){
         model.addAttribute("product", productService.findById(Integer.toUnsignedLong(id)));
         model.addAttribute("LoginForm", new LoginForm());
-        return "product";
+        return "redirect:" + "product";
     }
 
-    //HttpServletRequest request
-    //String referer = request.getHeader("Referer");
-    //return "redirect:" + referer;
 }
