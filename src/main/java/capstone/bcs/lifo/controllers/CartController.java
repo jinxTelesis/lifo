@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,15 +33,32 @@ public class CartController {
         return "product_summary.html";
     }
 
-
+    // == the redirect is needed or it will map deeper // //
 
     @RequestMapping("/cart/{id}")
     public String getPageVar(HttpServletRequest request,@PathVariable("id") Integer id, Model model) {
         String referer = request.getHeader("Referer");
         model.addAttribute("LoginForm", new LoginForm());
-        return "/product_summary";
-        //return "redirect:" + referer;
+        //return "/product_summary";
+        return "redirect:" + referer;
     }
+
+    @RequestMapping("/cart/{id}/{id}")
+    public String getPageVarVar(HttpServletRequest request,@PathVariable("id") Integer id, Model model) {
+        String referer = request.getHeader("Referer");
+        model.addAttribute("LoginForm", new LoginForm());
+        //return "/product_summary";
+        return "redirect:" + referer;
+    }
+
+    @RequestMapping("/cart/{id}/{id}/{id}")
+    public String getPageVarVarVar(HttpServletRequest request,@PathVariable("id") Integer id, Model model) {
+        String referer = request.getHeader("Referer");
+        model.addAttribute("LoginForm", new LoginForm());
+        //return "/product_summary";
+        return "redirect:" + referer;
+    }
+
 
 
 }

@@ -21,4 +21,8 @@ public class NormalController {
         model.addAttribute("LoginForm", new LoginForm());
         return "examples/normal";
     }
+
+    //HttpServletRequest request
+    //String referer = request.getHeader("Referer");
+    //return "redirect:" + referer;
 }

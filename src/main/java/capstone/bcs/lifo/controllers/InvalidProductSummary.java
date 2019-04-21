@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -45,9 +46,9 @@ public class InvalidProductSummary {
 
 
         @RequestMapping("/loginproduct_summary2/{id}")
-        public String getPageVar(@PathVariable("id") Integer id, Model model) {
+        public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
             model.addAttribute("LoginForm", new LoginForm());
-            return "product_summary";
+            return "redirect:" + "loginproduct_summary2";
         }
 
 

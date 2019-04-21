@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 // start a registration page -
@@ -40,19 +41,6 @@ public class IndexController {
         return "index";
     }
 
-//    @RequestMapping(value = "/")
-//    public String getIndex3(Model model){
-//        //model.addAttribute("products", productService.getProductsAsce());
-//        model.addAttribute("LofinForm", new LoginForm());
-//        return "index :: navigation";
-//    }
-
-
-//    @RequestMapping(value = "/logintestfrag", method = RequestMethod.GET)
-//    public String getIndex2(Model model){
-//        return "index :: navigation";
-//    }
-
 
     @RequestMapping({"/indexRev"})
     public String getIndexByProductCat(Model model){
@@ -64,28 +52,10 @@ public class IndexController {
     }
 
     @RequestMapping("/indexRev/{id}")
-    public String getPageVar(@PathVariable("id") Integer id, Model model) {
+    public String getPageVar(HttpServletRequest request,@PathVariable("id") Integer id, Model model) {
         model.addAttribute("LoginForm", new LoginForm());
-        return "index";
+        return "redirect:" + "indexRev";
     }
-
-
-
-    // == does it but turns off javascript?? wtf ==
-//    @RequestMapping({"/index/{product}"})
-//    public String getPage(@PathVariable String product, Model model) {
-//        model.addAttribute("products",productService.getProductsByCategory(Integer.valueOf(product)));
-//        return "index2";
-//    }
-
-
-//    @RequestMapping("/index/{productCat}")
-//    public String getPage(@PathVariable String productCat, Model model){
-//        model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
-//        return "index";
-//    }
-
-
 
 
 

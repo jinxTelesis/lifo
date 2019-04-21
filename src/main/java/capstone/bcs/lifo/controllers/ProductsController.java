@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class ProductsController {
 
@@ -31,83 +33,79 @@ public class ProductsController {
 
 
     @RequestMapping("/products/{productCat}")
-    public String getPage(@PathVariable String productCat, Model model){
+    public String getPage(HttpServletRequest request,@PathVariable String productCat, Model model){
         model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
-        // == second model might cause issues
         model.addAttribute("LoginForm", new LoginForm());
+        String referer = request.getHeader("Referer");
         //model.addAttribute("products",productService.getProducts());
-        return "products";
+        return "redirect:" +referer;
     }
 
-    // == the javascript drops out when the path variable is passed in == investigating changing the thyemeleaf ==
-    // == this is temporary hack solution to the problem that will be removed later ==
-    // == the products should just be mapped with a category but the javascript issue is why this is done this way
-    // == hopefully this will be removed to just /products/{productCat} soon ==
 
-    @RequestMapping("/products_accessories")
-    public String getAccessories(Model model)
-    {
-        // == second model might cause issues
-        model.addAttribute("products", productService.getProductsByCategory(0));
-        model.addAttribute("LoginForm", new LoginForm());
-
-
-        return "products_accessories";
-    }
-
-    @RequestMapping("/products_appliances")
-    public String getAppliances(Model model)
-    {
-        // == second model might cause issues
-        model.addAttribute("products",productService.getProductsByCategory(1));
-        model.addAttribute("LoginForm", new LoginForm());
-        return "products_appliances";
-    }
-
-    @RequestMapping("/products_cleaning")
-    public String getCleaning(Model model)
-    {
-        // == second model might cause issues
-        model.addAttribute("products",productService.getProductsByCategory(2));
-        model.addAttribute("LoginForm", new LoginForm());
-        return "products_cleaning";
-    }
-
-    @RequestMapping("/products_hardware")
-    public String getHardware(Model model)
-    {
-        // == second model might cause issues
-        model.addAttribute("products",productService.getProductsByCategory(3));
-        model.addAttribute("LoginForm", new LoginForm());
-        return "products_hardware";
-    }
-
-    @RequestMapping("/products_health")
-    public String getHealth(Model model)
-    {
-        // == second model might cause issues
-        model.addAttribute("products",productService.getProductsByCategory(4));
-        model.addAttribute("LoginForm", new LoginForm());
-        return "products_health";
-    }
-
-    @RequestMapping("/products_home")
-    public String getHome(Model model)
-    {
-        // == second model might cause issues
-        model.addAttribute("products",productService.getProductsByCategory(5));
-        model.addAttribute("LoginForm", new LoginForm());
-        return "products_home";
-    }
-
-    @RequestMapping("/products_toys")
-    public String getToys(Model model)
-    {
-        // == second model might cause issues
-        model.addAttribute("products",productService.getProductsByCategory(6));
-        model.addAttribute("LoginForm", new LoginForm());
-        return "products_toys";
-    }
+//    @RequestMapping("/products_accessories")
+//    public String getAccessories(Model model)
+//    {
+//        // == second model might cause issues
+//        model.addAttribute("products", productService.getProductsByCategory(0));
+//        model.addAttribute("LoginForm", new LoginForm());
+//
+//
+//        return "products_accessories";
+//    }
+//
+//    @RequestMapping("/products_appliances")
+//    public String getAppliances(Model model)
+//    {
+//        // == second model might cause issues
+//        model.addAttribute("products",productService.getProductsByCategory(1));
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "products_appliances";
+//    }
+//
+//    @RequestMapping("/products_cleaning")
+//    public String getCleaning(Model model)
+//    {
+//        // == second model might cause issues
+//        model.addAttribute("products",productService.getProductsByCategory(2));
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "products_cleaning";
+//    }
+//
+//    @RequestMapping("/products_hardware")
+//    public String getHardware(Model model)
+//    {
+//        // == second model might cause issues
+//        model.addAttribute("products",productService.getProductsByCategory(3));
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "products_hardware";
+//    }
+//
+//    @RequestMapping("/products_health")
+//    public String getHealth(Model model)
+//    {
+//        // == second model might cause issues
+//        model.addAttribute("products",productService.getProductsByCategory(4));
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "products_health";
+//    }
+//
+//    @RequestMapping("/products_home")
+//    public String getHome(Model model)
+//    {
+//        // == second model might cause issues
+//        model.addAttribute("products",productService.getProductsByCategory(5));
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "products_home";
+//    }
+//
+//    @RequestMapping("/products_toys")
+//    public String getToys(Model model)
+//    {
+//        // == second model might cause issues
+//        model.addAttribute("products",productService.getProductsByCategory(6));
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "products_toys";
+//    }
 
 
 
