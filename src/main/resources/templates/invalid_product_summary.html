@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Bootstrap style -->
+    <link href="../../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../../static/css/base.css"
+          th:href="@{css/base.css}" rel="stylesheet" media="screen"/>
+    <!-- Bootstrap style responsive -->
+    <link href="../../static/css/bootstrap-responsive.min.css"
+          th:href="@{css/bootstrap-responsive.min.css}" rel="stylesheet"/>
+    <link href="../../static/css/font-awesome.css"
+          th:href="@{css/font-awesome.css}" rel="stylesheet" type="text/css">
+    <!-- Google-code-prettify -->
+
+    <!--<link href="../js/google-code-prettify/prettify.css"
+          th:href="@{js/google-code-prettify/prettify.css}" rel="stylesheet"/>-->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script >
+        alert("Login first to use cart!");
+    </script>
+
+    <script src="webjars/jquery/3.3.1-2 /jquery.js"></script>
+
+
+</head>
+<body>
+<!-- Navigation section start ====================================================================== -->
+<div id="header">
+    <div class="container">
+        <div id="welcomeLine" class="row">
+            <div class="span6">Welcome!<strong> User</strong></div>
+            <div class="span6">
+                <div class="pull-right">
+                    <span class="btn btn-mini">$0.00</span>
+                    <a href="product_summary"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar ================================================== -->
+        <div id="logoArea" class="navbar">
+            <a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <div class="navbar-inner">
+                <a class="brand" href="index"><img src="/images/logo.png" alt="Bootsshop"/></a>
+                <form class="form-inline navbar-search" method="post" action="products" >
+                    <input id="srchFld" class="srchTxt" type="text" />
+                    <select class="srchTxt">
+                        <option>All</option>
+                        <option>CLOTHES </option>
+                        <option>FOOD AND BEVERAGES </option>
+                        <option>HEALTH & BEAUTY </option>
+                        <option>SPORTS & LEISURE </option>
+                        <option>BOOKS & ENTERTAINMENTS </option>
+                    </select>
+                    <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+                </form>
+                <ul id="topMenu" class="nav pull-right">
+                    <li class=""><a href="special_offer">Specials Offer</a></li>
+                    <li class=""><a href="normal">Delivery</a></li>
+                    <li class=""><a href="contact">Contact</a></li>
+                    <li class="">
+                        <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+                        <div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h3>Login Block</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
+                                    <div class="control-group">
+                                        <input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
+                                    </div>
+                                    <div class="control-group">
+                                        <input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="checkbox">
+                                            <input type="checkbox"> Remember me
+                                        </label>
+                                    </div>
+                                </form>
+                                <button type="submit" class="btn btn-success">Sign in</button>
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Navigation section end ====================================================================== -->
+
+<!-- Header End====================================================================== -->
+<div id="mainBody">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Section Start ================================================== -->
+            <div th:replace="fragments/sidebar :: sidebar">
+            </div>
+            <!-- Sidebar Section End =============================================== -->
+
+            <div class="span9">
+                <ul class="breadcrumb">
+                    <li><a href="index">Home</a> <span class="divider">/</span></li>
+                    <li class="active"> SHOPPING CART</li>
+                </ul>
+                <h3>  SHOPPING CART [ <small>3 Item(s) </small>]<a href="products" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
+                <hr class="soft"/>
+                <table class="table table-bordered">
+                    <tr><th> I AM ALREADY REGISTERED  </th></tr>
+                    <tr>
+                        <td>
+                            <form class="form-horizontal" th:object="${LoginForm}" th:action="@{/loginproduct_summary}" method="post">
+
+                                <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                    <p >One or more fields are invalid</p>
+                                </div>
+
+                                <div class="form-group"  th:class="${#fields.hasErrors('userName')} ? 'form-group has-error' : 'form-group'">
+                                    <label class="col-sm-2 control-label">User Name: *	</label>
+                                    <div class="col-sm-10 ">
+                                        <input type="text" class="form-control" th:field="*{userName}" th:errorclass="has-error"/>
+
+                                        <span class="help-block">
+                       					<ul>
+                           					<li th:each="err : ${#fields.errors('userName')}" th:text="${err}" />
+                       					</ul>
+                    				</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group"  th:class="${#fields.hasErrors('passwordPlain')} ? 'form-group has-error' : 'form-group'">
+                                    <label class="col-sm-2 control-label">Enter password: *	</label>
+                                    <div class="col-sm-10 ">
+                                        <input type="text" class="form-control" th:field="*{passwordPlain}" th:errorclass="has-error"/>
+
+                                        <span class="help-block">
+                       					<ul>
+                           				<li th:each="err : ${#fields.errors('passwordPlain')}" th:text="${err}" />
+                       					</ul>
+                    				</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn">Sign in</button> OR <a href="register" class="btn">Register Now!</a>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <a href="forgetpass" style="text-decoration:underline">Forgot password ?</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Description</th>
+                        <th>Quantity/Update</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>Tax</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td> <img width="60" src="images/products/4.jpg" alt=""/></td>
+                        <td>MASSA AST<br/>Color : black, Material : metal</td>
+                        <td>
+                            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text">
+                                <button class="btn" type="button" onclick="window.location.href = '/cart';"><i class="icon-minus"></i></button>
+                                <button class="btn" type="button" onclick="window.location.href =  '/cart';"><i class="icon-plus"></i></button>
+                                <button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart';"><i class="icon-remove icon-white"></i></button>
+                            </div>
+                        </td>
+                        <td>$120.00</td>
+                        <td>$25.00</td>
+                        <td>$15.00</td>
+                        <td>$110.00</td>
+                    </tr>
+                    <tr>
+                        <td> <img width="60" src="images/products/8.jpg" alt=""/></td>
+                        <td>MASSA AST<br/>Color : black, Material : metal</td>
+                        <td>
+                            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text">
+                                <button class="btn" type="button" onclick="window.location.href = '/cart';"><i class="icon-minus"></i></button>
+                                <button class="btn" type="button" onclick="window.location.href =  '/cart';"><i class="icon-plus"></i></button>
+                                <button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart';"><i class="icon-remove icon-white"></i></button>
+                            </div>
+                        </td>
+                        <td>$7.00</td>
+                        <td>--</td>
+                        <td>$1.00</td>
+                        <td>$8.00</td>
+                    </tr>
+                    <tr>
+                        <td> <img width="60" src="images/products/3.jpg" alt=""/></td>
+                        <td>MASSA AST<br/>Color : black, Material : metal</td>
+                        <td>
+                            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text">
+                                <button class="btn" type="button" onclick="window.location.href = '/cart';"><i class="icon-minus"></i></button>
+                                <button class="btn" type="button" onclick="window.location.href = '/cart';"><i class="icon-plus"></i></button>
+                                <button class="btn btn-danger" type="button" onclick="window.location.href = '/cart';"><i class="icon-remove icon-white"></i></button>				</div>
+                        </td>
+                        <td>$120.00</td>
+                        <td>$25.00</td>
+                        <td>$15.00</td>
+                        <td>$110.00</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="6" style="text-align:right">Total Price:	</td>
+                        <td> $228.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right">Total Discount:	</td>
+                        <td> $50.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right">Total Tax:	</td>
+                        <td> $31.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right"><strong>TOTAL ($228 - $50 + $31) =</strong></td>
+                        <td class="label label-important" style="display:block"> <strong> $155.00 </strong></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <form class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label"><strong> VOUCHERS CODE: </strong> </label>
+                                    <div class="controls">
+                                        <input type="text" class="input-medium" placeholder="CODE">
+                                        <button type="submit" class="btn"> ADD </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                <table class="table table-bordered">
+                    <tr><th>ESTIMATE YOUR SHIPPING </th></tr>
+                    <tr>
+                        <td>
+                            <form class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputCountry">Country </label>
+                                    <div class="controls">
+                                        <input type="text" id="inputCountry" placeholder="Country">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputPost">Post Code/ Zipcode </label>
+                                    <div class="controls">
+                                        <input type="text" id="inputPost" placeholder="Postcode">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn">ESTIMATE </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+                <a href="products" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+                <a href="login" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
+
+            </div>
+        </div></div>
+</div>
+<!-- MainBody End ============================= -->
+<!-- Footer section start =============================================== -->
+<div class="container" th:replace="fragments/footer :: footer">
+</div>
+<!-- Footer section end =============================================== -->
+
+<!-- Site script section start =============================================== -->
+<div class="container" th:replace="fragments/sitescripts :: sitescripts">
+</div>
+<!-- Site script section end =============================================== -->
+
+</body>
+</html>

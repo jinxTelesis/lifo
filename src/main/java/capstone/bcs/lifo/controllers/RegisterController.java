@@ -54,7 +54,8 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public String saveOrUpdate(@Valid RegistrationForm registrationForm, BindingResult bindingResult) {
+    public String saveOrUpdate(Model model,@Valid RegistrationForm registrationForm, BindingResult bindingResult) {
+        model.addAttribute("LoginForm", new LoginForm());
         System.out.println("general post got called");
 
         if(bindingResult.hasErrors())

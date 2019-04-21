@@ -21,6 +21,9 @@ public class CartProducts {
 //        ," "," ");
 //    };
 
+    @Lob
+    private List<Product> productList;
+
     @OneToOne
     @JoinColumn(name = "cartId")
     private Cart cart;
@@ -28,6 +31,55 @@ public class CartProducts {
     @OneToOne
     @JoinColumn(name = "CustomerId")
     private Customer customer;
+
+
+    public long getCartProductId() {
+        return cartProductId;
+    }
+
+    public void setCartProductId(long cartProductId) {
+        this.cartProductId = cartProductId;
+    }
+
+    public int getNumberOfItems() {
+        return numberOfItems;
+    }
+
+    public void setNumberOfItems(int numberOfItems) {
+        this.numberOfItems = numberOfItems;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
 
 }
