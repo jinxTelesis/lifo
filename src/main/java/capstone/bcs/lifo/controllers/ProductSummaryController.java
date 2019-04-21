@@ -4,6 +4,7 @@ package capstone.bcs.lifo.controllers;
 import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.model.Account;
+import capstone.bcs.lifo.model.Cart;
 import capstone.bcs.lifo.model.Customer;
 import capstone.bcs.lifo.services.CustomerService;
 import capstone.bcs.lifo.services.PasswordEncryptionService;
@@ -13,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -28,20 +30,20 @@ public class ProductSummaryController {
     }
 
     @RequestMapping("/product_summary")
-    public String getPage(Model model){
+    public String getPageInalid(Model model){
         model.addAttribute("LoginForm", new LoginForm());
         return "product_summary";
     }
 
     @RequestMapping("/loginproduct_summary")
-    public String getPageLogin(Model model){
+    public String getPageLoginInvalid(Model model){
         model.addAttribute("LoginForm", new LoginForm());
         return "product_summary";
     }
 
 
     @RequestMapping(value = "/loginproduct_summary",method = RequestMethod.POST) // two post methods have mapping issues
-    public String validateUser2(Model model, @Valid LoginForm loginForm, BindingResult bindingResult){
+    public String validateUser2Invalid(Model model, @Valid LoginForm loginForm, BindingResult bindingResult, HttpSession session){
 
         model.addAttribute("LoginForm", new LoginForm());
         if(bindingResult.hasErrors())
@@ -70,6 +72,8 @@ public class ProductSummaryController {
                 if(passwordEncryptionService.checkPassword(loginForm.getPasswordPlain(),localAccount.getEncryptedPassword()))
                 {
                     System.out.println("Valid user");
+                    Cart cart = new Cart();
+                    session.setAttribute("cart", cart);
                     return "success";
                 }
                 else {

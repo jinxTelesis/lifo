@@ -18,7 +18,7 @@ public class Cart {
     @JoinColumn(name = "cartProductsId")
     private CartProducts cartProducts;
 
-    // add CartItems
+// add CartItems
 
     private double totalPrice;
 
@@ -46,7 +46,13 @@ public class Cart {
         this.totalPrice = totalPrice;
     }
 
+    public CartProducts getCartProducts() {
+        return cartProducts;
+    }
 
+    public void setCartProducts(CartProducts cartProducts) {
+        this.cartProducts = cartProducts;
+    }
 
 
 }

@@ -2,8 +2,7 @@ package capstone.bcs.lifo.controllers;
 
 
 import capstone.bcs.lifo.commands.LoginForm;
-import capstone.bcs.lifo.model.Account;
-import capstone.bcs.lifo.model.Customer;
+import capstone.bcs.lifo.model.*;
 import capstone.bcs.lifo.services.CustomerService;
 import capstone.bcs.lifo.services.PasswordEncryptionService;
 import org.springframework.stereotype.Controller;
@@ -11,8 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import javax.servlet.http.HttpSession;
+
+
 
 import javax.validation.Valid;
+
 
 @Controller
 public class Login {
@@ -40,7 +43,7 @@ public class Login {
     //todo this slop should be refactored
 
     @RequestMapping(value = "/loginstart",method = RequestMethod.POST) // two post methods have mapping issues
-    public String validateUser2(Model model,@Valid LoginForm loginForm, BindingResult bindingResult){
+    public String validateUser2(Model model, @Valid LoginForm loginForm, BindingResult bindingResult, HttpSession session){
 
         model.addAttribute("LoginForm", new LoginForm());
         if(bindingResult.hasErrors())
@@ -68,7 +71,15 @@ public class Login {
 
                 if(passwordEncryptionService.checkPassword(loginForm.getPasswordPlain(),localAccount.getEncryptedPassword()))
                 {
+                    System.out.println("I love chicken");
+                    String myString = "mybasicString";
+                    String printString = "1";
+                    session.setAttribute("turkey",myString);
                     System.out.println("Valid user");
+
+
+                    printString = (String)session.getAttribute("turkey");
+                    System.out.println(printString);
                     return "success";
                 }
                 else {
