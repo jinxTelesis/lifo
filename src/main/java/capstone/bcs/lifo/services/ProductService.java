@@ -19,5 +19,7 @@ public interface ProductService {
 
     List<Product> getProductsByCategory(Integer integer);
 
+    Product saveProduct(Product product);
+
     void deleteById(Long idToDelete);
 }

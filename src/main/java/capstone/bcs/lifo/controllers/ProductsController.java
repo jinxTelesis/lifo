@@ -1,5 +1,6 @@
 package capstone.bcs.lifo.controllers;
 
+import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,8 @@ public class ProductsController {
     public String getPage(Model model){
         //model.addAttribute("products", productService.getProducts());
         model.addAttribute("products",productService.getProductSet());
+        // == second model might cause issues
+        model.addAttribute("LoginForm", new LoginForm());
         return "products";
     }
 
@@ -30,6 +33,8 @@ public class ProductsController {
     @RequestMapping("/products/{productCat}")
     public String getPage(@PathVariable String productCat, Model model){
         model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
+        // == second model might cause issues
+        model.addAttribute("LoginForm", new LoginForm());
         //model.addAttribute("products",productService.getProducts());
         return "products";
     }
@@ -42,49 +47,65 @@ public class ProductsController {
     @RequestMapping("/products_accessories")
     public String getAccessories(Model model)
     {
+        // == second model might cause issues
         model.addAttribute("products", productService.getProductsByCategory(0));
+        model.addAttribute("LoginForm", new LoginForm());
+
+
         return "products_accessories";
     }
 
     @RequestMapping("/products_appliances")
     public String getAppliances(Model model)
     {
+        // == second model might cause issues
         model.addAttribute("products",productService.getProductsByCategory(1));
+        model.addAttribute("LoginForm", new LoginForm());
         return "products_appliances";
     }
 
     @RequestMapping("/products_cleaning")
     public String getCleaning(Model model)
     {
+        // == second model might cause issues
         model.addAttribute("products",productService.getProductsByCategory(2));
+        model.addAttribute("LoginForm", new LoginForm());
         return "products_cleaning";
     }
 
     @RequestMapping("/products_hardware")
     public String getHardware(Model model)
     {
+        // == second model might cause issues
         model.addAttribute("products",productService.getProductsByCategory(3));
+        model.addAttribute("LoginForm", new LoginForm());
         return "products_hardware";
     }
 
     @RequestMapping("/products_health")
     public String getHealth(Model model)
     {
+        // == second model might cause issues
         model.addAttribute("products",productService.getProductsByCategory(4));
+        model.addAttribute("LoginForm", new LoginForm());
         return "products_health";
     }
 
     @RequestMapping("/products_home")
     public String getHome(Model model)
     {
+        // == second model might cause issues
         model.addAttribute("products",productService.getProductsByCategory(5));
+        model.addAttribute("LoginForm", new LoginForm());
         return "products_home";
     }
 
     @RequestMapping("/products_toys")
     public String getToys(Model model)
     {
+        // == second model might cause issues
         model.addAttribute("products",productService.getProductsByCategory(6));
+        model.addAttribute("LoginForm", new LoginForm());
         return "products_toys";
     }
 

@@ -1,5 +1,6 @@
 package capstone.bcs.lifo.controllers;
 
+import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,8 @@ public class ProductControllerNOTPRODUCTS {
     public String getProductById(@PathVariable Integer id, Model model){
 
         model.addAttribute("product", productService.findById(Integer.toUnsignedLong(id)));
-        return "product";
+        model.addAttribute("LoginForm", new LoginForm());
+            return "product";
+
     }
 }
