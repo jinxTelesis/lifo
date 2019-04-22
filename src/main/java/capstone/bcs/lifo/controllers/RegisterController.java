@@ -63,6 +63,8 @@ public class RegisterController {
     }
 
 
+
+
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String saveOrUpdate(Model model,@Valid RegistrationForm registrationForm, BindingResult bindingResult) {
         model.addAttribute("LoginForm", new LoginForm());
@@ -84,7 +86,7 @@ public class RegisterController {
             cartRespository.save(cart);
             CartProducts cartProducts = new CartProducts();
             cartProductsRepository.save(cartProducts);
-            return "products"; // this needs to be a new page for success
+            return "product_summary"; // this needs to be a new page for success
         }
     }
 

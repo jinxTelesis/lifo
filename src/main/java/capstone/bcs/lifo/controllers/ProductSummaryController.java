@@ -5,6 +5,7 @@ import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.Account;
 import capstone.bcs.lifo.model.Cart;
 import capstone.bcs.lifo.model.Customer;
+import capstone.bcs.lifo.model.SimpleCart;
 import capstone.bcs.lifo.services.CustomerService;
 import capstone.bcs.lifo.services.PasswordEncryptionService;
 import org.springframework.stereotype.Controller;
@@ -80,8 +81,16 @@ public class ProductSummaryController {
                 if(passwordEncryptionService.checkPassword(loginForm.getPasswordPlain(),localAccount.getEncryptedPassword()))
                 {
                     System.out.println("Valid user");
-                    Cart cart = new Cart();
-                    session.setAttribute("cart", cart);
+
+
+                    //Cart cart = new Cart();
+                    //session.setAttribute("cart", cart);
+
+                    SimpleCart cart = new SimpleCart();
+                    session.setAttribute("cart",cart);
+
+
+
                     return "success";
                 }
                 else {
