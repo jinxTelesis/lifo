@@ -38,7 +38,8 @@ public class ProductsController {
         model.addAttribute("LoginForm", new LoginForm());
         String referer = request.getHeader("Referer");
         //model.addAttribute("products",productService.getProducts());
-        return "redirect:" +referer;
+        return "products";
+        //return "redirect:" +referer;
     }
 
 
