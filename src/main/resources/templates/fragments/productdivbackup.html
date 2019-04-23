@@ -7,7 +7,7 @@
 <body>
 <div th:fragment="productdiv">
     <div class="thumbnail" href="product.html" th:href="@{'/product/'+${product.id}}" >
-        <a  href="product_details"><img th:src="@{'/images/thumbs/'+${product.productImage}}" alt=""/></a>
+        <a  href="product_details" th:href="@{'/product_details'}"><img th:src="@{'/images/thumbs/'+${product.productImage}}" alt=""/></a>
         <div class="caption" style="text-align: center">
             <h5 th:text="${product.productName}">Product name</h5>
             <p>

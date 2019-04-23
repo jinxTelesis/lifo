@@ -5,7 +5,76 @@
 </head>
 <body>
 <!-- Navigation section start ====================================================================== -->
-<div th:replace="fragments/navigation :: navigation">
+<div id="header">
+	<div class="container">
+		<div id="welcomeLine" class="row">
+			<div class="span6">Welcome!<strong> User</strong></div>
+			<div class="span6">
+				<div class="pull-right">
+					<span class="btn btn-mini">$0.00</span>
+					<a href="product_summary" th:href="@{'/product_summary'}"><span class="btn btn-mini btn-primary">
+						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
+				</div>
+			</div>
+		</div>
+		<!-- Navbar ================================================== -->
+		<div id="logoArea" class="navbar">
+			<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<div class="navbar-inner">
+				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
+				<form class="form-inline navbar-search" method="post" action="products" >
+					<input id="srchFld" class="srchTxt" type="text" />
+					<select class="srchTxt">
+						<option th:href="@{'/products/0'}">ACCESSORIES </option>
+						<option th:href="@{'/products/1'}">APPLIANCES </option>
+						<option th:href="@{'/products/2'}">CLEANING </option>
+						<option th:href="@{'/products/3'}">HARDWARE </option>
+						<option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
+						<option th:href="@{'/products/5'}">HOMEWARES </option>
+						<option th:href="@{'/products/6'}">TOYS </option>
+					</select>
+					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+				</form>
+				<ul id="topMenu" class="nav pull-right">
+					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
+					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
+					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
+					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
+					<li class="">
+						<a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h3>Login Block</h3>
+							</div>
+							<div class="modal-body">
+								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
+									<div class="control-group">
+										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
+									</div>
+									<div class="control-group">
+										<input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
+									</div>
+									<div class="control-group">
+										<label class="checkbox">
+											<input type="checkbox"> Remember me
+										</label>
+									</div>
+								</form>
+								<button type="submit" class="btn btn-success">Sign in</button>
+								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
 </div>
 <!-- Navigation section end ====================================================================== -->
 
@@ -17,7 +86,7 @@
 		<div class="accordion" id="accordion2">
 			<div class="accordion-group">
 				<div class="accordion-heading">
-					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" th:href="@{'/#collapseOne'}">
 						How long will it take for me to receive my item(s)?
 					</a></h4>
 				</div>
@@ -30,7 +99,7 @@
 			</div>
 			<div class="accordion-group">
 				<div class="accordion-heading">
-					<h4><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+					<h4><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo" th:href="@{'/#collapseTwo'}">
 						How can I check the status of my order?
 					</a></h4>
 				</div>
@@ -42,7 +111,7 @@
 			</div>
 			<div class="accordion-group">
 				<div class="accordion-heading">
-					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree" th:href="@{'/#collapseThree'}">
 						How do I return my order?
 					</a></h4>
 				</div>
@@ -55,7 +124,7 @@
 
 			<div class="accordion-group">
 				<div class="accordion-heading">
-					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour" th:href="@{'/#collapseFour'}">
 						What do I do if my order is damaged?
 					</a></h4>
 				</div>
@@ -68,7 +137,7 @@
 
 			<div class="accordion-group">
 				<div class="accordion-heading">
-					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive" th:href="@{'/#collapseFive'}">
 						Why did I only receive part of my order?
 					</a></h4>
 				</div>
@@ -81,7 +150,7 @@
 
 			<div class="accordion-group">
 				<div class="accordion-heading">
-					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix" th:href="@{'/#collapseSix'}">
 						I received the wrong goods, what do I do?
 					</a></h4>
 				</div>

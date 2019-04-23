@@ -33,7 +33,8 @@
 			<div class="span6">
 				<div class="pull-right">
 					<span class="btn btn-mini">$0.00</span>
-					<a href="product_summary"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
+					<a href="product_summary" th:href="@{'/product_summary'}"><span class="btn btn-mini btn-primary">
+						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
 				</div>
 			</div>
 		</div>
@@ -45,25 +46,27 @@
 				<span class="icon-bar"></span>
 			</a>
 			<div class="navbar-inner">
-				<a class="brand" href="index"><img src="/images/logo.png" alt="Bootsshop"/></a>
+				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
 				<form class="form-inline navbar-search" method="post" action="products" >
 					<input id="srchFld" class="srchTxt" type="text" />
 					<select class="srchTxt">
-						<option>All</option>
-						<option>CLOTHES </option>
-						<option>FOOD AND BEVERAGES </option>
-						<option>HEALTH & BEAUTY </option>
-						<option>SPORTS & LEISURE </option>
-						<option>BOOKS & ENTERTAINMENTS </option>
+						<option th:href="@{'/products/0'}">ACCESSORIES </option>
+						<option th:href="@{'/products/1'}">APPLIANCES </option>
+						<option th:href="@{'/products/2'}">CLEANING </option>
+						<option th:href="@{'/products/3'}">HARDWARE </option>
+						<option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
+						<option th:href="@{'/products/5'}">HOMEWARES </option>
+						<option th:href="@{'/products/6'}">TOYS </option>
 					</select>
 					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
 				</form>
 				<ul id="topMenu" class="nav pull-right">
-					<li class=""><a href="special_offer">Specials Offer</a></li>
-					<li class=""><a href="normal">Delivery</a></li>
-					<li class=""><a href="contact">Contact</a></li>
+					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
+					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
+					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
+					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
 					<li class="">
-						<a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+						<a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
 						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -107,7 +110,7 @@
 
 			<div class="span7" align="center" th:align="center">
 				<ul class="breadcrumb">
-					<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+					<li><a href="index" th:href="@{'/products/0'}">Home</a> <span class="divider">/</span></li>
 					<li class="active">Registration</li>
 				</ul>
 				<h3> Account info </h3>
