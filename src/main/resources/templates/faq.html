@@ -1,188 +1,98 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<!-- Bootstrap style -->
-	<link href="../../static/css/bootstrap.min.css"
-		  th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
-	<link href="../../static/css/base.css"
-		  th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>
-	<!-- Bootstrap style responsive -->
-	<link href="../../static/css/bootstrap-responsive.min.css"
-		  th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>
-	<link href="../../static/css/font-awesome.css"
-		  th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">
-	<!-- Google-code-prettify -->
-
-	<!--<link href="../js/google-code-prettify/prettify.css"
-          th:href="@{js/google-code-prettify/prettify.css}" rel="stylesheet"/>-->
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-	<script src="/webjars/jquery/3.3.1-2 /jquery.js"></script>
-
+<head th:replace="fragments/header :: header">
 
 </head>
 <body>
 <!-- Navigation section start ====================================================================== -->
-<div id="header">
-	<div class="container">
-		<div id="welcomeLine" class="row">
-			<div class="span6">Welcome!<strong> User</strong></div>
-			<div class="span6">
-				<div class="pull-right">
-					<span class="btn btn-mini">$0.00</span>
-					<a href="product_summary"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
-				</div>
-			</div>
-		</div>
-		<!-- Navbar ================================================== -->
-		<div id="logoArea" class="navbar">
-			<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<div class="navbar-inner">
-				<a class="brand" href="index"><img src="/images/logo.png" alt="Bootsshop"/></a>
-				<form class="form-inline navbar-search" method="post" action="products" >
-					<input id="srchFld" class="srchTxt" type="text" />
-					<select class="srchTxt">
-						<option>All</option>
-						<option>CLOTHES </option>
-						<option>FOOD AND BEVERAGES </option>
-						<option>HEALTH & BEAUTY </option>
-						<option>SPORTS & LEISURE </option>
-						<option>BOOKS & ENTERTAINMENTS </option>
-					</select>
-					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-				</form>
-				<ul id="topMenu" class="nav pull-right">
-					<li class=""><a href="special_offer">Specials Offer</a></li>
-					<li class=""><a href="normal">Delivery</a></li>
-					<li class=""><a href="contact">Contact</a></li>
-					<li class="">
-						<a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
-						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								<h3>Login Block</h3>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
-									<div class="control-group">
-										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
-									</div>
-									<div class="control-group">
-										<input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
-									</div>
-									<div class="control-group">
-										<label class="checkbox">
-											<input type="checkbox"> Remember me
-										</label>
-									</div>
-								</form>
-								<button type="submit" class="btn btn-success">Sign in</button>
-								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-
-		</div>
-	</div>
+<div th:replace="fragments/navigation :: navigation">
 </div>
-
 <!-- Navigation section end ====================================================================== -->
 
 <!-- Header End====================================================================== -->
 <div id="mainBody">
-<div class="container">
-<h1>FAQ</h1>
-<hr class="soften"/>	
-<div class="accordion" id="accordion2">
-	<div class="accordion-group">
-	  <div class="accordion-heading">
-		<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-		  Collapsible Group Item #1
-		</a></h4>
-	  </div>
-	  <div id="collapseOne" class="accordion-body collapse"  >
-		<div class="accordion-inner">
-			Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-			<br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam elementum varius dapibus. Sed hendrerit porta felis at sollicitudin. Sed at nunc ac neque semper fermentum. Proin diam sem, semper fermentum eleifend nec, viverra ac est. Sed ultricies, lectus et vehicula imperdiet, felis tortor vehicula turpis, non fermentum enim est et sapien. Nam justo mi, dignissim a euismod ut, pretium sed leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In viverra porta est, consequat elementum metus tristique a. Mauris tempus tellus a metus dapibus faucibus egestas lectus consectetur. Integer libero dolor, luctus non congue vitae, tempus ut neque. Nunc eleifend lorem quis diam pharetra sagittis. Aliquam ut dolor dui. Fusce dictum facilisis ipsum eu porttitor. In ultricies rhoncus tortor vitae tincidunt.
-			<br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam elementum varius dapibus. Sed hendrerit porta felis at sollicitudin. Sed at nunc ac neque semper fermentum. Proin diam sem, semper fermentum eleifend nec, viverra ac est. Sed ultricies, lectus et vehicula imperdiet, felis tortor vehicula turpis, non fermentum enim est et sapien. Nam justo mi, dignissim a euismod ut, pretium sed leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In viverra porta est, consequat elementum metus tristique a. Mauris tempus tellus a metus dapibus faucibus egestas lectus consectetur. Integer libero dolor, luctus non congue vitae, tempus ut neque. Nunc eleifend lorem quis diam pharetra sagittis. Aliquam ut dolor dui. Fusce dictum facilisis ipsum eu porttitor. In ultricies rhoncus tortor vitae tincidunt.
+	<div class="container">
+		<h1>FAQ</h1>
+		<hr class="soften"/>
+		<div class="accordion" id="accordion2">
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+						How long will it take for me to receive my item(s)?
+					</a></h4>
+				</div>
+				<div id="collapseOne" class="accordion-body collapse"  >
+					<div class="accordion-inner">
+						For standard shipping, you should receive your order within 4-5 business days.
 
+					</div>
+				</div>
+			</div>
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<h4><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+						How can I check the status of my order?
+					</a></h4>
+				</div>
+				<div id="collapseTwo" class="accordion-body collapse"  >
+					<div class="accordion-inner">
+						Please contact customer service.
+					</div>
+				</div>
+			</div>
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+						How do I return my order?
+					</a></h4>
+				</div>
+				<div id="collapseThree" class="accordion-body collapse"  >
+					<div class="accordion-inner">
+						Returns and exchanges are accepted for all items within 30 days of purchase. Please contact customer service to initiate the returns process.
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+						What do I do if my order is damaged?
+					</a></h4>
+				</div>
+				<div id="collapseFour" class="accordion-body collapse"  >
+					<div class="accordion-inner">
+						We are so sorry to hear that your order arrived in less than pristine condition! Please let us make it right. Our customer service team will be more than happy to assist with processing a replacement order or issuing a refund. You should contact our customer service team to begin the refund/exchange process.
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+						Why did I only receive part of my order?
+					</a></h4>
+				</div>
+				<div id="collapseFive" class="accordion-body collapse"  >
+					<div class="accordion-inner">
+						Don't worry, it's on its way! While we do our best to ship all orders in one package, there are times when orders will ship from multiple warehouses. If you did not receive multiple tracking numbers, please reach out to our customer service team for assistance.
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+						I received the wrong goods, what do I do?
+					</a></h4>
+				</div>
+				<div id="collapseSix" class="accordion-body collapse"  >
+					<div class="accordion-inner">
+						Although we strive for perfection, we are human and sometimes the wrong items are shipped from our warehouse. We are so sorry for any inconvenience this has caused and our customer service team is here to help make things right. Please contact our customer service team via phone, email, or our contact us page, so that they can work to get you your goods as soon as possible.
+					</div>
+				</div>
+			</div>
 		</div>
-	  </div>
 	</div>
-	<div class="accordion-group">
-	  <div class="accordion-heading">
-		<h4><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-		  Collapsible Group Item #2
-		</a></h4>
-	  </div>
-	  <div id="collapseTwo" class="accordion-body collapse"  >
-		<div class="accordion-inner">
-		  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-		</div>
-	  </div>
-	</div>
-	<div class="accordion-group">
-	  <div class="accordion-heading">
-		<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-		  Collapsible Group Item #3
-		</a></h4>
-	  </div>
-	  <div id="collapseThree" class="accordion-body collapse"  >
-		<div class="accordion-inner">
-		  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-		</div>
-	  </div>
-	</div>
-	
-	<div class="accordion-group">
-	  <div class="accordion-heading">
-		<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-		  Collapsible Group Item #4
-		</a></h4>
-	  </div>
-	  <div id="collapseFour" class="accordion-body collapse"  >
-		<div class="accordion-inner">
-		  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-		</div>
-	  </div>
-	</div>
-	
-	<div class="accordion-group">
-	  <div class="accordion-heading">
-		<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
-		  Collapsible Group Item #5
-		</a></h4>
-	  </div>
-	  <div id="collapseFive" class="accordion-body collapse"  >
-		<div class="accordion-inner">
-		  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-		</div>
-	  </div>
-	</div>
-	
-	<div class="accordion-group">
-	  <div class="accordion-heading">
-		<h4><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
-		  Collapsible Group Item #6
-		</a></h4>
-	  </div>
-	  <div id="collapseSix" class="accordion-body collapse"  >
-		<div class="accordion-inner">
-		  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-		</div>
-	  </div>
-	</div>
-  </div>
-</div>
 </div>
 <!-- MainBody End ============================= -->
 
