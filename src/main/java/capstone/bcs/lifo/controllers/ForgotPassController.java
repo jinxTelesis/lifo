@@ -17,6 +17,12 @@ public class ForgotPassController {
         return "forgetpass";
     }
 
+    @RequestMapping("/products/forgetpass")
+    public String getPageHotFix(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "forgetpass";
+    }
+
 
 //    @RequestMapping("/forgetpass/{id}")
 //    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {

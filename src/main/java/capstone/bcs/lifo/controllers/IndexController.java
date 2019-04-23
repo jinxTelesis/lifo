@@ -51,6 +51,15 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping({"/products/indexRev"})
+    public String getIndexByProductCatHotFix(Model model){
+        //model.addAttribute("products", productService.getProductsByCategory(4));
+
+        model.addAttribute("products", productService.getProductsDesc());
+        model.addAttribute("LoginForm", new LoginForm());
+        return "index";
+    }
+
 //    @RequestMapping("/indexRev/{id}")
 //    public String getPageVar(HttpServletRequest request,@PathVariable("id") Integer id, Model model) {
 //        model.addAttribute("LoginForm", new LoginForm());

@@ -18,6 +18,12 @@ public class SpecialOffer {
         return "special_offer";
     }
 
+    @RequestMapping("products/special_offer")
+    public String getPageHotFix(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "special_offer";
+    }
+
 //    @RequestMapping("/special_offer/{id}")
 //    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
 //        model.addAttribute("LoginForm", new LoginForm());

@@ -18,6 +18,12 @@ public class TacController {
         return "tac";
     }
 
+    @RequestMapping("products/tac")
+    public String getPageHotFix(Model model) {
+        model.addAttribute("LoginForm", new LoginForm());
+        return "tac";
+    }
+
 //    @RequestMapping("/tac/{id}")
 //    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
 //        model.addAttribute("LoginForm", new LoginForm());

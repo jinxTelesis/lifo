@@ -17,6 +17,12 @@ public class ComponentsController {
         return "examples/components";
     }
 
+    @RequestMapping("/products/components")
+    public String getPageHotFix(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "examples/components";
+    }
+
 
 //    @RequestMapping("/components/{id}")
 //    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {

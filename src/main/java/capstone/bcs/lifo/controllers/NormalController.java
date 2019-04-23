@@ -18,6 +18,12 @@ public class NormalController {
         return "examples/normal";
     }
 
+    @RequestMapping("/prdocuts/normal")
+    public String getPageHotFix(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "examples/normal";
+    }
+
 //    @RequestMapping("/normal/{id}")
 //    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
 //        model.addAttribute("LoginForm", new LoginForm());

@@ -18,6 +18,12 @@ public class LegalNoticeController {
         return "legal_notice";
     }
 
+    @RequestMapping("products/legal_notice")
+    public String getPageHotFix(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "legal_notice";
+    }
+
 
 //    @RequestMapping("/legal_notice/{id}")
 //    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {

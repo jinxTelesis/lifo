@@ -18,6 +18,20 @@ public class ProductDetailsController {
         return "product_details";
     }
 
+    @RequestMapping("/products/product_details")
+    public String getPageHotFix(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "product_details";
+    }
+
+    @RequestMapping("/products/products/product_details")
+    public String getPageHotFix2(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "product_details";
+    }
+
+
+
 //    @RequestMapping("/product_details/{id}")
 //    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
 //        model.addAttribute("LoginForm", new LoginForm());
