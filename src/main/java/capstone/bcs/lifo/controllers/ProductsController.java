@@ -33,9 +33,44 @@ public class ProductsController {
         return "products";
     }
 
+    @RequestMapping("/products/asec")
+    public String getPageDesc(Model model){
+        //model.addAttribute("products", productService.getProducts());
+        model.addAttribute("products", productService.getProductsDesc());
+        // == second model might cause issues
+        model.addAttribute("LoginForm", new LoginForm());
+        return "products";
+    }
+
+    @RequestMapping("/products/desc")
+    public String getPageAesc(Model model){
+        //model.addAttribute("products", productService.getProducts());
+        model.addAttribute("products", productService.getProductsAsce());
+        // == second model might cause issues
+        model.addAttribute("LoginForm", new LoginForm());
+        return "products";
+    }
+
+    @RequestMapping("/products/asec/price")
+    public String getPageAescByPrice(Model model){
+        //model.addAttribute("products", productService.getProducts());
+        model.addAttribute("products", productService.getProductAsecPrice());
+        // == second model might cause issues
+        model.addAttribute("LoginForm", new LoginForm());
+        return "products";
+    }
+
+    @RequestMapping("/products/desc/price")
+    public String getPageDescByPrice(Model model){
+        //model.addAttribute("products", productService.getProducts());
+        model.addAttribute("products", productService.getProductDescPrice());
+        // == second model might cause issues
+        model.addAttribute("LoginForm", new LoginForm());
+        return "products";
+    }
 
     @RequestMapping("/products/{productCat}")
-    public String getPage(HttpServletRequest request, @PathVariable String productCat, Model model){
+    public String getPageOrder(HttpServletRequest request, @PathVariable String productCat, Model model){
         model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
         model.addAttribute("LoginForm", new LoginForm());
         String referer = request.getHeader("Referer");

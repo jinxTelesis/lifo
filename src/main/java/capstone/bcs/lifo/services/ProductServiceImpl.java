@@ -51,6 +51,23 @@ public class ProductServiceImpl implements ProductService {
         return productSet;
     }
 
+    @Override
+    public List<Product> getProductAsecPrice(){
+        List<Product> productList = new ArrayList<>();
+        productRepository.findAll().iterator().forEachRemaining(productList::add);
+        Collections.sort(productList, new AlphaNumericComparatorAsec());
+        return productList;
+    }
+
+    @Override
+    public List<Product> getProductDescPrice(){
+        List<Product> productList = new ArrayList<>();
+        productRepository.findAll().iterator().forEachRemaining(productList::add);
+        Collections.sort(productList, new AlphaNumericComparatorDesc());
+        return productList;
+    }
+
+
     @SuppressWarnings("unchecked")
     @Override
     public List<Product> getProductsAsce() {
@@ -107,6 +124,33 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
+    class AlphaNumericComparatorAsec implements Comparator<Product>
+    {
+        @Override
+        public int compare(Product o1, Product o2) {
+            if(o1.getProductPrice() == o2.getProductPrice())
+            {
+                return 0;
+            }else if(o1.getProductPrice() < o2.getProductPrice()){
+                return -1;
+            }
+            return 1;
+        }
+    }
+
+    class AlphaNumericComparatorDesc implements Comparator<Product>
+    {
+        @Override
+        public int compare(Product o1, Product o2) {
+            if(o1.getProductPrice() == o2.getProductPrice())
+            {
+                return 0;
+            }else if(o1.getProductPrice() < o2.getProductPrice()){
+                return 1;
+            }
+            return -1;
+        }
+    }
 
 
     class LexicographicComparator implements Comparator<Product>
