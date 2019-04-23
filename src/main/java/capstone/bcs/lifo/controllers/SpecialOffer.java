@@ -18,12 +18,12 @@ public class SpecialOffer {
         return "special_offer";
     }
 
-    @RequestMapping("/special_offer/{id}")
-    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-        model.addAttribute("LoginForm", new LoginForm());
-        String referer = request.getHeader("Referer"); // if change needed
-        return "redirect:" + "special_offer";
-    }
+//    @RequestMapping("/special_offer/{id}")
+//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        String referer = request.getHeader("Referer"); // if change needed
+//        return "redirect:" + "special_offer";
+//    }
 
 
 }

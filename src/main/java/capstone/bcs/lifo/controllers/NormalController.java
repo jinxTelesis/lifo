@@ -18,10 +18,10 @@ public class NormalController {
         return "examples/normal";
     }
 
-    @RequestMapping("/normal/{id}")
-    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-        model.addAttribute("LoginForm", new LoginForm());
-        return "redirect:" + "examples/normal";
-    }
+//    @RequestMapping("/normal/{id}")
+//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "redirect:" + "examples/normal";
+//    }
 
 }

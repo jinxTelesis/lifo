@@ -18,11 +18,11 @@ public class TacController {
         return "tac";
     }
 
-    @RequestMapping("/tac/{id}")
-    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-        model.addAttribute("LoginForm", new LoginForm());
-        String referer = request.getHeader("Referer");
-        return "redirect:" + "tac";
-    }
+//    @RequestMapping("/tac/{id}")
+//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        String referer = request.getHeader("Referer");
+//        return "redirect:" + "tac";
+//    }
 
 }

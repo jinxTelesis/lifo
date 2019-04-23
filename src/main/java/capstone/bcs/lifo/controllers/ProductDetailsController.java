@@ -18,11 +18,11 @@ public class ProductDetailsController {
         return "product_details";
     }
 
-    @RequestMapping("/product_details/{id}")
-    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-        model.addAttribute("LoginForm", new LoginForm());
-        return "redirect:" + "product_details";
-    }
+//    @RequestMapping("/product_details/{id}")
+//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "redirect:" + "product_details";
+//    }
 
 
 }

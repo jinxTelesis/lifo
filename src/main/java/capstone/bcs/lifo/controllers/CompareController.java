@@ -19,11 +19,11 @@ public class CompareController {
     }
 
     // == test remove right away == //
-    @RequestMapping("/compare/{id}")
-    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-        model.addAttribute("LoginForm", new LoginForm());
-        return "redirect:" + "/compare";
-    }
+//    @RequestMapping("/compare/{id}")
+//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "redirect:" + "/compare";
+//    }
 
 
 }

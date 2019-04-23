@@ -19,10 +19,10 @@ public class LegalNoticeController {
     }
 
 
-    @RequestMapping("/legal_notice/{id}")
-    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-        model.addAttribute("LoginForm", new LoginForm());
-        return "redirect:" + "/legal_notice";
-    }
+//    @RequestMapping("/legal_notice/{id}")
+//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "redirect:" + "/legal_notice";
+//    }
 
 }
