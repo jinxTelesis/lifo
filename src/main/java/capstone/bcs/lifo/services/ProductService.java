@@ -13,6 +13,10 @@ public interface ProductService {
 
     Set<Product> getProductSet();
 
+    List<Product> getProductAsecPrice();
+
+    List<Product> getProductDescPrice();
+
     List<Product> getProductsAsce();
 
     List<Product> getProductsDesc();

@@ -43,44 +43,51 @@ public class CartController {
 
     // == this needs to be remove at some point
     @RequestMapping({"/cart/product_summary"})
-    public String hotFix(Model model, HttpSession session)
-    {
-        System.out.println("cart button worked!");
+    public String hotFix(Model model, HttpSession session) {
+        model.addAttribute("LoginForm", new LoginForm());
+        return "product_summary";
+    }
+
+    // == to fix this correctly need to put in controller request mapping order
+    // == link can be found at https://stackoverflow.com/questions/17374549/spring-set-handlermapping-priority
+    // == this needs to be removed at some point
+    @RequestMapping({"/products/product_summary"})
+    public String hotFix2(Model model, HttpSession session) {
         model.addAttribute("LoginForm", new LoginForm());
         return "product_summary";
     }
 
 
-    @RequestMapping("/cart/{id}")
-    public String getPageVar(HttpServletRequest request,HttpSession session,@PathVariable("id") String id, Model model) {
-        String referer = request.getHeader("Referer");
-        model.addAttribute("LoginForm", new LoginForm());
+//    @RequestMapping("/cart/{id}")
+//    public String getPageVar(HttpServletRequest request,HttpSession session,@PathVariable("id") String id, Model model) {
+//        String referer = request.getHeader("Referer");
+//        model.addAttribute("LoginForm", new LoginForm());
+//
+//
+//        //Cart cart = null;
+//        SimpleCart cart = null;
+//
+//        if(session.getAttribute("cart") != null)
+//        {
+//            //cart = (Cart)session.getAttribute("cart");
+//            cart = (SimpleCart)session.getAttribute("cart");
+//        }else{
+//            System.out.println("you need to login first buddy from /cart/{id}!");
+//            //return "redirect:" + "product_summary";
+//            return "invalid_product_summary";
+//        }
+//
+//        //return "product_summary";
+//        return "redirect:" + "product_summary";
+//    }
 
-
-        //Cart cart = null;
-        SimpleCart cart = null;
-
-        if(session.getAttribute("cart") != null)
-        {
-            //cart = (Cart)session.getAttribute("cart");
-            cart = (SimpleCart)session.getAttribute("cart");
-        }else{
-            System.out.println("you need to login first buddy from /cart/{id}!");
-            //return "redirect:" + "product_summary";
-            return "invalid_product_summary";
-        }
-
-        //return "product_summary";
-        return "redirect:" + "product_summary";
-    }
-
-    @RequestMapping("/cart/{ida}/{idb}")
-    public String getPageVarVar(HttpServletRequest request,@PathVariable("ida") String id,@PathVariable("idb") String idb, Model model) {
-        String referer = request.getHeader("Referer");
-        model.addAttribute("LoginForm", new LoginForm());
-        //return "/product_summary";
-        return "product_summary";
-    }
+//    @RequestMapping("/cart/{ida}/{idb}")
+//    public String getPageVarVar(HttpServletRequest request,@PathVariable("ida") String id,@PathVariable("idb") String idb, Model model) {
+//        String referer = request.getHeader("Referer");
+//        model.addAttribute("LoginForm", new LoginForm());
+//        //return "/product_summary";
+//        return "product_summary";
+//    }
 
     @RequestMapping("/cart/{ida}/{idb}/{idc}")
     public String getPageVarVarVar(HttpServletRequest request,HttpSession session,@PathVariable("ida") String ida,
