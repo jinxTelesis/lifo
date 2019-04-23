@@ -18,10 +18,10 @@ public class ComponentsController {
     }
 
 
-    @RequestMapping("/components/{id}")
-    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-        model.addAttribute("LoginForm", new LoginForm());
-        return "redirect:" + "/components";
-    }
+//    @RequestMapping("/components/{id}")
+//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "redirect:" + "/components";
+//    }
 
 }

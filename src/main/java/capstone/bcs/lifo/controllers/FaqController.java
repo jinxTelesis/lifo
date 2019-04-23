@@ -18,11 +18,11 @@ public class FaqController {
         return "faq";
     }
 
-    @RequestMapping("/faq/{id}")
-    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-        model.addAttribute("LoginForm", new LoginForm());
-        return "redirect:" + "/faq";
-    }
+//    @RequestMapping("/faq/{id}")
+//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "redirect:" + "/faq";
+//    }
 
 
 }

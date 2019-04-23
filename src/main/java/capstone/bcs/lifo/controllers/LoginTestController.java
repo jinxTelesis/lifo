@@ -36,11 +36,11 @@ public class LoginTestController {
         return "loginstart";
     }
 
-    @RequestMapping("/loginstart/{id}")
-    public String getPageVar(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("LoginForm", new LoginForm());
-        return "loginstart";
-    }
+//    @RequestMapping("/loginstart/{id}")
+//    public String getPageVar(@PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "loginstart";
+//    }
 
     @RequestMapping("/unauthorized_user")
     public String invalidUser(){

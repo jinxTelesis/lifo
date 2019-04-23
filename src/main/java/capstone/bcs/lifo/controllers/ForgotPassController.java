@@ -18,10 +18,10 @@ public class ForgotPassController {
     }
 
 
-    @RequestMapping("/forgetpass/{id}")
-    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-        model.addAttribute("LoginForm", new LoginForm());
-        return "redirect:" + "/forgetpass";
-    }
+//    @RequestMapping("/forgetpass/{id}")
+//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "redirect:" + "/forgetpass";
+//    }
 
 }

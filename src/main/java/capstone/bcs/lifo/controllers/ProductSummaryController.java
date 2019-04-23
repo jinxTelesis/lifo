@@ -38,11 +38,11 @@ public class ProductSummaryController {
     }
 
     // == test controller remove after ==
-    @RequestMapping("/product_summary/{id}")
-    public String getPageVar(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("LoginForm", new LoginForm());
-        return "product_summary";
-    }
+//    @RequestMapping("/product_summary/{id}")
+//    public String getPageVar(@PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "product_summary";
+//    }
 
     @RequestMapping("/loginproduct_summary")
     public String getPageLoginInvalid(Model model){

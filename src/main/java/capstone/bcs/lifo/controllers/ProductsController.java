@@ -5,8 +5,10 @@ import capstone.bcs.lifo.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,14 +35,37 @@ public class ProductsController {
 
 
     @RequestMapping("/products/{productCat}")
-    public String getPage(HttpServletRequest request,@PathVariable String productCat, Model model){
+    public String getPage(HttpServletRequest request, @PathVariable String productCat, Model model){
         model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
         model.addAttribute("LoginForm", new LoginForm());
         String referer = request.getHeader("Referer");
         //model.addAttribute("products",productService.getProducts());
+//        String newUrl = request.getRequestURI();
+//        newUrl.replace("/products","");
+//        newUrl.replace("1","");
+//        newUrl.replace("0","");
+//        newUrl.replace("/","");
+//
+//        return newUrl;
         return "products";
-        //return "redirect:" +referer;
     }
+
+//    @RequestMapping("/products/**")
+//    public String getPageAnt(Model model,HttpServletRequest request){
+//        model.addAttribute("LoginForm", new LoginForm());
+//        System.out.println(request.getRequestURI());
+////        String what = request.getHeader("contact");
+////        System.out.println("this is getHeader" + what);
+////        System.out.println(request.getContextPath());
+////        long what2 = request.getDateHeader("contact");
+////        System.out.println("this is getDateHeader" + what2);
+//        String newUrl = request.getRequestURI();
+//        newUrl.replace("/products","");
+//        return newUrl;
+//    }
+
+
+
 
 
 //    @RequestMapping("/products_accessories")

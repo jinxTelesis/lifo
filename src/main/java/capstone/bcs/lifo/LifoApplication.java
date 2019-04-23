@@ -18,4 +18,5 @@ public class LifoApplication {
         SpringApplication.run(LifoApplication.class, args);
 
     }
+
 }
