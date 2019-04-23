@@ -18,6 +18,19 @@ public class CompareController {
         return "compare";
     }
 
+    @RequestMapping("/compare.html")
+    public String getPage2(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "compare";
+    }
+
+    @RequestMapping("/products/compare")
+    public String getPageHotFix(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "compare";
+    }
+
+
     // == test remove right away == //
 //    @RequestMapping("/compare/{id}")
 //    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {

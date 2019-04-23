@@ -18,6 +18,12 @@ public class ContactController {
         return "contact";
     }
 
+    @RequestMapping("/products/contact")
+    public String getPageHotFix(Model model){
+        model.addAttribute("LoginForm", new LoginForm());
+        return "contact";
+    }
+
 //    @RequestMapping("/contact/{id}")
 //    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
 //        model.addAttribute("LoginForm", new LoginForm());

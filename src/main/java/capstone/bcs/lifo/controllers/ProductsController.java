@@ -33,6 +33,15 @@ public class ProductsController {
         return "products";
     }
 
+    @RequestMapping("/products/products")
+    public String getPageHotFix(Model model){
+        //model.addAttribute("products", productService.getProducts());
+        model.addAttribute("products",productService.getProductSet());
+        // == second model might cause issues
+        model.addAttribute("LoginForm", new LoginForm());
+        return "products";
+    }
+
     @RequestMapping("/products/asec")
     public String getPageDesc(Model model){
         //model.addAttribute("products", productService.getProducts());

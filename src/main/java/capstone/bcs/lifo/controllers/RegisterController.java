@@ -51,6 +51,14 @@ public class RegisterController {
         return "register";
     }
 
+    @RequestMapping("/products/register")
+    public String oldCustomerHotFix(Model model){
+        System.out.println("the general page got called");
+        model.addAttribute("registrationForm", new RegistrationForm());
+        model.addAttribute("LoginForm", new LoginForm());
+        return "register";
+    }
+
     @RequestMapping("/register/{id}")
     public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
         model.addAttribute("LoginForm", new LoginForm());

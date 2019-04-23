@@ -29,10 +29,16 @@ public class ProductControllerNOTPRODUCTS {
     }
 
     @RequestMapping("/product/{id}")
-    public String getProductById(HttpServletRequest request, @PathVariable Integer id, Model model){
-        model.addAttribute("product", productService.findById(Integer.toUnsignedLong(id)));
+    public String getProductByIdHotFix(HttpServletRequest request, @PathVariable String id, Model model){
+
+        if(id.equals("product"))
+        {
+            model.addAttribute("product",productService.findById(1l));
+            return "product";
+        }
+        model.addAttribute("product", productService.findById(Integer.toUnsignedLong(Integer.parseInt(id))));
         model.addAttribute("LoginForm", new LoginForm());
-        return "redirect:" + "product";
+        return "product";
     }
 
 
