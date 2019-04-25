@@ -2,7 +2,6 @@ package capstone.bcs.lifo.controllers;
 
 import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.CartV2;
-import capstone.bcs.lifo.repositories.CartRespository;
 import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
 import org.springframework.stereotype.Controller;
@@ -19,12 +18,10 @@ public class CartController {
 
     private ProductService productService;
     private CartService cartService;
-    private CartRespository cartRespository;
 
-    CartController(ProductService productService,CartRespository cartRespository){
+    CartController(ProductService productService){
         this.productService = productService;
         this.cartService = cartService;
-        this.cartRespository = cartRespository;
     }
 
     @RequestMapping({"/cart"})

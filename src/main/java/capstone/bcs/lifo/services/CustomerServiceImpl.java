@@ -4,16 +4,11 @@ import capstone.bcs.lifo.Exceptions.NotFoundException;
 import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.converters.RegistrationFormToCustomerNAccount;
 import capstone.bcs.lifo.model.Account;
-import capstone.bcs.lifo.model.CustomerOld;
 import capstone.bcs.lifo.model.CustomerV2;
-import capstone.bcs.lifo.repositories.CartProductV2Repository;
-import capstone.bcs.lifo.repositories.CustomerRepository;
 import capstone.bcs.lifo.repositories.CustomerV2Repository;
 import org.springframework.stereotype.Service;
 
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

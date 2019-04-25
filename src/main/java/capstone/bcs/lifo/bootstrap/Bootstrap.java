@@ -1,7 +1,7 @@
 package capstone.bcs.lifo.bootstrap;
 
 import capstone.bcs.lifo.model.*;
-import capstone.bcs.lifo.repositories.CustomerRepository;
+import capstone.bcs.lifo.repositories.CustomerV2Repository;
 import capstone.bcs.lifo.repositories.OrderDetailRepository;
 import capstone.bcs.lifo.repositories.ProductRepository;
 import org.springframework.context.ApplicationListener;
@@ -23,7 +23,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     // == testing remove ==
     //private final CustomerRepository customerRepository;
 
-    public Bootstrap(ProductRepository productRepository, OrderDetailRepository orderDetailRepository, CustomerRepository customerRepository) {
+    public Bootstrap(ProductRepository productRepository, OrderDetailRepository orderDetailRepository, CustomerV2Repository customerV2Repository) {
         this.productRepository = productRepository;
         //this.accountRepository = accountRepository;
         //this.orderRepository = orderRepository;
@@ -849,10 +849,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         return products;
     }
 
-    private List<CustomerOld> getCustomers()
+    private List<CustomerV2> getCustomers()
     {
-        List<CustomerOld> customers = new ArrayList<>();
-        CustomerOld customer1 = new CustomerOld();
+        List<CustomerV2> customers = new ArrayList<>();
+        CustomerV2 customer1 = new CustomerV2();
 
         Account account = new Account();
         account.setUsername("biff");

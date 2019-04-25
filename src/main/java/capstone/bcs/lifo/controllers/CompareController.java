@@ -4,15 +4,12 @@ package capstone.bcs.lifo.controllers;
 import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.*;
 import capstone.bcs.lifo.repositories.CartProductV2Repository;
-import capstone.bcs.lifo.repositories.CartRespository;
 import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.repositories.CustomerV2Repository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Controller

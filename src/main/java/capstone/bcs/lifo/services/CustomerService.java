@@ -1,7 +1,6 @@
 package capstone.bcs.lifo.services;
 
 import capstone.bcs.lifo.commands.RegistrationForm;
-import capstone.bcs.lifo.model.CustomerOld;
 import capstone.bcs.lifo.model.CustomerV2;
 
 import java.util.List;
