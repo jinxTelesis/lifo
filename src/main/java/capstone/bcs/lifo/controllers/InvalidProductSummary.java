@@ -1,9 +1,7 @@
 package capstone.bcs.lifo.controllers;
 
 import capstone.bcs.lifo.commands.LoginForm;
-import capstone.bcs.lifo.model.Account;
-import capstone.bcs.lifo.model.Cart;
-import capstone.bcs.lifo.model.Customer;
+import capstone.bcs.lifo.model.*;
 import capstone.bcs.lifo.services.CustomerService;
 import capstone.bcs.lifo.services.PasswordEncryptionService;
 import org.springframework.stereotype.Controller;
@@ -67,27 +65,28 @@ public class InvalidProductSummary {
                 try{
                     // in the database just called username
 
-                    Customer localCust;
-                    localCust = customerService.getByUserName(loginForm.getUserName());
+
+                    CustomerV2 customerV2;
+                    customerV2 = customerService.getByUserName(loginForm.getUserName());
                     System.out.println(loginForm.getUserName()); // valid here form works
 
-
-                    if(localCust.getpFirstName() == "")
+                    if(customerV2.getpFirstName() == "")
                     {
                         System.out.println("it was null");
                     }
 
-                    Account localAccount = localCust.getAccount();
+                    Account localAccount = customerV2.getAccount();
 
                     if(passwordEncryptionService.checkPassword(loginForm.getPasswordPlain(),localAccount.getEncryptedPassword()))
                     {
                         System.out.println("Valid user");
-                        Cart cart = new Cart();
-                        session.setAttribute("cart", cart);
+                        //CartOld cart = new CartOld();
+                        CartV2 cartV2 = new CartV2();
+                        session.setAttribute("cart",cartV2);
                         return "success";
                     }
                     else {
-                        System.out.println("login password invalid");
+                        System.out.println("login password inval id");
                         return "invalid_product_summary";
                     }
 

@@ -51,6 +51,10 @@ public class Product implements Comparator<Product>{
         this.description3 = description3;
     }
 
+    public Product(Long id) {
+        this.id = id;
+    }
+
 
     public String getProductName() {
         return productName;

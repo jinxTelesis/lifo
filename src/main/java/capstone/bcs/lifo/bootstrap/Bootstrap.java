@@ -1,7 +1,7 @@
 package capstone.bcs.lifo.bootstrap;
 
 import capstone.bcs.lifo.model.*;
-import capstone.bcs.lifo.repositories.CustomerRepository;
+import capstone.bcs.lifo.repositories.CustomerV2Repository;
 import capstone.bcs.lifo.repositories.OrderDetailRepository;
 import capstone.bcs.lifo.repositories.ProductRepository;
 import org.springframework.context.ApplicationListener;
@@ -23,7 +23,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     // == testing remove ==
     //private final CustomerRepository customerRepository;
 
-    public Bootstrap(ProductRepository productRepository, OrderDetailRepository orderDetailRepository, CustomerRepository customerRepository) {
+    public Bootstrap(ProductRepository productRepository, OrderDetailRepository orderDetailRepository, CustomerV2Repository customerV2Repository) {
         this.productRepository = productRepository;
         //this.accountRepository = accountRepository;
         //this.orderRepository = orderRepository;
@@ -849,10 +849,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         return products;
     }
 
-    private List<Customer> getCustomers()
+    private List<CustomerV2> getCustomers()
     {
-        List<Customer> customers = new ArrayList<>();
-        Customer customer1 = new Customer();
+        List<CustomerV2> customers = new ArrayList<>();
+        CustomerV2 customer1 = new CustomerV2();
 
         Account account = new Account();
         account.setUsername("biff");
@@ -894,7 +894,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         jimsAccount.setActive(true);
         jimsAccount.setUsername("Biffman1000");
         jimsAccount.setUsername("macNCheese");
-        jimsAccount.setUserRole("Customer");
+        jimsAccount.setUserRole("CustomerOld");
 
         accounts.add(jimsAccount);
 
@@ -902,7 +902,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         bethsAccount.setActive(true);
         bethsAccount.setUsername("Chelseaseasea");
         bethsAccount.setUserRole("lovethatmacnCheese");
-        bethsAccount.setUserRole("Customer");
+        bethsAccount.setUserRole("CustomerOld");
 
         accounts.add(bethsAccount);
 

@@ -1,15 +1,14 @@
 package capstone.bcs.lifo.services;
 
-import capstone.bcs.lifo.model.Cart;
-import capstone.bcs.lifo.model.Order;
+import capstone.bcs.lifo.model.CartV2;
 
 import java.util.List;
 
 public interface CartService {
 
-    List<Cart> getCarts();
+    List<CartV2> getCarts();
 
-    Cart findById(Long l);
+    CartV2 findById(Long l);
 
     void deleteById(Long idToDelete);
 }

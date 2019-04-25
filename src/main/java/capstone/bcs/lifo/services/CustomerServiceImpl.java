@@ -4,105 +4,93 @@ import capstone.bcs.lifo.Exceptions.NotFoundException;
 import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.converters.RegistrationFormToCustomerNAccount;
 import capstone.bcs.lifo.model.Account;
-import capstone.bcs.lifo.model.Customer;
-import capstone.bcs.lifo.repositories.CustomerRepository;
-import org.hibernate.Session;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import capstone.bcs.lifo.model.CustomerV2;
+import capstone.bcs.lifo.repositories.CustomerV2Repository;
 import org.springframework.stereotype.Service;
 
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
     private final PasswordEncryptionService passwordEncryptionService;
-    private final CustomerRepository customerRepository;
+    private final CustomerV2Repository customerV2Repository;
     private final RegistrationFormToCustomerNAccount registrationFormToCustomerNAccount;
-    protected EntityManagerFactory entityManagerFactory;
 
 
     // == this is not being used right now ==
-    @PersistenceUnit
-    public void setEmf(EntityManagerFactory entityManagerFactory) {
-        this.entityManagerFactory = entityManagerFactory;
-    }
 
 
-    public CustomerServiceImpl(PasswordEncryptionService passwordEncryptionService, CustomerRepository customerRepository, RegistrationFormToCustomerNAccount registrationFormToCustomerNAccount) {
+
+    public CustomerServiceImpl(PasswordEncryptionService passwordEncryptionService, RegistrationFormToCustomerNAccount registrationFormToCustomerNAccount
+    ,CustomerV2Repository customerV2Repository) {
         this.passwordEncryptionService = passwordEncryptionService;
-        this.customerRepository = customerRepository;
         this.registrationFormToCustomerNAccount = registrationFormToCustomerNAccount;
+        this.customerV2Repository = customerV2Repository;
     }
 
     @Override
-    public List<Customer> getCustomers() {
-        List<Customer> customersList = new ArrayList<>();
-        customerRepository.findAll().iterator().forEachRemaining(customersList::add);
+    public List<CustomerV2> getCustomers() {
+        List<CustomerV2> customersList = new ArrayList<>();
+        //customerRepository.findAll().iterator().forEachRemaining(customersList::add);
+        customerV2Repository.findAll().iterator().forEachRemaining(customersList::add);
         return customersList;
     }
 
 
     @Override
-    public Customer getById(Long l) {
-        Optional<Customer> customerOptional = customerRepository.findById(l);
+    public CustomerV2 getById(Long l) {
+        Optional<CustomerV2> customerV2Optional = customerV2Repository.findById(l);
 
-        if (!customerOptional.isPresent()) {
+        if (!customerV2Optional.isPresent()) {
             throw new NotFoundException();
         }
-        return customerOptional.get();
+        return customerV2Optional.get();
     }
 
     @Override
-    public Customer saveOrUpdateRegistrationForm(RegistrationForm registrationForm) {
+    public CustomerV2 saveOrUpdateRegistrationForm(RegistrationForm registrationForm) {
         RegistrationFormToCustomerNAccount registrationFormToCustomerNAccount = new RegistrationFormToCustomerNAccount();
 
         // prob have to check some stuff here still
-        Customer customer = registrationFormToCustomerNAccount.convert(registrationForm);
-        Account account = customer.getAccount();
+        //CustomerOld customer = registrationFormToCustomerNAccount.convert(registrationForm);
+        CustomerV2 customerV2 = registrationFormToCustomerNAccount.convert(registrationForm);
+        Account account = customerV2.getAccount();
+        // Account account = customer.getAccount();
         account.setEncryptedPassword(passwordEncryptionService.encryptString(account.getPassword()));
-        customerRepository.save(customer);
 
-        return customer;
+        customerV2Repository.save(customerV2);
+        return customerV2;
     }
 
     @Override
-    public Customer saveOrUpdate(Customer customer) {
-
-
+    public CustomerV2 saveOrUpdate(CustomerV2 customer) {
         // wait for the forms be completed hard to test like this
-        return customerRepository.save(customer);
+        return customerV2Repository.save(customer);
     }
 
 
     @Override
     public void delete(Long l) {
-        customerRepository.deleteById(l);
-
+        customerV2Repository.deleteById(l);
     }
 
     // remove this soon
     @Override
-    public Customer getByUserName(String userName) {
+    public CustomerV2 getByUserName(String userName) {
         // write this to service layer
-        List<Customer> customersList = new ArrayList<>();
-        customerRepository.findAll().iterator().forEachRemaining(customersList::add);
-        //customersList.forEach(customer -> customer.getpFirstName());
+        List<CustomerV2> customersList = new ArrayList<>();
+        customerV2Repository.findAll().iterator().forEachRemaining(customersList::add);
 
-        List<Customer> customerResultList = customersList.stream()
-                .filter(customer -> customer.getAccount().getUsername().equals(userName))
+        List<CustomerV2> customerV2ResultList = customersList.stream()
+                .filter(customerV2 -> customerV2.getAccount().getUsername().equals(userName))
                 .collect(Collectors.toList());
+        CustomerV2 customerV2Return = customerV2ResultList.get(0);
 
-        Customer customerReturn = customerResultList.get(0);
-
-        return customerReturn;
+        return customerV2Return;
     }
 }
