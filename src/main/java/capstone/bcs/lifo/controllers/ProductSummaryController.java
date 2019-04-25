@@ -80,8 +80,19 @@ public class ProductSummaryController {
                 if(passwordEncryptionService.checkPassword(loginForm.getPasswordPlain(),localAccount.getEncryptedPassword()))
                 {
                     System.out.println("Valid user");
-                    CartV2 cartV2 = new CartV2();
+                    CartV2 cartV2 = new CartV2(); // this is just an empty cart right now dingus
+                    localCustV2.getAccount();
+                    System.out.println(localCustV2.getAccount().getUsername() + " nothing printed"); // curious is this has any data
+                    cartV2.setCustomerV2(localCustV2); // this will set just the customer
+
                     session.setAttribute("cart",cartV2);
+
+                    // retrevial of data attempt
+                    CartV2 cart3 = new CartV2();
+                    cart3 = (CartV2)session.getAttribute("cart");
+
+                    System.out.println(cart3.getCustomerV2().getpFirstName() + " this is the session information in the password service");
+
                     // make a real save to cart here???
                     return "success";
                 }

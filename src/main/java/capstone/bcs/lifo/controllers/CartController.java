@@ -1,9 +1,13 @@
 package capstone.bcs.lifo.controllers;
 
 import capstone.bcs.lifo.commands.LoginForm;
+import capstone.bcs.lifo.model.CartProductV2;
 import capstone.bcs.lifo.model.CartV2;
+import capstone.bcs.lifo.model.CustomerV2;
+import capstone.bcs.lifo.model.Product;
 import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Controller
@@ -19,7 +25,9 @@ public class CartController {
     private ProductService productService;
     private CartService cartService;
 
-    CartController(ProductService productService){
+    // == autowired for intention only ==
+    @Autowired
+    CartController(ProductService productService, CartService cartService){
         this.productService = productService;
         this.cartService = cartService;
     }
@@ -106,7 +114,6 @@ public class CartController {
 
         if(session.getAttribute("cart") != null)
         {
-            //cart = (CartOld) session.getAttribute("cart");
             cartV2 = (CartV2) session.getAttribute("cart");
         }else{
             System.out.println("you need to login first buddy from cart/{ida}/{idb}/{idc}!");
@@ -136,73 +143,65 @@ public class CartController {
 
         }
 
-        if(a == 2)
+        if(a == 2) // a is operation b is the product number
         {
             System.out.println("got to the write product block");
-            // add product block // b is the number of the operation
-            // need a null operator here
-//            CartOld dbCart = cartService.findById(1l); // this is just hardcoded to first account for now
-//            Product productToAdd = null;
-//            List<Integer> productIdList = new ArrayList<>(100);
-//            List<Double> priceList = new ArrayList<>(100);
-//            List<Integer> numList = new ArrayList<>(100);
-//
-//            for(int i =0; i < 100;i++)
+
+            CartV2 localCart = null;
+
+            // wtf was the problem then ???
+            System.out.println(cartV2.getCustomerV2().getpFirstName() + " this is from cart");
+            System.out.println(cartV2.getCustomerV2().getAccount().getUsername() + " this is from cart");
+            System.out.println(cartV2.getCustomerV2().getpDoB());
+
+            CustomerV2 localCust = cartV2.getCustomerV2();
+            System.out.println(localCust.getAccount().getUsername() + "this is from locatlCust");
+            System.out.println(localCust.getCustomerId() + "this is the user id ");
+
+
+            // this is from database rather than session
+            localCart = cartService.findById(1l);
+
+
+
+            Set<CartProductV2> productSetLocal = new HashSet<>();
+
+            // this is the database cart retreived by the session cart info
+            // this will get existing products in the cart
+            productSetLocal = localCart.getProductSet();
+
+            CartProductV2 cartProductV2 = new CartProductV2(); // the product created
+
+            // retrieve the product data from the product database
+            Product productInfoLocal = productService.findById(b.longValue());
+            System.out.println(productInfoLocal.getId() + " this is the product id");
+
+            cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
+            cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
+            cartProductV2.setProductNumber(1);
+
+            // product already contained
+//            if(productSetLocal.contains(cartProductV2)) {
+//                cartProductV2 = productSetLocal;
+//            } else
 //            {
-//                productIdList.add(0);
+//                productSetLocal.add(cartProductV2);
 //            }
+
+
+//            cartProductV2.setProductId(1);
+//            cartProductV2.setProductPrice(9.99);
+//            cartProductV2.setProductNumber(3);
+//            cartProductV2.setCartV2(cartV2);
+//            productSet.add(cartProductV2);
 //
-//            for(int i = 0; i < 100;i++)
-//            {
-//                priceList.add(0.0);
-//            }
-//
-//            for(int i = 0; i < 100;i++)
-//            {
-//                numList.add(0);
-//            }
-//
-//            System.out.println(priceList.size());
+//            cartV2.setProductSet(productSet);
+//            cartV2.setCustomerV2(customerV2);
 //
 //
 //
-//            // this will bring the requested product via the code
-//            productToAdd = productService.findById(Integer.toUnsignedLong(b));
-//            System.out.println("the product id that will be added is : " + productToAdd.getId());
-//
-//
-//            // this will get the product list out of the repo
-//            //productList = cartService.getProductsByCartId(1l);
-//            productIdList.add(productToAdd.getId().intValue(),productToAdd.getId().intValue());
-//
-//            // adds the product via it product ind as an index
-//
-//            // this failed you tried to add to empty list
-//
-//
-//            // this will get the product price
-//            Double productPrice = 0.0;
-//            productPrice = productToAdd.getProductPrice();
-//
-//
-//            // gets existing product list
-//
-//            // adds the price via it product ind as an index
-//            priceList.add(productToAdd.getId().intValue(),productPrice);
-//
-//            Integer productNum = 0;
-//            productNum++;
-//            numList.add(productToAdd.getId().intValue(),productNum);
-//
-//
-//
-//            dbCart.setProductID(productIdList);
-//            dbCart.setProductPrices(priceList);
-//            dbCart.setProductNum(numList);
-//
-//            // this won't work properly it will keep creating new cart objects user logging in and out won't
-//            // get the previous cart
-//            cartRespository.save(dbCart);
+//            cartV2Repository.save(cartV2);
+
         }
 
         if(a == 3)
