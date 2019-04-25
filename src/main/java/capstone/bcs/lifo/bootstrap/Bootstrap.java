@@ -849,10 +849,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         return products;
     }
 
-    private List<Customer> getCustomers()
+    private List<CustomerOld> getCustomers()
     {
-        List<Customer> customers = new ArrayList<>();
-        Customer customer1 = new Customer();
+        List<CustomerOld> customers = new ArrayList<>();
+        CustomerOld customer1 = new CustomerOld();
 
         Account account = new Account();
         account.setUsername("biff");
@@ -894,7 +894,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         jimsAccount.setActive(true);
         jimsAccount.setUsername("Biffman1000");
         jimsAccount.setUsername("macNCheese");
-        jimsAccount.setUserRole("Customer");
+        jimsAccount.setUserRole("CustomerOld");
 
         accounts.add(jimsAccount);
 
@@ -902,7 +902,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         bethsAccount.setActive(true);
         bethsAccount.setUsername("Chelseaseasea");
         bethsAccount.setUserRole("lovethatmacnCheese");
-        bethsAccount.setUserRole("Customer");
+        bethsAccount.setUserRole("CustomerOld");
 
         accounts.add(bethsAccount);
 

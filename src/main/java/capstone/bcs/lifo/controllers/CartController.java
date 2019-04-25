@@ -1,8 +1,9 @@
 package capstone.bcs.lifo.controllers;
 
 import capstone.bcs.lifo.commands.LoginForm;
-import capstone.bcs.lifo.model.Product;
-import capstone.bcs.lifo.model.SimpleCart;
+import capstone.bcs.lifo.model.CartV2;
+import capstone.bcs.lifo.repositories.CartRespository;
+import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,15 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+
 
 @Controller
 public class CartController {
 
     private ProductService productService;
+    private CartService cartService;
+    private CartRespository cartRespository;
 
-    CartController(ProductService productService){
+    CartController(ProductService productService,CartRespository cartRespository){
         this.productService = productService;
+        this.cartService = cartService;
+        this.cartRespository = cartRespository;
     }
 
     @RequestMapping({"/cart"})
@@ -29,9 +34,10 @@ public class CartController {
 
         if(session.getAttribute("cart") != null)
         {
-            SimpleCart cart = null;
-            //Cart cart = null;
-            cart = (SimpleCart)session.getAttribute("cart");
+            //CartOld cart = null;
+            CartV2 cartV2 = null;
+
+            cartV2 = (CartV2) session.getAttribute("cart");
             System.out.println("got the cart!!!!");
         }else{
             System.out.println("you need to login first buddy!");
@@ -64,12 +70,12 @@ public class CartController {
 //        model.addAttribute("LoginForm", new LoginForm());
 //
 //
-//        //Cart cart = null;
+//        //CartOld cart = null;
 //        SimpleCart cart = null;
 //
 //        if(session.getAttribute("cart") != null)
 //        {
-//            //cart = (Cart)session.getAttribute("cart");
+//            //cart = (CartOld)session.getAttribute("cart");
 //            cart = (SimpleCart)session.getAttribute("cart");
 //        }else{
 //            System.out.println("you need to login first buddy from /cart/{id}!");
@@ -94,21 +100,22 @@ public class CartController {
                                    @PathVariable("idb") String idb,@PathVariable("idc") String idc, Model model) throws Exception {
         String referer = request.getHeader("Referer");
         model.addAttribute("LoginForm", new LoginForm());
-        SimpleCart cart = null;
+        //CartOld cart = null;
+        CartV2 cartV2 = null;
         Integer a = null;
         Integer b = null;
 
+
+
         if(session.getAttribute("cart") != null)
         {
-            cart = (SimpleCart) session.getAttribute("cart");
+            //cart = (CartOld) session.getAttribute("cart");
+            cartV2 = (CartV2) session.getAttribute("cart");
         }else{
             System.out.println("you need to login first buddy from cart/{ida}/{idb}/{idc}!");
             //return "product_summary";
             return "invalid_product_summary";
         }
-
-        // need to do conversions now
-
 
         try{
             a = Integer.valueOf(ida);
@@ -124,57 +131,99 @@ public class CartController {
             throw new Exception("Invalid input from cart hyperlink for the second parameter {idb}");
         }
 
-
+        System.out.println("this is the first cart parameter " + a);
+        System.out.println("this is the second car parameter " + b);
 
         if(a == 1)
         {
-            // remove product block
 
         }
 
         if(a == 2)
         {
-
-            SimpleCart simpleCart = new SimpleCart();
-            List<Product> productList = simpleCart.getProductList(); // list item
-
-            // find product with product repo
-            Product product = new Product();
-            product = productService.findById(Integer.toUnsignedLong(b));
-            // this needs to be added at the index not just thrown in
-            productList.add(product);
-
-            // need to get the list before you can set it
-            // this needs to be refactored
-            simpleCart.setProductList(productList);
-
-
-            Double productPrice = product.getProductPrice();
-            //List<Double>
-
-
-
-
-            simpleCart.getProductPrice(); // list item
-            simpleCart.getProductList(); // list item
-
-            // this data model is more complex than it should be
+            System.out.println("got to the write product block");
+            // add product block // b is the number of the operation
+            // need a null operator here
+//            CartOld dbCart = cartService.findById(1l); // this is just hardcoded to first account for now
+//            Product productToAdd = null;
+//            List<Integer> productIdList = new ArrayList<>(100);
+//            List<Double> priceList = new ArrayList<>(100);
+//            List<Integer> numList = new ArrayList<>(100);
+//
+//            for(int i =0; i < 100;i++)
+//            {
+//                productIdList.add(0);
+//            }
+//
+//            for(int i = 0; i < 100;i++)
+//            {
+//                priceList.add(0.0);
+//            }
+//
+//            for(int i = 0; i < 100;i++)
+//            {
+//                numList.add(0);
+//            }
+//
+//            System.out.println(priceList.size());
+//
+//
+//
+//            // this will bring the requested product via the code
+//            productToAdd = productService.findById(Integer.toUnsignedLong(b));
+//            System.out.println("the product id that will be added is : " + productToAdd.getId());
+//
+//
+//            // this will get the product list out of the repo
+//            //productList = cartService.getProductsByCartId(1l);
+//            productIdList.add(productToAdd.getId().intValue(),productToAdd.getId().intValue());
+//
+//            // adds the product via it product ind as an index
+//
+//            // this failed you tried to add to empty list
+//
+//
+//            // this will get the product price
+//            Double productPrice = 0.0;
+//            productPrice = productToAdd.getProductPrice();
+//
+//
+//            // gets existing product list
+//
+//            // adds the price via it product ind as an index
+//            priceList.add(productToAdd.getId().intValue(),productPrice);
+//
+//            Integer productNum = 0;
+//            productNum++;
+//            numList.add(productToAdd.getId().intValue(),productNum);
+//
+//
+//
+//            dbCart.setProductID(productIdList);
+//            dbCart.setProductPrices(priceList);
+//            dbCart.setProductNum(numList);
+//
+//            // this won't work properly it will keep creating new cart objects user logging in and out won't
+//            // get the previous cart
+//            cartRespository.save(dbCart);
         }
 
         if(a == 3)
         {
             // remove all of the product
+
         }
 
-
-
         //return "product_summary";
-        return "product_summary";
+
 
         // first is a call to cart, first id the operation to be performed keyed out values follow
         // 0 : remove all , 1 : remove a single item of the type, 2 : add a single item of the type,
         // 3 : get the total price of the cart, 4 : get the price of the items
         // the second id is the product number being sent.
         // the last id is for expansion maybe checkout i'm not sure yet
+        return "product_summary";
     }
+
+
 }

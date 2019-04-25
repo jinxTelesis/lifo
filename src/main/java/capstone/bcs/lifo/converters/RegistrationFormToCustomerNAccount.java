@@ -3,7 +3,7 @@ package capstone.bcs.lifo.converters;
 import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.model.Account;
 import capstone.bcs.lifo.model.Address;
-import capstone.bcs.lifo.model.Customer;
+import capstone.bcs.lifo.model.CustomerV2;
 import org.springframework.stereotype.Component;
 
 
@@ -12,13 +12,14 @@ public class RegistrationFormToCustomerNAccount {
 
     static final String CUSTOMER = "customer";
 
-    public Customer convert(RegistrationForm registrationForm) {
+    public CustomerV2 convert(RegistrationForm registrationForm) {
 
         // == this class takes in the registration form and converts it to
         // == an address object and a customer object ==
-        // == the address object is embedded in the Customer object ==
+        // == the address object is embedded in the CustomerOld object ==
 
-        Customer customer = new Customer(); // has an address object embedded in it - composition - hibernate embeddable
+        //CustomerOld customer = new CustomerOld(); // has an address object embedded in it - composition - hibernate embeddable
+        CustomerV2 customerV2 = new CustomerV2();
         Account account = new Account();
         account.setUsername(registrationForm.getUsername());
         account.setPassword(registrationForm.getPasswordPlain()); // encrypt here?
@@ -27,10 +28,10 @@ public class RegistrationFormToCustomerNAccount {
 
         // maybe add role or user object here later --
          // == embedded object
-        customer.setpFirstName(registrationForm.getpFirstName());
-        customer.setpLastName(registrationForm.getpLastName());
-        customer.setpEmail(registrationForm.getpEmail());
-        customer.setpDoB(registrationForm.getpDoB());
+        customerV2.setpFirstName(registrationForm.getpFirstName());
+        customerV2.setpLastName(registrationForm.getpLastName());
+        customerV2.setpEmail(registrationForm.getpEmail());
+        customerV2.setpDoB(registrationForm.getpDoB());
         // all in the composition object address
         Address address = new Address();
         address.setaAddress(registrationForm.getaAddress());
@@ -46,9 +47,9 @@ public class RegistrationFormToCustomerNAccount {
         address.setaMobilePhone(registrationForm.getaMobilePhone());
 
         // puts the object in the object
-        customer.setCustomerAddress(address);
-        customer.setAccount(account);
-        return customer;
+        customerV2.setCustomerAddress(address);
+        customerV2.setAccount(account);
+        return customerV2;
     }
 }
 

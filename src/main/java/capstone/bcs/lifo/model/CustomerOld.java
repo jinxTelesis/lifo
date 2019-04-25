@@ -3,7 +3,7 @@ package capstone.bcs.lifo.model;
 import javax.persistence.*;
 
 @Entity
-public class Customer {
+public class CustomerOld {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +16,7 @@ public class Customer {
 
     @OneToOne
     @JoinColumn(name = "cartId")
-    private Cart cart;
-
-    @OneToOne
-    @JoinColumn(name = "cartProductsId")
-    private CartProducts cartProducts;
+    private CartOld cart;
 
     //make an embedded type for address
     @Embedded
@@ -31,6 +27,9 @@ public class Customer {
 
 
 
+    public void setCart(CartOld cart) {
+        this.cart = cart;
+    }
 
     public Address getCustomerAddress() {
         return customerAddress;
@@ -86,6 +85,10 @@ public class Customer {
 
     public void setpDoB(String pDoB) {
         this.pDoB = pDoB;
+    }
+
+    public CartOld getCart() {
+        return cart;
     }
 
 

@@ -1,22 +1,23 @@
 package capstone.bcs.lifo.services;
 
 import capstone.bcs.lifo.commands.RegistrationForm;
-import capstone.bcs.lifo.model.Customer;
+import capstone.bcs.lifo.model.CustomerOld;
+import capstone.bcs.lifo.model.CustomerV2;
 
 import java.util.List;
 
 public interface CustomerService {
 
-    List<Customer> getCustomers();
+    List<CustomerV2> getCustomers();
 
-    Customer getById(Long l);
+    CustomerV2 getById(Long l);
 
-    Customer saveOrUpdateRegistrationForm(RegistrationForm registrationForm);
+    CustomerV2 saveOrUpdateRegistrationForm(RegistrationForm registrationForm);
 
-    Customer saveOrUpdate(Customer customer);
+    CustomerV2 saveOrUpdate(CustomerV2 customer);
 
     void delete(Long l);
 
-    Customer getByUserName(String userName);
+    CustomerV2 getByUserName(String userName);
 
 }

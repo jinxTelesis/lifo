@@ -1,9 +1,9 @@
 package capstone.bcs.lifo.repositories;
 
-import capstone.bcs.lifo.model.Customer;
+import capstone.bcs.lifo.model.CustomerOld;
 import org.springframework.data.repository.CrudRepository;
 
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
+public interface CustomerRepository extends CrudRepository<CustomerOld, Long> {
 
-    Customer findBypFirstName(String pFirstName);
+    CustomerOld findBypFirstName(String pFirstName);
 }

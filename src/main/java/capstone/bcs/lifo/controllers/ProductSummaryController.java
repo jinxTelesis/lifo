@@ -2,16 +2,12 @@ package capstone.bcs.lifo.controllers;
 
 
 import capstone.bcs.lifo.commands.LoginForm;
-import capstone.bcs.lifo.model.Account;
-import capstone.bcs.lifo.model.Cart;
-import capstone.bcs.lifo.model.Customer;
-import capstone.bcs.lifo.model.SimpleCart;
+import capstone.bcs.lifo.model.*;
 import capstone.bcs.lifo.services.CustomerService;
 import capstone.bcs.lifo.services.PasswordEncryptionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -66,31 +62,27 @@ public class ProductSummaryController {
             try{
                 // in the database just called username
 
-                Customer localCust;
-                localCust = customerService.getByUserName(loginForm.getUserName());
-                System.out.println(loginForm.getUserName()); // valid here form works
+                CustomerV2 localCustV2;
+                localCustV2 = customerService.getByUserName(loginForm.getUserName());
+                System.out.println(loginForm.getUserName());
 
 
-                if(localCust.getpFirstName() == "")
+
+
+                if(localCustV2.getpFirstName() == "")
                 {
                     System.out.println("it was null");
                 }
 
-                Account localAccount = localCust.getAccount();
+
+                Account localAccount = localCustV2.getAccount();
 
                 if(passwordEncryptionService.checkPassword(loginForm.getPasswordPlain(),localAccount.getEncryptedPassword()))
                 {
                     System.out.println("Valid user");
-
-
-                    //Cart cart = new Cart();
-                    //session.setAttribute("cart", cart);
-
-                    SimpleCart cart = new SimpleCart();
-                    session.setAttribute("cart",cart);
-
-
-
+                    CartV2 cartV2 = new CartV2();
+                    session.setAttribute("cart",cartV2);
+                    // make a real save to cart here???
                     return "success";
                 }
                 else {
