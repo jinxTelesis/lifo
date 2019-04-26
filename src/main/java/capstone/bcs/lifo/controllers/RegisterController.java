@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -68,20 +70,24 @@ public class RegisterController {
         else
         {
             System.out.println("The new customer form got called");
-            //CustomerOld newCustomer = customerService.saveOrUpdateRegistrationForm(registrationForm);
             CustomerV2 customerV2 = customerService.saveOrUpdateRegistrationForm(registrationForm);
-            CartV2 cartV2 = new CartV2();
-            customerV2.setCartV2(cartV2);
-            cartV2.setCustomerV2(customerV2);
-
+            CartV2 cartV2 = new CartV2();// this is the outer
+            //customerV2.setCartV2(cartV2);
+            //cartV2.setCustomerV2(customerV2);
             // this is a blank productset
-            Set<CartProductV2> productSet = new HashSet<>();
+            //Set<CartProductV2> productSet = new HashSet<>();
+            List<CartProductV2> productList = new ArrayList<>();
             CartProductV2 cartProductV2 = new CartProductV2();
             cartProductV2.setCartV2(cartV2);
-            productSet.add(cartProductV2);
+            //productSet.add(cartProductV2);
+            productList.add(cartProductV2);
 
-            cartV2.setProductSet(productSet);
+            // here we set the customer in cart but not the other way around
+
+            //cartV2.setProductSet(productSet);
+            cartV2.setProductList(productList);
             cartV2.setCustomerV2(customerV2);
+
             cartV2Repository.save(cartV2);
 
             return "product_summary"; // this needs to be a new page for success

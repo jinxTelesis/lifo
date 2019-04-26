@@ -80,7 +80,7 @@ public class ProductSummaryController {
                 if(passwordEncryptionService.checkPassword(loginForm.getPasswordPlain(),localAccount.getEncryptedPassword()))
                 {
                     System.out.println("Valid user");
-                    CartV2 cartV2 = new CartV2(); // this is just an empty cart right now dingus
+                    CartV2 cartV2 = new CartV2();
                     localCustV2.getAccount();
                     System.out.println(localCustV2.getAccount().getUsername() + " nothing printed"); // curious is this has any data
                     cartV2.setCustomerV2(localCustV2); // this will set just the customer

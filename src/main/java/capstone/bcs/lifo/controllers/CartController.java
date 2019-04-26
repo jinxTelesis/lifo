@@ -5,6 +5,9 @@ import capstone.bcs.lifo.model.CartProductV2;
 import capstone.bcs.lifo.model.CartV2;
 import capstone.bcs.lifo.model.CustomerV2;
 import capstone.bcs.lifo.model.Product;
+import capstone.bcs.lifo.repositories.CartProductV2Repository;
+import capstone.bcs.lifo.repositories.CartV2Repository;
+import capstone.bcs.lifo.repositories.CustomerV2Repository;
 import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -24,12 +27,20 @@ public class CartController {
 
     private ProductService productService;
     private CartService cartService;
+    private CustomerV2Repository customerV2Repository;
+    private CartProductV2Repository cartProductV2Repository;
+
+    // should just be the service fix this
+    private CartV2Repository cartV2Repository;
 
     // == autowired for intention only ==
     @Autowired
-    CartController(ProductService productService, CartService cartService){
+    CartController(ProductService productService, CartService cartService, CartV2Repository cartV2Repository,
+                   CustomerV2Repository customerV2Repository, CartProductV2Repository cartProductV2Repository){
         this.productService = productService;
         this.cartService = cartService;
+        this.cartV2Repository = cartV2Repository;
+        this.cartProductV2Repository = cartProductV2Repository;
     }
 
     @RequestMapping({"/cart"})
@@ -138,79 +149,173 @@ public class CartController {
         System.out.println("this is the first cart parameter " + a);
         System.out.println("this is the second car parameter " + b);
 
-        if(a == 1)
+        if(a == 1) // remove just one copy
         {
+            System.out.println("remove a single product block ");
 
-        }
-
-        if(a == 2) // a is operation b is the product number
-        {
-            System.out.println("got to the write product block");
-
-            CartV2 localCart = null;
-
-            // wtf was the problem then ???
-            System.out.println(cartV2.getCustomerV2().getpFirstName() + " this is from cart");
-            System.out.println(cartV2.getCustomerV2().getAccount().getUsername() + " this is from cart");
-            System.out.println(cartV2.getCustomerV2().getpDoB());
-
-            CustomerV2 localCust = cartV2.getCustomerV2();
-            System.out.println(localCust.getAccount().getUsername() + "this is from locatlCust");
-            System.out.println(localCust.getCustomerId() + "this is the user id ");
-
-
-            // this is from database rather than session
-            localCart = cartService.findById(1l);
-
-
-
-            Set<CartProductV2> productSetLocal = new HashSet<>();
-
-            // this is the database cart retreived by the session cart info
-            // this will get existing products in the cart
-            productSetLocal = localCart.getProductSet();
-
-            CartProductV2 cartProductV2 = new CartProductV2(); // the product created
-
-            // retrieve the product data from the product database
+            // this only has one product? it didn't update per each session
+            CartV2 localCart = (CartV2)session.getAttribute("cart");
+            List<CartProductV2> productList = null;
+            productList = localCart.getProductList();
+            CartProductV2 cartProductV2 = new CartProductV2();
             Product productInfoLocal = productService.findById(b.longValue());
-            System.out.println(productInfoLocal.getId() + " this is the product id");
-
+            cartProductV2.setProductId(productInfoLocal.getId().intValue());
             cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
             cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
             cartProductV2.setProductNumber(1);
 
-            // product already contained
-//            if(productSetLocal.contains(cartProductV2)) {
-//                cartProductV2 = productSetLocal;
-//            } else
-//            {
-//                productSetLocal.add(cartProductV2);
-//            }
+
+            for(int i =0; i<productList.size();i++)
+            {
+                if(productList.get(i).getProductId() == productInfoLocal.getId().intValue())
+                {
+                    productList.remove(i);
+                    break;
+                }
+            }
+
+            for(int i = 0; i < productList.size();i++)
+            {
+                System.out.println("this is the products in the list" + productList.get(i).getProductId());
+                System.out.println("this is the price of the corresponding products" + productList.get(i).getProductPrice());
+            }
 
 
-//            cartProductV2.setProductId(1);
-//            cartProductV2.setProductPrice(9.99);
-//            cartProductV2.setProductNumber(3);
-//            cartProductV2.setCartV2(cartV2);
-//            productSet.add(cartProductV2);
+            localCart.setProductList(productList);
+            // now just persist to session
+            session.setAttribute("cart",localCart);
+        }
+
+        if(a == 2) // a is operation b is the product number
+        {
+            // need to get the cart info from the session not the database or you will overwrite
+            List<CartProductV2> productList = null;
+            productList = cartV2.getProductList();
+            CartProductV2 cartProductV2 = new CartProductV2();
+            Product productInfoLocal = productService.findById(b.longValue());
+            cartProductV2.setProductId(productInfoLocal.getId().intValue());
+            cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
+            cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
+            cartProductV2.setProductNumber(1);
+
+            productList.add(cartProductV2); // added the new product to productlist
+
+
+            cartV2.setProductList(productList);
+            // now just persist to session
+            session.setAttribute("cart",cartV2);
+
+
+
+//            System.out.println("got to the write product block");
 //
-//            cartV2.setProductSet(productSet);
-//            cartV2.setCustomerV2(customerV2);
+//            CartV2 localCart = null;
+//            CustomerV2 localCust = cartV2.getCustomerV2();
+//
+//            localCart = cartService.findById(localCust.getCustomerId());
+//
+//            List<CartProductV2> productList = null;
+//
+//            productList = localCart.getProductList();
+//
+//            CartProductV2 cartProductV2 = new CartProductV2(); // the product created
+//
+//            // retrieve the product data from the product database
+//            Product productInfoLocal = productService.findById(b.longValue());
+//
+//            cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
+//            cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
+//            cartProductV2.setProductNumber(1);
+//
+//            productList.add(cartProductV2);
 //
 //
-//
-//            cartV2Repository.save(cartV2);
+            // a have it add the product
+
+            // adds to database ignore
+            // will the actual save break the session
+            // is this the same session?
+
+            cartV2.setProductList(productList);
+            cartV2.setCartidv2(1l); // set the carts id
+            cartV2.setCustomerV2(cartV2.getCustomerV2());
+            cartV2.setCartidv2(cartV2.getCustomerV2().getCustomerId());
+            cartV2Repository.save(cartV2);
 
         }
 
         if(a == 3)
         {
-            // remove all of the product
+            // lets deal with this one problem at a time
+            System.out.println("remove all products of a type block hit");
 
+            // this only has one product? it didn't update per each session
+            CartV2 localCart = (CartV2)session.getAttribute("cart");
+            List<CartProductV2> productList = null;
+            productList = localCart.getProductList();
+            CartProductV2 cartProductV2 = new CartProductV2();
+            Product productInfoLocal = productService.findById(b.longValue());
+            cartProductV2.setProductId(productInfoLocal.getId().intValue());
+            cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
+            cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
+            cartProductV2.setProductNumber(1);
+
+            // change this to Stream API
+
+            List<CartProductV2> collectedList = removeAll(productList,cartProductV2);
+
+
+//            for(int i =0; i<productList.size();i++)
+//            {
+//                if(productList.get(i).getProductId() == productInfoLocal.getId().intValue())
+//                {
+//                    productList.remove(i);
+//                }
+//            }
+//
+//
+//            for(int i = 0; i < productList.size();i++)
+//            {
+//                System.out.println("this is the products in the list" + productList.get(i).getProductId());
+//                System.out.println("this is the price of the corresponding products" + productList.get(i).getProductPrice());
+//            }
+
+
+            localCart.setProductList(collectedList);
+            // now just persist to session
+            session.setAttribute("cart",localCart);
+
+
+
+
+            // retrieve the product data from the product database
+//            Product productInfoLocal = productService.findById(b.longValue());
+//            // == this is all the initial details you need == //
+//            // == this is all the initial details you need == //
+//            // remove all of the product
+//            for(int i =0; i<productList.size();i++)
+//            {
+//                if(productList.get(i).getProductId() == productInfoLocal.getId().intValue())
+//                {
+//                    productList.remove(i);
+//                }
+//            }
+//
+//            for(int i = 0; i < productList.size();i++)
+//            {
+//                System.out.println("this is the products in the list" + productList.get(i).getProductId());
+//                System.out.println("this is the price of the corresponding products" + productList.get(i).getProductPrice());
+//            }
+
+//            localCart.setProductList(productList);
+//            cartV2.setCartidv2(1l); // set the carts id
+//            localCart.setCustomerV2(cartV2.getCustomerV2());
+//            localCart.setCartidv2(cartV2.getCustomerV2().getCustomerId());
+
+
+            //cartV2Repository.save(localCart);
         }
 
-        //return "product_summary";
 
 
         // first is a call to cart, first id the operation to be performed keyed out values follow
@@ -219,6 +324,31 @@ public class CartController {
         // the second id is the product number being sent.
         // the last id is for expansion maybe checkout i'm not sure yet
         return "product_summary";
+    }
+
+    List<CartProductV2> removeAll(List<CartProductV2> list, CartProductV2 cartProductV2){
+        return list.stream()
+                .filter(p -> !Objects.equals(p, cartProductV2)) // this will work if the equals method is correct
+                .collect(Collectors.toList());
+    }
+
+    Double cartTotal(List<CartProductV2> list){
+        double sum = list.stream().filter( p -> p.getProductPrice() > 0.0f).mapToDouble(o -> o.getProductPrice()).sum();
+        return sum;
+    }
+
+    Double productTotal(List<CartProductV2> list, CartProductV2 cartProductV2){
+        list.stream()
+                .filter(p -> Objects.equals(p, cartProductV2)) // this will work if the equals method is correct
+                .collect(Collectors.toList());
+        double sum = list.stream().filter(p -> p.getProductPrice() > 0.0f).mapToDouble(o -> o.getProductPrice()).sum();
+        return sum;
+    }
+
+    Double appDiscountToCart(List<CartProductV2> list, Double discount){
+        double sum = list.stream().filter( p -> p.getProductPrice() > 0.0f).mapToDouble(o -> o.getProductPrice()).sum();
+        sum = sum + (sum * discount);
+        return sum;
     }
 
 

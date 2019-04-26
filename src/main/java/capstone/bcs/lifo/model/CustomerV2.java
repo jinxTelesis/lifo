@@ -18,10 +18,15 @@ public class CustomerV2 {
 
     private String pDoB;
 
-    @Cascade({org.hibernate.annotations.CascadeType.PERSIST}) // this is what you just changed does it fail
+
+    //@Cascade({org.hibernate.annotations.CascadeType.PERSIST}) // this is what you just changed does it fail
+    //@JoinColumn(name ="cart_version2_id") // changed from div
+    //@Cascade(org.hibernate.annotations.CascadeType.MERGE)
+
     @OneToOne
-    @JoinColumn(name ="cart_version2_id") // changed from div
     private CartV2 cartV2;
+
+
 
     //make an embedded type for address
     @Embedded
@@ -94,5 +99,7 @@ public class CustomerV2 {
     public void setCartV2(CartV2 cartV2) {
         this.cartV2 = cartV2;
     }
+
+
 
 }
