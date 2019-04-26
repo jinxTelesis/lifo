@@ -1,5 +1,7 @@
 package capstone.bcs.lifo.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,8 +20,10 @@ public class CartProductV2 {
 
     private double discountOnProduct;
 
+    //@Cascade({org.hibernate.annotations.CascadeType.PERSIST})
+    //@Cascade(org.hibernate.annotations.CascadeType.MERGE) // we might not want this to cascade at all
+    //@JoinColumn(name="cart_version2_id",nullable = false) // might be issue
     @ManyToOne
-    @JoinColumn(name="cart_version2_id", nullable = false)//
     private CartV2 cartV2;
 
     public int getProductId() {

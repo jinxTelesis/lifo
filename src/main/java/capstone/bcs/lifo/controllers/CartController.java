@@ -5,8 +5,11 @@ import capstone.bcs.lifo.model.CartProductV2;
 import capstone.bcs.lifo.model.CartV2;
 import capstone.bcs.lifo.model.CustomerV2;
 import capstone.bcs.lifo.model.Product;
+import capstone.bcs.lifo.repositories.CartV2Repository;
+import capstone.bcs.lifo.repositories.CustomerV2Repository;
 import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 
@@ -24,12 +28,17 @@ public class CartController {
 
     private ProductService productService;
     private CartService cartService;
+    private CustomerV2Repository customerV2Repository;
+
+    // should just be the service fix this
+    private CartV2Repository cartV2Repository;
 
     // == autowired for intention only ==
     @Autowired
-    CartController(ProductService productService, CartService cartService){
+    CartController(ProductService productService, CartService cartService, CartV2Repository cartV2Repository, CustomerV2Repository customerV2Repository){
         this.productService = productService;
         this.cartService = cartService;
+        this.cartV2Repository = cartV2Repository;
     }
 
     @RequestMapping({"/cart"})
@@ -148,23 +157,30 @@ public class CartController {
             System.out.println("got to the write product block");
 
             CartV2 localCart = null;
-
-            // wtf was the problem then ???
+            CustomerV2 localCust = cartV2.getCustomerV2();
+//
             System.out.println(cartV2.getCustomerV2().getpFirstName() + " this is from cart");
             System.out.println(cartV2.getCustomerV2().getAccount().getUsername() + " this is from cart");
             System.out.println(cartV2.getCustomerV2().getpDoB());
 
-            CustomerV2 localCust = cartV2.getCustomerV2();
+
             System.out.println(localCust.getAccount().getUsername() + "this is from locatlCust");
             System.out.println(localCust.getCustomerId() + "this is the user id ");
 
 
             // this is from database rather than session
-            localCart = cartService.findById(1l);
+            // issue with cart service?
+            System.out.println("this is the local customer id " + localCust.getCustomerId());
+            localCart = cartService.findById(localCust.getCustomerId());
 
 
 
             Set<CartProductV2> productSetLocal = new HashSet<>();
+            CartProductV2 testProduct = new CartProductV2();
+            testProduct.setProductId(1);
+
+            testProduct.setProductNumber(1);
+            //productSetLocal.add()
 
             // this is the database cart retreived by the session cart info
             // this will get existing products in the cart
@@ -178,29 +194,88 @@ public class CartController {
 
             cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
             cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
+            // this line is part of test product
+            // remove after
+            testProduct.setProductPrice(productInfoLocal.getProductPrice());
+            productSetLocal.add(testProduct);
+            // this line is part of test product
+            // remove after
+
             cartProductV2.setProductNumber(1);
 
-            // product already contained
-//            if(productSetLocal.contains(cartProductV2)) {
-//                cartProductV2 = productSetLocal;
-//            } else
-//            {
-//                productSetLocal.add(cartProductV2);
-//            }
+            Boolean addProduct = false;
+            Boolean incrementNumber = false;
+            CartProductV2 carIteratorHolder = null;
+
+            // trying to improve use of sets over dict arraylist // know this this not the best solution
+
+            Iterator<CartProductV2> it = productSetLocal.iterator();
+            while(it.hasNext()) {
+
+                carIteratorHolder = it.next();
+                if(carIteratorHolder.getProductId() == cartProductV2.getProductId())
+                {
+                    System.out.println("Same value iterated once");
+                    carIteratorHolder.setProductNumber(carIteratorHolder.getProductNumber() + 1);
+                    if(it.hasNext())
+                    {
+                        it.next().setProductNumber(carIteratorHolder.getProductNumber()); // think this should adjust it in the database
+                    }
+                } else
+                {
+                    addProduct = true;
+                }
+            }
 
 
-//            cartProductV2.setProductId(1);
-//            cartProductV2.setProductPrice(9.99);
-//            cartProductV2.setProductNumber(3);
+            // handles if the product is not already in the set
+            if(addProduct == true)
+            {
+                cartProductV2.setProductNumber(1);
+                productSetLocal.add(cartProductV2);
+                addProduct = false;
+            }
+
+            // need to set holder to the real saved value it works correctly
+            // case where product number just needs to be incremented
+            // because it is already in the set
+
+
+            Iterator<CartProductV2> it2 = productSetLocal.iterator();
+            while (it2.hasNext()){
+                System.out.println(it2.next().getProductNumber() + " this is product numbers");
+            }
+
+            // now just save the data
+            //cartV2Repository.save()
+            // get correct users cart then save
+
+
+//            CustomerV2 customerV2 = customerService.saveOrUpdateRegistrationForm(registrationForm);
+//            CartV2 cartV2 = new CartV2();// this is the outer
+//            customerV2.setCartV2(cartV2);
+//            cartV2.setCustomerV2(customerV2);
+//
+//            // this is a blank productset
+//            Set<CartProductV2> productSet = new HashSet<>();
+//            CartProductV2 cartProductV2 = new CartProductV2();
 //            cartProductV2.setCartV2(cartV2);
 //            productSet.add(cartProductV2);
 //
 //            cartV2.setProductSet(productSet);
 //            cartV2.setCustomerV2(customerV2);
-//
-//
-//
 //            cartV2Repository.save(cartV2);
+
+            localCart.setProductSet(productSetLocal);
+            cartV2.setCartidv2(1l); // set the carts id
+            localCart.setCustomerV2(cartV2.getCustomerV2());
+            localCart.setCartidv2(cartV2.getCustomerV2().getCustomerId());
+
+
+            System.out.println("what is this parameter? " + localCart.getCartidv2());
+            session.setAttribute("cart",localCart);
+            System.out.println("this is localCust value before save" + localCust.getCustomerId() + " " + localCust.getpFirstName());
+            cartV2Repository.save(localCart);
 
         }
 
@@ -219,6 +294,10 @@ public class CartController {
         // the second id is the product number being sent.
         // the last id is for expansion maybe checkout i'm not sure yet
         return "product_summary";
+    }
+
+    static public void checkSessionDate(CartV2 cartV2){
+        System.out.println(cartV2.getCustomerV2().getCustomerId());
     }
 
 

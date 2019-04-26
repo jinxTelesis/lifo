@@ -9,21 +9,29 @@ import java.util.Set;
 @Entity
 public class CartV2 {
 
-    @Id
+
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(name="cart_version2_id")
     private Long cartidv2;
 
-    @Cascade({org.hibernate.annotations.CascadeType.PERSIST})
-    @OneToOne
-    @JoinColumn(name = "customerId")
+
+
+
+    //@Cascade(org.hibernate.annotations.CascadeType.MERGE)
+    //@Cascade({org.hibernate.annotations.CascadeType.PERSIST})
+    //@OneToOne(mappedBy = "cartV2",fetch = FetchType.EAGER)
+    //@JoinColumn(name = "customerId")
+
+    @OneToOne(cascade = CascadeType.ALL) // johns
     private CustomerV2 customerV2;
 
     // this failed in a new way
-    @Cascade(value= org.hibernate.annotations.CascadeType.PERSIST)
-    @OneToMany(mappedBy = "cartV2", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    //@Cascade(value= org.hibernate.annotations.CascadeType.PERSIST)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @OneToMany(mappedBy = "cartV2", fetch = FetchType.EAGER)
     Set<CartProductV2> productSet = new HashSet<>();
-
 
 
     public CustomerV2 getCustomerV2() {
