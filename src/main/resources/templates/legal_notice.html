@@ -1,62 +1,175 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header">
+<head>
+	<!-- Bootstrap style -->
+	<link href="../../static/css/bootstrap.min.css"
+		  th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
+	<link href="../../static/css/base.css"
+		  th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>
+	<!-- Bootstrap style responsive -->
+	<link href="../../static/css/bootstrap-responsive.min.css"
+		  th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>
+	<link href="../../static/css/font-awesome.css"
+		  th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">
+	<!-- Google-code-prettify -->
+
+	<!--<link href="../js/google-code-prettify/prettify.css"
+          th:href="@{js/google-code-prettify/prettify.css}" rel="stylesheet"/>-->
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script src="/webjars/jquery/3.3.1-2 /jquery.js"></script>
+
 
 </head>
 <body>
 <!-- Navigation section start ====================================================================== -->
-<div th:replace="fragments/navigation :: navigation">
+<div id="header">
+	<div class="container">
+		<div id="welcomeLine" class="row">
+			<div class="span6">Welcome!<strong> User</strong></div>
+			<div class="span6">
+				<div class="pull-right">
+					<span class="btn btn-mini">$0.00</span>
+					<a href="product_summary" th:href="@{'/product_summary'}"><span class="btn btn-mini btn-primary">
+						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
+				</div>
+			</div>
+		</div>
+		<!-- Navbar ================================================== -->
+		<div id="logoArea" class="navbar">
+			<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<div class="navbar-inner">
+				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
+				<form class="form-inline navbar-search" method="post" action="products" >
+					<input id="srchFld" class="srchTxt" type="text" />
+					<select class="srchTxt">
+						<option th:href="@{'/products/0'}">ACCESSORIES </option>
+						<option th:href="@{'/products/1'}">APPLIANCES </option>
+						<option th:href="@{'/products/2'}">CLEANING </option>
+						<option th:href="@{'/products/3'}">HARDWARE </option>
+						<option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
+						<option th:href="@{'/products/5'}">HOMEWARES </option>
+						<option th:href="@{'/products/6'}">TOYS </option>
+					</select>
+					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+				</form>
+				<ul id="topMenu" class="nav pull-right">
+					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
+					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
+					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
+					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
+					<li class="">
+						<a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h3>Login Block</h3>
+							</div>
+							<div class="modal-body">
+								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
+									<div class="control-group">
+										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
+									</div>
+									<div class="control-group">
+										<input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
+									</div>
+									<div class="control-group">
+										<label class="checkbox">
+											<input type="checkbox"> Remember me
+										</label>
+									</div>
+								</form>
+								<button type="submit" class="btn btn-success">Sign in</button>
+								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
 </div>
 <!-- Navigation section end ====================================================================== -->
 
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 	<div class="container">
-	<div class="row">
-		<!-- Sidebar Section Start ================================================== -->
-		<div th:replace="fragments/sidebar :: sidebar">
+		<div class="row">
+			<!-- Sidebar Section Start ================================================== -->
+			<div th:replace="fragments/sidebar :: sidebar">
+			</div>
+			<!-- Sidebar Section End =============================================== -->
+			<div class="span9">
+				<ul class="breadcrumb">
+					<li><a href="index" th:href="@{'/products/0'}">Home</a> <span class="divider">/</span></li>
+					<li class="active">Legal Notice</li>
+				</ul>
+				<h3> Legal</h3>
+				<hr class="soft"/>
+				<div id="legalNotice">
+					<br/>
+					<p>
+						The information contained in this website is for general information purposes only. The information is provided by
+						LIFO Group B.V. (hereinafter referred to as: LIFO) and while we endeavour to keep the information
+						up to date and correct, we make no representations or warranties of any kind, express or implied, about the
+						completeness, accuracy, reliability, suitability or availability with respect to the website or the information,
+						products, services, or related graphics contained on the website for any purpose. Any reliance you place on such
+						information is therefore strictly at your own risk. Therefore, the user should always check for confirmation with
+						the originating or authorizing department of LIFO or the local dealer.
+					</p>
+					<br/>
+					<p>In no event will we be liable for any loss or damage including without limitation, indirect or consequential loss
+						or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection
+						with, the use of this website.
+					</p>
+					<br/>
+					<p>Through this website you are able to link to other websites which are not under the control of LIFO.
+						We have no control over the nature, content and availability of those sites. The inclusion of any links does not
+						necessarily imply a recommendation or endorse the views expressed within them.
+					</p>
+					<br/>
+					<p>Every effort is made to keep the website up and running smoothly. However, LIFO takes no responsibility
+						for, and will not be liable for, the website being temporarily unavailable due to technical issues beyond our
+						control. In addition, it is up to you to take precautions and to ensure that whatever you select for your use is free
+						of such items as viruses, worms, Trojan horses and other items of a destructive nature.
+						LIFO reserves the right at any time to make changes in this website as it deems appropriate without prior
+						notification or obligation.
+					</p>
+					<br/>
+					<p>Any software that may be available to download from this website (the “Software”) is the copyrighted work of
+						LIFO (or any of its subsidiaries and/or its suppliers). Use of the Software is governed by the terms of the end
+						user license agreement, if any, which accompanies or is included with the Software (“License Agreement”). Unless
+						otherwise follows from the License Agreement, the Software is made available for downloading solely for use by
+						end users. Any reproduction or redistribution of the Software not in accordance with the License Agreement may
+						result in civil and criminal penalties. </p>
+					<p> The software is warranted, if at all, only according to the terms of the license agreement, except as warranted in
+						the license agreement, LIFO hereby disclaims all warranties and conditions with regard to the Software,
+						including all implied warranties and conditions of merchantability, fitness for a particular purpose, title and noninfringement.
+
+					</p>
+					<br/>
+					<p>Any information, unsolicited suggestions, ideas or other submissions will be deemed not to be confidential and
+						non-proprietary. By sending any information or material, you grant LIFO an unrestricted, irrevocable
+						license to use, reproduce, display, perform, modify, transmit and distribute those materials or information, and
+						you also agree that LIFO is free to use any ideas, concepts, know-how or techniques that you send us for
+						any purpose.
+					</p>
+					<<br/>
+					<p>Without limiting the foregoing, copying or reproduction of the Software to any other server or location for
+						further reproduction or redistribution is expressly prohibited.
+					</p>
+				</div>
+			</div>
 		</div>
-		<!-- Sidebar Section End =============================================== -->
-	<div class="span9">
-    <ul class="breadcrumb">
-		<li><a href="index">Home</a> <span class="divider">/</span></li>
-		<li class="active">Legal Notice</li>
-    </ul>
-	<h3> Legal</h3>	
-	<hr class="soft"/>
-	<div id="legalNotice">
-		<h5>Lorem ipsum dolor sit amet</h5><br/>
-		<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam elementum varius dapibus. Sed hendrerit porta felis at sollicitudin. Sed at nunc ac neque semper fermentum. Proin diam sem, semper fermentum eleifend nec, viverra ac est. Sed ultricies, lectus et vehicula imperdiet, felis tortor vehicula turpis, non fermentum enim est et sapien. Nam justo mi, dignissim a euismod ut, pretium sed leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In viverra porta est, consequat elementum metus tristique a. Mauris tempus tellus a metus dapibus faucibus egestas lectus consectetur. Integer libero dolor, luctus non congue vitae, tempus ut neque. Nunc eleifend lorem quis diam pharetra sagittis. Aliquam ut dolor dui. Fusce dictum facilisis ipsum eu porttitor. In ultricies rhoncus tortor vitae tincidunt.
-		</p>
-		<h5>Lorem ipsum dolor sit amet</h5><br/>
-		<p>
-		Nullam a vulputate leo. Nulla tristique metus eros. Curabitur ultrices commodo mauris, sit amet faucibus lectus fermentum in. Nulla eleifend, augue hendrerit tempus faucibus, diam lacus aliquet urna, eget facilisis turpis risus quis arcu. Cras placerat suscipit sem, ac consequat dui iaculis eu. Cras elit enim, adipiscing lobortis rutrum ac, vehicula nec massa. Praesent pharetra ligula ac erat venenatis feugiat. Quisque id nulla mi. Mauris at orci nec nisi eleifend auctor. Mauris placerat consectetur tincidunt. Nam eu tellus vitae dolor vestibulum commodo. Etiam tristique, urna ac convallis laoreet, enim enim aliquet neque, id cursus risus nulla sed ligula. Nunc quam libero, accumsan vitae consequat at, sollicitudin eget mi. Phasellus in molestie diam. Aliquam enim purus, tempor id sodales non, volutpat eu diam. Donec eu nisl lacinia leo semper lobortis sed sit amet elit.
-		</p>
-		<h5>Lorem ipsum dolor sit amet</h5><br/>
-		<p>
-		Aliquam interdum, ipsum a posuere dictum, tellus risus blandit dolor, at tristique sapien urna vel purus. Pellentesque in dictum urna. Sed feugiat libero sit amet arcu malesuada eu convallis dui convallis. Donec facilisis massa a ipsum aliquam lobortis. Praesent ac lectus sed leo aliquam egestas. Sed ante neque, volutpat ac tempor et, bibendum at ligula. Nunc porta vestibulum sodales.
-			</p>
-			<h5>Lorem ipsum dolor sit amet</h5><br/>
-		<p>
-		Nullam a vulputate leo. Nulla tristique metus eros. Curabitur ultrices commodo mauris, sit amet faucibus lectus fermentum in. Nulla eleifend, augue hendrerit tempus faucibus, diam lacus aliquet urna, eget facilisis turpis risus quis arcu. Cras placerat suscipit sem, ac consequat dui iaculis eu. Cras elit enim, adipiscing lobortis rutrum ac, vehicula nec massa. Praesent pharetra ligula ac erat venenatis feugiat. Quisque id nulla mi. Mauris at orci nec nisi eleifend auctor. Mauris placerat consectetur tincidunt. Nam eu tellus vitae dolor vestibulum commodo. Etiam tristique, urna ac convallis laoreet, enim enim aliquet neque, id cursus risus nulla sed ligula. Nunc quam libero, accumsan vitae consequat at, sollicitudin eget mi. Phasellus in molestie diam. Aliquam enim purus, tempor id sodales non, volutpat eu diam. Donec eu nisl lacinia leo semper lobortis sed sit amet elit.
-		</p>
-		<h5>Lorem ipsum dolor sit amet</h5><br/>
-		<p>
-		Aliquam interdum, ipsum a posuere dictum, tellus risus blandit dolor, at tristique sapien urna vel purus. Pellentesque in dictum urna. Sed feugiat libero sit amet arcu malesuada eu convallis dui convallis. Donec facilisis massa a ipsum aliquam lobortis. Praesent ac lectus sed leo aliquam egestas. Sed ante neque, volutpat ac tempor et, bibendum at ligula. Nunc porta vestibulum sodales.
-			</p>
-			<h5>Lorem ipsum dolor sit amet</h5><br/>
-		<p>
-		Nullam a vulputate leo. Nulla tristique metus eros. Curabitur ultrices commodo mauris, sit amet faucibus lectus fermentum in. Nulla eleifend, augue hendrerit tempus faucibus, diam lacus aliquet urna, eget facilisis turpis risus quis arcu. Cras placerat suscipit sem, ac consequat dui iaculis eu. Cras elit enim, adipiscing lobortis rutrum ac, vehicula nec massa. Praesent pharetra ligula ac erat venenatis feugiat. Quisque id nulla mi. Mauris at orci nec nisi eleifend auctor. Mauris placerat consectetur tincidunt. Nam eu tellus vitae dolor vestibulum commodo. Etiam tristique, urna ac convallis laoreet, enim enim aliquet neque, id cursus risus nulla sed ligula. Nunc quam libero, accumsan vitae consequat at, sollicitudin eget mi. Phasellus in molestie diam. Aliquam enim purus, tempor id sodales non, volutpat eu diam. Donec eu nisl lacinia leo semper lobortis sed sit amet elit.
-		</p>
-		<h5>Lorem ipsum dolor sit amet</h5><br/>
-		<p>
-		Aliquam interdum, ipsum a posuere dictum, tellus risus blandit dolor, at tristique sapien urna vel purus. Pellentesque in dictum urna. Sed feugiat libero sit amet arcu malesuada eu convallis dui convallis. Donec facilisis massa a ipsum aliquam lobortis. Praesent ac lectus sed leo aliquam egestas. Sed ante neque, volutpat ac tempor et, bibendum at ligula. Nunc porta vestibulum sodales.
-			</p>
 	</div>
-	</div>
-</div>
-</div>
 </div>
 <!-- MainBody End ============================= -->
 <!-- Footer section start =============================================== -->

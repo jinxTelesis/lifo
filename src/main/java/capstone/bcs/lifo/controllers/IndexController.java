@@ -1,10 +1,10 @@
 package capstone.bcs.lifo.controllers;
 
+import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 // start a registration page -
@@ -29,32 +29,34 @@ public class IndexController {
     @RequestMapping({"/","/index","/.html","/index.html"})
     public String getIndex(Model model){
         model.addAttribute("products", productService.getProductsAsce());
+        model.addAttribute("LoginForm", new LoginForm());
         return "index";
     }
+
 
     @RequestMapping({"/indexRev"})
     public String getIndexByProductCat(Model model){
         //model.addAttribute("products", productService.getProductsByCategory(4));
 
         model.addAttribute("products", productService.getProductsDesc());
-        return "index2";
+        model.addAttribute("LoginForm", new LoginForm());
+        return "index";
     }
 
-    // == does it but turns off javascript?? wtf ==
-//    @RequestMapping({"/index/{product}"})
-//    public String getPage(@PathVariable String product, Model model) {
-//        model.addAttribute("products",productService.getProductsByCategory(Integer.valueOf(product)));
-//        return "index2";
+    @RequestMapping({"/products/indexRev"})
+    public String getIndexByProductCatHotFix(Model model){
+        //model.addAttribute("products", productService.getProductsByCategory(4));
+
+        model.addAttribute("products", productService.getProductsDesc());
+        model.addAttribute("LoginForm", new LoginForm());
+        return "index";
+    }
+
+//    @RequestMapping("/indexRev/{id}")
+//    public String getPageVar(HttpServletRequest request,@PathVariable("id") Integer id, Model model) {
+//        model.addAttribute("LoginForm", new LoginForm());
+//        return "indexRev";
 //    }
-
-
-//    @RequestMapping("/index/{productCat}")
-//    public String getPage(@PathVariable String productCat, Model model){
-//        model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
-//        return "index";
-//    }
-
-
 
 
 

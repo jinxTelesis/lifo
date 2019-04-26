@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+</head>
+
+<body>
+<div th:fragment="productdiv">
+    <div class="thumbnail" href="product.html" th:href="@{'/product/'+${product.id}}" >
+        <a  href="product_details" th:href="@{'/product_details'}"><img th:src="@{'/images/thumbs/'+${product.productImage}}" alt=""/></a>
+        <div class="caption" style="text-align: center">
+            <h5 th:text="${product.productName}">Product name</h5>
+            <p>
+                Lorem Ipsum is simply dummy text.
+            </p>
+            <h4 style="text-align: center"><a class="btn" href="product_details" th:href="@{'/cart'}"> <i class="icon-zoom-in"></i></a>
+                <a class="btn"th:href="@{'/cart'}">Add to <i class="icon-shopping-cart" onclick="window.location.href = '/cart/2';"></i></a>
+                <a class="btn btn-primary" th:href="@{'/cart'}" th:text="${product.productPrice}">$222.00</a></h4>
+        </div>
+    </div>
+    </br>
+</div>
+</div>
+
+</body>
+</html>

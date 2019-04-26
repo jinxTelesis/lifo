@@ -1,26 +1,27 @@
 package capstone.bcs.lifo.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
-public class Customer {
+public class CustomerV2 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customerId")
     private long customerId;
 
     private String pFirstName;
     private String pLastName;
     private String pEmail;
+
     private String pDoB;
 
+    @Cascade({org.hibernate.annotations.CascadeType.PERSIST}) // this is what you just changed does it fail
     @OneToOne
-    @JoinColumn(name = "cartId")
-    private Cart cart;
-
-    @OneToOne
-    @JoinColumn(name = "cartProductsId")
-    private CartProducts cartProducts;
+    @JoinColumn(name ="cart_version2_id") // changed from div
+    private CartV2 cartV2;
 
     //make an embedded type for address
     @Embedded
@@ -28,8 +29,6 @@ public class Customer {
 
     @Embedded
     private Account account = new Account();
-
-
 
 
     public Address getCustomerAddress() {
@@ -88,5 +87,12 @@ public class Customer {
         this.pDoB = pDoB;
     }
 
+    public CartV2 getCartV2() {
+        return cartV2;
+    }
+
+    public void setCartV2(CartV2 cartV2) {
+        this.cartV2 = cartV2;
+    }
 
 }

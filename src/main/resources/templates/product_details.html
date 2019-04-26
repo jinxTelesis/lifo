@@ -1,11 +1,101 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header">
+<head>
+	<!-- Bootstrap style -->
+	<link href="../../static/css/bootstrap.min.css"
+		  th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
+	<link href="../../static/css/base.css"
+		  th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>
+	<!-- Bootstrap style responsive -->
+	<link href="../../static/css/bootstrap-responsive.min.css"
+		  th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>
+	<link href="../../static/css/font-awesome.css"
+		  th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">
+	<!-- Google-code-prettify -->
+
+	<!--<link href="../js/google-code-prettify/prettify.css"
+          th:href="@{js/google-code-prettify/prettify.css}" rel="stylesheet"/>-->
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script src="/webjars/jquery/3.3.1-2 /jquery.js"></script>
+
 
 </head>
 <body>
 <!-- Navigation section start ====================================================================== -->
-<div th:replace="fragments/navigation :: navigation">
+<div id="header">
+	<div class="container">
+		<div id="welcomeLine" class="row">
+			<div class="span6">Welcome!<strong> User</strong></div>
+			<div class="span6">
+				<div class="pull-right">
+					<span class="btn btn-mini">$0.00</span>
+					<a href="product_summary" th:href="@{'/product_summary'}"><span class="btn btn-mini btn-primary">
+						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
+				</div>
+			</div>
+		</div>
+		<!-- Navbar ================================================== -->
+		<div id="logoArea" class="navbar">
+			<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<div class="navbar-inner">
+				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
+				<form class="form-inline navbar-search" method="post" action="products" >
+					<input id="srchFld" class="srchTxt" type="text" />
+					<select class="srchTxt">
+						<option th:href="@{'/products/0'}">ACCESSORIES </option>
+						<option th:href="@{'/products/1'}">APPLIANCES </option>
+						<option th:href="@{'/products/2'}">CLEANING </option>
+						<option th:href="@{'/products/3'}">HARDWARE </option>
+						<option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
+						<option th:href="@{'/products/5'}">HOMEWARES </option>
+						<option th:href="@{'/products/6'}">TOYS </option>
+					</select>
+					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+				</form>
+				<ul id="topMenu" class="nav pull-right">
+					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
+					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
+					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
+					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
+					<li class="">
+						<a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h3>Login Block</h3>
+							</div>
+							<div class="modal-body">
+								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
+									<div class="control-group">
+										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
+									</div>
+									<div class="control-group">
+										<input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
+									</div>
+									<div class="control-group">
+										<label class="checkbox">
+											<input type="checkbox"> Remember me
+										</label>
+									</div>
+								</form>
+								<button type="submit" class="btn btn-success">Sign in</button>
+								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
 </div>
 <!-- Navigation section end ====================================================================== -->
 
@@ -20,26 +110,26 @@
 
 	<div class="span9">
     <ul class="breadcrumb">
-    <li><a href="index">Home</a> <span class="divider">/</span></li>
-    <li><a href="products">Products</a> <span class="divider">/</span></li>
+    <li><a href="index" th:href="@{'/products/0'}">Home</a> <span class="divider">/</span></li>
+    <li><a href="products" th:href="@{'/products/0'}">Products</a> <span class="divider">/</span></li>
     <li class="active">product Details</li>
     </ul>	
 	<div class="row">	  
 			<div id="gallery" class="span3">
-            <a href="images/products/large/f1.jpg" title="Fujifilm FinePix S2950 Digital Camera">
-				<img src="images/products/large/3.jpg" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera"/>
+            <a href="/images/products/large/f1.jpg" title="Fujifilm FinePix S2950 Digital Camera">
+				<img src="/images/products/large/3.jpg" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera"/>
             </a>
 			<div id="differentview" class="moreOptopm carousel slide">
                 <div class="carousel-inner">
                   <div class="item active">
-                   <a href="images/products/large/f1.jpg"> <img style="width:29%" src="images/products/large/f1.jpg" alt=""/></a>
-                   <a href="images/products/large/f2.jpg"> <img style="width:29%" src="images/products/large/f2.jpg" alt=""/></a>
-                   <a href="images/products/large/f3.jpg" > <img style="width:29%" src="images/products/large/f3.jpg" alt=""/></a>
+                   <a href="/images/products/large/f1.jpg"> <img style="width:29%" src="/images/products/large/f1.jpg" alt=""/></a>
+                   <a href="/images/products/large/f2.jpg"> <img style="width:29%" src="/images/products/large/f2.jpg" alt=""/></a>
+                   <a href="/images/products/large/f3.jpg" > <img style="width:29%" src="/images/products/large/f3.jpg" alt=""/></a>
                   </div>
                   <div class="item">
-                   <a href="images/products/large/f3.jpg" > <img style="width:29%" src="images/products/large/f3.jpg" alt=""/></a>
-                   <a href="images/products/large/f1.jpg"> <img style="width:29%" src="images/products/large/f1.jpg" alt=""/></a>
-                   <a href="images/products/large/f2.jpg"> <img style="width:29%" src="images/products/large/f2.jpg" alt=""/></a>
+                   <a href="/images/products/large/f3.jpg" > <img style="width:29%" src="/images/products/large/f3.jpg" alt=""/></a>
+                   <a href="/images/products/large/f1.jpg"> <img style="width:29%" src="/images/products/large/f1.jpg" alt=""/></a>
+                   <a href="/images/products/large/f2.jpg"> <img style="width:29%" src="/images/products/large/f2.jpg" alt=""/></a>
                   </div>
                 </div>
               <!--  
@@ -95,16 +185,16 @@
 				Weight 0.341kg (excluding battery and memory card). Weight 0.437kg (including battery and memory card).
 				
 				</p>
-				<a class="btn btn-small pull-right" href="#detail">More Details</a>
+				<a class="btn btn-small pull-right" href="#detail" th:href="@{'/#detail'}">More Details</a>
 				<br class="clr"/>
-			<a href="#" name="detail"></a>
+			<a href="#" th:href="@{'/#'}" name="detail"></a>
 			<hr class="soft"/>
 			</div>
 			
 			<div class="span9">
             <ul id="productDetail" class="nav nav-tabs">
-              <li class="active"><a href="#home" data-toggle="tab">Product Details</a></li>
-              <li><a href="#profile" data-toggle="tab">Related Products</a></li>
+              <li class="active"><a href="#home" th:href="@{'/products/0'}" data-toggle="tab">Product Details</a></li>
+              <li><a href="#profile" th:href="@{'/products/0'}" data-toggle="tab">Related Products</a></li>
             </ul>
             <div id="myTabContent" class="tab-content">
               <div class="tab-pane fade active in" id="home">
@@ -148,8 +238,8 @@
               </div>
 		<div class="tab-pane fade" id="profile">
 		<div id="myTab" class="pull-right">
-		 <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
-		 <a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
+		 <a href="#listView" th:href="@{'/#listView'}" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
+		 <a href="#blockView" th:href="@{'/#blockView'}"data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
 		</div>
 		<br class="clr"/>
 		<hr class="soft"/>
@@ -157,7 +247,7 @@
 			<div class="tab-pane" id="listView">
 				<div class="row">	  
 					<div class="span2">
-						<img src="images/products/4.jpg" alt=""/>
+						<img src="/images/products/4.jpg" alt=""/>
 					</div>
 					<div class="span4">
 						<h3>New | Available</h3>				
@@ -167,7 +257,7 @@
 						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies - 
 						that is why our goods are so popular..
 						</p>
-						<a class="btn btn-small pull-right" href="product_details">View Details</a>
+						<a class="btn btn-small pull-right" href="product_details" th:href="@{'/product_details'}">View Details</a>
 						<br class="clr"/>
 					</div>
 					<div class="span3 alignR">
@@ -177,8 +267,8 @@
 						<input type="checkbox">  Adds product to compare
 					</label><br/>
 					<div class="btn-group">
-					  <a href="product_details" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-					  <a href="product_details" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+					  <a href="product_details" th:href="@{'/product_details'}" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+					  <a href="product_details" th:href="@{'/product_details'}"class="btn btn-large"><i class="icon-zoom-in"></i></a>
 					 </div>
 						</form>
 					</div>
@@ -186,7 +276,7 @@
 			<hr class="soft"/>
 			<div class="row">	  
 					<div class="span2">
-						<img src="images/products/5.jpg" alt=""/>
+						<img src="/images/products/5.jpg" alt=""/>
 					</div>
 					<div class="span4">
 						<h3>New | Available</h3>				
@@ -196,7 +286,7 @@
 						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies - 
 						that is why our goods are so popular..
 						</p>
-						<a class="btn btn-small pull-right" href="product_details">View Details</a>
+						<a class="btn btn-small pull-right" href="product_details" th:href="@{'/product_details'}">View Details</a>
 						<br class="clr"/>
 					</div>
 					<div class="span3 alignR">
@@ -206,8 +296,8 @@
 						<input type="checkbox">  Adds product to compare
 						</label><br/>
 						<div class="btn-group">
-						<a href="product_details" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-						<a href="product_details" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+						<a href="product_details" th:href="@{'/product_details'}"class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+						<a href="product_details" th:href="@{'/product_details'}"class="btn btn-large"><i class="icon-zoom-in"></i></a>
 						</div>
 					</form>
 					</div>
@@ -215,7 +305,7 @@
 			<hr class="soft"/>
 			<div class="row">	  
 					<div class="span2">
-					<img src="images/products/6.jpg" alt=""/>
+					<img src="/images/products/6.jpg" alt=""/>
 					</div>
 					<div class="span4">
 						<h3>New | Available</h3>				
@@ -225,7 +315,7 @@
 						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies - 
 						that is why our goods are so popular..
 						</p>
-						<a class="btn btn-small pull-right" href="product_details">View Details</a>
+						<a class="btn btn-small pull-right" href="product_details" th:href="@{'/product_details'}">View Details</a>
 						<br class="clr"/>
 					</div>
 					<div class="span3 alignR">
@@ -235,8 +325,8 @@
 						<input type="checkbox">  Adds product to compare
 					</label><br/>
 				<div class="btn-group">
-				  <a href="product_details" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-				  <a href="product_details" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+				  <a href="product_details" th:href="@{'/product_details'}"class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+				  <a href="product_details" th:href="@{'/product_details'}"class="btn btn-large"><i class="icon-zoom-in"></i></a>
 				 </div>
 						</form>
 					</div>
@@ -244,7 +334,7 @@
 			<hr class="soft"/>
 			<div class="row">	  
 					<div class="span2">
-					<img src="images/products/7.jpg" alt=""/>
+					<img src="/images/products/7.jpg" alt=""/>
 					</div>
 					<div class="span4">
 						<h3>New | Available</h3>				
@@ -254,7 +344,7 @@
 						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies - 
 						that is why our goods are so popular..
 						</p>
-						<a class="btn btn-small pull-right" href="product_details">View Details</a>
+						<a class="btn btn-small pull-right" href="product_details" th:href="@{'/product_details'}">View Details</a>
 						<br class="clr"/>
 					</div>
 					<div class="span3 alignR">
@@ -264,8 +354,8 @@
 						<input type="checkbox">  Adds product to compare
 						</label><br/>
 						<div class="btn-group">
-						<a href="product_details" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-						<a href="product_details" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+						<a href="product_details" th:href="@{'/product_details'}" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+						<a href="product_details" th:href="@{'/product_details'}" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 						</div>
 						</form>
 					</div>
@@ -274,7 +364,7 @@
 			<hr class="soft"/>
 			<div class="row">	  
 					<div class="span2">
-					<img src="images/products/8.jpg" alt=""/>
+					<img src="/images/products/8.jpg" alt=""/>
 					</div>
 					<div class="span4">
 						<h3>New | Available</h3>				
@@ -284,7 +374,7 @@
 						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies - 
 						that is why our goods are so popular..
 						</p>
-						<a class="btn btn-small pull-right" href="product_details">View Details</a>
+						<a class="btn btn-small pull-right" href="product_details" th:href="@{'/product_details'}">View Details</a>
 						<br class="clr"/>
 					</div>
 					<div class="span3 alignR">
@@ -294,8 +384,8 @@
 						<input type="checkbox">  Adds product to compare
 						</label><br/>
 						<div class="btn-group">
-						<a href="product_details" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-						<a href="product_details" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+						<a href="product_details" th:href="@{'/product_details'}" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+						<a href="product_details"  th:href="@{'/product_details'}" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 						</div>
 						</form>
 					</div>
@@ -303,7 +393,7 @@
 			<hr class="soft"/>
 				<div class="row">	  
 					<div class="span2">
-					<img src="images/products/9.jpg" alt=""/>
+					<img src="/images/products/9.jpg" alt=""/>
 					</div>
 					<div class="span4">
 						<h3>New | Available</h3>				
@@ -313,7 +403,7 @@
 						Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies - 
 						that is why our goods are so popular..
 						</p>
-						<a class="btn btn-small pull-right" href="product_details">View Details</a>
+						<a class="btn btn-small pull-right" href="product_details" th:href="@{'/product_details'}">View Details</a>
 						<br class="clr"/>
 					</div>
 					<div class="span3 alignR">
@@ -323,8 +413,8 @@
 						<input type="checkbox">  Adds product to compare
 						</label><br/>
 						<div class="btn-group">
-						<a href="product_details" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-						<a href="product_details" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+						<a href="product_details" th:href="@{'/product_details'}" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+						<a href="product_details" th:href="@{'/product_details'}" class="btn btn-large"><i class="icon-zoom-in"></i></a>
 						</div>
 						</form>
 					</div>
@@ -335,73 +425,84 @@
 				<ul class="thumbnails">
 					<li class="span3">
 					  <div class="thumbnail">
-						<a href="product_details"><img src="images/products/10.jpg" alt=""/></a>
+						<a href="product_details" th:href="@{'/product_details'}"><img src="/images/products/10.jpg" alt=""/></a>
 						<div class="caption">
 						  <h5>Manicure &amp; Pedicure</h5>
 						  <p> 
 							Lorem Ipsum is simply dummy text. 
 						  </p>
-						  <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
+						  <h4 style="text-align:center"><a class="btn" th:href="@{'/product_details'}" href="product_details"> <i class="icon-zoom-in"></i></a>
+							  <a class="btn" href="#" th:href="@{'/#'}">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#" th:href="@{'/#'}">&euro;222.00</a></h4>
 						</div>
 					  </div>
 					</li>
 					<li class="span3">
 					  <div class="thumbnail">
-						<a href="product_details"><img src="images/products/11.jpg" alt=""/></a>
+						<a href="product_details" th:href="@{'/product_details'}"><img src="/images/products/11.jpg" alt=""/></a>
 						<div class="caption">
 						  <h5>Manicure &amp; Pedicure</h5>
 						  <p> 
 							Lorem Ipsum is simply dummy text. 
 						  </p>
-						  <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
+						  <h4 style="text-align:center"><a class="btn" href="product_details" th:href="@{'/product_details'}">
+							  <i class="icon-zoom-in"></i></a> <a class="btn" href="#" th:href="@{'/#'}">Add to <i class="icon-shopping-cart"></i></a>
+							  <a class="btn btn-primary" href="#" th:href="@{'/#'}">&euro;222.00</a></h4>
 						</div>
 					  </div>
 					</li>
 					<li class="span3">
 					  <div class="thumbnail">
-						<a href="product_details"><img src="images/products/12.jpg" alt=""/></a>
+						<a href="product_details" th:href="@{'/product_details'}"><img src="/images/products/12.jpg" alt=""/></a>
 						<div class="caption">
 						  <h5>Manicure &amp; Pedicure</h5>
 						  <p> 
 							Lorem Ipsum is simply dummy text. 
 						  </p>
-						   <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
+						   <h4 style="text-align:center"><a class="btn" href="product_details" th:href="@{'/product_details'}"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#" th:href="@{'/#'}">Add to <i class="icon-shopping-cart">
+
+						   </i></a> <a class="btn btn-primary" href="#" th:href="@{'/#'}">&euro;222.00</a></h4>
 						</div>
 					  </div>
 					</li>
 					<li class="span3">
 					  <div class="thumbnail">
-						<a href="product_details"><img src="images/products/13.jpg" alt=""/></a>
+						<a href="product_details" th:href="@{'/product_details'}"><img src="/images/products/13.jpg" alt=""/></a>
 						<div class="caption">
 						  <h5>Manicure &amp; Pedicure</h5>
 						  <p> 
 							Lorem Ipsum is simply dummy text. 
 						  </p>
-						   <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
+						   <h4 style="text-align:center"><a class="btn" href="product_details" th:href="@{'/product_details'}">
+							   <i class="icon-zoom-in"></i></a> <a class="btn" href="#" th:href="@{'/#'}">Add to <i class="icon-shopping-cart"></i></a>
+							   <a class="btn btn-primary" href="#" th:href="@{'/#'}">&euro;222.00</a></h4>
 						</div>
 					  </div>
 					</li>
 					<li class="span3">
 					  <div class="thumbnail">
-						<a href="product_details"><img src="images/products/1.jpg" alt=""/></a>
+						<a href="product_details" th:href="@{'/product_details'}"><img src="/images/products/1.jpg" alt=""/></a>
 						<div class="caption">
 						  <h5>Manicure &amp; Pedicure</h5>
 						  <p> 
 							Lorem Ipsum is simply dummy text. 
 						  </p>
-						   <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
+						   <h4 style="text-align:center"><a class="btn" href="product_details" th:href="@{'/product_details'}">
+							   <i class="icon-zoom-in"></i></a> <a class="btn" href="#" th:href="@{'/#'}">Add to <i class="icon-shopping-cart"></i></a>
+							   <a class="btn btn-primary" href="#" th:href="@{'/#'}">&euro;222.00</a></h4>
 						</div>
 					  </div>
 					</li>
 					<li class="span3">
 					  <div class="thumbnail">
-						<a href="product_details"><img src="images/products/2.jpg" alt=""/></a>
+						<a href="product_details" th:href="@{'/product_details'}"><img src="/images/products/2.jpg" alt=""/></a>
 						<div class="caption">
 						  <h5>Manicure &amp; Pedicure</h5>
 						  <p> 
 							Lorem Ipsum is simply dummy text. 
 						  </p>
-						   <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
+						   <h4 style="text-align:center"><a class="btn" href="product_details" th:href="@{'/product_details'}">
+							   <i class="icon-zoom-in"></i></a> <a class="btn" href="#" th:href="@{'/#'}">Add to <i class="icon-shopping-cart"></i></a>
+							   <a class="btn btn-primary" href="#" th:href="@{'/#'}">&euro;222.00</a></h4>
 						</div>
 					  </div>
 					</li>
@@ -422,6 +523,7 @@
 <!-- Footer section start =============================================== -->
 <div class="container" th:replace="fragments/footer :: footer">
 </div>
+
 <!-- Footer section end =============================================== -->
 
 <!-- Site script section start =============================================== -->

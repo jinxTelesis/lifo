@@ -11,11 +11,19 @@ public interface ProductService {
 
     Product findById(Long l);
 
+    Set<Product> getProductSet();
+
+    List<Product> getProductAsecPrice();
+
+    List<Product> getProductDescPrice();
+
     List<Product> getProductsAsce();
 
     List<Product> getProductsDesc();
 
     List<Product> getProductsByCategory(Integer integer);
+
+    Product saveProduct(Product product);
 
     void deleteById(Long idToDelete);
 }

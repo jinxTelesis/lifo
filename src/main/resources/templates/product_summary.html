@@ -1,11 +1,111 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header">
+<head>
+	<!-- Bootstrap style -->
+	<link href="../../static/css/bootstrap.min.css"
+		  th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
+	<link href="../../static/css/base.css"
+		  th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>
+	<!-- Bootstrap style responsive -->
+	<link href="../../static/css/bootstrap-responsive.min.css"
+		  th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>
+	<link href="../../static/css/font-awesome.css"
+		  th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">
+	<!-- Google-code-prettify -->
+
+	<!--<link href="../js/google-code-prettify/prettify.css"
+          th:href="@{js/google-code-prettify/prettify.css}" rel="stylesheet"/>-->
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script src="/webjars/jquery/3.3.1-2 /jquery.js"></script>
+
+	<script>
+		window.fetch('localhost:8080/cart')
+				.then(r =>{
+					if(r.meta.code === 424){
+						console.eror('user not logged in')
+						alert("Please login before using cart!")
+					}
+				})
+	</script>
+
 
 </head>
 <body>
 <!-- Navigation section start ====================================================================== -->
-<div th:replace="fragments/navigation :: navigation">
+<div id="header">
+	<div class="container">
+		<div id="welcomeLine" class="row">
+			<div class="span6">Welcome!<strong> User</strong></div>
+			<div class="span6">
+				<div class="pull-right">
+					<span class="btn btn-mini">$0.00</span>
+					<a href="product_summary" th:href="@{'/product_summary'}"><span class="btn btn-mini btn-primary">
+						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
+				</div>
+			</div>
+		</div>
+		<!-- Navbar ================================================== -->
+		<div id="logoArea" class="navbar">
+			<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<div class="navbar-inner">
+				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
+				<form class="form-inline navbar-search" method="post" action="products" >
+					<input id="srchFld" class="srchTxt" type="text" />
+					<select class="srchTxt">
+						<option th:href="@{'/products/0'}">ACCESSORIES </option>
+						<option th:href="@{'/products/1'}">APPLIANCES </option>
+						<option th:href="@{'/products/2'}">CLEANING </option>
+						<option th:href="@{'/products/3'}">HARDWARE </option>
+						<option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
+						<option th:href="@{'/products/5'}">HOMEWARES </option>
+						<option th:href="@{'/products/6'}">TOYS </option>
+					</select>
+					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+				</form>
+				<ul id="topMenu" class="nav pull-right">
+					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
+					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
+					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
+					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
+					<li class="">
+						<a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h3>Login Block</h3>
+							</div>
+							<div class="modal-body">
+								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
+									<div class="control-group">
+										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
+									</div>
+									<div class="control-group">
+										<input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
+									</div>
+									<div class="control-group">
+										<label class="checkbox">
+											<input type="checkbox"> Remember me
+										</label>
+									</div>
+								</form>
+								<button type="submit" class="btn btn-success">Sign in</button>
+								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
 </div>
 <!-- Navigation section end ====================================================================== -->
 
@@ -20,10 +120,10 @@
 
 			<div class="span9">
 				<ul class="breadcrumb">
-					<li><a href="index">Home</a> <span class="divider">/</span></li>
+					<li><a href="index" th:href="@{'/products/0'}">Home</a> <span class="divider">/</span></li>
 					<li class="active"> SHOPPING CART</li>
 				</ul>
-				<h3>  SHOPPING CART [ <small>3 Item(s) </small>]<a href="products" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
+				<h3>  SHOPPING CART [ <small>3 Item(s) </small>]<a href="products" th:href="@{'/products/0'}" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
 				<hr class="soft"/>
 				<table class="table table-bordered">
 					<tr><th> I AM ALREADY REGISTERED  </th></tr>
@@ -62,12 +162,12 @@
 								</div>
 								<div class="control-group">
 									<div class="controls">
-										<button type="submit" class="btn">Sign in</button> OR <a href="register" class="btn">Register Now!</a>
+										<button type="submit" class="btn">Sign in</button> OR <a href="register" th:href="@{'/register'}"class="btn">Register Now!</a>
 									</div>
 								</div>
 								<div class="control-group">
 									<div class="controls">
-										<a href="forgetpass" style="text-decoration:underline">Forgot password ?</a>
+										<a href="forgetpass" th:href="@{'/forgetpass'}" style="text-decoration:underline">Forgot password ?</a>
 									</div>
 								</div>
 							</form>
@@ -89,10 +189,14 @@
 					</thead>
 					<tbody>
 					<tr>
-						<td> <img width="60" src="images/products/4.jpg" alt=""/></td>
+						<td> <img width="60" src="/images/products/4.jpg" alt=""/></td>
 						<td>MASSA AST<br/>Color : black, Material : metal</td>
 						<td>
-							<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+							<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text">
+								<button class="btn" type="button" onclick="window.location.href = '/cart/1/1/d';"><i class="icon-minus"></i></button>
+								<button class="btn" type="button" onclick="window.location.href =  '/cart/2/1/d';"><i class="icon-plus"></i></button>
+								<button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart/0/1/d';"><i class="icon-remove icon-white"></i></button>
+							</div>
 						</td>
 						<td>$120.00</td>
 						<td>$25.00</td>
@@ -100,10 +204,14 @@
 						<td>$110.00</td>
 					</tr>
 					<tr>
-						<td> <img width="60" src="images/products/8.jpg" alt=""/></td>
+						<td> <img width="60" src="/images/products/8.jpg" alt=""/></td>
 						<td>MASSA AST<br/>Color : black, Material : metal</td>
 						<td>
-							<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+							<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text">
+								<button class="btn" type="button" onclick="window.location.href = '/cart/1/2/d';"><i class="icon-minus"></i></button>
+								<button class="btn" type="button" onclick="window.location.href =  '/cart/2/2/d';"><i class="icon-plus"></i></button>
+								<button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart/0/2/d';"><i class="icon-remove icon-white"></i></button>
+							</div>
 						</td>
 						<td>$7.00</td>
 						<td>--</td>
@@ -111,10 +219,13 @@
 						<td>$8.00</td>
 					</tr>
 					<tr>
-						<td> <img width="60" src="images/products/3.jpg" alt=""/></td>
+						<td> <img width="60" src="/images/products/3.jpg" alt=""/></td>
 						<td>MASSA AST<br/>Color : black, Material : metal</td>
 						<td>
-							<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+							<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text">
+								<button class="btn" type="button" onclick="window.location.href = '/cart/1/3/d';"><i class="icon-minus"></i></button>
+								<button class="btn" type="button" onclick="window.location.href = '/cart/2/3/d';"><i class="icon-plus"></i></button>
+								<button class="btn btn-danger" type="button" onclick="window.location.href = '/cart/0/3/d';"><i class="icon-remove icon-white"></i></button>				</div>
 						</td>
 						<td>$120.00</td>
 						<td>$25.00</td>
@@ -187,8 +298,8 @@
 						</td>
 					</tr>
 				</table>
-				<a href="products" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
-				<a href="login" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
+				<a href="products" th:href="@{'/products/0'}" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+				<a href="login" th:href="@{'/product_summary'}"class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
 
 			</div>
 		</div></div>

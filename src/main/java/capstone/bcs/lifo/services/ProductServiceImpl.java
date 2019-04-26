@@ -7,7 +7,6 @@ import capstone.bcs.lifo.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -27,7 +26,10 @@ public class ProductServiceImpl implements ProductService {
         List<Product> productList = new ArrayList<>();
         productRepository.findAll().iterator().forEachRemaining(productList::add);
         return productList;
+        //productRepository.findAll().iterator().forEachRemaining(productSet::add);
+        //return productSet;
     }
+
 
     @Override
     public Product findById(Long l) {
@@ -41,6 +43,32 @@ public class ProductServiceImpl implements ProductService {
         return productOptional.get();
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public Set<Product> getProductSet() {
+        Set<Product> productSet = new HashSet<>();
+        productRepository.findAll().iterator().forEachRemaining(productSet::add);
+        return productSet;
+    }
+
+    @Override
+    public List<Product> getProductAsecPrice(){
+        List<Product> productList = new ArrayList<>();
+        productRepository.findAll().iterator().forEachRemaining(productList::add);
+        Collections.sort(productList, new AlphaNumericComparatorAsec());
+        return productList;
+    }
+
+    @Override
+    public List<Product> getProductDescPrice(){
+        List<Product> productList = new ArrayList<>();
+        productRepository.findAll().iterator().forEachRemaining(productList::add);
+        Collections.sort(productList, new AlphaNumericComparatorDesc());
+        return productList;
+    }
+
+
+    @SuppressWarnings("unchecked")
     @Override
     public List<Product> getProductsAsce() {
         List<Product> productList = new ArrayList<>();
@@ -50,7 +78,7 @@ public class ProductServiceImpl implements ProductService {
         return productList;
     }
 
-    @SuppressWarnings("1")
+    @SuppressWarnings("unchecked")
     @Override
     public List<Product> getProductsDesc() {
 
@@ -61,6 +89,7 @@ public class ProductServiceImpl implements ProductService {
         return productList;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Product> getProductsByCategory(Integer integerPara) {
         List<Product> productList = new ArrayList<>();
@@ -83,11 +112,45 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
+    public Product saveProduct(Product product) {
+        productRepository.save(product);
+        return product;
+    }
+
+
+    @Override
     public void deleteById(Long idToDelete) {
         productRepository.deleteById(idToDelete);
     }
 
 
+    class AlphaNumericComparatorAsec implements Comparator<Product>
+    {
+        @Override
+        public int compare(Product o1, Product o2) {
+            if(o1.getProductPrice() == o2.getProductPrice())
+            {
+                return 0;
+            }else if(o1.getProductPrice() < o2.getProductPrice()){
+                return -1;
+            }
+            return 1;
+        }
+    }
+
+    class AlphaNumericComparatorDesc implements Comparator<Product>
+    {
+        @Override
+        public int compare(Product o1, Product o2) {
+            if(o1.getProductPrice() == o2.getProductPrice())
+            {
+                return 0;
+            }else if(o1.getProductPrice() < o2.getProductPrice()){
+                return 1;
+            }
+            return -1;
+        }
+    }
 
 
     class LexicographicComparator implements Comparator<Product>

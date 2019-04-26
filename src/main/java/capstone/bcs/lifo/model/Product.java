@@ -23,12 +23,19 @@ public class Product implements Comparator<Product>{
 
     private String productImage;
     private String productDimensions;
+
+    @Lob
     private String description1;
+
+    @Lob
     private String description2;
+
+    @Lob
     private String description3;
+
+    @Lob
     private String description4;
 
-    // why does the constructor have an access modifier?
     public Product(){
 
     }
@@ -42,6 +49,10 @@ public class Product implements Comparator<Product>{
         this.description1 = description1;
         this.description2 = description2;
         this.description3 = description3;
+    }
+
+    public Product(Long id) {
+        this.id = id;
     }
 
 

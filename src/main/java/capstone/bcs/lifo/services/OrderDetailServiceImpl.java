@@ -18,6 +18,7 @@ public class OrderDetailServiceImpl implements OrderDetailService{
         this.orderDetailRepository = orderDetailRepository;
     }
 
+    //@SuppressWarnings("unchecked")
     @Override
     public List<OrderDetail> getOrderDetails() {
         List<OrderDetail> orderDetailList = new ArrayList<>();
