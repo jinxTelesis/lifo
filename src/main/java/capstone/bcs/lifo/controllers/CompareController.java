@@ -31,24 +31,24 @@ public class CompareController {
     public String getPage(Model model){
         model.addAttribute("LoginForm", new LoginForm());
 
-        CartV2 cartV2 = new CartV2();
-        CustomerV2 customerV2 = new CustomerV2();
-        customerV2.setpLastName("ted");
-        customerV2.setpFirstName("dead");
-        customerV2.setpDoB("tuesday");
-
-        customerV2.setCartV2(cartV2); // will this cause errors
-        Set<CartProductV2> productSet = new HashSet<>();
-        CartProductV2 cartProductV2 = new CartProductV2();
-        cartProductV2.setProductId(1);
-        cartProductV2.setProductPrice(9.99);
-        cartProductV2.setProductNumber(3);
-        cartProductV2.setCartV2(cartV2);
-        productSet.add(cartProductV2);
-
-        cartV2.setProductSet(productSet);
-        cartV2.setCustomerV2(customerV2);
-        cartV2Repository.save(cartV2);
+//        CartV2 cartV2 = new CartV2();
+//        CustomerV2 customerV2 = new CustomerV2();
+//        customerV2.setpLastName("ted");
+//        customerV2.setpFirstName("dead");
+//        customerV2.setpDoB("tuesday");
+//
+//        customerV2.setCartV2(cartV2); // will this cause errors
+//        Set<CartProductV2> productSet = new HashSet<>();
+//        CartProductV2 cartProductV2 = new CartProductV2();
+//        cartProductV2.setProductId(1);
+//        cartProductV2.setProductPrice(9.99);
+//        cartProductV2.setProductNumber(3);
+//        cartProductV2.setCartV2(cartV2);
+//        productSet.add(cartProductV2);
+//
+//        cartV2.setProductSet(productSet);
+//        cartV2.setCustomerV2(customerV2);
+//        cartV2Repository.save(cartV2);
 
 
 

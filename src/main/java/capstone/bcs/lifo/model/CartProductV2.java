@@ -3,6 +3,7 @@ package capstone.bcs.lifo.model;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class CartProductV2 {
@@ -13,6 +14,19 @@ public class CartProductV2 {
     private Long idCP;
 
     private int productId;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CartProductV2)) return false;
+        CartProductV2 that = (CartProductV2) o;
+        return productId == that.productId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productId);
+    }
 
     private double productPrice;
 
