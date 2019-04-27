@@ -24,9 +24,4 @@ public class ProductsRESTfulController {
         this.productRepository = productRepository;
     }
 
-
-
-
-
-
 }

@@ -3,13 +3,14 @@ package capstone.bcs.lifo.controllers;
 import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.CartProductV2;
 import capstone.bcs.lifo.model.CartV2;
-import capstone.bcs.lifo.model.CustomerV2;
 import capstone.bcs.lifo.model.Product;
 import capstone.bcs.lifo.repositories.CartProductV2Repository;
 import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.repositories.CustomerV2Repository;
+import capstone.bcs.lifo.repositories.ProductRepository;
 import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
+import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 public class CartController {
 
     private ProductService productService;
+    private ProductRepository productRepository;
     private CartService cartService;
     private CustomerV2Repository customerV2Repository;
     private CartProductV2Repository cartProductV2Repository;
@@ -47,6 +49,9 @@ public class CartController {
     public String getPageLogin(Model model, HttpSession session){
         System.out.println("cart button worked!");
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
 
         if(session.getAttribute("cart") != null)
         {
@@ -67,6 +72,9 @@ public class CartController {
     @RequestMapping({"/cart/product_summary"})
     public String hotFix(Model model, HttpSession session) {
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
         return "product_summary";
     }
 
@@ -76,6 +84,9 @@ public class CartController {
     @RequestMapping({"/products/product_summary"})
     public String hotFix2(Model model, HttpSession session) {
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
         return "product_summary";
     }
 
@@ -115,8 +126,8 @@ public class CartController {
     public String getPageVarVarVar(HttpServletRequest request,HttpSession session,@PathVariable("ida") String ida,
                                    @PathVariable("idb") String idb,@PathVariable("idc") String idc, Model model) throws Exception {
         String referer = request.getHeader("Referer");
-        model.addAttribute("LoginForm", new LoginForm());
-        //CartOld cart = null;
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+
         CartV2 cartV2 = null;
         Integer a = null;
         Integer b = null;
@@ -129,6 +140,9 @@ public class CartController {
         }else{
             System.out.println("you need to login first buddy from cart/{ida}/{idb}/{idc}!");
             //return "product_summary";
+            model.addAttribute("cartsize",validSDU.getProductListSize());
+            model.addAttribute("carttotal",validSDU.getCartTotal());
+            model.addAttribute("LoginForm", new LoginForm());
             return "invalid_product_summary";
         }
 
@@ -174,11 +188,9 @@ public class CartController {
                 }
             }
 
-            for(int i = 0; i < productList.size();i++)
-            {
-                System.out.println("this is the products in the list" + productList.get(i).getProductId());
-                System.out.println("this is the price of the corresponding products" + productList.get(i).getProductPrice());
-            }
+
+            productList.forEach(p -> System.out.println(p.getProductId()));
+            productList.forEach(p -> System.out.println(p.getProductPrice()));
 
 
             localCart.setProductList(productList);
@@ -323,7 +335,14 @@ public class CartController {
         // 3 : get the total price of the cart, 4 : get the price of the items
         // the second id is the product number being sent.
         // the last id is for expansion maybe checkout i'm not sure yet
-        return "product_summary";
+
+        validSDU.setProductRepository(productRepository);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
+        model.addAttribute("LoginForm", new LoginForm());
+        model.addAttribute("username",validSDU.getUsersName());
+        //model.addAttribute("products",validSDU.getProductsInShoppingCart());
+        return "custom_cart";
     }
 
     List<CartProductV2> removeAll(List<CartProductV2> list, CartProductV2 cartProductV2){
@@ -331,6 +350,8 @@ public class CartController {
                 .filter(p -> !Objects.equals(p, cartProductV2)) // this will work if the equals method is correct
                 .collect(Collectors.toList());
     }
+
+    // this might be duplicate code
 
     Double cartTotal(List<CartProductV2> list){
         double sum = list.stream().filter( p -> p.getProductPrice() > 0.0f).mapToDouble(o -> o.getProductPrice()).sum();
@@ -350,6 +371,7 @@ public class CartController {
         sum = sum + (sum * discount);
         return sum;
     }
+
 
 
 }

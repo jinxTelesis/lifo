@@ -2,10 +2,13 @@ package capstone.bcs.lifo.controllers;
 
 import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.services.ProductService;
+import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 // start a registration page -
 
@@ -27,26 +30,31 @@ public class IndexController {
     }
 
     @RequestMapping({"/","/index","/.html","/index.html"})
-    public String getIndex(Model model){
+    public String getIndex(Model model, HttpSession session){
         model.addAttribute("products", productService.getProductsAsce());
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
         return "index";
     }
 
 
     @RequestMapping({"/indexRev"})
-    public String getIndexByProductCat(Model model){
-        //model.addAttribute("products", productService.getProductsByCategory(4));
-
+    public String getIndexByProductCat(Model model, HttpSession session){
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
         model.addAttribute("products", productService.getProductsDesc());
         model.addAttribute("LoginForm", new LoginForm());
         return "index";
     }
 
     @RequestMapping({"/products/indexRev"})
-    public String getIndexByProductCatHotFix(Model model){
-        //model.addAttribute("products", productService.getProductsByCategory(4));
-
+    public String getIndexByProductCatHotFix(Model model, HttpSession session){
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
         model.addAttribute("products", productService.getProductsDesc());
         model.addAttribute("LoginForm", new LoginForm());
         return "index";
