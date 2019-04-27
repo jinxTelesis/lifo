@@ -71,13 +71,20 @@ public class ProductSummaryController {
             try{
 
                 CustomerV2 localCustV2;
-                localCustV2 = customerService.getByUserName(loginForm.getUserName());
+                try {
+                    localCustV2 = customerService.getByUserName(loginForm.getUserName());
+                } catch (IndexOutOfBoundsException e)
+                {
+                    System.out.println("the database had zero users in it");
+                    return "product_summary";
+                }
                 System.out.println(loginForm.getUserName());
 
                 if(localCustV2.getpFirstName() == "")
                 {
                     System.out.println("it was null");
                 }
+
 
 
                 Account localAccount = localCustV2.getAccount();
