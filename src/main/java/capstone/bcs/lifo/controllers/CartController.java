@@ -7,6 +7,7 @@ import capstone.bcs.lifo.model.Product;
 import capstone.bcs.lifo.repositories.CartProductV2Repository;
 import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.repositories.CustomerV2Repository;
+import capstone.bcs.lifo.repositories.ProductRepository;
 import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 public class CartController {
 
     private ProductService productService;
+    private ProductRepository productRepository;
     private CartService cartService;
     private CustomerV2Repository customerV2Repository;
     private CartProductV2Repository cartProductV2Repository;
@@ -125,9 +127,7 @@ public class CartController {
                                    @PathVariable("idb") String idb,@PathVariable("idc") String idc, Model model) throws Exception {
         String referer = request.getHeader("Referer");
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
-        model.addAttribute("cartsize",validSDU.getProductListSize());
-        model.addAttribute("carttotal",validSDU.getCartTotal());
-        model.addAttribute("LoginForm", new LoginForm());
+
         CartV2 cartV2 = null;
         Integer a = null;
         Integer b = null;
@@ -140,6 +140,9 @@ public class CartController {
         }else{
             System.out.println("you need to login first buddy from cart/{ida}/{idb}/{idc}!");
             //return "product_summary";
+            model.addAttribute("cartsize",validSDU.getProductListSize());
+            model.addAttribute("carttotal",validSDU.getCartTotal());
+            model.addAttribute("LoginForm", new LoginForm());
             return "invalid_product_summary";
         }
 
@@ -332,6 +335,13 @@ public class CartController {
         // 3 : get the total price of the cart, 4 : get the price of the items
         // the second id is the product number being sent.
         // the last id is for expansion maybe checkout i'm not sure yet
+
+        validSDU.setProductRepository(productRepository);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
+        model.addAttribute("LoginForm", new LoginForm());
+        model.addAttribute("username",validSDU.getUsersName());
+        //model.addAttribute("products",validSDU.getProductsInShoppingCart());
         return "custom_cart";
     }
 
