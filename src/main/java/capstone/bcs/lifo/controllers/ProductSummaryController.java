@@ -5,6 +5,7 @@ import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.*;
 import capstone.bcs.lifo.services.CustomerService;
 import capstone.bcs.lifo.services.PasswordEncryptionService;
+import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,8 +29,11 @@ public class ProductSummaryController {
 
 
     @RequestMapping("/product_summary")
-    public String getPageInalid(Model model){
+    public String getPageInalid(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
         return "product_summary";
     }
 
@@ -41,7 +45,10 @@ public class ProductSummaryController {
 //    }
 
     @RequestMapping("/loginproduct_summary")
-    public String getPageLoginInvalid(Model model){
+    public String getPageLoginInvalid(Model model, HttpSession session){
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
         model.addAttribute("LoginForm", new LoginForm());
         return "product_summary";
     }
@@ -49,6 +56,9 @@ public class ProductSummaryController {
 
     @RequestMapping(value = "/loginproduct_summary",method = RequestMethod.POST) // two post methods have mapping issues
     public String validateUser2Invalid(Model model, @Valid LoginForm loginForm, BindingResult bindingResult, HttpSession session){
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
 
         model.addAttribute("LoginForm", new LoginForm());
         if(bindingResult.hasErrors())
@@ -58,16 +68,11 @@ public class ProductSummaryController {
         }
         else
         {
-            // this threw a npe v
             try{
-                // in the database just called username
 
                 CustomerV2 localCustV2;
                 localCustV2 = customerService.getByUserName(loginForm.getUserName());
                 System.out.println(loginForm.getUserName());
-
-
-
 
                 if(localCustV2.getpFirstName() == "")
                 {
@@ -82,18 +87,9 @@ public class ProductSummaryController {
                     System.out.println("Valid user");
                     CartV2 cartV2 = new CartV2();
                     localCustV2.getAccount();
-                    System.out.println(localCustV2.getAccount().getUsername() + " nothing printed"); // curious is this has any data
                     cartV2.setCustomerV2(localCustV2); // this will set just the customer
 
                     session.setAttribute("cart",cartV2);
-
-                    // retrevial of data attempt
-                    CartV2 cart3 = new CartV2();
-                    cart3 = (CartV2)session.getAttribute("cart");
-
-                    System.out.println(cart3.getCustomerV2().getpFirstName() + " this is the session information in the password service");
-
-                    // make a real save to cart here???
                     return "success";
                 }
                 else {

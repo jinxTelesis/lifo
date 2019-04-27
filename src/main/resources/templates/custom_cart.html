@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Bootstrap style -->
+    <link href="../../static/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../../static/css/base.css"
+          th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>
+    <!-- Bootstrap style responsive -->
+    <link href="../../static/css/bootstrap-responsive.min.css"
+          th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>
+    <link href="../../static/css/font-awesome.css"
+          th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">
+    <!-- Google-code-prettify -->
+
+    <!--<link href="../js/google-code-prettify/prettify.css"
+          th:href="@{js/google-code-prettify/prettify.css}" rel="stylesheet"/>-->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="/webjars/jquery/3.3.1-2 /jquery.js"></script>
+</head>
+<body>
+<!-- Navigation section start ====================================================================== -->
+<div id="header">
+    <div class="container">
+        <div id="welcomeLine" class="row">
+            <div class="span6">Welcome!<strong> User</strong></div>
+            <div class="span6">
+                <div class="pull-right">
+                    <span class="btn btn-mini">$0.00</span>
+                    <a href="product_summary" th:href="@{'/product_summary'}"><span class="btn btn-mini btn-primary">
+						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar ================================================== -->
+        <div id="logoArea" class="navbar">
+            <a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <div class="navbar-inner">
+                <a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
+                <form class="form-inline navbar-search" method="post" action="products" >
+                    <input id="srchFld" class="srchTxt" type="text" />
+                    <select class="srchTxt">
+                        <option th:href="@{'/products/0'}">ACCESSORIES </option>
+                        <option th:href="@{'/products/1'}">APPLIANCES </option>
+                        <option th:href="@{'/products/2'}">CLEANING </option>
+                        <option th:href="@{'/products/3'}">HARDWARE </option>
+                        <option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
+                        <option th:href="@{'/products/5'}">HOMEWARES </option>
+                        <option th:href="@{'/products/6'}">TOYS </option>
+                    </select>
+                    <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+                </form>
+                <ul id="topMenu" class="nav pull-right">
+                    <li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
+                    <li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
+                    <li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
+                    <li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
+                    <li class="">
+                        <a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+                        <div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h3>Login Block</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
+                                    <div class="control-group">
+                                        <input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
+                                    </div>
+                                    <div class="control-group">
+                                        <input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="checkbox">
+                                            <input type="checkbox"> Remember me
+                                        </label>
+                                    </div>
+                                </form>
+                                <button type="submit" class="btn btn-success">Sign in</button>
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Navigation section end ====================================================================== -->
+
+<!-- Header End====================================================================== -->
+<div id="mainBody">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Section Start ================================================== -->
+            <div th:replace="fragments/sidebar :: sidebar">
+            </div>
+            <!-- Sidebar Section End =============================================== -->
+
+            <div class="span9">
+                <ul class="breadcrumb">
+                    <li><a href="index" th:href="@{'/products/0'}">Home</a> <span class="divider">/</span></li>
+                    <li class="active">Products Name</li>
+                </ul>
+                <h3> Products Name <small class="pull-right"> 40 products are available </small></h3>
+                <hr class="soft"/>
+                <p>
+                    Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies - that is why our goods are so popular and we have a great number of faithful customers all over the country.
+                </p>
+                <hr class="soft"/>
+                <form class="form-horizontal span6">
+                    <div class="control-group">
+                        <label class="control-label alignL">Sort By </label>
+                        <select>
+                            <option th:href="@{'/products/0'}">Name: A to Z</option>
+                            <option th:href="@{'/indexRev'}">Name: Z - A</option>
+                            <option>Price: low to high</option>
+                            <option>Price: high to low</option>
+                        </select>
+                    </div>
+                </form>
+
+                <div id="myTab" class="pull-right">
+                    <a href="#listView" th:href="@{'#listView'}"data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
+                    <a href="#blockView" th:href="@{'#blockView'}" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
+                </div>
+                <br class="clr"/>
+                <div class="tab-content">
+                    <div class="tab-pane" id="listView">
+                        <div th:each="product, it : ${products}">
+                            <div th:if="${(it.count gt 0 and it.count lt 10)}">
+                                <div th:replace="fragments/products_div :: products_div_list">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane  active" id="blockView">
+                        <div class="thumbnails">
+                            <div class="span3" >
+                                <div th:each="product, it : ${products}">
+                                    <div th:if="${(it.count gt 0 and it.count lt 4)}">
+                                        <div th:replace="fragments/products_div :: products_div_grid">
+                                            </br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="span3">
+                                <div th:each="product, it : ${products}">
+                                    <div th:if="${(it.count gt 3 and it.count lt 7)}">
+                                        <div th:replace="fragments/products_div :: products_div_grid">
+                                            </br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="span3">
+                                <div th:each="product, it : ${products}">
+                                    <div th:if="${(it.count gt 6 and it.count lt 10)}">
+                                        <div th:replace="fragments/products_div :: products_div_grid">
+                                            </br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- MainBody End ============================= -->
+<!-- Footer section start =============================================== -->
+<div class="container" th:replace="fragments/footer :: footer">
+</div>
+<!-- Footer section end =============================================== -->
+
+<!-- Site script section start =============================================== -->
+<div class="container" th:replace="fragments/sitescripts :: sitescripts">
+</div>
+<!-- Site script section end =============================================== -->
+<!-- Site script section end =============================================== -->
+
+
+</body>
+</html>

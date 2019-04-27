@@ -5,6 +5,8 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Entity
 public class CartV2 {
@@ -55,4 +57,6 @@ public class CartV2 {
     public void setProductList(List<CartProductV2> productList) {
         this.productList = productList;
     }
+
+
 }

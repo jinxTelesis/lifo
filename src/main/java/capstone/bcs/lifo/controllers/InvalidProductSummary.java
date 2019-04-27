@@ -4,6 +4,7 @@ import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.*;
 import capstone.bcs.lifo.services.CustomerService;
 import capstone.bcs.lifo.services.PasswordEncryptionService;
+import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,27 +32,39 @@ public class InvalidProductSummary {
         }
 
         @RequestMapping("/product_summary2")
-        public String getPage(Model model){
+        public String getPage(Model model, HttpSession session){
             model.addAttribute("LoginForm", new LoginForm());
+            ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+            model.addAttribute("cartsize",validSDU.getProductListSize());
+            model.addAttribute("carttotal",validSDU.getCartTotal());
             return "product_summary";
         }
 
         @RequestMapping("/loginproduct_summary2")
-        public String getPageLogin(Model model){
+        public String getPageLogin(Model model, HttpSession session){
             model.addAttribute("LoginForm", new LoginForm());
+            ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+            model.addAttribute("cartsize",validSDU.getProductListSize());
+            model.addAttribute("carttotal",validSDU.getCartTotal());
             return "product_summary";
         }
 
 
         @RequestMapping("/loginproduct_summary2/{id}")
-        public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
+        public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model, HttpSession session) {
             model.addAttribute("LoginForm", new LoginForm());
+            ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+            model.addAttribute("cartsize",validSDU.getProductListSize());
+            model.addAttribute("carttotal",validSDU.getCartTotal());
             return "redirect:" + "loginproduct_summary2";
         }
 
 
         @RequestMapping(value = "/loginproduct_summary2",method = RequestMethod.POST) // two post methods have mapping issues
         public String validateUser2(Model model, @Valid LoginForm loginForm, BindingResult bindingResult, HttpSession session){
+            ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+            model.addAttribute("cartsize",validSDU.getProductListSize());
+            model.addAttribute("carttotal",validSDU.getCartTotal());
 
             model.addAttribute("LoginForm", new LoginForm());
             if(bindingResult.hasErrors())
@@ -61,11 +74,7 @@ public class InvalidProductSummary {
             }
             else
             {
-                // this threw a npe v
                 try{
-                    // in the database just called username
-
-
                     CustomerV2 customerV2;
                     customerV2 = customerService.getByUserName(loginForm.getUserName());
                     System.out.println(loginForm.getUserName()); // valid here form works
