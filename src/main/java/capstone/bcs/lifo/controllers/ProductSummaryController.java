@@ -3,6 +3,7 @@ package capstone.bcs.lifo.controllers;
 
 import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.*;
+import capstone.bcs.lifo.repositories.ProductRepository;
 import capstone.bcs.lifo.services.CustomerService;
 import capstone.bcs.lifo.services.PasswordEncryptionService;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
@@ -20,6 +21,7 @@ public class ProductSummaryController {
 
     private CustomerService customerService;
     private PasswordEncryptionService passwordEncryptionService;
+    private ProductRepository productRepository;
 
 
     ProductSummaryController(CustomerService customerService, PasswordEncryptionService passwordEncryptionService){

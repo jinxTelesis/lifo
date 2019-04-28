@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+</head>
+
+<body>
+<div th:fragment="products_div_list">
+
+    <div class="row" >
+        <div class="span2"  >
+            <img th:src="@{'/images/thumbs/'+${product.productImage}}" alt=""/>
+        </div>
+        <div class="span4">
+            <h3>New | Available</h3>
+            <hr class="soft"/>
+            <h5 th:text="${product.productName}">Product Name </h5>
+            <p th:text="${product.description1}">
+
+            </p>
+            <a class="btn btn-small pull-right" href="product_details" th:href="@{'/product/'+${product.id}}">View Details</a>
+            <br class="clr"/>
+        </div>
+        <div class="span3 alignR">
+            <form class="form-horizontal qtyFrm">
+                <h3 th:text="${product.productPrice}"> $140.00</h3>
+                <label class="checkbox">
+                    <input type="checkbox">  Adds product to compare
+                </label>
+                <br/>
+                <a href="product_details" class="btn btn-large btn-primary" th:href="@{'/cart/2/'+${product.id}+'/d'}"> Add to <i class=" icon-shopping-cart"></i></a>
+                <a href="product_details" th:href="@{'/product_details'}"class="btn btn-large"><i class="icon-zoom-in"></i></a>
+
+
+            </form>
+        </div>
+    </div>
+    <hr class="soft"/>
+</div>
+
+<div th:fragment="products_div_grid">
+    <div class="thumbnail">
+        <a href="product_details" th:href="@{'/product_details'}"><img th:src="@{'/images/thumbs/'+${product.productImage}}" style="min-height: 200" alt=""/></a>
+        <div class="caption">
+            <h5 th:text="${product.productName}">Manicure &amp; Pedicure</h5>
+            <p th:text="${#strings.abbreviate(product.description1,30)}">
+                I'm a paragraph. Click here
+            </p>
+            <h4 style="text-align:bottom"><a class="btn" href="product_details" th:href="@{'/product_details'}"> <i class="icon-zoom-in"></i></a>
+                <a class="btn" href="#" th:href="@{'/cart/2/'+${product.id}+'/d'}"> - <i class="icon-shopping-cart"></i></a>
+                <a class="btn" href="#" th:href="@{'/cart/2/'+${product.id}+'/d'}"> + <i class="icon-shopping-cart"></i></a>
+                <a class="btn" href="#" th:href="@{'/cart/2/'+${product.id}+'/d'}"> x <i class="icon-shopping-cart"></i></a>
+                <a class="btn btn-primary" th:text="${' price [' + product.productPrice +']'}" th:href="@{'/cart/2/'+${product.id}+'/d'}">&euro;222.00</a>
+                <a class="btn btn-primary" th:text="${' tax [' + product.productPrice +']'}" th:href="@{'/cart/2/'+${product.id}+'/d'}">&euro;222.00</a>
+            </h4>
+            <h4 style="text-align:bottom"></h4>
+            <a class="btn btn-primary" th:text="${'apply product coupon'}" th:href="@{'/cart/2/'+${product.id}+'/d'}">&euro;222.00</a><h4>
+            <a class="text-input" >5000</a>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

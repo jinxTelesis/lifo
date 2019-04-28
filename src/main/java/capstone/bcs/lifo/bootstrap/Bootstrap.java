@@ -285,16 +285,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         pA1BarkOff.setDescription3("BarkOff is safe and easy to use. Just switch it on and when your pet barks, it sends out an ultrasonic signal that will instantly capture their attention and interrupt their barking pattern.");
         products.add(pA1BarkOff);
 
-        Product pA2CleverGrip = new Product();
-        pA2CleverGrip.setProductCat(0);
-        pA2CleverGrip.setProductName("Clever Grip");
-        pA2CleverGrip.setProductPrice(9.99);
-        pA2CleverGrip.setProductImage("cle.png");
-        pA2CleverGrip.setProductDimensions(" ");
-        pA2CleverGrip.setDescription1("One way to keep your phone available for it's features in your car, and keep you hands free while you access the important things. Like the GPS. Should not be used as an excuse to read or text while driving.");
-        pA2CleverGrip.setDescription2("Introducing Clever Grip, the most portable smartphone car mount we’ve ever seen.Just attach Clever Grip on to any air vent and insert your smartphone. It's that simple. ");
-        pA2CleverGrip.setDescription3("It's that simple. It keep your smartphone in sight at eye level and ready for GPS directions, streaming music, and hands-free calls.");
-        products.add(pA2CleverGrip);
+
 
         Product pA3TiddyBear = new Product();
         pA3TiddyBear.setProductCat(0);
@@ -313,7 +304,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         pAp1Crosswave.setProductImage("crosswave.jpg");
         pAp1Crosswave.setDescription1("The perfect vacuum cleaner engineered specifically for pet owners. This vaccuum washed and vacuums the floors and rugs for easy and fast hair cleanup.");
         pAp1Crosswave.setDescription2("Vacuums and washes floors at the same time | Cleans both sealed hard floors and area rugsDual-action brush roll | Smart-Touch controls | 2-tank system |Integrated carrying handleEasy-remove brush window");
-        pA2CleverGrip.setDescription3("Swivel steering | Multi-surface cleaning solutionEasy-clean storage tray | Solution tank holds enough solution to clean up to 700 sq ftModel# 1785W | Dimensions: 10.50 x 12.00 x 46.00 Inches");
+        pAp1Crosswave.setDescription3("Swivel steering | Multi-surface cleaning solutionEasy-clean storage tray | Solution tank holds enough solution to clean up to 700 sq ftModel# 1785W | Dimensions: 10.50 x 12.00 x 46.00 Inches");
         products.add(pAp1Crosswave);
 
         Product pAp2HaierAirCon = new Product();
