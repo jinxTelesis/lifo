@@ -1,18 +1,13 @@
 package capstone.bcs.lifo.util;
 
-
-import capstone.bcs.lifo.model.CartProductV2;
 import capstone.bcs.lifo.model.CartV2;
 import capstone.bcs.lifo.model.Product;
-import capstone.bcs.lifo.repositories.ProductRepository;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class ValidSessionDataUtil {
-
-    private ProductRepository productRepository;
 
     HttpSession localSession = null;
     CartV2 cartV2 = null;
@@ -241,48 +236,6 @@ public class ValidSessionDataUtil {
         products.add(pT8ZhuZhuPets);
 
         return products;
-    }
-
-    // this next one needs to pull up products via the ids not return cart products
-    public List<Product> getProductsInShoppingCart(){
-//        Product dummyProduct = new Product();
-//        dummyProduct.setProductPrice(0.0f);
-//        dummyProduct.setDescription1("nothing ordered");
-//        dummyProduct.setProductName("empty cart");
-//        dummyProduct.setProductCat(0);
-//        dummyProduct.setProductImage("bark_off.jpg");
-//        dummyProduct.setId(99l);
-
-        List<Product> productList = new ArrayList<>();
-        List<CartProductV2> cartProductV2s = null;
-        Product tempProduct = null;
-        Integer index = 0;
-
-        if(localSession.getAttribute("cart") !=null){
-            CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
-            cartProductV2s = cartV2.getProductList();
-            if(cartProductV2s.size() == 0)
-            {
-                return productList; // empty
-            }else
-            {
-                for(int i = 0; i < cartProductV2s.size();i++)
-                {
-                    index = cartProductV2s.get(i).getProductId();
-                    Long longa = new Long(index);
-                    try {
-                        tempProduct = productRepository.findById(longa).get();
-                        productList.add(tempProduct);
-                    } catch (NullPointerException e)
-                    {
-
-                    }
-                }
-            }
-
-        }
-
-        return productList;
     }
 
     public double getCartTotal(){

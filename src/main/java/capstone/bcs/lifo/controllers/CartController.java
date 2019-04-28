@@ -11,7 +11,6 @@ import capstone.bcs.lifo.repositories.ProductRepository;
 import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
-import capstone.bcs.lifo.util.ValidSessionDataUtilCartProducts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +25,9 @@ import java.util.stream.Collectors;
 
 @Controller
 public class CartController {
+
+    // some of these are not being used right now but the flushing to database is off
+    // they will be used when that is corrected.
 
     private ProductService productService;
     private ProductRepository productRepository;
