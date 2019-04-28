@@ -26,7 +26,17 @@
 <!-- Navigation section start ====================================================================== -->
 <div id="header">
     <div class="container">
-
+        <div id="welcomeLine" class="row">
+            <div class="span6">Welcome!<strong> User</strong></div>
+            <div class="span6">
+                <div class="pull-right">
+                    <span class="btn btn-mini" th:text="${carttotal}">$0.00</span>
+                    <a href="product_summary" th:href="@{'http://localhost:8080/product_summary'}">
+                        <span  class="btn btn-mini btn-primary" th:text="${'['+cartsize+']' + ' Items in your cart'}">
+						<i class="icon-shopping-cart icon-white" ></i> cart Items</span> </a>
+                </div>
+            </div>
+        </div>
         <!-- Navbar ================================================== -->
         <div id="logoArea" class="navbar">
             <a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">

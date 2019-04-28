@@ -15,14 +15,20 @@ import javax.servlet.http.HttpSession;
 public class FaqController {
 
     @RequestMapping("/faq")
-    public String getPage(Model model){
+    public String getPage(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
         return "faq";
     }
 
     @RequestMapping("/products/faq")
-    public String getPageHotFix(Model model){
+    public String getPageHotFix(Model model,HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
         return "faq";
     }
 
