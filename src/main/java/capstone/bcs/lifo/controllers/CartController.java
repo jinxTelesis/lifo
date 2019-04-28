@@ -26,6 +26,9 @@ import java.util.stream.Collectors;
 @Controller
 public class CartController {
 
+    // some of these are not being used right now but the flushing to database is off
+    // they will be used when that is corrected.
+
     private ProductService productService;
     private ProductRepository productRepository;
     private CartService cartService;
@@ -38,11 +41,13 @@ public class CartController {
     // == autowired for intention only ==
     @Autowired
     CartController(ProductService productService, CartService cartService, CartV2Repository cartV2Repository,
-                   CustomerV2Repository customerV2Repository, CartProductV2Repository cartProductV2Repository){
+                   CustomerV2Repository customerV2Repository, CartProductV2Repository cartProductV2Repository,
+                   ProductRepository productRepository){
         this.productService = productService;
         this.cartService = cartService;
         this.cartV2Repository = cartV2Repository;
         this.cartProductV2Repository = cartProductV2Repository;
+        this.productRepository = productRepository;
     }
 
     @RequestMapping({"/cart"})
@@ -336,12 +341,51 @@ public class CartController {
         // the second id is the product number being sent.
         // the last id is for expansion maybe checkout i'm not sure yet
 
-        validSDU.setProductRepository(productRepository);
+        //validSDU.setProductRepository(productRepository);
         model.addAttribute("cartsize",validSDU.getProductListSize());
         model.addAttribute("carttotal",validSDU.getCartTotal());
         model.addAttribute("LoginForm", new LoginForm());
         model.addAttribute("username",validSDU.getUsersName());
-        //model.addAttribute("products",validSDU.getProductsInShoppingCart());
+
+        // make a function // make a function // make a function
+
+        Product dummyProduct = new Product();
+        dummyProduct.setProductPrice(0.0f);
+        dummyProduct.setDescription1("nothing ordered");
+        dummyProduct.setProductName("empty cart");
+        dummyProduct.setProductCat(0);
+        dummyProduct.setProductImage("bark_off.jpg");
+        dummyProduct.setId(99l);
+
+        List<Product> productList = new ArrayList<>();
+        List<CartProductV2> cartProductV2s = null;
+        Product tempProduct = null;
+        Integer index = 0;
+
+        if(session.getAttribute("cart") !=null){
+            CartV2 cartV22 = (CartV2) session.getAttribute("cart");
+            cartProductV2s = cartV2.getProductList();
+            if(cartProductV2s.size() == 0)
+            {
+                productList.add(dummyProduct); // dummy product
+            }else
+            {
+                for(int i = 0; i < cartProductV2s.size();i++)
+                {
+                    index = cartProductV2s.get(i).getProductId();
+                    Long longa = new Long(index);
+                    try {
+                        tempProduct = productRepository.findById(longa).get();
+                        productList.add(tempProduct);
+                    } catch (NullPointerException e)
+                    {
+
+                    }
+                }
+            }
+
+        }
+        model.addAttribute("products",productList);
         return "custom_cart";
     }
 

@@ -99,6 +99,11 @@
 #topMenu li{float: none;}
 .navbar .nav > li > a {border-top:1px solid #666; padding:0}
  }
+
+
+.e-image-image {
+ top: -25px;
+}
 /* Landscape phones and down */
 @media (max-width: 480px) {
 #header, #carouselBlk{margin: 0 -20px;}
