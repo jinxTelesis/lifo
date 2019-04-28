@@ -26,7 +26,17 @@
 <!-- Navigation section start ====================================================================== -->
 <div id="header">
     <div class="container">
-
+        <div id="welcomeLine" class="row">
+            <div class="span6">Welcome!<strong> User</strong></div>
+            <div class="span6">
+                <div class="pull-right">
+                    <span class="btn btn-mini" th:text="${carttotal}">$0.00</span>
+                    <a href="product_summary" th:href="@{'http://localhost:8080/product_summary'}">
+                        <span  class="btn btn-mini btn-primary" th:text="${'['+cartsize+']' + ' Items in your cart'}">
+						<i class="icon-shopping-cart icon-white" ></i> cart Items</span> </a>
+                </div>
+            </div>
+        </div>
         <!-- Navbar ================================================== -->
         <div id="logoArea" class="navbar">
             <a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
@@ -97,12 +107,26 @@
             </div>
             <!-- Sidebar Section End =============================================== -->
 
-            <div class="span9">
+            <div class="span8">
                 <ul class="breadcrumb">
                     <li><a href="index" th:href="@{'/products/0'}">Home</a> <span class="divider">/</span></li>
                     <li class="active">Products Name</li>
                 </ul>
-                <h3> Products Name <small class="pull-right"> 50 products are available on our site </small></h3>
+
+                <h3 th:text="${username+'s cart'}">Products Name</span>
+
+                </h3>
+                <div class="row">
+                <div class="span3">
+                    <img src="/images/ico-cart.png" height="100" width="100">
+                </div>
+                    <div class="span3">
+                        <span class="btn btn-large btn-primary"><i class="alert-danger"></i></span>
+                    </div>
+                    <div class="span5">
+                        <img src="/images/ico-cart.png" height="100" width="100" class="pull-right">
+                    </div>
+                </div>
                 <hr class="soft"/>
                 <p>
                     Order now for 50% off normal shipping. Two day shipping is also 25% off till next monday! Check out our specials on Bark Off and Remote Coontrol caddy
@@ -119,6 +143,11 @@
                         </select>
                     </div>
                 </form>
+
+                model.addAttribute("cartsize",validSDU.getProductListSize());
+                model.addAttribute("carttotal",validSDU.getCartTotal());
+                model.addAttribute("LoginForm", new LoginForm());
+                model.addAttribute("username",validSDU.getUsersName());
 
                 <div id="myTab" class="pull-right">
                     <a href="#listView" th:href="@{'#listView'}"data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
