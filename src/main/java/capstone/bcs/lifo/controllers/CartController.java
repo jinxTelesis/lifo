@@ -10,12 +10,14 @@ import capstone.bcs.lifo.repositories.CustomerV2Repository;
 import capstone.bcs.lifo.repositories.ProductRepository;
 import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
+import capstone.bcs.lifo.util.ThymeleafUtil;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.thymeleaf.Thymeleaf;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -362,12 +364,20 @@ public class CartController {
         Product tempProduct = null;
         Integer index = 0;
 
+        ThymeleafUtil thymeleafUtilvar = new ThymeleafUtil();
+        thymeleafUtilvar.setDiscount(false);
+        thymeleafUtilvar.setEmptyCart(false);
+        thymeleafUtilvar.setSubmitted(false);
+
+
         if(session.getAttribute("cart") !=null){
             CartV2 cartV22 = (CartV2) session.getAttribute("cart");
             cartProductV2s = cartV2.getProductList();
             if(cartProductV2s.size() == 0)
             {
-                productList.add(dummyProduct); // dummy product
+                //productList.add(dummyProduct); // dummy product
+                thymeleafUtilvar.setEmptyCart(true);
+                model.addAttribute("cart_state",thymeleafUtilvar);
             }else
             {
                 for(int i = 0; i < cartProductV2s.size();i++)
@@ -377,6 +387,8 @@ public class CartController {
                     try {
                         tempProduct = productRepository.findById(longa).get();
                         productList.add(tempProduct);
+                        thymeleafUtilvar.setEmptyCart(false);
+                        model.addAttribute("cart_state",thymeleafUtilvar);
                     } catch (NullPointerException e)
                     {
 
@@ -386,6 +398,10 @@ public class CartController {
 
         }
         model.addAttribute("products",productList);
+        model.addAttribute("discount",appDiscountToCart(validSDU.validCartProductList(),0.1));
+        model.addAttribute("tax",appDiscountToCart(validSDU.validCartProductList(),0.2));
+        model.addAttribute("final_price",appDiscountNTax(validSDU.validCartProductList(),0.1,0.2));
+
         return "custom_cart";
     }
 
@@ -412,8 +428,17 @@ public class CartController {
 
     Double appDiscountToCart(List<CartProductV2> list, Double discount){
         double sum = list.stream().filter( p -> p.getProductPrice() > 0.0f).mapToDouble(o -> o.getProductPrice()).sum();
-        sum = sum + (sum * discount);
-        return sum;
+        sum = sum * discount;
+        return Math.floor(sum * 100)/100;
+    }
+
+    Double appDiscountNTax(List<CartProductV2> list, Double discount, Double tax){
+        double sum = list.stream().filter( p -> p.getProductPrice() > 0.0f).mapToDouble(o -> o.getProductPrice()).sum();
+        double discountVar = sum * discount;
+        double taxvarVar = sum * tax;
+        sum = sum - discountVar;
+        sum = sum + taxvarVar;
+        return Math.floor(sum * 100)/100;
     }
 
 
