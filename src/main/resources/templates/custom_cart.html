@@ -107,7 +107,7 @@
             </div>
             <!-- Sidebar Section End =============================================== -->
 
-            <div class="span8">
+            <div class="span9">
                 <ul class="breadcrumb">
                     <li><a href="index" th:href="@{'/products/0'}">Home</a> <span class="divider">/</span></li>
                     <li class="active">Products Name</li>
@@ -118,13 +118,18 @@
                 </h3>
                 <div class="row">
                 <div class="span3">
-                    <img src="/images/ico-cart.png" height="100" width="100">
+                    <img src="/images/ico-cart.png" height="100" width="100" class="pull-left">
                 </div>
-                    <div class="span3">
-                        <span class="btn btn-large btn-primary"><i class="alert-danger"></i></span>
+                    <div class="span2">
+                        <h1>
+                            <span class="btn btn-primary" th:width="100" th:height="100" th:text="${'Pretax total is ' + carttotal}"><i class="alert-danger"></i></span>
+                        </h1>
+
                     </div>
-                    <div class="span5">
-                        <img src="/images/ico-cart.png" height="100" width="100" class="pull-right">
+                    <div class="span3">
+                        <div class=".e-image-image">
+                            <img src="/images/ico-cart.png" height="100" width="100" class="pull-right" >
+                        </div>
                     </div>
                 </div>
                 <hr class="soft"/>
@@ -144,11 +149,6 @@
                     </div>
                 </form>
 
-                model.addAttribute("cartsize",validSDU.getProductListSize());
-                model.addAttribute("carttotal",validSDU.getCartTotal());
-                model.addAttribute("LoginForm", new LoginForm());
-                model.addAttribute("username",validSDU.getUsersName());
-
                 <div id="myTab" class="pull-right">
                     <a href="#listView" th:href="@{'#listView'}"data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
                     <a href="#blockView" th:href="@{'#blockView'}" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
@@ -158,7 +158,7 @@
                     <div class="tab-pane" id="listView">
                         <div th:each="product, it : ${products}">
                             <div th:if="${(it.count gt 0 and it.count lt 10)}">
-                                <div th:replace="fragments/products_div :: products_div_list">
+                                <div th:replace="fragments/custom_cart_div :: products_div_list">
                                 </div>
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                             <div class="span3" >
                                 <div th:each="product, it : ${products}">
                                     <div th:if="${(it.count gt 0 and it.count lt 4)}">
-                                        <div th:replace="fragments/products_div :: products_div_grid">
+                                        <div th:replace="fragments/custom_cart_div :: products_div_grid">
                                             </br>
                                         </div>
                                     </div>
@@ -179,7 +179,7 @@
                             <div class="span3">
                                 <div th:each="product, it : ${products}">
                                     <div th:if="${(it.count gt 3 and it.count lt 7)}">
-                                        <div th:replace="fragments/products_div :: products_div_grid">
+                                        <div th:replace="fragments/custom_cart_div :: products_div_grid">
                                             </br>
                                         </div>
                                     </div>
@@ -189,7 +189,7 @@
                             <div class="span3">
                                 <div th:each="product, it : ${products}">
                                     <div th:if="${(it.count gt 6 and it.count lt 10)}">
-                                        <div th:replace="fragments/products_div :: products_div_grid">
+                                        <div th:replace="fragments/custom_cart_div :: products_div_grid">
                                             </br>
                                         </div>
                                     </div>
@@ -199,6 +199,78 @@
                         </div>
                     </div>
                 </div>
+
+                <h3 th:text="${username+'s cart'}">Products Name</span>
+
+                </h3>
+                <div class="row">
+                    <div class="span3">
+                        <img src="/images/ico-cart.png" height="100" width="100" class="pull-left">
+                    </div>
+                    <div class="column">
+                        <div class="span1">
+                            <h1>
+                                <span class="btn btn-primary" th:width="300" th:height="100" th:text="${'Pretax ' + carttotal}"><i class="alert-danger"></i></span>
+                            </h1>
+                        </div>
+                        <div class="span1">
+                            <h1>
+                                <span class="btn btn-primary" th:width="300" th:height="100" th:text="${'Shipping ' + carttotal}"><i class="alert-danger"></i></span>
+                            </h1>
+                        </div>
+                        <div class="span1">
+                            <h1>
+                                <span class="btn btn-primary" th:width="300" th:height="100" th:text="${'Tax ' + carttotal}"><i class="alert-danger"></i></span>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class=".e-image-image">
+                            <img src="/images/ico-cart.png" height="100" width="100" class="pull-right" >
+                        </div>
+                    </div>
+                </div>
+                <hr class="soft"/>
+                <p>
+                    Order now for 50% off normal shipping. Two day shipping is also 25% off till next monday! Check out our specials on Bark Off and Remote Coontrol caddy
+                </p>
+
+                <h3 th:text="${username+'s cart'}">Products Name</span>
+
+                </h3>
+                <div class="row">
+                    <div class="span3">
+                        <img src="/images/ico-cart.png" height="100" width="100" class="pull-left">
+                    </div>
+                    <div class="column">
+                        <div class="span1">
+                            <h1>
+                                <span class="btn btn-primary"  th:width="300" th:height="100" th:text="${'Discount ' + carttotal}"><i class="alert-danger"></i></span>
+                            </h1>
+                        </div>
+                        <div class="span1">
+                            <h1>
+                                <span class="btn btn-primary"  th:width="300" th:height="100" th:text="${'Saving ' + carttotal}"><i class="alert-danger"></i></span>
+                            </h1>
+                        </div>
+                        <div class="span1">
+                            <h1>
+                                <span class="btn btn-primary"  th:width="300" th:height="100" th:text="${'Payment ' + carttotal}"><i class="alert-danger"></i></span>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class=".e-image-image">
+                            <img src="/images/ico-cart.png" height="100" width="100" class="pull-right" >
+                        </div>
+                    </div>
+                </div>
+                <hr class="soft"/>
+                <p>
+                    Order now for 50% off normal shipping. Two day shipping is also 25% off till next monday! Check out our specials on Bark Off and Remote Coontrol caddy
+                </p>
+
+
 
             </div>
         </div>
