@@ -209,7 +209,7 @@
                                     <label class="control-label"><strong> VOUCHERS CODE: </strong> </label>
                                     <div class="controls">
                                         <input type="text" class="input-medium" placeholder="CODE">
-                                        <button type="submit" class="btn"> ADD </button>
+                                        <button type="submit" th:href="index" class="btn"> ADD </button>
                                     </div>
                                 </div>
                             </form>
@@ -238,7 +238,7 @@
                                 </div>
                                 <div class="control-group">
                                     <div class="controls">
-                                        <button type="submit" class="btn">ESTIMATE </button>
+                                        <button type="submit" th:href="index" class="btn">ESTIMATE </button>
                                     </div>
                                 </div>
                             </form>
@@ -267,9 +267,9 @@
                             <td><span th:text="${product.productName}">Product</span> </td>
                             <td><span th:text="${product.getDescription1()}">Description</span> </td>
                             <td><span th:text="${product.getProductPrice()}">Price</span> </td>
-                            <td><span th:text="${products.size()}">Discount</span> </td>
-                            <td><span th:text="${products.size()}">Tax</span> </td>
-                            <td><span th:text="${product.productPrice}">Total</span> </td>
+                            <td><span th:text="${product.getProductDiscount()}">Discount</span> </td>
+                            <td><span th:text="${product.getProductTax()}">Tax</span> </td>
+                            <td><span th:text="${product.getTotalPrice()}">Total</span> </td>
                     </tr>
 
                     <tr>
@@ -291,7 +291,6 @@
                     </tbody>
                     </table>
             </div>
-
         </div>
     </div>
 </div>
