@@ -4,12 +4,14 @@ import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.CartProductV2;
 import capstone.bcs.lifo.model.CartV2;
 import capstone.bcs.lifo.model.Product;
+import capstone.bcs.lifo.model.nonentity.ProductDetails;
 import capstone.bcs.lifo.repositories.CartProductV2Repository;
 import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.repositories.CustomerV2Repository;
 import capstone.bcs.lifo.repositories.ProductRepository;
 import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
+import capstone.bcs.lifo.util.ThymeleafUtil;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -181,6 +183,8 @@ public class CartController {
             cartProductV2.setProductId(productInfoLocal.getId().intValue());
             cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
             cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
+            cartProductV2.setDescription1(productInfoLocal.getDescription1());
+            cartProductV2.setProductName(productInfoLocal.getProductName());
             cartProductV2.setProductNumber(1);
 
 
@@ -213,6 +217,8 @@ public class CartController {
             cartProductV2.setProductId(productInfoLocal.getId().intValue());
             cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
             cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
+            cartProductV2.setProductName(productInfoLocal.getProductName());
+            cartProductV2.setDescription1(productInfoLocal.getDescription1());
             cartProductV2.setProductNumber(1);
 
             productList.add(cartProductV2); // added the new product to productlist
@@ -362,12 +368,20 @@ public class CartController {
         Product tempProduct = null;
         Integer index = 0;
 
+        ThymeleafUtil thymeleafUtilvar = new ThymeleafUtil();
+        thymeleafUtilvar.setDiscount(false);
+        thymeleafUtilvar.setEmptyCart(false);
+        thymeleafUtilvar.setSubmitted(false);
+
+
         if(session.getAttribute("cart") !=null){
             CartV2 cartV22 = (CartV2) session.getAttribute("cart");
             cartProductV2s = cartV2.getProductList();
             if(cartProductV2s.size() == 0)
             {
-                productList.add(dummyProduct); // dummy product
+                //productList.add(dummyProduct); // dummy product
+                thymeleafUtilvar.setEmptyCart(true);
+                model.addAttribute("cart_state",thymeleafUtilvar);
             }else
             {
                 for(int i = 0; i < cartProductV2s.size();i++)
@@ -377,6 +391,8 @@ public class CartController {
                     try {
                         tempProduct = productRepository.findById(longa).get();
                         productList.add(tempProduct);
+                        thymeleafUtilvar.setEmptyCart(false);
+                        model.addAttribute("cart_state",thymeleafUtilvar);
                     } catch (NullPointerException e)
                     {
 
@@ -386,6 +402,12 @@ public class CartController {
 
         }
         model.addAttribute("products",productList);
+        model.addAttribute("discount",appDiscountToCart(validSDU.validCartProductList(),0.1));
+        model.addAttribute("tax",appDiscountToCart(validSDU.validCartProductList(),0.2));
+        model.addAttribute("final_price",appDiscountNTax(validSDU.validCartProductList(),0.1,0.2));
+        model.addAttribute("product_details",validSDU.validCartProductList());
+        //model.addAttribute("product_details",productDetailsCreator(cartV2.getProductList()));
+
         return "custom_cart";
     }
 
@@ -412,10 +434,31 @@ public class CartController {
 
     Double appDiscountToCart(List<CartProductV2> list, Double discount){
         double sum = list.stream().filter( p -> p.getProductPrice() > 0.0f).mapToDouble(o -> o.getProductPrice()).sum();
-        sum = sum + (sum * discount);
-        return sum;
+        sum = sum * discount;
+        return Math.floor(sum * 100)/100;
     }
 
+    Double appDiscountNTax(List<CartProductV2> list, Double discount, Double tax){
+        double sum = list.stream().filter( p -> p.getProductPrice() > 0.0f).mapToDouble(o -> o.getProductPrice()).sum();
+        double discountVar = sum * discount;
+        double taxvarVar = sum * tax;
+        sum = sum - discountVar;
+        sum = sum + taxvarVar;
+        return Math.floor(sum * 100)/100;
+    }
 
+//    List<ProductDetails> productDetailsCreator(List<CartProductV2> list){
+//        List<ProductDetails> productDetails = new ArrayList<>();
+//        ProductDetails temp = new ProductDetails();
+//
+//        if(list != null){
+//            for(int i = 0;i<list.size();i++){
+//                temp.setProductPrice(list.get(i).getProductPrice());
+//                productDetails.add(temp);
+//            }
+//            return productDetails;
+//        }
+//        return null;
+//    }
 
 }

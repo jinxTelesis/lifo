@@ -24,7 +24,7 @@ public class CompareController {
     private ProductService productService;
 
     CompareController(CartV2Repository cartV2Repository, CustomerV2Repository customerV2Repository,
-    CartProductV2Repository cartProductV2Repository, ProductService productService){
+                      CartProductV2Repository cartProductV2Repository, ProductService productService){
         this.cartV2Repository = cartV2Repository;
         this.customerV2Repository = customerV2Repository;
         this.cartProductV2Repository = cartProductV2Repository;

@@ -1,5 +1,6 @@
 package capstone.bcs.lifo.util;
 
+import capstone.bcs.lifo.model.CartProductV2;
 import capstone.bcs.lifo.model.CartV2;
 import capstone.bcs.lifo.model.Product;
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,16 @@ public class ValidSessionDataUtil {
             this.cartV2 = (CartV2) localSession.getAttribute("cart");
         } catch (Exception e){
 
+        }
+    }
+
+    public List<CartProductV2> validCartProductList(){
+        if(localSession.getAttribute("cart") != null){
+            return cartV2.getProductList();
+        }
+        else
+        {
+            return null;
         }
     }
 

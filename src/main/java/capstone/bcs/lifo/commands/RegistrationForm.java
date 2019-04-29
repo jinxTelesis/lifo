@@ -31,8 +31,8 @@ public class RegistrationForm {
     @Size(min = 3, max = 100)
     private String pEmail;
 
-    @NotEmpty
-    @Size(min = 6, max = 15)
+//    @NotEmpty
+    @Size(max = 15)
     private String pDoB;
 
     // == this is for the address ==
