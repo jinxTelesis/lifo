@@ -33,7 +33,7 @@
 			<div class="span6">
 				<div class="pull-right">
 					<span class="btn btn-mini" th:text="${carttotal}">$0.00</span>
-					<a href="product_summary" th:href="@{'http://localhost:8080/product_summary'}">
+					<a href="product_summary" th:href="@{'/product_summary'}">
 						<span  class="btn btn-mini btn-primary" th:text="${'['+cartsize+']' + ' Items in your cart'}">
 						<i class="icon-shopping-cart icon-white" ></i> cart Items</span> </a>
 				</div>
@@ -47,7 +47,7 @@
 				<span class="icon-bar"></span>
 			</a>
 			<div class="navbar-inner">
-				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
+				<a class="brand" href="/products"  th:href="@{'/index'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
 				<form class="form-inline navbar-search" method="post" action="products" >
 					<input id="srchFld" class="srchTxt" type="text" />
 					<select class="srchTxt">
@@ -62,19 +62,19 @@
 					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
 				</form>
 				<ul id="topMenu" class="nav pull-right">
-					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
+					<li class=""><a href="index"  th:href="@{'/index'}">Home</a></li>
 					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
 					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
 					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
 					<li class="">
-						<a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+						<a href="#login" th:href="@{'#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
 						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 								<h3>Login Block</h3>
 							</div>
 							<div class="modal-body">
-								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
+								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/taclogin}" method="post">
 									<div class="control-group">
 										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
 									</div>
@@ -83,7 +83,7 @@
 									</div>
 									<div class="control-group">
 										<label class="checkbox">
-											<input type="checkbox"> Remember me
+											<input type="checkbox" id="rememberme"> Remember me
 										</label>
 									</div>
 								</form>
@@ -111,7 +111,7 @@
 
 			<div class="span9">
 				<ul class="breadcrumb">
-					<li><a href="index.html" th:href="@{'/products/4'}">Home</a> <span class="divider">/</span></li>
+					<li><a href="index.html" th:href="@{'/index'}">Home</a> <span class="divider">/</span></li>
 					<li class="active">Terms and Conditions</li>
 				</ul>
 				<h5>CONDITIONS OF USE</h5><br/><p>

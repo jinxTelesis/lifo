@@ -33,7 +33,7 @@
 			<div class="span6">
 				<div class="pull-right">
 					<span class="btn btn-mini" th:text="${carttotal}">$0.00</span>
-					<a href="product_summary" th:href="@{'http://localhost:8080/product_summary'}">
+					<a href="product_summary" th:href="@{'/product_summary'}">
 						<span  class="btn btn-mini btn-primary" th:text="${'['+cartsize+']' + ' Items in your cart'}">
 						<i class="icon-shopping-cart icon-white" ></i> cart Items</span> </a>
 				</div>
@@ -47,7 +47,7 @@
 				<span class="icon-bar"></span>
 			</a>
 			<div class="navbar-inner">
-				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
+				<a class="brand" href="/products"  th:href="@{'/index'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
 				<form class="form-inline navbar-search" method="post" action="products" >
 					<input id="srchFld" class="srchTxt" type="text" />
 					<select class="srchTxt">
@@ -62,7 +62,7 @@
 					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
 				</form>
 				<ul id="topMenu" class="nav pull-right">
-					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
+					<li class=""><a href="index"  th:href="@{'/index'}">Home</a></li>
 					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
 					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
 					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
@@ -75,6 +75,7 @@
 							</div>
 							<div class="modal-body">
 								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
+
 									<div class="control-group">
 										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
 									</div>
@@ -110,7 +111,7 @@
 		<!-- Sidebar Section End =============================================== -->
 	<div class="span9">
     <ul class="breadcrumb">
-		<li><a href="index" th:href="@{'/products/0'}">Home</a> <span class="divider">/</span></li>
+		<li><a href="index" th:href="@{'/index'}">Home</a> <span class="divider">/</span></li>
 		<li class="active">Login</li>
     </ul>
 	<h3> Login</h3>	
