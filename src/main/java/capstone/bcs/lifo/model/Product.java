@@ -20,10 +20,7 @@ public class Product implements Comparator<Product>{
     private Integer productCat;
 
     private double productPrice;
-    private double totalPrice;
 
-    private double productTax = 0.2;
-    private double productDiscount = 0.1;
 
     private String productImage;
     private String productDimensions;
@@ -57,30 +54,7 @@ public class Product implements Comparator<Product>{
 
     // not a default getter don't do this at home kids
 
-    public double getTotalPrice() {
-        return Math.floor((productPrice - getProductDiscount())*(this.productTax+1))*100/100;
-    }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public double getProductTax() {
-        return Math.floor((this.productTax * this.productPrice) * 100)/100;
-    }
-
-    public void setProductTax(double productTax) {
-        this.productTax = productTax;
-    }
-
-    // not a default getter don't do this at home kids
-    public double getProductDiscount() {
-        return Math.floor((this.productDiscount * this.productPrice)*100)/100;
-    }
-
-    public void setProductDiscount(double productDiscount) {
-        this.productDiscount = productDiscount;
-    }
 
     public Product(Long id) {
         this.id = id;

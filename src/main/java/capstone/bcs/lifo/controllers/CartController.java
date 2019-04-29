@@ -4,6 +4,7 @@ import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.CartProductV2;
 import capstone.bcs.lifo.model.CartV2;
 import capstone.bcs.lifo.model.Product;
+import capstone.bcs.lifo.model.nonentity.ProductDetails;
 import capstone.bcs.lifo.repositories.CartProductV2Repository;
 import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.repositories.CustomerV2Repository;
@@ -182,6 +183,8 @@ public class CartController {
             cartProductV2.setProductId(productInfoLocal.getId().intValue());
             cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
             cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
+            cartProductV2.setDescription1(productInfoLocal.getDescription1());
+            cartProductV2.setProductName(productInfoLocal.getProductName());
             cartProductV2.setProductNumber(1);
 
 
@@ -214,6 +217,8 @@ public class CartController {
             cartProductV2.setProductId(productInfoLocal.getId().intValue());
             cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
             cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
+            cartProductV2.setProductName(productInfoLocal.getProductName());
+            cartProductV2.setDescription1(productInfoLocal.getDescription1());
             cartProductV2.setProductNumber(1);
 
             productList.add(cartProductV2); // added the new product to productlist
@@ -400,6 +405,8 @@ public class CartController {
         model.addAttribute("discount",appDiscountToCart(validSDU.validCartProductList(),0.1));
         model.addAttribute("tax",appDiscountToCart(validSDU.validCartProductList(),0.2));
         model.addAttribute("final_price",appDiscountNTax(validSDU.validCartProductList(),0.1,0.2));
+        model.addAttribute("product_details",validSDU.validCartProductList());
+        //model.addAttribute("product_details",productDetailsCreator(cartV2.getProductList()));
 
         return "custom_cart";
     }
@@ -440,6 +447,18 @@ public class CartController {
         return Math.floor(sum * 100)/100;
     }
 
-
+//    List<ProductDetails> productDetailsCreator(List<CartProductV2> list){
+//        List<ProductDetails> productDetails = new ArrayList<>();
+//        ProductDetails temp = new ProductDetails();
+//
+//        if(list != null){
+//            for(int i = 0;i<list.size();i++){
+//                temp.setProductPrice(list.get(i).getProductPrice());
+//                productDetails.add(temp);
+//            }
+//            return productDetails;
+//        }
+//        return null;
+//    }
 
 }

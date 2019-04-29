@@ -255,21 +255,21 @@
                         <th>Price</th>
                         <th>Discount</th>
                         <th>Tax</th>
-                        <th>Total</th>
+                        <th>Total Price</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    <tr th:if="${products.empty}">
-                        <td colspan="2"> no products in your cart</td>
+                    <tr th:if="${product_details.empty}">
+                        <td colspan="2"> take a look at some of our great products</td>
                         </tr>
-                        <tr th:each="product : ${products}">
-                            <td><span th:text="${product.productName}">Product</span> </td>
-                            <td><span th:text="${product.getDescription1()}">Description</span> </td>
-                            <td><span th:text="${product.getProductPrice()}">Price</span> </td>
-                            <td><span th:text="${product.getProductDiscount()}">Discount</span> </td>
-                            <td><span th:text="${product.getProductTax()}">Tax</span> </td>
-                            <td><span th:text="${product.getTotalPrice()}">Total</span> </td>
+                        <tr th:each="product_detail : ${product_details}">
+                            <td><span th:text="${product_detail.getProductName()}">Product</span> </td>
+                            <td><span th:text="${product_detail.getDescription1()}">Description</span> </td>
+                            <td><span th:text="${product_detail.getProductPrice()}">Price</span> </td>
+                            <td><span th:text="${product_detail.getProductDiscount()}">Discount</span> </td>
+                            <td><span th:text="${product_detail.getProductTax()}">Tax</span> </td>
+                            <td><span th:text="${product_detail.getTotalPrice()}">Total</span> </td>
                     </tr>
 
                     <tr>
