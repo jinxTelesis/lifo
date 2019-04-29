@@ -54,8 +54,6 @@ public class Product implements Comparator<Product>{
 
     // not a default getter don't do this at home kids
 
-
-
     public Product(Long id) {
         this.id = id;
     }

@@ -70,7 +70,7 @@ public class CartController {
         }else{
             System.out.println("you need to login first buddy!");
 
-            return "invalid_product_summary";
+            return "login";
         }
         return "product_summary";
     }
@@ -150,7 +150,7 @@ public class CartController {
             model.addAttribute("cartsize",validSDU.getProductListSize());
             model.addAttribute("carttotal",validSDU.getCartTotal());
             model.addAttribute("LoginForm", new LoginForm());
-            return "invalid_product_summary";
+            return "login";
         }
 
         try{
