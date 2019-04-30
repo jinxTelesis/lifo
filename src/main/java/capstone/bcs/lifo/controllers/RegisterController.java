@@ -90,17 +90,17 @@ public class RegisterController {
             // the registration form is being altered to save session data
 
             CustomerV2 customerV2 = customerService.saveOrUpdateRegistrationForm(registrationForm);
-            CartV2 cartV2 = new CartV2();// this is the outer
+            
             // get session cart and pull cart details from it
-            CartV2 cartV21 = (CartV2)session.getAttribute("cart");
-            cartV2.setAnnonoymousAccount(false);
-            cartV2.setCustomerV2(customerV2);
+            CartV2 localCart = (CartV2)session.getAttribute("cart");
+            localCart.setAnnonoymousAccount(false);
+            localCart.setCustomerV2(customerV2);
 
             // saves the session again
-            session.setAttribute("cart",cartV2);
+            session.setAttribute("cart",localCart); // after registration we go to cart
             // session now have user details
 
-            cartV2Repository.save(cartV2);
+            cartV2Repository.save(localCart);
 
             return "product_summary"; // this needs to be a new page for success
         }
