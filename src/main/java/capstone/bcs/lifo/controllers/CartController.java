@@ -18,6 +18,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -129,29 +131,39 @@ public class CartController {
 //        return "product_summary";
 //    }
 
-    @RequestMapping("/cart/{ida}/{idb}/{idc}")
+
+//    @RequestMapping("/cart/{ida}/{idb}/{idc}/{idr}/{idd}/{ide}/{idf}")
+//    public String getPagExtendVar(HttpServletRequest request,HttpSession session,@PathVariable("ida") String ida,
+//                                  @PathVariable("idb") String idb,@PathVariable("idc") String idc, Model model,@PathVariable("idr") String idr,
+//                                  @PathVariable("idd") String idd,@PathVariable("ide") String ide,@PathVariable("idf") String idf) {
+//        return "fragments/blank";
+//    }
+//
+//    @RequestMapping({"/cart/{ida}/{idb}/{idc}"})
+//    public String getPageVarVarVar(HttpServletRequest request, HttpSession session, @PathVariable("ida") String ida,
+//                                   @PathVariable("idb") String idb, @PathVariable("idc") String idc, Model model, RedirectAttributes redirectAttributes) throws Exception {
+//        String referer = request.getHeader("Referer");
+//        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+//
+//
+//
+//        return "custom_cart";
+//    }
+
+    @RequestMapping({"/cart/{ida}/{idb}/{idc}"})
     public String getPageVarVarVar(HttpServletRequest request,HttpSession session,@PathVariable("ida") String ida,
-                                   @PathVariable("idb") String idb,@PathVariable("idc") String idc, Model model) throws Exception {
+                                   @PathVariable("idb") String idb,@PathVariable("idc") String idc, Model model, RedirectAttributes redirectAttributes) throws Exception {
         String referer = request.getHeader("Referer");
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+
+
+
 
         CartV2 cartV2 = null;
         Integer a = null;
         Integer b = null;
 
-
-
-        if(session.getAttribute("cart") != null)
-        {
-            cartV2 = (CartV2) session.getAttribute("cart");
-        }else{
-            System.out.println("you need to login first buddy from cart/{ida}/{idb}/{idc}!");
-            //return "product_summary";
-            model.addAttribute("cartsize",validSDU.getProductListSize());
-            model.addAttribute("carttotal",validSDU.getCartTotal());
-            model.addAttribute("LoginForm", new LoginForm());
-            return "login";
-        }
+        // moved the two parse variables i think this is okay
 
         try{
             a = Integer.valueOf(ida);
@@ -166,6 +178,56 @@ public class CartController {
         {
             throw new Exception("Invalid input from cart hyperlink for the second parameter {idb}");
         }
+
+        // improved customer cart area
+        if(a == 10)
+        {
+            // products does not fail with blank data
+            // does it fail with a null pointer // this does not seem to fail with a null pointer or empty list
+            // this all renders it just needs null checks before being displayed
+            // bottom rendered properly with data
+            System.out.println("username " + validSDU.getUsersName());
+            System.out.println("products " + validSDU.validCartProductList());
+            System.out.println("discount" + validSDU.validCartProductList());
+            System.out.println("tax" + validSDU.validCartProductList());
+            System.out.println("product_details" + validSDU.validCartProductList());
+
+            model.addAttribute("cartsize",validSDU.getProductListSize());
+            model.addAttribute("carttoal",validSDU.getCartTotal());
+            model.addAttribute("username",validSDU.getUsersName());
+            model.addAttribute("products",validSDU.validCartProductList());
+            model.addAttribute("discount",appDiscountToCart(validSDU.validCartProductList(),0.1));
+            model.addAttribute("tax",appDiscountToCart(validSDU.validCartProductList(),0.2)); // those function calls throw npes
+            model.addAttribute("final_price",appDiscountNTax(validSDU.validCartProductList(),0.1,0.2)); // those function calls throw npes
+            model.addAttribute("product_details",validSDU.validCartProductList()); // those function calls throw npes
+            return "custom_cart";
+
+        }
+
+
+        // improved customer cart area
+
+
+
+
+
+
+        if(session.getAttribute("cart") != null)
+        {
+            cartV2 = (CartV2) session.getAttribute("cart");
+        }else{
+            System.out.println("you need to login first buddy from cart/{ida}/{idb}/{idc}!");
+            //return "product_summary";
+            model.addAttribute("cartsize",validSDU.getProductListSize());
+            model.addAttribute("carttotal",validSDU.getCartTotal());
+            model.addAttribute("LoginForm", new LoginForm());
+
+            RedirectView redirectView = new RedirectView("/login");
+            redirectView.setExposeModelAttributes(false);
+
+            return "login";
+        }
+
 
         System.out.println("this is the first cart parameter " + a);
         System.out.println("this is the second car parameter " + b);
@@ -228,33 +290,6 @@ public class CartController {
             // now just persist to session
             session.setAttribute("cart",cartV2);
 
-
-
-//            System.out.println("got to the write product block");
-//
-//            CartV2 localCart = null;
-//            CustomerV2 localCust = cartV2.getCustomerV2();
-//
-//            localCart = cartService.findById(localCust.getCustomerId());
-//
-//            List<CartProductV2> productList = null;
-//
-//            productList = localCart.getProductList();
-//
-//            CartProductV2 cartProductV2 = new CartProductV2(); // the product created
-//
-//            // retrieve the product data from the product database
-//            Product productInfoLocal = productService.findById(b.longValue());
-//
-//            cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
-//            cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
-//            cartProductV2.setProductNumber(1);
-//
-//            productList.add(cartProductV2);
-//
-//
-            // a have it add the product
-
             // adds to database ignore
             // will the actual save break the session
             // is this the same session?
@@ -288,55 +323,9 @@ public class CartController {
             List<CartProductV2> collectedList = removeAll(productList,cartProductV2);
 
 
-//            for(int i =0; i<productList.size();i++)
-//            {
-//                if(productList.get(i).getProductId() == productInfoLocal.getId().intValue())
-//                {
-//                    productList.remove(i);
-//                }
-//            }
-//
-//
-//            for(int i = 0; i < productList.size();i++)
-//            {
-//                System.out.println("this is the products in the list" + productList.get(i).getProductId());
-//                System.out.println("this is the price of the corresponding products" + productList.get(i).getProductPrice());
-//            }
-
-
             localCart.setProductList(collectedList);
             // now just persist to session
             session.setAttribute("cart",localCart);
-
-
-
-
-            // retrieve the product data from the product database
-//            Product productInfoLocal = productService.findById(b.longValue());
-//            // == this is all the initial details you need == //
-//            // == this is all the initial details you need == //
-//            // remove all of the product
-//            for(int i =0; i<productList.size();i++)
-//            {
-//                if(productList.get(i).getProductId() == productInfoLocal.getId().intValue())
-//                {
-//                    productList.remove(i);
-//                }
-//            }
-//
-//            for(int i = 0; i < productList.size();i++)
-//            {
-//                System.out.println("this is the products in the list" + productList.get(i).getProductId());
-//                System.out.println("this is the price of the corresponding products" + productList.get(i).getProductPrice());
-//            }
-
-//            localCart.setProductList(productList);
-//            cartV2.setCartidv2(1l); // set the carts id
-//            localCart.setCustomerV2(cartV2.getCustomerV2());
-//            localCart.setCartidv2(cartV2.getCustomerV2().getCustomerId());
-
-
-            //cartV2Repository.save(localCart);
         }
 
 
@@ -407,7 +396,7 @@ public class CartController {
         model.addAttribute("tax",appDiscountToCart(validSDU.validCartProductList(),0.2));
         model.addAttribute("final_price",appDiscountNTax(validSDU.validCartProductList(),0.1,0.2));
         model.addAttribute("product_details",validSDU.validCartProductList());
-        //model.addAttribute("product_details",productDetailsCreator(cartV2.getProductList()));
+
 
         return "custom_cart";
     }
@@ -421,11 +410,23 @@ public class CartController {
     // this might be duplicate code
 
     Double cartTotal(List<CartProductV2> list){
+        if(list == null){
+            return 0.0;
+        }
+
         double sum = list.stream().filter( p -> p.getProductPrice() > 0.0f).mapToDouble(o -> o.getProductPrice()).sum();
         return sum;
     }
 
     Double productTotal(List<CartProductV2> list, CartProductV2 cartProductV2){
+        if(list == null){
+            return 0.0;
+        }
+
+        if(cartProductV2 == null){
+            return 0.0;
+        }
+
         list.stream()
                 .filter(p -> Objects.equals(p, cartProductV2)) // this will work if the equals method is correct
                 .collect(Collectors.toList());
@@ -434,12 +435,22 @@ public class CartController {
     }
 
     Double appDiscountToCart(List<CartProductV2> list, Double discount){
+        if(list == null){
+            return 0.0;
+        }
+
         double sum = list.stream().filter( p -> p.getProductPrice() > 0.0f).mapToDouble(o -> o.getProductPrice()).sum();
         sum = sum * discount;
         return Math.floor(sum * 100)/100;
     }
 
     Double appDiscountNTax(List<CartProductV2> list, Double discount, Double tax){
+
+        if(list == null) {
+            return 0.0;
+        }
+
+
         double sum = list.stream().filter( p -> p.getProductPrice() > 0.0f).mapToDouble(o -> o.getProductPrice()).sum();
         double discountVar = sum * discount;
         double taxvarVar = sum * tax;
@@ -448,18 +459,18 @@ public class CartController {
         return Math.floor(sum * 100)/100;
     }
 
-//    List<ProductDetails> productDetailsCreator(List<CartProductV2> list){
-//        List<ProductDetails> productDetails = new ArrayList<>();
-//        ProductDetails temp = new ProductDetails();
-//
-//        if(list != null){
-//            for(int i = 0;i<list.size();i++){
-//                temp.setProductPrice(list.get(i).getProductPrice());
-//                productDetails.add(temp);
-//            }
-//            return productDetails;
-//        }
-//        return null;
-//    }
+    List<ProductDetails> productDetailsCreator(List<CartProductV2> list){
+        List<ProductDetails> productDetails = new ArrayList<>();
+        ProductDetails temp = new ProductDetails();
+
+        if(list != null){
+            for(int i = 0;i<list.size();i++){
+                temp.setProductPrice(list.get(i).getProductPrice());
+                productDetails.add(temp);
+            }
+            return productDetails;
+        }
+        return null;
+    }
 
 }
