@@ -95,7 +95,7 @@ public class InvalidProductSummary {
                         return "success";
                     }
                     else {
-                        System.out.println("login password inval id");
+                        System.out.println("login password invalid");
                         return "invalid_product_summary";
                     }
 

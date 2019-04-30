@@ -61,5 +61,4 @@ public class Account {
         this.encryptedPassword = encryptedPassword;
     }
 
-
 }

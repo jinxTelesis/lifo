@@ -4,6 +4,7 @@ import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.CartProductV2;
 import capstone.bcs.lifo.model.CartV2;
 import capstone.bcs.lifo.model.Product;
+import capstone.bcs.lifo.model.nonentity.ProductDetails;
 import capstone.bcs.lifo.repositories.CartProductV2Repository;
 import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.repositories.CustomerV2Repository;
@@ -69,7 +70,7 @@ public class CartController {
         }else{
             System.out.println("you need to login first buddy!");
 
-            return "invalid_product_summary";
+            return "login";
         }
         return "product_summary";
     }
@@ -149,7 +150,7 @@ public class CartController {
             model.addAttribute("cartsize",validSDU.getProductListSize());
             model.addAttribute("carttotal",validSDU.getCartTotal());
             model.addAttribute("LoginForm", new LoginForm());
-            return "invalid_product_summary";
+            return "login";
         }
 
         try{
