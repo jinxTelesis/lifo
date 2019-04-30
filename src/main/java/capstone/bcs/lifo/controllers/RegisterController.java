@@ -6,6 +6,7 @@ import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.model.*;
 import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.services.CustomerService;
+import capstone.bcs.lifo.util.SessionTransitionUtil;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,6 +69,10 @@ public class RegisterController {
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String saveOrUpdate(Model model,@Valid RegistrationForm registrationForm, BindingResult bindingResult, HttpSession session) {
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
+
+
         model.addAttribute("LoginForm", new LoginForm());
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
@@ -81,14 +86,19 @@ public class RegisterController {
         else
         {
             System.out.println("The new customer form got called");
+
+            // the registration form is being altered to save session data
+
             CustomerV2 customerV2 = customerService.saveOrUpdateRegistrationForm(registrationForm);
             CartV2 cartV2 = new CartV2();// this is the outer
-            List<CartProductV2> productList = new ArrayList<>();
-            CartProductV2 cartProductV2 = new CartProductV2();
-            cartProductV2.setCartV2(cartV2);
-            productList.add(cartProductV2);
-            cartV2.setProductList(productList);
+            // get session cart and pull cart details from it
+            CartV2 cartV21 = (CartV2)session.getAttribute("cart");
+            cartV2.setAnnonoymousAccount(false);
             cartV2.setCustomerV2(customerV2);
+
+            // saves the session again
+            session.setAttribute("cart",cartV2);
+            // session now have user details
 
             cartV2Repository.save(cartV2);
 

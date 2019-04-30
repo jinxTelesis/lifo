@@ -4,7 +4,6 @@ import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.CartProductV2;
 import capstone.bcs.lifo.model.CartV2;
 import capstone.bcs.lifo.model.Product;
-import capstone.bcs.lifo.model.nonentity.ProductDetails;
 import capstone.bcs.lifo.repositories.CartProductV2Repository;
 import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.repositories.CustomerV2Repository;
@@ -352,6 +351,7 @@ public class CartController {
         model.addAttribute("carttotal",validSDU.getCartTotal());
         model.addAttribute("LoginForm", new LoginForm());
         model.addAttribute("username",validSDU.getUsersName());
+        //model.addAttribute("first",validSDU.get)
 
         // make a function // make a function // make a function
 

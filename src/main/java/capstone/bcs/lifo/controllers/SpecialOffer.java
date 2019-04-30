@@ -2,6 +2,8 @@ package capstone.bcs.lifo.controllers;
 
 
 import capstone.bcs.lifo.commands.LoginForm;
+import capstone.bcs.lifo.model.CartV2;
+import capstone.bcs.lifo.util.SessionTransitionUtil;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,11 @@ public class SpecialOffer {
 
     @RequestMapping("/special_offer")
     public String getPage(Model model, HttpSession session){
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
+        CartV2 localCart = new CartV2();
+        localCart = (CartV2)session.getAttribute("cart");
+
         model.addAttribute("LoginForm", new LoginForm());
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());

@@ -62,7 +62,7 @@ public class ValidSessionDataUtil {
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
             String temp = cartV2.getCustomerV2().getpFirstName();
-            temp += " " + cartV2.getCustomerV2().getpLastName();
+            //temp += " " + cartV2.getCustomerV2().getpLastName();
             temp +="'";
             return temp;
         }else

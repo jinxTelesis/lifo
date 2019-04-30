@@ -16,17 +16,11 @@ public class CartV2 {
     @Column(name="cart_version2_id")
     private Long cartidv2;
 
-    //@Cascade(org.hibernate.annotations.CascadeType.MERGE)
-    //@Cascade({org.hibernate.annotations.CascadeType.PERSIST})
-    //@OneToOne(mappedBy = "cartV2",fetch = FetchType.EAGER)
-    //@JoinColumn(name = "customerId")
 
     @OneToOne(cascade = CascadeType.ALL) // johns
     private CustomerV2 customerV2;
 
-    // this failed in a new way
-    //@Cascade(value= org.hibernate.annotations.CascadeType.PERSIST)
-
+    private Boolean annonoymousAccount;
 
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @OneToMany(mappedBy = "cartV2", fetch = FetchType.EAGER)
@@ -40,7 +34,6 @@ public class CartV2 {
     public void setCustomerV2(CustomerV2 customerV2) {
         this.customerV2 = customerV2;
     }
-
 
     public Long getCartidv2() {
         return cartidv2;
@@ -56,6 +49,14 @@ public class CartV2 {
 
     public void setProductList(List<CartProductV2> productList) {
         this.productList = productList;
+    }
+
+    public Boolean getAnnonoymousAccount() {
+        return annonoymousAccount;
+    }
+
+    public void setAnnonoymousAccount(Boolean annonoymousAccount) {
+        this.annonoymousAccount = annonoymousAccount;
     }
 
 

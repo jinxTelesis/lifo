@@ -1,18 +1,17 @@
 package capstone.bcs.lifo.controllers;
 
-
 import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.*;
 import capstone.bcs.lifo.repositories.ProductRepository;
 import capstone.bcs.lifo.services.CustomerService;
 import capstone.bcs.lifo.services.PasswordEncryptionService;
+import capstone.bcs.lifo.util.SessionTransitionUtil;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -61,8 +60,12 @@ public class ProductSummaryController {
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
         model.addAttribute("carttotal",validSDU.getCartTotal());
-
         model.addAttribute("LoginForm", new LoginForm());
+
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
+
+
         if(bindingResult.hasErrors())
         {
             System.out.println("login had errors");
@@ -94,9 +97,15 @@ public class ProductSummaryController {
                 if(passwordEncryptionService.checkPassword(loginForm.getPasswordPlain(),localAccount.getEncryptedPassword()))
                 {
                     System.out.println("Valid user");
+                    // want it to put the customer in the cart now?
+                    // think registration form already did
+
                     CartV2 cartV2 = new CartV2();
+
+                    // this data should already be set
                     localCustV2.getAccount();
                     cartV2.setCustomerV2(localCustV2); // this will set just the customer
+                    cartV2.setAnnonoymousAccount(false);
 
                     session.setAttribute("cart",cartV2);
                     return "success";
