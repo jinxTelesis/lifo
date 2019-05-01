@@ -8,6 +8,7 @@ import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.repositories.CustomerV2Repository;
 import capstone.bcs.lifo.services.ProductService;
 import capstone.bcs.lifo.util.CartUtil;
+import capstone.bcs.lifo.util.SessionTransitionUtil;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +39,9 @@ public class CompareController {
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
         model.addAttribute("carttotal",validSDU.getCartTotal());
+
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
         return "compare";
     }
 

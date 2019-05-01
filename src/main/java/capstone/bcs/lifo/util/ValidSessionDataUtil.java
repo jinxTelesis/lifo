@@ -51,84 +51,110 @@ public class ValidSessionDataUtil {
             int temp;
             temp = cartV2.getProductList().size();
             return temp;
-        }
-        else
-        {
+        } else {
             return 0;
         }
     }
 
     public String getUsersName(){
+        String temp ="";
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
-            String temp = cartV2.getCustomerV2().getpFirstName();
-            //temp += " " + cartV2.getCustomerV2().getpLastName();
-            temp +="'";
-            return temp;
-        }else
-        {
-            String temp = "Not logged in";
+
+            if(cartV2.getCustomerV2().getpFirstName() == null) {
+                return temp;
+            }
+            else { temp = cartV2.getCustomerV2().getpFirstName();
+                //temp += " " + cartV2.getCustomerV2().getpLastName();
+                temp +="'";
+                return temp; }
+        }else {
+            temp = "No User";
             return temp;
         }
     }
 
     public String getAddress1(){
+        String temp = "";
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
-            String temp = cartV2.getCustomerV2().getCustomerAddress().getaAddress();
 
-            return temp;
-        }else
-        {
-            String temp = "";
+
+            if(cartV2.getCustomerV2().getCustomerAddress().getaAddress() == null) {
+                return temp;
+            }
+            else {
+                temp = cartV2.getCustomerV2().getCustomerAddress().getaAddress();
+                return temp;
+            }
+        }else {
             return temp;
         }
     }
 
     public String getAddress2(){
+        String temp = "";
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
-            String temp = cartV2.getCustomerV2().getCustomerAddress().getaAddress2();
-            return temp;
-        }else
-        {
-            String temp = "";
+            if(cartV2.getCustomerV2().getCustomerAddress().getaAddress2() == null) {
+                return temp;
+            }
+            else {
+                temp = cartV2.getCustomerV2().getCustomerAddress().getaAddress2();
+                return temp;
+            }
+
+        }else {
             return temp;
         }
     }
 
     public String getCity(){
+        String temp ="";
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
-            String temp = cartV2.getCustomerV2().getCustomerAddress().getaCity();
-            return temp;
-        }else
-        {
-            String temp = "";
+            if(cartV2.getCustomerV2().getCustomerAddress().getaCity() == null)
+            {
+                return temp;
+            }
+            else
+            {
+                temp = cartV2.getCustomerV2().getCustomerAddress().getaCity();
+                return temp;
+            }
+        }else {
             return temp;
         }
     }
 
     public String getState(){
+        String temp = "";
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
-            String temp = cartV2.getCustomerV2().getCustomerAddress().getaState();
-            return temp;
-        }else
-        {
-            String temp = "";
+            if(cartV2.getCustomerV2().getCustomerAddress().getaState() == null) {
+                return temp;
+            }
+            else {
+                temp = cartV2.getCustomerV2().getCustomerAddress().getaState();
+                return temp;
+            }
+        }else {
             return temp;
         }
     }
 
     public String getZip(){
+        String temp="";
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
-            String temp = cartV2.getCustomerV2().getCustomerAddress().getaZip();
-            return temp;
-        }else
-        {
-            String temp = "";
+            if(cartV2.getCustomerV2().getCustomerAddress().getaZip() == null) {
+                return temp;
+            }
+            else {
+                temp = cartV2.getCustomerV2().getCustomerAddress().getaZip();
+                return temp;
+            }
+        }else {
             return temp;
         }
     }
