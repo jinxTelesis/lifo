@@ -24,8 +24,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     // == this is not being used right now ==
 
-
-
     public CustomerServiceImpl(PasswordEncryptionService passwordEncryptionService, RegistrationFormToCustomerNAccount registrationFormToCustomerNAccount
     ,CustomerV2Repository customerV2Repository) {
         this.passwordEncryptionService = passwordEncryptionService;

@@ -36,9 +36,10 @@
             <div class="span6">Welcome!<strong> User</strong></div>
             <div class="span6">
                 <div class="pull-right">
-                    <span class="btn btn-mini">$0.00</span>
-                    <a href="product_summary" th:href="@{'/product_summary'}"><span class="btn btn-mini btn-primary">
-						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
+                    <span class="btn btn-mini" th:text="${carttotal}">$0.00</span>
+                    <a href="product_summary" th:href="@{'/product_summary'}">
+						<span  class="btn btn-mini btn-primary" th:text="${'['+cartsize+']' + ' Items in your cart'}">
+						<i class="icon-shopping-cart icon-white" ></i> cart Items</span> </a>
                 </div>
             </div>
         </div>
@@ -50,7 +51,7 @@
                 <span class="icon-bar"></span>
             </a>
             <div class="navbar-inner">
-                <a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
+                <a class="brand" href="/products"  th:href="@{'/index'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
                 <form class="form-inline navbar-search" method="post" action="products" >
                     <input id="srchFld" class="srchTxt" type="text" />
                     <select class="srchTxt">
@@ -65,7 +66,7 @@
                     <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
                 </form>
                 <ul id="topMenu" class="nav pull-right">
-                    <li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
+                    <li class=""><a href="index"  th:href="@{'/index'}">Home</a></li>
                     <li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
                     <li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
                     <li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
@@ -114,10 +115,10 @@
 
             <div class="span9">
                 <ul class="breadcrumb">
-                    <li><a href="index" th:href="@{'/products/0'}">Home</a> <span class="divider">/</span></li>
+                    <li><a href="index" th:href="@{'/index'}">Home</a> <span class="divider">/</span></li>
                     <li class="active"> SHOPPING CART</li>
                 </ul>
-                <h3>  SHOPPING CART [ <small>3 Item(s) </small>]<a href="products"  th:href="@{'/products/0'}"class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
+                <h3>  SHOPPING CART [ <small>3 Item(s) </small>]<a href="products"  th:href="@{'/index'}"class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
                 <hr class="soft"/>
                 <table class="table table-bordered">
                     <tr><th> I AM ALREADY REGISTERED  </th></tr>
@@ -187,9 +188,9 @@
                         <td>MASSA AST<br/>Color : black, Material : metal</td>
                         <td>
                             <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text">
-                                <button class="btn" type="button" onclick="window.location.href = '/cart/2/2/d';"><i class="icon-minus"></i></button>
-                                <button class="btn" type="button" onclick="window.location.href =  '/cart/2/2/d';"><i class="icon-plus"></i></button>
-                                <button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart/2/2/d';"><i class="icon-remove icon-white"></i></button>
+                                <button class="btn" type="button" onclick="window.location.href = '/cart/1/1/d';"><i class="icon-minus"></i></button>
+                                <button class="btn" type="button" onclick="window.location.href =  '/cart/2/1/d';"><i class="icon-plus"></i></button>
+                                <button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart/3/1/d';"><i class="icon-remove icon-white"></i></button>
                             </div>
                         </td>
                         <td>$120.00</td>
@@ -202,9 +203,9 @@
                         <td>MASSA AST<br/>Color : black, Material : metal</td>
                         <td>
                             <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text">
-                                <button class="btn" type="button" onclick="window.location.href = '/cart/2/2/d';"><i class="icon-minus"></i></button>
+                                <button class="btn" type="button" onclick="window.location.href = '/cart/1/2/d';"><i class="icon-minus"></i></button>
                                 <button class="btn" type="button" onclick="window.location.href =  '/cart/2/2/d';"><i class="icon-plus"></i></button>
-                                <button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart/2/2/d';"><i class="icon-remove icon-white"></i></button>
+                                <button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart/3/2/d';"><i class="icon-remove icon-white"></i></button>
                             </div>
                         </td>
                         <td>$7.00</td>
@@ -217,9 +218,9 @@
                         <td>MASSA AST<br/>Color : black, Material : metal</td>
                         <td>
                             <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text">
-                                <button class="btn" type="button" onclick="window.location.href = '/cart/2/2/d';"><i class="icon-minus"></i></button>
-                                <button class="btn" type="button" onclick="window.location.href = '/cart/2/2/d';"><i class="icon-plus"></i></button>
-                                <button class="btn btn-danger" type="button" onclick="window.location.href = '/cart/2/2/d';"><i class="icon-remove icon-white"></i></button>				</div>
+                                <button class="btn" type="button" onclick="window.location.href = '/cart/1/3/d';"><i class="icon-minus"></i></button>
+                                <button class="btn" type="button" onclick="window.location.href = '/cart/2/3/d';"><i class="icon-plus"></i></button>
+                                <button class="btn btn-danger" type="button" onclick="window.location.href = '/cart/3/2/3';"><i class="icon-remove icon-white"></i></button>				</div>
                         </td>
                         <td>$120.00</td>
                         <td>$25.00</td>

@@ -2,6 +2,8 @@ package capstone.bcs.lifo.controllers;
 
 import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.services.ProductService;
+import capstone.bcs.lifo.util.SessionTransitionUtil;
+import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class ProductsController {
@@ -25,159 +28,94 @@ public class ProductsController {
     // change this back if you don't want them sorted
 
     @RequestMapping("/products")
-    public String getPage(Model model){
-        //model.addAttribute("products", productService.getProducts());
+    public String getPage(Model model, HttpSession session){
         model.addAttribute("products",productService.getProductSet());
-        // == second model might cause issues
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
+
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
         return "products";
     }
 
     @RequestMapping("/products/products")
-    public String getPageHotFix(Model model){
-        //model.addAttribute("products", productService.getProducts());
+    public String getPageHotFix(Model model, HttpSession session){
         model.addAttribute("products",productService.getProductSet());
-        // == second model might cause issues
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
+
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
         return "products";
     }
 
     @RequestMapping("/products/asec")
-    public String getPageDesc(Model model){
-        //model.addAttribute("products", productService.getProducts());
+    public String getPageDesc(Model model, HttpSession session){
         model.addAttribute("products", productService.getProductsDesc());
-        // == second model might cause issues
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
+
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
         return "products";
     }
 
     @RequestMapping("/products/desc")
-    public String getPageAesc(Model model){
-        //model.addAttribute("products", productService.getProducts());
+    public String getPageAesc(Model model,HttpSession session){
         model.addAttribute("products", productService.getProductsAsce());
-        // == second model might cause issues
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
+
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
         return "products";
     }
 
     @RequestMapping("/products/asec/price")
-    public String getPageAescByPrice(Model model){
-        //model.addAttribute("products", productService.getProducts());
+    public String getPageAescByPrice(Model model, HttpSession session){
         model.addAttribute("products", productService.getProductAsecPrice());
-        // == second model might cause issues
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
+
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
         return "products";
     }
 
     @RequestMapping("/products/desc/price")
-    public String getPageDescByPrice(Model model){
-        //model.addAttribute("products", productService.getProducts());
+    public String getPageDescByPrice(Model model, HttpSession session){
         model.addAttribute("products", productService.getProductDescPrice());
-        // == second model might cause issues
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
+
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
         return "products";
     }
 
     @RequestMapping("/products/{productCat}")
-    public String getPageOrder(HttpServletRequest request, @PathVariable String productCat, Model model){
+    public String getPageOrder(HttpServletRequest request, @PathVariable String productCat, Model model, HttpSession session){
         model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
         String referer = request.getHeader("Referer");
-        //model.addAttribute("products",productService.getProducts());
-//        String newUrl = request.getRequestURI();
-//        newUrl.replace("/products","");
-//        newUrl.replace("1","");
-//        newUrl.replace("0","");
-//        newUrl.replace("/","");
-//
-//        return newUrl;
+
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
         return "products";
     }
-
-//    @RequestMapping("/products/**")
-//    public String getPageAnt(Model model,HttpServletRequest request){
-//        model.addAttribute("LoginForm", new LoginForm());
-//        System.out.println(request.getRequestURI());
-////        String what = request.getHeader("contact");
-////        System.out.println("this is getHeader" + what);
-////        System.out.println(request.getContextPath());
-////        long what2 = request.getDateHeader("contact");
-////        System.out.println("this is getDateHeader" + what2);
-//        String newUrl = request.getRequestURI();
-//        newUrl.replace("/products","");
-//        return newUrl;
-//    }
-
-
-
-
-
-//    @RequestMapping("/products_accessories")
-//    public String getAccessories(Model model)
-//    {
-//        // == second model might cause issues
-//        model.addAttribute("products", productService.getProductsByCategory(0));
-//        model.addAttribute("LoginForm", new LoginForm());
-//
-//
-//        return "products_accessories";
-//    }
-//
-//    @RequestMapping("/products_appliances")
-//    public String getAppliances(Model model)
-//    {
-//        // == second model might cause issues
-//        model.addAttribute("products",productService.getProductsByCategory(1));
-//        model.addAttribute("LoginForm", new LoginForm());
-//        return "products_appliances";
-//    }
-//
-//    @RequestMapping("/products_cleaning")
-//    public String getCleaning(Model model)
-//    {
-//        // == second model might cause issues
-//        model.addAttribute("products",productService.getProductsByCategory(2));
-//        model.addAttribute("LoginForm", new LoginForm());
-//        return "products_cleaning";
-//    }
-//
-//    @RequestMapping("/products_hardware")
-//    public String getHardware(Model model)
-//    {
-//        // == second model might cause issues
-//        model.addAttribute("products",productService.getProductsByCategory(3));
-//        model.addAttribute("LoginForm", new LoginForm());
-//        return "products_hardware";
-//    }
-//
-//    @RequestMapping("/products_health")
-//    public String getHealth(Model model)
-//    {
-//        // == second model might cause issues
-//        model.addAttribute("products",productService.getProductsByCategory(4));
-//        model.addAttribute("LoginForm", new LoginForm());
-//        return "products_health";
-//    }
-//
-//    @RequestMapping("/products_home")
-//    public String getHome(Model model)
-//    {
-//        // == second model might cause issues
-//        model.addAttribute("products",productService.getProductsByCategory(5));
-//        model.addAttribute("LoginForm", new LoginForm());
-//        return "products_home";
-//    }
-//
-//    @RequestMapping("/products_toys")
-//    public String getToys(Model model)
-//    {
-//        // == second model might cause issues
-//        model.addAttribute("products",productService.getProductsByCategory(6));
-//        model.addAttribute("LoginForm", new LoginForm());
-//        return "products_toys";
-//    }
-
-
-
-
 }

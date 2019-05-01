@@ -36,76 +36,7 @@
 </head>
 <body>
 <!-- Navigation section start ====================================================================== -->
-<div id="header">
-	<div class="container">
-		<div id="welcomeLine" class="row">
-			<div class="span6">Welcome!<strong> User</strong></div>
-			<div class="span6">
-				<div class="pull-right">
-					<span class="btn btn-mini">$0.00</span>
-					<a href="product_summary" th:href="@{'/product_summary'}"><span class="btn btn-mini btn-primary">
-						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
-				</div>
-			</div>
-		</div>
-		<!-- Navbar ================================================== -->
-		<div id="logoArea" class="navbar">
-			<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<div class="navbar-inner">
-				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
-				<form class="form-inline navbar-search" method="post" action="products" >
-					<input id="srchFld" class="srchTxt" type="text" />
-					<select class="srchTxt">
-						<option th:href="@{'/products/0'}">ACCESSORIES </option>
-						<option th:href="@{'/products/1'}">APPLIANCES </option>
-						<option th:href="@{'/products/2'}">CLEANING </option>
-						<option th:href="@{'/products/3'}">HARDWARE </option>
-						<option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
-						<option th:href="@{'/products/5'}">HOMEWARES </option>
-						<option th:href="@{'/products/6'}">TOYS </option>
-					</select>
-					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-				</form>
-				<ul id="topMenu" class="nav pull-right">
-					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
-					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
-					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
-					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
-					<li class="">
-						<a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
-						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								<h3>Login Block</h3>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
-									<div class="control-group">
-										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
-									</div>
-									<div class="control-group">
-										<input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
-									</div>
-									<div class="control-group">
-										<label class="checkbox">
-											<input type="checkbox"> Remember me
-										</label>
-									</div>
-								</form>
-								<button type="submit" class="btn btn-success">Sign in</button>
-								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-
-		</div>
-	</div>
+<div th:replace="fragments/navigation :: navigation">
 </div>
 <!-- Navigation section end ====================================================================== -->
 
@@ -180,7 +111,6 @@
 					<tr>
 						<th>Product</th>
 						<th>Description</th>
-						<th>Quantity/Update</th>
 						<th>Price</th>
 						<th>Discount</th>
 						<th>Tax</th>
@@ -195,7 +125,7 @@
 							<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text">
 								<button class="btn" type="button" onclick="window.location.href = '/cart/1/1/d';"><i class="icon-minus"></i></button>
 								<button class="btn" type="button" onclick="window.location.href =  '/cart/2/1/d';"><i class="icon-plus"></i></button>
-								<button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart/0/1/d';"><i class="icon-remove icon-white"></i></button>
+								<button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart/3/1/d';"><i class="icon-remove icon-white"></i></button>
 							</div>
 						</td>
 						<td>$120.00</td>
@@ -210,7 +140,7 @@
 							<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text">
 								<button class="btn" type="button" onclick="window.location.href = '/cart/1/2/d';"><i class="icon-minus"></i></button>
 								<button class="btn" type="button" onclick="window.location.href =  '/cart/2/2/d';"><i class="icon-plus"></i></button>
-								<button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart/0/2/d';"><i class="icon-remove icon-white"></i></button>
+								<button class="btn btn-danger" type="button" onclick="window.location.href =  '/cart/3/2/d';"><i class="icon-remove icon-white"></i></button>
 							</div>
 						</td>
 						<td>$7.00</td>
@@ -225,7 +155,7 @@
 							<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text">
 								<button class="btn" type="button" onclick="window.location.href = '/cart/1/3/d';"><i class="icon-minus"></i></button>
 								<button class="btn" type="button" onclick="window.location.href = '/cart/2/3/d';"><i class="icon-plus"></i></button>
-								<button class="btn btn-danger" type="button" onclick="window.location.href = '/cart/0/3/d';"><i class="icon-remove icon-white"></i></button>				</div>
+								<button class="btn btn-danger" type="button" onclick="window.location.href = '/cart/3/3/d';"><i class="icon-remove icon-white"></i></button>				</div>
 						</td>
 						<td>$120.00</td>
 						<td>$25.00</td>
@@ -302,7 +232,8 @@
 				<a href="login" th:href="@{'/product_summary'}"class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
 
 			</div>
-		</div></div>
+		</div>
+	</div>
 </div>
 <!-- MainBody End ============================= -->
 <!-- Footer section start =============================================== -->

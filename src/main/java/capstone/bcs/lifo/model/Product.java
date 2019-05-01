@@ -21,6 +21,7 @@ public class Product implements Comparator<Product>{
 
     private double productPrice;
 
+
     private String productImage;
     private String productDimensions;
 
@@ -50,6 +51,8 @@ public class Product implements Comparator<Product>{
         this.description2 = description2;
         this.description3 = description3;
     }
+
+    // not a default getter don't do this at home kids
 
     public Product(Long id) {
         this.id = id;

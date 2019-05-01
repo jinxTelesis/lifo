@@ -25,77 +25,10 @@
 
 </head>
 <body>
-<!-- Navigation section start ====================================================================== -->
-<div id="header">
-	<div class="container">
-		<div id="welcomeLine" class="row">
-			<div class="span6">Welcome!<strong> User</strong></div>
-			<div class="span6">
-				<div class="pull-right">
-					<span class="btn btn-mini">$0.00</span>
-					<a href="product_summary" th:href="@{'http://localhost:8080/product_summary'}"><span class="btn btn-mini btn-primary">
-						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
-				</div>
-			</div>
-		</div>
-		<!-- Navbar ================================================== -->
-		<div id="logoArea" class="navbar">
-			<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<div class="navbar-inner">
-				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
-				<form class="form-inline navbar-search" method="post" action="products" >
-					<input id="srchFld" class="srchTxt" type="text" />
-					<select class="srchTxt">
-						<option th:href="@{'/products/0'}">ACCESSORIES </option>
-						<option th:href="@{'/products/1'}">APPLIANCES </option>
-						<option th:href="@{'/products/2'}">CLEANING </option>
-						<option th:href="@{'/products/3'}">HARDWARE </option>
-						<option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
-						<option th:href="@{'/products/5'}">HOMEWARES </option>
-						<option th:href="@{'/products/6'}">TOYS </option>
-					</select>
-					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-				</form>
-				<ul id="topMenu" class="nav pull-right">
-					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
-					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
-					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
-					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
-					<li class="">
-						<a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
-						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								<h3>Login Block</h3>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
-									<div class="control-group">
-										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
-									</div>
-									<div class="control-group">
-										<input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
-									</div>
-									<div class="control-group">
-										<label class="checkbox">
-											<input type="checkbox"> Remember me
-										</label>
-									</div>
-								</form>
-								<button type="submit" class="btn btn-success">Sign in</button>
-								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
 
-		</div>
-	</div>
+
+<!-- Navigation section start ====================================================================== -->
+<div th:replace="fragments/navigation :: navigation">
 </div>
 <!-- Navigation section end ====================================================================== -->
 
@@ -106,92 +39,92 @@
 <!-- corousel end ------------------------------------------------------------->
 <div id="mainBody">
 	<div class="container">
-	<div class="row">
-		<!-- Sidebar Section Start ================================================== -->
-		<div th:replace="fragments/sidebar :: sidebar">
-		</div>
-		<!-- Sidebar Section End =============================================== -->
-	<div class="span9">
-    <ul class="breadcrumb">
-		<li><a href="index">Home</a> <span class="divider">/</span></li>
-		<li class="active">Products Compairsition</li>
-    </ul>
-	<h3> Products Compairsition <small class="pull-right"> 2 products are compaired </small></h3>	
-	<hr class="soft"/>
+		<div class="row">
+			<!-- Sidebar Section Start ================================================== -->
+			<div th:replace="fragments/sidebar :: sidebar">
+			</div>
+			<!-- Sidebar Section End =============================================== -->
+			<div class="span9">
+				<ul class="breadcrumb">
+					<li><a href="index">Home</a> <span class="divider">/</span></li>
+					<li class="active">Products Compairsition</li>
+				</ul>
+				<h3> Products Compairsition <small class="pull-right"> 2 products are compaired </small></h3>
+				<hr class="soft"/>
 
-	<table id="compairTbl" class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Features</th>
-                  <th>Product1 name here </th>
-                  <th>Product2 name here</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td style="text-align:center">
-					<p class="justify">
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies - that is why our 
-						goods are so popular and we have a great number of faithful customers all over the country.
-					</p>
-				<img src="/images/products/1.jpg" alt=""/>
-				<form class="form-horizontal qtyFrm">
-				<h3> $222.00</h3><br/>
-				 <a href="product_details" th:href="@{'/product_details'}"class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-				 <a href="product_details" th:href="@{'/product_details'}"class="btn btn-large"><i class="icon-zoom-in"></i></a>
-				</form>
-				</td>
-                  <td>
-				  <p class="justify">
-					Nowadays the lingerie industry is one of the most successful business spheres.
-					We always stay in touch with the latest fashion tendencies - that is why our 
-					goods are so popular and we have a great number of faithful customers all over the country.
-				</p>
-				<img src="/images/products/3.jpg" alt=""/>
-				
-				<form class="form-horizontal qtyFrm">
-				<h3> $190.00</h3>
-				<br/>
-				 <a href="product_details" th:href="@{'/product_details'}"class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-				 <a href="product_details" th:href="@{'/product_details'}"class="btn btn-large"><i class="icon-zoom-in"></i></a>
-				</form>
-				  </td>
-                </tr>
-                <tr>
-                  <td>Height</td>
-                  <td>2"</td>
-                  <td>2"</td>
-                </tr>
-                <tr>
-                  <td>Deepth</td>
-                  <td>5"</td>
-                  <td>5"</td>
-                </tr>
-				<tr>
-                  <td>Dimension</td>
-                  <td>--</td>
-                  <td>--</td>
-                </tr>
-				<tr>
-                  <td>Width</td>
-                  <td>6.5"</td>
-                  <td>6.5"</td>
-                </tr>
-				<tr>
-                  <td>Weight</td>
-                  <td>0.5kg</td>
-                  <td>0.5kg</td>
-                </tr>
-              </tbody>
-            </table>		
-	<a href="products" th:href="@{'/products/0'}" class="btn btn-large pull-right">Back Products Page</a>
-	
-	
-</div>
-</div>
-</div>
+				<table id="compairTbl" class="table table-bordered">
+					<thead>
+					<tr>
+						<th>Features</th>
+						<th>Product1 name here </th>
+						<th>Product2 name here</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="text-align:center">
+							<p class="justify">
+								Nowadays the lingerie industry is one of the most successful business spheres.
+								We always stay in touch with the latest fashion tendencies - that is why our
+								goods are so popular and we have a great number of faithful customers all over the country.
+							</p>
+							<img src="/images/products/1.jpg" alt=""/>
+							<form class="form-horizontal qtyFrm">
+								<h3> $222.00</h3><br/>
+								<a href="product_details" th:href="@{'/product_details'}"class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+								<a href="product_details" th:href="@{'/product_details'}"class="btn btn-large"><i class="icon-zoom-in"></i></a>
+							</form>
+						</td>
+						<td>
+							<p class="justify">
+								Nowadays the lingerie industry is one of the most successful business spheres.
+								We always stay in touch with the latest fashion tendencies - that is why our
+								goods are so popular and we have a great number of faithful customers all over the country.
+							</p>
+							<img src="/images/products/3.jpg" alt=""/>
+
+							<form class="form-horizontal qtyFrm">
+								<h3> $190.00</h3>
+								<br/>
+								<a href="product_details" th:href="@{'/product_details'}"class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
+								<a href="product_details" th:href="@{'/product_details'}"class="btn btn-large"><i class="icon-zoom-in"></i></a>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td>Height</td>
+						<td>2"</td>
+						<td>2"</td>
+					</tr>
+					<tr>
+						<td>Deepth</td>
+						<td>5"</td>
+						<td>5"</td>
+					</tr>
+					<tr>
+						<td>Dimension</td>
+						<td>--</td>
+						<td>--</td>
+					</tr>
+					<tr>
+						<td>Width</td>
+						<td>6.5"</td>
+						<td>6.5"</td>
+					</tr>
+					<tr>
+						<td>Weight</td>
+						<td>0.5kg</td>
+						<td>0.5kg</td>
+					</tr>
+					</tbody>
+				</table>
+				<a href="products" th:href="@{'/products/0'}" class="btn btn-large pull-right">Back Products Page</a>
+
+
+			</div>
+		</div>
+	</div>
 </div>
 <!-- MainBody End ============================= -->
 

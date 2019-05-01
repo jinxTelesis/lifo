@@ -26,76 +26,7 @@
 </head>
 <body>
 <!-- Navigation section start ====================================================================== -->
-<div id="header">
-	<div class="container">
-		<div id="welcomeLine" class="row">
-			<div class="span6">Welcome!<strong> User</strong></div>
-			<div class="span6">
-				<div class="pull-right">
-					<span class="btn btn-mini">$0.00</span>
-					<a href="product_summary" th:href="@{'/product_summary'}"><span class="btn btn-mini btn-primary">
-						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
-				</div>
-			</div>
-		</div>
-		<!-- Navbar ================================================== -->
-		<div id="logoArea" class="navbar">
-			<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<div class="navbar-inner">
-				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
-				<form class="form-inline navbar-search" method="post" action="products" >
-					<input id="srchFld" class="srchTxt" type="text" />
-					<select class="srchTxt">
-						<option th:href="@{'/products/0'}">ACCESSORIES </option>
-						<option th:href="@{'/products/1'}">APPLIANCES </option>
-						<option th:href="@{'/products/2'}">CLEANING </option>
-						<option th:href="@{'/products/3'}">HARDWARE </option>
-						<option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
-						<option th:href="@{'/products/5'}">HOMEWARES </option>
-						<option th:href="@{'/products/6'}">TOYS </option>
-					</select>
-					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-				</form>
-				<ul id="topMenu" class="nav pull-right">
-					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
-					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
-					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
-					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
-					<li class="">
-						<a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
-						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								<h3>Login Block</h3>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
-									<div class="control-group">
-										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
-									</div>
-									<div class="control-group">
-										<input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
-									</div>
-									<div class="control-group">
-										<label class="checkbox">
-											<input type="checkbox"> Remember me
-										</label>
-									</div>
-								</form>
-								<button type="submit" class="btn btn-success">Sign in</button>
-								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-
-		</div>
-	</div>
+<div th:replace="fragments/navigation :: navigation">
 </div>
 <!-- Navigation section end ====================================================================== -->
 
@@ -110,7 +41,7 @@
 
 			<div class="span7" align="center" th:align="center">
 				<ul class="breadcrumb">
-					<li><a href="index" th:href="@{'/products/0'}">Home</a> <span class="divider">/</span></li>
+					<li><a href="index" th:href="@{'/index'}">Home</a> <span class="divider">/</span></li>
 					<li class="active">Registration</li>
 				</ul>
 				<h3> Account info </h3>
@@ -119,230 +50,165 @@
 
 					<form class="form-horizontal" th:object="${registrationForm}" th:action="@{/register}" method="post">
 
-						<div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
-							<p >One or more fields are invalid</p>
-						</div>
+						<!--						<div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">-->
+						<!--							<p >One or more fields are invalid</p>-->
+						<!--						</div>-->
 
-						<div class="form-group"  th:class="${#fields.hasErrors('username')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">User Name: *	</label>
-							<div class="col-sm-10 ">
-								<input type="text" class="form-control" th:field="*{username}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('pFirstName')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">Username :*</label>
+							<div class="form-control">
+								<input type="text" th:field="*{username}" class="required"  id="username"
+									   placeholder="Your Username"/>
+								<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"class="alert alert-danger">
+							</span>
 							</div>
 						</div>
 
-						<div class="form-group"  th:class="${#fields.hasErrors('passwordPlain')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">Enter password: *	</label>
-							<div class="col-sm-10 ">
-								<input type="text" class="form-control" th:field="*{passwordPlain}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('passwordPlain')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">Password :*</label>
+							<div class="form-control">
+								<input type="password" th:field="*{passwordPlain}" class="required"  id="password"
+									   placeholder="Enter Password"/>
+								<span th:if="${#fields.hasErrors('passwordPlain')}" th:errors="*{passwordPlain}" class="alert alert-danger">
+							</span>
 							</div>
 						</div>
 
-						<div class="form-group"  th:class="${#fields.hasErrors('passwordConformation')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">Confirm password: *	</label>
-							<div class="col-sm-10 ">
-								<input type="text" class="form-control" th:field="*{passwordConformation}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('passwordConformation')}" th:text="${err}" />
-                       </ul>
-                    </span>
-							</div>
-						</div>
-
-						<div class="form-group" th:class="${#fields.hasErrors('pEmail')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">Email: *	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{pEmail}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('pEmail')}" th:text="${err}" />
-                       </ul>
-                    </span>
-							</div>
-						</div>
-
-						<div class="form-group"  th:class="${#fields.hasErrors('pFirstName')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">First Name: *	</label>
-							<div class="col-sm-10 ">
-								<input type="text" class="form-control" th:field="*{pFirstName}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('pFirstName')}" th:text="${err}" />
-                       </ul>
-                    </span>
-							</div>
-						</div>
-
-						<div class="form-group" th:class="${#fields.hasErrors('pLastName')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">Last Name: *	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{pLastName}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('pLastName')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">Confirm Password :*</label>
+							<div class="form-control">
+								<input type="password" th:field="*{passwordConformation}" class="required"  id="passwordconfirm"
+									   placeholder="Enter Password"/>
+								<span th:if="${#fields.hasErrors('passwordConformation')}" th:errors="*{passwordConformation}"
+									  class="alert alert-danger"></span>
 							</div>
 						</div>
 
 
-
-						<div class="form-group" th:class="${#fields.hasErrors('pDoB')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">Date of Birth: *	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{pDoB}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('pDoB')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">First Name :*</label>
+							<div class="form-control">
+								<input type="text" th:field="*{pFirstName}" class="required"  id="pFirstName"
+									   placeholder="Your First Name"/>
+								<span th:if="${#fields.hasErrors('pFirstName')}" th:errors="*{pFirstName}" class="alert alert-danger">
+							</span>
 							</div>
 						</div>
 
-
-
-						<div class="form-group" th:class="${#fields.hasErrors('aAddress')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">Address line one: *	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{aAddress}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('aAddress')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">Last Name :*</label>
+							<div class="form-control">
+								<input type="text" th:field="*{pLastName}" class="required"  id="pLastName"
+									   placeholder="Your Last Name"/>
+								<span th:if="${#fields.hasErrors('pLastName')}" th:errors="*{pLastName}" class="alert alert-danger">
+							</span>
 							</div>
 						</div>
 
-						<div class="form-group" th:class="${#fields.hasErrors('aAddress2')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">Address line two:	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{aAddress2}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('aAddress2')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">Email :*</label>
+							<div class="form-control">
+								<input type="text" th:field="*{pEmail}" class="required"  id="pEmail"
+									   placeholder="Your Email"/>
+								<span th:if="${#fields.hasErrors('pEmail')}" th:errors="*{pEmail}" class="alert alert-danger">
+							</span>
 							</div>
 						</div>
 
-						<div class="form-group" th:class="${#fields.hasErrors('aCity')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">City: *	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{aCity}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('aCity')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">Date of Birth : </label>
+							<div class="form-control">
+								<input type="text" th:field="*{pDoB}" class="required" id="pDob" placeholder="DOB 01/01/2000"/>
+								<span th:if="${#fields.hasErrors('pDoB')}" th:errors="*{pDoB}" class="alert alert-danger">
+								</span>
 							</div>
 						</div>
 
-						<div class="form-group" th:class="${#fields.hasErrors('aState')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">State: *	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{aState}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('aState')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">Address :* </label>
+							<div class="form-control">
+								<input type="text" th:field="*{aAddress}" class="required" id="aAddress" placeholder="Your Address"/>
+								<span th:if="${#fields.hasErrors('aAddress')}" th:errors="*{aAddress}" class="alert alert-danger">
+							</span>
 							</div>
 						</div>
 
-						<div class="form-group" th:class="${#fields.hasErrors('aZip')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">Zip: *	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{aZip}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('aZip')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">Address 2 : </label>
+							<div class="form-control">
+								<input type="text" th:field="*{aAddress2}"  id="aAddress2" placeholder="Your Address 2"/>
+								<!--							<span th:if="${#fields.hasErrors('aAddress2')}" th:errors="*{aAddress2}" class="alert alert-danger">-->
+								<!--							</span>-->
 							</div>
 						</div>
 
-						<div class="form-group" th:class="${#fields.hasErrors('aCountry')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">Country:	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{aCountry}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('aCountry')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">City :* </label>
+							<div class="form-control">
+								<input type="text" th:field="*{aCity}" class="required" id="aCity" placeholder="Your City"/>
+								<span th:if="${#fields.hasErrors('aCity')}" th:errors="*{aCity}" class="alert alert-danger">
+							</span>
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="col-sm-2 control-label">Additional Info:	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{aAdditionalInfo}"/>
-
-								<span class="help-block">
-                       <ul>
-
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">State :* </label>
+							<div class="form-control">
+								<input type="text" th:field="*{aState}" class="required" id="aState" placeholder="Your State"/>
+								<span th:if="${#fields.hasErrors('aState')}" th:errors="*{aState}" class="alert alert-danger">
+							</span>
 							</div>
 						</div>
 
-						<div class="form-group" th:class="${#fields.hasErrors('aHomePhone')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">Home Phone:	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{aHomePhone}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('aHomePhone')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">Zip :* </label>
+							<div class="form-control">
+								<input type="text" th:field="*{aZip}" class="required" id="aZip" placeholder="Your Zip"/>
+								<span th:if="${#fields.hasErrors('aZip')}" th:errors="*{aZip}" class="alert alert-danger">
+							</span>
 							</div>
 						</div>
 
-						<div class="form-group" th:class="${#fields.hasErrors('aMobilePhone')} ? 'form-group has-error' : 'form-group'">
-							<label class="col-sm-2 control-label">Mobile Phone:	</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" th:field="*{aMobilePhone}" th:errorclass="has-error"/>
-
-								<span class="help-block">
-                       <ul>
-                           <li th:each="err : ${#fields.errors('aMobilePhone')}" th:text="${err}" />
-                       </ul>
-                    </span>
+						<div class="control-group">
+							<label class="control-label">Country : </label>
+							<div class="form-control">
+								<input type="text" th:field="*{aCountry}" id="aCountry" placeholder="Your Country"/>
+								<!--							<span th:if="${#fields.hasErrors('aCountry')}" th:errors="*{aCountry}" class="alert alert-danger">-->
+								<!--							</span>-->
 							</div>
 						</div>
 
+						<div class="control-group">
+							<label class="control-label">Home Phone :* </label>
+							<div class="form-control">
+								<input type="text" th:field="*{aHomePhone}" class="required" id="aHomePhone" placeholder="Your Phone"/>
+								<span th:if="${#fields.hasErrors('aHomePhone')}" th:errors="*{aHomePhone}" class="alert alert-danger">
+								</span>
+							</div>
+						</div>
 
-						<div class="span6" align="center">
+						<div class="control-group">
+							<label class="control-label">Mobile Phone :* </label>
+							<div class="form-control">
+								<input type="text" th:field="*{aMobilePhone}" class="required" id="aMobilePhone" placeholder="Your Phone"/>
+								<span th:if="${#fields.hasErrors('aMobilePhone')}" th:errors="*{aMobilePhone}" class="alert alert-danger">
+								</span>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label">Additional Information : </label>
+							<div class="form-control">
+							<textarea rows="4" class="span3" th:field="*{aAdditionalInfo}" id="aAdditionalInfo"
+									  placeholder="Optional Additional Information"/>
+							</div>
+						</div>
+
+						<div class="form-control" align="center">
 							<div class="dresbutton">
 								<button type="submit" width="50" height="50" th:align="center" th:width="50" th:height="50">Submit</button>
 							</div>
 						</div>
-
-
 
 					</form>
 

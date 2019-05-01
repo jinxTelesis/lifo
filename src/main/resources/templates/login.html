@@ -26,77 +26,8 @@
 </head>
 <body>
 <!-- Navigation section start ====================================================================== -->
-<div id="header">
-	<div class="container">
-		<div id="welcomeLine" class="row">
-			<div class="span6">Welcome!<strong> User</strong></div>
-			<div class="span6">
-				<div class="pull-right">
-					<span class="btn btn-mini">$0.00</span>
-					<a href="product_summary" th:href="@{'/product_summary'}"><span class="btn btn-mini btn-primary">
-						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
-				</div>
-			</div>
-		</div>
-		<!-- Navbar ================================================== -->
-		<div id="logoArea" class="navbar">
-			<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<div class="navbar-inner">
-				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
-				<form class="form-inline navbar-search" method="post" action="products" >
-					<input id="srchFld" class="srchTxt" type="text" />
-					<select class="srchTxt">
-						<option th:href="@{'/products/0'}">ACCESSORIES </option>
-						<option th:href="@{'/products/1'}">APPLIANCES </option>
-						<option th:href="@{'/products/2'}">CLEANING </option>
-						<option th:href="@{'/products/3'}">HARDWARE </option>
-						<option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
-						<option th:href="@{'/products/5'}">HOMEWARES </option>
-						<option th:href="@{'/products/6'}">TOYS </option>
-					</select>
-					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-				</form>
-				<ul id="topMenu" class="nav pull-right">
-					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
-					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
-					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
-					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
-					<li class="">
-						<a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
-						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								<h3>Login Block</h3>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
-									<div class="control-group">
-										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
-									</div>
-									<div class="control-group">
-										<input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
-									</div>
-									<div class="control-group">
-										<label class="checkbox">
-											<input type="checkbox"> Remember me
-										</label>
-									</div>
-								</form>
-								<button type="submit" class="btn btn-success">Sign in</button>
-								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-
-		</div>
+	<div th:replace="fragments/navigation :: navigation">
 	</div>
-</div>
 <!-- Navigation section end ====================================================================== -->
 
 <!-- Header End====================================================================== -->
@@ -109,57 +40,63 @@
 		<!-- Sidebar Section End =============================================== -->
 	<div class="span9">
     <ul class="breadcrumb">
-		<li><a href="index" th:href="@{'/products/0'}">Home</a> <span class="divider">/</span></li>
+		<li><a href="index" th:href="@{'/index'}">Home</a> <span class="divider">/</span></li>
 		<li class="active">Login</li>
     </ul>
 	<h3> Login</h3>	
 	<hr class="soft"/>
 	
-	<div class="row">
-		<div class="span4">
-			<div class="well">
-			<h5>CREATE YOUR ACCOUNT</h5><br/>
-			Enter your e-mail address to create an account.<br/><br/><br/>
-			<form action="register">
-			  <div class="control-group">
-				<label class="control-label" for="inputEmail0">E-mail address</label>
-				<div class="controls">
-				  <input class="span3"  type="text" id="inputEmail0" placeholder="Email">
-				</div>
-			  </div>
-			  <div class="controls">
-			  <button type="submit" class="btn block">Create Your Account</button>
-			  </div>
-			</form>
-		</div>
-		</div>
-		<div class="span1"> &nbsp;</div>
-		<div class="span4">
-			<div class="well">
-			<h5>ALREADY REGISTERED ?</h5>
-			<form>
-			  <div class="control-group">
-				<label class="control-label" for="inputEmail1">Email</label>
-				<div class="controls">
-				  <input class="span3"  type="text" id="inputEmail1" placeholder="Email">
-				</div>
-			  </div>
-			  <div class="control-group">
-				<label class="control-label" for="inputPassword1">Password</label>
-				<div class="controls">
-				  <input type="password" class="span3"  id="inputPassword1" placeholder="Password">
-				</div>
-			  </div>
-			  <div class="control-group">
-				<div class="controls">
-				  <button type="submit" class="btn">Sign in</button> <a href="forgetpass" th:href="@{'/forgetpass'}">Forget password?</a>
-				</div>
-			  </div>
-			</form>
-		</div>
-		</div>
-	</div>	
-	
+		<table class="table table-bordered">
+			<tr><th> Please Register or Login to access shopping cart  </th></tr>
+			<tr>
+				<td>
+					<form class="form-horizontal" th:object="${LoginForm}" th:action="@{/login_form}" method="post">
+
+						<div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+							<p >One or more fields are invalid</p>
+						</div>
+
+						<div class="form-group"  th:class="${#fields.hasErrors('userName')} ? 'form-group has-error' : 'form-group'">
+							<label class="col-sm-2 control-label">User Name: *	</label>
+							<div class="col-sm-10 ">
+								<input type="text" class="form-control" th:field="*{userName}" th:errorclass="has-error"/>
+
+								<span class="help-block">
+                       					<ul>
+                           					<li th:each="err : ${#fields.errors('userName')}" th:text="${err}" />
+                       					</ul>
+                    				</span>
+							</div>
+						</div>
+
+						<div class="form-group"  th:class="${#fields.hasErrors('passwordPlain')} ? 'form-group has-error' : 'form-group'">
+							<label class="col-sm-2 control-label">Enter password: *	</label>
+							<div class="col-sm-10 ">
+								<input type="password" class="form-control" th:field="*{passwordPlain}" th:errorclass="has-error"/>
+
+								<span class="help-block">
+                       					<ul>
+                           				<li th:each="err : ${#fields.errors('passwordPlain')}" th:text="${err}" />
+                       					</ul>
+                    				</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn">Sign in</button> OR <a href="register" th:href="@{'/register'}"class="btn">Register Now!</a>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<a href="forgetpass" th:href="@{'/forgetpass'}" style="text-decoration:underline">Forgot password ?</a>
+							</div>
+						</div>
+					</form>
+				</td>
+			</tr>
+		</table>
+
+
 </div>
 </div></div>
 </div>

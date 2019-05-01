@@ -6,11 +6,15 @@ import capstone.bcs.lifo.model.*;
 import capstone.bcs.lifo.repositories.CartProductV2Repository;
 import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.repositories.CustomerV2Repository;
+import capstone.bcs.lifo.services.ProductService;
+import capstone.bcs.lifo.util.CartUtil;
+import capstone.bcs.lifo.util.SessionTransitionUtil;
+import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.*;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class CompareController {
@@ -18,64 +22,36 @@ public class CompareController {
     private CartV2Repository cartV2Repository;
     private CustomerV2Repository customerV2Repository;
     private CartProductV2Repository cartProductV2Repository;
+    private ProductService productService;
 
     CompareController(CartV2Repository cartV2Repository, CustomerV2Repository customerV2Repository,
-    CartProductV2Repository cartProductV2Repository){
+                      CartProductV2Repository cartProductV2Repository, ProductService productService){
         this.cartV2Repository = cartV2Repository;
         this.customerV2Repository = customerV2Repository;
         this.cartProductV2Repository = cartProductV2Repository;
+        this.productService = productService;
 
     }
 
     @RequestMapping("/compare")
-    public String getPage(Model model){
+    public String getPage(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
 
-        CartV2 cartV2 = new CartV2();
-        CustomerV2 customerV2 = new CustomerV2();
-        customerV2.setpLastName("ted");
-        customerV2.setpFirstName("dead");
-        customerV2.setpDoB("tuesday");
-
-        customerV2.setCartV2(cartV2); // will this cause errors
-        Set<CartProductV2> productSet = new HashSet<>();
-        CartProductV2 cartProductV2 = new CartProductV2();
-        cartProductV2.setProductId(1);
-        cartProductV2.setProductPrice(9.99);
-        cartProductV2.setProductNumber(3);
-        cartProductV2.setCartV2(cartV2);
-        productSet.add(cartProductV2);
-
-        cartV2.setProductSet(productSet);
-        cartV2.setCustomerV2(customerV2);
-        cartV2Repository.save(cartV2);
-
-
-
-//        Optional<CartV2> cart = cartV2Repository.findById(1l);
-//        CartV2 normCart = cart.get();
-
-        //System.out.println(normCart.getCustomerV2().getpFirstName());
-
-
-
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
         return "compare";
     }
 
-    @RequestMapping("/compare.html")
-    public String getPage2(Model model){
-        model.addAttribute("LoginForm", new LoginForm());
-        return "compare";
-    }
 
     @RequestMapping("/products/compare")
-    public String getPageHotFix(Model model){
+    public String getPageHotFix(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());
-
-
-
-
-
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
         return "compare";
     }
 

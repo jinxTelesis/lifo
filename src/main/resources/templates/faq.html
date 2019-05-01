@@ -11,9 +11,10 @@
 			<div class="span6">Welcome!<strong> User</strong></div>
 			<div class="span6">
 				<div class="pull-right">
-					<span class="btn btn-mini">$0.00</span>
-					<a href="product_summary" th:href="@{'/product_summary'}"><span class="btn btn-mini btn-primary">
-						<i class="icon-shopping-cart icon-white"></i> [ 0 ] Itemes in your cart </span> </a>
+					<span class="btn btn-mini" th:text="${carttotal}">$0.00</span>
+					<a href="product_summary" th:href="@{'/product_summary'}">
+                        <span  class="btn btn-mini btn-primary" th:text="${'['+cartsize+']' + ' Items in your cart'}">
+						<i class="icon-shopping-cart icon-white" ></i> cart Items</span> </a>
 				</div>
 			</div>
 		</div>
@@ -25,7 +26,7 @@
 				<span class="icon-bar"></span>
 			</a>
 			<div class="navbar-inner">
-				<a class="brand" href="/products"  th:href="@{'/products/0'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
+				<a class="brand" href="/products"  th:href="@{'/index'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
 				<form class="form-inline navbar-search" method="post" action="products" >
 					<input id="srchFld" class="srchTxt" type="text" />
 					<select class="srchTxt">
@@ -40,7 +41,7 @@
 					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
 				</form>
 				<ul id="topMenu" class="nav pull-right">
-					<li class=""><a href="index"  th:href="@{'/products/0'}">Home</a></li>
+					<li class=""><a href="index"  th:href="@{'/index'}">Home</a></li>
 					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
 					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
 					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>

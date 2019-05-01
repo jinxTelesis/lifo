@@ -11,74 +11,64 @@ public class RegistrationForm {
     private String username;
 
     @NotEmpty
-    @Size(min = 8)
-    @Size(max = 80)
+    @Size(min = 8, max = 80)
     private String passwordPlain;
 
     @NotEmpty
-    @Size(min =8)
-    @Size(max = 80)
+    @Size(min =8, max = 80)
     private String passwordConformation;
 
     // customer
     @NotEmpty
-    @Size(min =2)
-    @Size(max = 100)
+    @Size(min =2, max = 50)
     private String pFirstName;
 
     @NotEmpty
-    @Size(min = 3)
-    @Size(max = 100)
+    @Size(min = 3, max = 50)
     private String pLastName;
 
     @NotEmpty
-    @Size(min = 3)
-    @Size(max = 100)
+    @Size(min = 3, max = 100)
     private String pEmail;
 
-    @NotEmpty
-    @Size(min = 6)
+    //    @NotEmpty
     @Size(max = 15)
     private String pDoB;
 
     // == this is for the address ==
     @NotEmpty
-    @Size(min = 5)
-    @Size(max = 200)
+    @Size(min = 5, max = 50)
     private String aAddress;
 
     // == can be empty ==
+    @Size(max = 50)
     private String aAddress2;
 
     @NotEmpty
-    @Size(min =3)
-    @Size(max = 50)
+    @Size(min =3, max = 50)
     private String aCity;
 
     @NotEmpty
-    @Size(min = 2)
-    @Size(max = 20)
+    @Size(min = 2, max = 20)
     private String aState;
 
     @NotEmpty
-    @Size(min = 5)
-    @Size(max = 10)
+    @Size(min = 5, max = 10)
     private String aZip;
 
     // == can be empty ==
     private String aCountry;
 
     // == can be empty ==
+    @Size(max = 255)
     private String aAdditionalInfo;
 
     @NotEmpty
-    @Size(min = 7)
-    @Size(min = 9)
+    @Size(min = 7, max = 14)
     private String aHomePhone;
 
     @NotEmpty
-    @Size(min = 7)
-    @Size(max = 14)
+    @Size(min = 7, max = 14)
     private String aMobilePhone;
 
     public String getpFirstName() {
