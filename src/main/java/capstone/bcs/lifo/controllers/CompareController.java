@@ -46,15 +46,6 @@ public class CompareController {
     }
 
 
-    @RequestMapping("/compare.html")
-    public String getPage2(Model model, HttpSession session){
-        model.addAttribute("LoginForm", new LoginForm());
-        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
-        model.addAttribute("cartsize",validSDU.getProductListSize());
-        model.addAttribute("carttotal",validSDU.getCartTotal());
-        return "compare";
-    }
-
     @RequestMapping("/products/compare")
     public String getPageHotFix(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());
