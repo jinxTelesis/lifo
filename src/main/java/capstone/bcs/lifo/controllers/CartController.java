@@ -11,6 +11,7 @@ import capstone.bcs.lifo.repositories.CustomerV2Repository;
 import capstone.bcs.lifo.repositories.ProductRepository;
 import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
+import capstone.bcs.lifo.util.SessionTransitionUtil;
 import capstone.bcs.lifo.util.ThymeleafUtil;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -61,6 +61,9 @@ public class CartController {
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
         model.addAttribute("carttotal",validSDU.getCartTotal());
+
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
 
         if(session.getAttribute("cart") != null)
         {
@@ -154,6 +157,10 @@ public class CartController {
     public String getPageVarVarVar(HttpServletRequest request,HttpSession session,@PathVariable("ida") String ida,
                                    @PathVariable("idb") String idb,@PathVariable("idc") String idc, Model model, RedirectAttributes redirectAttributes) throws Exception {
         String referer = request.getHeader("Referer");
+
+//        SessionTransitionUtil sU = new SessionTransitionUtil();
+//        session = sU.AnonSession(session);
+
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
 
 
@@ -205,26 +212,18 @@ public class CartController {
         }
 
 
-        // improved customer cart area
-
-
-
-
-
-
         if(session.getAttribute("cart") != null)
         {
             cartV2 = (CartV2) session.getAttribute("cart");
         }else{
+
+
+
             System.out.println("you need to login first buddy from cart/{ida}/{idb}/{idc}!");
             //return "product_summary";
             model.addAttribute("cartsize",validSDU.getProductListSize());
             model.addAttribute("carttotal",validSDU.getCartTotal());
             model.addAttribute("LoginForm", new LoginForm());
-
-            RedirectView redirectView = new RedirectView("/login");
-            redirectView.setExposeModelAttributes(false);
-
             return "login";
         }
 
@@ -232,23 +231,30 @@ public class CartController {
         System.out.println("this is the first cart parameter " + a);
         System.out.println("this is the second car parameter " + b);
 
+        // remove updated
         if(a == 1) // remove just one copy
         {
+
+
             System.out.println("remove a single product block ");
 
             // this only has one product? it didn't update per each session
             CartV2 localCart = (CartV2)session.getAttribute("cart");
-            List<CartProductV2> productList = null;
+
+
+            List<CartProductV2> productList = null; // just changed
             productList = localCart.getProductList();
-            CartProductV2 cartProductV2 = new CartProductV2();
+
+
+            CartProductV2 cartProductV2 = new CartProductV2(); // just changed
             Product productInfoLocal = productService.findById(b.longValue());
+
             cartProductV2.setProductId(productInfoLocal.getId().intValue());
             cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
             cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
             cartProductV2.setDescription1(productInfoLocal.getDescription1());
             cartProductV2.setProductName(productInfoLocal.getProductName());
             cartProductV2.setProductNumber(1);
-
 
             for(int i =0; i<productList.size();i++)
             {
@@ -272,8 +278,8 @@ public class CartController {
         if(a == 2) // a is operation b is the product number
         {
             // need to get the cart info from the session not the database or you will overwrite
-            List<CartProductV2> productList = null;
-            productList = cartV2.getProductList();
+            List<CartProductV2> productList = null;// this was changed
+            productList = cartV2.getProductList(); // just removed session annon update
             CartProductV2 cartProductV2 = new CartProductV2();
             Product productInfoLocal = productService.findById(b.longValue());
             cartProductV2.setProductId(productInfoLocal.getId().intValue());
@@ -295,10 +301,6 @@ public class CartController {
             // is this the same session?
 
             cartV2.setProductList(productList);
-            cartV2.setCartidv2(1l); // set the carts id
-            cartV2.setCustomerV2(cartV2.getCustomerV2());
-            cartV2.setCartidv2(cartV2.getCustomerV2().getCustomerId());
-            cartV2Repository.save(cartV2);
 
         }
 
