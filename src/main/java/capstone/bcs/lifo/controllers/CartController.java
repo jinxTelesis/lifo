@@ -187,7 +187,7 @@ public class CartController {
         }
 
         // improved customer cart area
-        if(a == 10)
+        if(a == 10) // threw issue Property or field 'productImage' Cannott be found on object of type 'capstone.bcs.lifo.model.CartProductv2"
         {
             // products does not fail with blank data
             // does it fail with a null pointer // this does not seem to fail with a null pointer or empty list
@@ -202,6 +202,7 @@ public class CartController {
             model.addAttribute("cartsize",validSDU.getProductListSize());
             model.addAttribute("carttoal",validSDU.getCartTotal());
             model.addAttribute("username",validSDU.getUsersName());
+            // this method has to be real products
             model.addAttribute("products",validSDU.validCartProductList());
             model.addAttribute("discount",appDiscountToCart(validSDU.validCartProductList(),0.1));
             model.addAttribute("tax",appDiscountToCart(validSDU.validCartProductList(),0.2)); // those function calls throw npes

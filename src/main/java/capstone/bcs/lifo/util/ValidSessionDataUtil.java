@@ -61,6 +61,10 @@ public class ValidSessionDataUtil {
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
 
+            if(cartV2.getCustomerV2() == null)
+            {
+                return temp;
+            }
             if(cartV2.getCustomerV2().getpFirstName() == null) {
                 return temp;
             }
@@ -79,6 +83,10 @@ public class ValidSessionDataUtil {
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
 
+            if(cartV2.getCustomerV2() == null)
+            {
+                return temp;
+            }
 
             if(cartV2.getCustomerV2().getCustomerAddress().getaAddress() == null) {
                 return temp;
@@ -96,6 +104,13 @@ public class ValidSessionDataUtil {
         String temp = "";
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
+
+            if(cartV2.getCustomerV2() == null)
+            {
+                return temp;
+            }
+
+
             if(cartV2.getCustomerV2().getCustomerAddress().getaAddress2() == null) {
                 return temp;
             }
@@ -113,6 +128,13 @@ public class ValidSessionDataUtil {
         String temp ="";
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
+
+
+            if(cartV2.getCustomerV2() == null)
+            {
+                return temp;
+            }
+
             if(cartV2.getCustomerV2().getCustomerAddress().getaCity() == null)
             {
                 return temp;
@@ -131,6 +153,13 @@ public class ValidSessionDataUtil {
         String temp = "";
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
+
+            if(cartV2.getCustomerV2() == null)
+            {
+                return temp;
+            }
+
+
             if(cartV2.getCustomerV2().getCustomerAddress().getaState() == null) {
                 return temp;
             }
@@ -147,6 +176,12 @@ public class ValidSessionDataUtil {
         String temp="";
         if(localSession.getAttribute("cart") !=null) {
             CartV2 cartV2 = (CartV2) localSession.getAttribute("cart");
+
+            if(cartV2.getCustomerV2() == null)
+            {
+                return temp;
+            }
+
             if(cartV2.getCustomerV2().getCustomerAddress().getaZip() == null) {
                 return temp;
             }

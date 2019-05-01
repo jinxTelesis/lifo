@@ -99,13 +99,17 @@ public class ProductSummaryController {
                     System.out.println("Valid user");
                     // want it to put the customer in the cart now?
                     // think registration form already did
-
-                    CartV2 cartV2 = new CartV2();
-
-                    // this data should already be set
+                    CartV2 cartV2 = null;
+                    cartV2 = (CartV2)session.getAttribute("cart");
                     localCustV2.getAccount();
                     cartV2.setCustomerV2(localCustV2); // this will set just the customer
-                    cartV2.setAnnonoymousAccount(false);
+
+                    //CartV2 cartV2 = new CartV2();
+
+//                    // this data should already be set
+//                    localCustV2.getAccount();
+//                    cartV2.setCustomerV2(localCustV2); // this will set just the customer
+//                    cartV2.setAnnonoymousAccount(false);
 
                     session.setAttribute("cart",cartV2);
                     return "success";
