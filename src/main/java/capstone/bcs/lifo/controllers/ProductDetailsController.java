@@ -54,7 +54,7 @@ public class ProductDetailsController {
 
     @RequestMapping("/product_details/{productID}")
     public String getPageOrder(HttpServletRequest request, @PathVariable String productID, Model model, HttpSession session){
-        model.addAttribute("products", productService.findById(Long.valueOf(productID)));
+        model.addAttribute("product", productService.findById(Long.valueOf(productID)));
         model.addAttribute("LoginForm", new LoginForm());
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
@@ -62,6 +62,5 @@ public class ProductDetailsController {
         String referer = request.getHeader("Referer");
         return "product_details";
     }
-
 
 }
