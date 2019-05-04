@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@Controller
+//@Controller
 public class SpecialOffer {
 
     @RequestMapping("/special_offer")
     public String getPage(Model model, HttpSession session){
+        // == this will produce the cart == //
         SessionTransitionUtil sU = new SessionTransitionUtil();
         session = sU.AnonSession(session);
-        CartV2 localCart = new CartV2();
-        localCart = (CartV2)session.getAttribute("cart");
+        // == this will produce the cart == //
 
         model.addAttribute("LoginForm", new LoginForm());
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
