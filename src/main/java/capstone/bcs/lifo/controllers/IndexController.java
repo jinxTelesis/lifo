@@ -33,6 +33,7 @@ public class IndexController {
     @RequestMapping({"/","/index","/.html","/index.html"})
     public String getIndex(Model model, HttpSession session){
         model.addAttribute("products", productService.getProductsAsce());
+        //model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
         model.addAttribute("LoginForm", new LoginForm());
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
@@ -42,7 +43,6 @@ public class IndexController {
         session = sU.AnonSession(session);
         return "index";
     }
-
 
     @RequestMapping({"/indexRev"})
     public String getIndexByProductCat(Model model, HttpSession session){
