@@ -39,13 +39,13 @@
 
 <div th:fragment="products_div_grid">
     <div class="thumbnail">
-        <a href="product_details"th:href="@{'/product/'+${product?.id}}"><img th:src="@{'/images/thumbs/'+${product?.productImage}}" style="min-height: 200" alt=""/></a>
+        <a href="product_details"th:href="@{'/product_details/'+${product?.id}}"><img th:src="@{'/images/thumbs/'+${product?.productImage}}" style="min-height: 200" alt=""/></a>
         <div class="caption">
             <h5 th:text="${product?.productName}">Manicure &amp; Pedicure</h5>
             <p th:text="${#strings.abbreviate(product?.description1,30)}">
                 I'm a paragraph. Click here
             </p>
-            <h4 style="text-align:bottom"><a class="btn" href="product_details" th:href="@{'/product/'+${product?.id}}"> <i class="icon-zoom-in"></i></a>
+            <h4 style="text-align:bottom"><a class="btn" href="product_details" th:href="@{'/product_details/'+${product?.id}}"> <i class="icon-zoom-in"></i></a>
                 <a class="btn" href="#" th:href="@{'/cart/1/'+${product?.id}+'/d'}"> - <i class="icon-shopping-cart"></i></a>
                 <a class="btn" href="#" th:href="@{'/cart/2/'+${product?.id}+'/d'}"> + <i class="icon-shopping-cart"></i></a>
                 <a class="btn" href="#" th:href="@{'/cart/3/'+${product?.id}+'/d'}"> x <i class="icon-shopping-cart"></i></a>

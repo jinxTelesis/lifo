@@ -201,7 +201,12 @@ public class CartController {
 
             model.addAttribute("cartsize",validSDU.getProductListSize());
             model.addAttribute("carttoal",validSDU.getCartTotal());
-            model.addAttribute("username",validSDU.getUsersName());
+            if(validSDU.getUsersName() == null || validSDU.getUsersName().equals(""))
+            {
+                model.addAttribute("username","cart");
+            } else {
+                model.addAttribute("username",validSDU.getUsersName() + "'s cart");
+            }
             // this method has to be real products
             model.addAttribute("products",validSDU.validCartProductList());
             model.addAttribute("discount",appDiscountToCart(validSDU.validCartProductList(),0.1));
