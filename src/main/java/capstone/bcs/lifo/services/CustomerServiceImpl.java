@@ -22,7 +22,6 @@ public class CustomerServiceImpl implements CustomerService {
     private final RegistrationFormToCustomerNAccount registrationFormToCustomerNAccount;
 
 
-    // == this is not being used right now ==
 
     public CustomerServiceImpl(PasswordEncryptionService passwordEncryptionService, RegistrationFormToCustomerNAccount registrationFormToCustomerNAccount
     ,CustomerV2Repository customerV2Repository) {
