@@ -7,7 +7,6 @@ import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.ToLongFunction;
 
-
 @Entity
 public class Product implements Comparator<Product>{
 
