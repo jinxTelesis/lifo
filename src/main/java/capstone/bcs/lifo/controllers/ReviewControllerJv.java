@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 
 
-@Component
-public class ReviewController {
+//@Component
+public class ReviewControllerJv {
 
     private ProductService productService;
 
-    ReviewController(ProductService productService){
+    ReviewControllerJv(ProductService productService){
         this.productService = productService;
     }
 

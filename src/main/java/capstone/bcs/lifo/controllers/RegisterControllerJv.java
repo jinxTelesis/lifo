@@ -18,19 +18,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-@Controller
-public class RegisterController {
+
+//@Controller
+public class RegisterControllerJv {
 
 
     private CustomerService customerService;
     private CartV2Repository cartV2Repository;
 
-    RegisterController(CustomerService customerService, CartV2Repository cartV2Repository) {
+    RegisterControllerJv(CustomerService customerService, CartV2Repository cartV2Repository) {
         this.customerService = customerService;
         this.cartV2Repository = cartV2Repository;
     }

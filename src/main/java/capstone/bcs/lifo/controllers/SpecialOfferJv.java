@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 
 //@Controller
-public class SpecialOffer {
+public class SpecialOfferJv {
 
     private final ProductService productService;
 
-    public SpecialOffer(ProductService productService) {
+    public SpecialOfferJv(ProductService productService) {
         this.productService = productService;
     }
 
