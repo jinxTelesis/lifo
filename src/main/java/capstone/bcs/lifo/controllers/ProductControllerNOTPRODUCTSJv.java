@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
-@Controller
-public class ProductControllerNOTPRODUCTS {
+//@Controller
+public class ProductControllerNOTPRODUCTSJv {
 
     private ProductService productService;
 
 
     @Autowired // intention only
-    ProductControllerNOTPRODUCTS(ProductService productService){
+    ProductControllerNOTPRODUCTSJv(ProductService productService){
         this.productService = productService;
     }
 
@@ -39,7 +39,5 @@ public class ProductControllerNOTPRODUCTS {
         model.addAttribute("LoginForm", new LoginForm());
         return "product";
     }
-
-
 
 }

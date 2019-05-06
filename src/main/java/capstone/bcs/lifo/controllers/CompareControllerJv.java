@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
-@Controller
-public class CompareController {
+//@Controller
+public class CompareControllerJv {
 
     private CartV2Repository cartV2Repository;
     private CustomerV2Repository customerV2Repository;
     private CartProductV2Repository cartProductV2Repository;
     private ProductService productService;
 
-    CompareController(CartV2Repository cartV2Repository, CustomerV2Repository customerV2Repository,
+    CompareControllerJv(CartV2Repository cartV2Repository, CustomerV2Repository customerV2Repository,
                       CartProductV2Repository cartProductV2Repository, ProductService productService){
         this.cartV2Repository = cartV2Repository;
         this.customerV2Repository = customerV2Repository;
@@ -54,14 +54,5 @@ public class CompareController {
         model.addAttribute("carttotal",validSDU.getCartTotal());
         return "compare";
     }
-
-
-    // == test remove right away == //
-//    @RequestMapping("/compare/{id}")
-//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-//        model.addAttribute("LoginForm", new LoginForm());
-//        return "redirect:" + "/compare";
-//    }
-
 
 }

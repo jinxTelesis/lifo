@@ -18,15 +18,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-@Controller
-public class LoginController {
+//@Controller
+public class LoginControllerJv {
 
     private CustomerService customerService;
     private PasswordEncryptionService passwordEncryptionService;
-    private ProductRepository productRepository;
 
 
-    LoginController(CustomerService customerService, PasswordEncryptionService passwordEncryptionService){
+    LoginControllerJv(CustomerService customerService, PasswordEncryptionService passwordEncryptionService){
         this.passwordEncryptionService = passwordEncryptionService;
         this.customerService = customerService;
     }
