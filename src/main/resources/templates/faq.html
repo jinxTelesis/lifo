@@ -5,77 +5,7 @@
 </head>
 <body>
 <!-- Navigation section start ====================================================================== -->
-<div id="header">
-	<div class="container">
-		<div id="welcomeLine" class="row">
-			<div class="span6">Welcome!<strong> User</strong></div>
-			<div class="span6">
-				<div class="pull-right">
-					<span class="btn btn-mini" th:text="${carttotal}">$0.00</span>
-					<a href="product_summary" th:href="@{'/product_summary'}">
-                        <span  class="btn btn-mini btn-primary" th:text="${'['+cartsize+']' + ' Items in your cart'}">
-						<i class="icon-shopping-cart icon-white" ></i> cart Items</span> </a>
-				</div>
-			</div>
-		</div>
-		<!-- Navbar ================================================== -->
-		<div id="logoArea" class="navbar">
-			<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<div class="navbar-inner">
-				<a class="brand" href="/products"  th:href="@{'/index'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
-				<form class="form-inline navbar-search" method="post" action="products" >
-					<input id="srchFld" class="srchTxt" type="text" />
-					<select class="srchTxt">
-						<option th:href="@{'/products/0'}">ACCESSORIES </option>
-						<option th:href="@{'/products/1'}">APPLIANCES </option>
-						<option th:href="@{'/products/2'}">CLEANING </option>
-						<option th:href="@{'/products/3'}">HARDWARE </option>
-						<option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
-						<option th:href="@{'/products/5'}">HOMEWARES </option>
-						<option th:href="@{'/products/6'}">TOYS </option>
-					</select>
-					<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-				</form>
-				<ul id="topMenu" class="nav pull-right">
-					<li class=""><a href="index"  th:href="@{'/index'}">Home</a></li>
-					<li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
-					<li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
-					<li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
-					<li class="">
-						<a href="#login" th:href="@{'/#login'}" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
-						<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								<h3>Login Block</h3>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal loginFrm" th:object="${LoginForm}" th:action="@{/loginnav}" method="post">
-									<div class="control-group">
-										<input type="text" id="inputEmail" placeholder="username"  th:field="*{userName}">
-									</div>
-									<div class="control-group">
-										<input type="password" id="inputPassword" placeholder="Password" th:field="*{passwordPlain}">
-									</div>
-									<div class="control-group">
-										<label class="checkbox">
-											<input type="checkbox"> Remember me
-										</label>
-									</div>
-								</form>
-								<button type="submit" class="btn btn-success">Sign in</button>
-								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-
-		</div>
-	</div>
+<div th:replace="fragments/navigation :: navigation">
 </div>
 <!-- Navigation section end ====================================================================== -->
 

@@ -58,6 +58,19 @@ public class Product implements Comparator<Product>{
     }
 
 
+    public double getProductTax() {
+        return Math.floor(((productPrice * 0.2)*100)/100);
+    }
+
+    public double getProductDiscount(){
+        return Math.floor(((productPrice * 0.1)*100)/100);
+    }
+
+    public double getProductSpecialPrice(){
+        return Math.floor(((productPrice * 0.8)*100)/100);
+    }
+
+
     public String getProductName() {
         return productName;
     }

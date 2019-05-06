@@ -2,7 +2,7 @@ package capstone.bcs.lifo.controllers;
 
 
 import capstone.bcs.lifo.commands.LoginForm;
-import capstone.bcs.lifo.model.CartV2;
+import capstone.bcs.lifo.services.ProductService;
 import capstone.bcs.lifo.util.SessionTransitionUtil;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.stereotype.Controller;
@@ -10,11 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 //@Controller
-public class SpecialOffer {
+public class SpecialOfferJv {
+
+    private final ProductService productService;
+
+    public SpecialOfferJv(ProductService productService) {
+        this.productService = productService;
+    }
+
 
     @RequestMapping("/special_offer")
     public String getPage(Model model, HttpSession session){
@@ -30,8 +36,11 @@ public class SpecialOffer {
         return "special_offer";
     }
 
-    @RequestMapping("products/special_offer")
-    public String getPageHotFix(Model model, HttpSession session){
+    @RequestMapping("products/special_offer/{id}")
+    public String getPageHotFix(Model model, HttpSession session, @PathVariable String id){
+        // maybe put exception handling here
+        Integer productCat = Integer.valueOf(id);
+        model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
         model.addAttribute("LoginForm", new LoginForm());
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@Controller
-public class TacController {
+//@Controller
+public class TacControllerJv {
 
     @RequestMapping("/tac")
     public String getPage(Model model, HttpSession session) {

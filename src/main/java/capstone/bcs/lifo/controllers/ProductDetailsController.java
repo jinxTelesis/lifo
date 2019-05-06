@@ -27,6 +27,7 @@ public class ProductDetailsController {
     @RequestMapping("/product_details")
     public String getPage(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());
+        model.addAttribute("product", productService.findById(Long.valueOf(1l)));
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
         model.addAttribute("carttotal",validSDU.getCartTotal());
