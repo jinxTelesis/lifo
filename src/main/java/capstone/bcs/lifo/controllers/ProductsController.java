@@ -40,6 +40,20 @@ public class ProductsController {
         return "products";
     }
 
+    @RequestMapping("/products/{productCat}")
+    public String getPageOrder(HttpServletRequest request, @PathVariable String productCat, Model model, HttpSession session){
+        model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
+        model.addAttribute("LoginForm", new LoginForm());
+        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
+        model.addAttribute("cartsize",validSDU.getProductListSize());
+        model.addAttribute("carttotal",validSDU.getCartTotal());
+//        String referer = request.getHeader("Referer");
+
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
+        return "products";
+    }
+
     @RequestMapping("/products/products")
     public String getPageHotFix(Model model, HttpSession session){
         model.addAttribute("products",productService.getProductSet());
@@ -52,6 +66,7 @@ public class ProductsController {
         session = sU.AnonSession(session);
         return "products";
     }
+
 
     @RequestMapping("/products/asec")
     public String getPageDesc(Model model, HttpSession session){
@@ -105,17 +120,5 @@ public class ProductsController {
         return "products";
     }
 
-    @RequestMapping("/products/{productCat}")
-    public String getPageOrder(HttpServletRequest request, @PathVariable String productCat, Model model, HttpSession session){
-        model.addAttribute("products", productService.getProductsByCategory(Integer.valueOf(productCat)));
-        model.addAttribute("LoginForm", new LoginForm());
-        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
-        model.addAttribute("cartsize",validSDU.getProductListSize());
-        model.addAttribute("carttotal",validSDU.getCartTotal());
-        String referer = request.getHeader("Referer");
 
-        SessionTransitionUtil sU = new SessionTransitionUtil();
-        session = sU.AnonSession(session);
-        return "products";
-    }
 }

@@ -5,7 +5,7 @@
     <div id="header" th:fragment="navigation">
             <div class="container">
                 <div id="welcomeLine" class="row">
-                    <div class="span6">Welcome! <strong th:text="${username}"> Guest</strong></div>
+                    <div class="span6">Welcome! <strong th:text="${LoginForm?.getUserName()}"> Guest</strong></div>
                     <div class="span6">
                         <div class="pull-right">
                             <span class="btn btn-mini" th:text="${carttotal}">$0.00</span>
@@ -24,16 +24,16 @@
                     </a>
                     <div class="navbar-inner">
                         <a class="brand" href="/products"  th:href="@{'/index'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
-                        <form class="form-inline navbar-search" method="post" action="products" >
+                        <form class="form-inline navbar-search" method="post" th:action="@{'/products/'}">
                             <input id="srchFld" class="srchTxt" type="text" />
                             <select class="srchTxt">
-                                <option th:href="@{'/products/0'}">ACCESSORIES </option>
-                                <option th:href="@{'/products/1'}">APPLIANCES </option>
-                                <option th:href="@{'/products/2'}">CLEANING </option>
-                                <option th:href="@{'/products/3'}">HARDWARE </option>
-                                <option th:href="@{'/products/4'}">HEATH & BEAUTY </option>
-                                <option th:href="@{'/products/5'}">HOMEWARES </option>
-                                <option th:href="@{'/products/6'}">TOYS </option>
+                                <option th:value="${'/products/0'}" th:href="@{'/products/0'}">ACCESSORIES </option>
+                                <option th:value="${'/products/1'}" th:href="@{'/products/1'}">APPLIANCES </option>
+                                <option th:value="${'/products/2'}" th:href="@{'/products/2'}">CLEANING </option>
+                                <option th:value="${'/products/3'}" th:href="@{'/products/3'}">HARDWARE </option>
+                                <option th:value="${'/products/4'}" th:href="@{'/products/4'}">HEATH & BEAUTY </option>
+                                <option th:value="${'/products/5'}" th:href="@{'/products/5'}">HOMEWARES </option>
+                                <option th:value="${'/products/6'}" th:href="@{'/products/6'}">TOYS </option>
                             </select>
                             <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
                         </form>

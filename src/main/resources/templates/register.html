@@ -79,8 +79,7 @@
 							<div class="form-control">
 								<input type="password" th:field="*{passwordConformation}" class="required"  id="passwordconfirm"
 									   placeholder="Enter Password"/>
-								<span th:if="${#fields.hasErrors('passwordConformation')}" th:errors="*{passwordConformation}"
-									  class="alert alert-danger"></span>
+								<span th:if="${#fields.hasErrors('passwordConformation')}" th:errors="*{passwordConformation}" class="alert alert-danger"></span>
 							</div>
 						</div>
 

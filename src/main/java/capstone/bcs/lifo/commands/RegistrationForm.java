@@ -18,6 +18,11 @@ public class RegistrationForm {
     @Size(min =8, max = 80)
     private String passwordConformation;
 
+
+    private boolean isValid(){
+        return this.passwordPlain.equals(this.passwordConformation);
+    }
+
     // customer
     @NotEmpty
     @Size(min =2, max = 50)
