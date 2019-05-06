@@ -20,7 +20,6 @@ public class ProductSummaryController {
 
     private CustomerService customerService;
     private PasswordEncryptionService passwordEncryptionService;
-    private ProductRepository productRepository;
 
 
     ProductSummaryController(CustomerService customerService, PasswordEncryptionService passwordEncryptionService){

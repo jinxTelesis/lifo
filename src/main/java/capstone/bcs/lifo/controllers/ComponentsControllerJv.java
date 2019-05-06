@@ -10,33 +10,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+//@Controller
+public class ComponentsControllerJv {
 
-@Controller
-public class FaqController {
-
-    @RequestMapping("/faq")
+    @RequestMapping("/components")
     public String getPage(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
         model.addAttribute("carttotal",validSDU.getCartTotal());
-        return "faq";
+        return "examples/components";
+
     }
 
-    @RequestMapping("/products/faq")
-    public String getPageHotFix(Model model,HttpSession session){
+    @RequestMapping("/products/components")
+    public String getPageHotFix(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
         model.addAttribute("carttotal",validSDU.getCartTotal());
-        return "faq";
+        return "examples/components";
     }
-
-//    @RequestMapping("/faq/{id}")
-//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-//        model.addAttribute("LoginForm", new LoginForm());
-//        return "redirect:" + "/faq";
-//    }
-
-
 }

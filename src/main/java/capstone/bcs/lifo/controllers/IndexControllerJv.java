@@ -14,19 +14,13 @@ import javax.servlet.http.HttpSession;
 // start a registration page -
 
 
-@Controller
-public class IndexController {
-
-    // == the main page should have /.html
-    //@RequestMapping({"/","/index","/.html","/index.html"})
-    public String index(){
-        return "index";
-    }
+//@Controller
+public class IndexControllerJv {
 
     private ProductService productService;
 
     @Autowired // intention
-    IndexController(ProductService productService){
+    IndexControllerJv(ProductService productService){
         this.productService = productService;
     }
 
@@ -63,13 +57,5 @@ public class IndexController {
         model.addAttribute("LoginForm", new LoginForm());
         return "index";
     }
-
-//    @RequestMapping("/indexRev/{id}")
-//    public String getPageVar(HttpServletRequest request,@PathVariable("id") Integer id, Model model) {
-//        model.addAttribute("LoginForm", new LoginForm());
-//        return "indexRev";
-//    }
-
-
 
 }
