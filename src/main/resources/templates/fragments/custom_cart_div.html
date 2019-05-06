@@ -50,7 +50,7 @@
                 <a class="btn" href="#" th:href="@{'/cart/2/'+${product?.id}+'/d'}"> + <i class="icon-shopping-cart"></i></a>
                 <a class="btn" href="#" th:href="@{'/cart/3/'+${product?.id}+'/d'}"> x <i class="icon-shopping-cart"></i></a>
                 <a class="btn btn-primary" th:text="${' price [' + product?.productPrice +']'}">&euro;222.00</a>
-                <a class="btn btn-primary" th:text="${' tax [' + product?.productPrice +']'}">&euro;222.00</a>
+                <a class="btn btn-primary" th:text="${' tax [' + product?.getProductTax() +']'}">&euro;222.00</a>
             </h4>
             <h4 style="text-align:bottom"></h4>
 

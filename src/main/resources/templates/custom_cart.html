@@ -194,12 +194,12 @@
                         <td colspan="2"> </td>
                     </tr>
                     <tr th:each="product_detail : ${product_details}">
-                        <td><span th:text="${product_detail.getProductName()}">Product</span> </td>
-                        <td><span th:text="${product_detail.getDescription1()}">Description</span> </td>
-                        <td><span th:text="${product_detail.getProductPrice()}">Price</span> </td>
-                        <td><span th:text="${product_detail.getProductDiscount()}">Discount</span> </td>
-                        <td><span th:text="${product_detail.getProductTax()}">Tax</span> </td>
-                        <td><span th:text="${product_detail.getTotalPrice()}">Total</span> </td>
+                        <td><span th:text="${product_detail?.getProductName()}">Product</span> </td>
+                        <td><span th:text="${product_detail?.getDescription1()}">Description</span> </td>
+                        <td><span th:text="${product_detail?.getProductPrice()}">Price</span> </td>
+                        <td><span th:text="${product_detail?.getProductDiscount()}">Discount</span> </td>
+                        <td><span th:text="${product_detail?.getProductTax()}">Tax</span> </td>
+                        <td><span th:text="${product_detail?.getTotalPrice()}">Total</span> </td>
                     </tr>
 
                     <tr>

@@ -199,7 +199,9 @@ public class CartController {
             System.out.println("tax" + validSDU.validCartProductList());
             System.out.println("product_details" + validSDU.validCartProductList());
 
+
             model.addAttribute("cartsize",validSDU.getProductListSize());
+            //model.addAttribute("cartsize",0);
             model.addAttribute("carttoal",validSDU.getCartTotal());
             if(validSDU.getUsersName() == null || validSDU.getUsersName().equals(""))
             {

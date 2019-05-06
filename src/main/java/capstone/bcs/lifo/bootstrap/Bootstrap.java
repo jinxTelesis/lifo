@@ -13,36 +13,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
+public class Bootstrap //implements ApplicationListener<ContextRefreshedEvent> {
+{
+//    private final ProductRepository productRepository;
+//    //private final AccountRepository accountRepository;
+//    //private final OrderRepository orderRepository;
+//    private final OrderDetailRepository orderDetailRepository;
+//
+//    // == testing remove ==
+//    //private final CustomerRepository customerRepository;
+//
+//    public Bootstrap(ProductRepository productRepository, OrderDetailRepository orderDetailRepository, CustomerV2Repository customerV2Repository) {
+//        this.productRepository = productRepository;
+//        //this.accountRepository = accountRepository;
+//        //this.orderRepository = orderRepository;
+//        this.orderDetailRepository = orderDetailRepository;
+//        // == testing remove ==
+//        //this.customerRepository = customerRepository;
+//    }
 
-    private final ProductRepository productRepository;
-    //private final AccountRepository accountRepository;
-    //private final OrderRepository orderRepository;
-    private final OrderDetailRepository orderDetailRepository;
 
-    // == testing remove ==
-    //private final CustomerRepository customerRepository;
-
-    public Bootstrap(ProductRepository productRepository, OrderDetailRepository orderDetailRepository, CustomerV2Repository customerV2Repository) {
-        this.productRepository = productRepository;
-        //this.accountRepository = accountRepository;
-        //this.orderRepository = orderRepository;
-        this.orderDetailRepository = orderDetailRepository;
-        // == testing remove ==
-        //this.customerRepository = customerRepository;
-    }
-
-
-    @Override
-    @Transactional
-    public void onApplicationEvent(ContextRefreshedEvent event) {
-        productRepository.saveAll(getProducts());
-        //accountRepository.saveAll(getAccounts());
-        //orderRepository.saveAll(getOrders());
-        orderDetailRepository.saveAll(getOrderDetails());
-        //customerRepository.saveAll(getCustomers());
-
-    }
+//    @Override
+//    @Transactional
+//    public void onApplicationEvent(ContextRefreshedEvent event) {
+//        productRepository.saveAll(getProducts());
+//        //accountRepository.saveAll(getAccounts());
+//        //orderRepository.saveAll(getOrders());
+//        orderDetailRepository.saveAll(getOrderDetails());
+//        //customerRepository.saveAll(getCustomers());
+//
+//    }
 
     private List<Product> getProducts() {
 
