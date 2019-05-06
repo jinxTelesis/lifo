@@ -29,7 +29,7 @@
                     <input type="checkbox">  Adds product to compare
                 </label><br/>
 
-                <a href="product_details" class="btn btn-large btn-primary" th:href="@{'/cart/2/'+${product?.id}+'/d'}"> Add to <i class=" icon-shopping-cart"></i></a>
+                <a href="product_details" class="btn btn-large btn-primary" th:href="@{'/cart/20/'+${product?.id}+'/d'}"> Add to <i class=" icon-shopping-cart"></i></a>
                 <a href="product_details" th:href="@{'/special_product_details/'+${product?.id}}"class="btn btn-large"><i class="icon-zoom-in"></i></a>
 
             </form>
@@ -47,8 +47,8 @@
                 I'm a paragraph. Click here
             </p>
             <h4 style="text-align:bottom"><a class="btn" href="product_details" th:href="@{'/special_product_details/'+${product?.id}}"> <i class="icon-zoom-in"></i></a>
-                <a class="btn" href="#" th:href="@{'/cart/2/'+${product?.id}+'/d'}">Add to <i class="icon-shopping-cart"></i></a>
-                <a class="btn btn-primary" th:text="${product?.getProductSpecialPrice()}" th:href="@{'/cart/2/'+${product?.id}+'/d'}">&euro;222.00</a></h4>
+                <a class="btn" href="#" th:href="@{'/cart/20/'+${product?.id}+'/d'}">Add to <i class="icon-shopping-cart"></i></a>
+                <a class="btn btn-primary" th:text="${product?.getProductSpecialPrice()}" th:href="@{'/cart/20/'+${product?.id}+'/d'}">&euro;222.00</a></h4>
         </div>
     </div>
 </div>

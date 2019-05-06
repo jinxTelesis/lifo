@@ -12,7 +12,6 @@ import capstone.bcs.lifo.repositories.ProductRepository;
 import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.ProductService;
 import capstone.bcs.lifo.util.SessionTransitionUtil;
-import capstone.bcs.lifo.util.ThymeleafUtil;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -338,6 +337,30 @@ public class CartController {
             session.setAttribute("cart",localCart);
         }
 
+        if(a == 20)
+        {
+            List<CartProductV2> productList = null;// this was changed
+            productList = cartV2.getProductList(); // just removed session annon update
+            CartProductV2 cartProductV2 = new CartProductV2();
+            Product productInfoLocal = productService.findById(b.longValue());
+            cartProductV2.setProductId(productInfoLocal.getId().intValue()); // sets value
+            cartProductV2.setProductPrice(productInfoLocal.getProductPrice() * .8);
+            cartProductV2.setProductName(productInfoLocal.getProductName());
+            cartProductV2.setDescription1(productInfoLocal.getDescription1());
+            cartProductV2.setProductNumber(1);
+
+            productList.add(cartProductV2); // added the new product to productlist
+
+
+            cartV2.setProductList(productList);
+            // now just persist to session
+            session.setAttribute("cart",cartV2);
+
+            // adds to database ignore
+            // will the actual save break the session
+            // is this the same session?
+        }
+
 
 
         // first is a call to cart, first id the operation to be performed keyed out values follow
@@ -347,10 +370,13 @@ public class CartController {
         // the last id is for expansion maybe checkout i'm not sure yet
 
         //validSDU.setProductRepository(productRepository);
-        model.addAttribute("cartsize",validSDU.getProductListSize());
-        model.addAttribute("carttotal",validSDU.getCartTotal());
+
+        ValidSessionDataUtil validSDU2 = new ValidSessionDataUtil(session);
+
+        model.addAttribute("cartsize",validSDU2.getProductListSize());
+        model.addAttribute("carttotal",validSDU2.getCartTotal());
         model.addAttribute("LoginForm", new LoginForm());
-        model.addAttribute("username",validSDU.getUsersName());
+        model.addAttribute("username",validSDU2.getUsersName());
         //model.addAttribute("first",validSDU.get)
 
         // make a function // make a function // make a function
@@ -367,32 +393,26 @@ public class CartController {
         List<CartProductV2> cartProductV2s = null;
         Product tempProduct = null;
         Integer index = 0;
-
-        ThymeleafUtil thymeleafUtilvar = new ThymeleafUtil();
-        thymeleafUtilvar.setDiscount(false);
-        thymeleafUtilvar.setEmptyCart(false);
-        thymeleafUtilvar.setSubmitted(false);
-
+        Double price = 0.0;
 
         if(session.getAttribute("cart") !=null){
             CartV2 cartV22 = (CartV2) session.getAttribute("cart");
             cartProductV2s = cartV2.getProductList();
             if(cartProductV2s.size() == 0)
             {
-                //productList.add(dummyProduct); // dummy product
-                thymeleafUtilvar.setEmptyCart(true);
-                model.addAttribute("cart_state",thymeleafUtilvar);
+
             }else
             {
                 for(int i = 0; i < cartProductV2s.size();i++)
                 {
                     index = cartProductV2s.get(i).getProductId();
+                    price = cartProductV2s.get(i).getProductPrice();
+                    price = Math.floor((price * 100)/100);
                     Long longa = new Long(index);
                     try {
                         tempProduct = productRepository.findById(longa).get();
+                        tempProduct.setProductPrice(price);
                         productList.add(tempProduct);
-                        thymeleafUtilvar.setEmptyCart(false);
-                        model.addAttribute("cart_state",thymeleafUtilvar);
                     } catch (NullPointerException e)
                     {
 
@@ -401,11 +421,12 @@ public class CartController {
             }
 
         }
+
         model.addAttribute("products",productList);
-        model.addAttribute("discount",appDiscountToCart(validSDU.validCartProductList(),0.1));
-        model.addAttribute("tax",appDiscountToCart(validSDU.validCartProductList(),0.2));
-        model.addAttribute("final_price",appDiscountNTax(validSDU.validCartProductList(),0.1,0.2));
-        model.addAttribute("product_details",validSDU.validCartProductList());
+        model.addAttribute("discount",appDiscountToCart(validSDU2.validCartProductList(),0.1));
+        model.addAttribute("tax",appDiscountToCart(validSDU2.validCartProductList(),0.2));
+        model.addAttribute("final_price",appDiscountNTax(validSDU2.validCartProductList(),0.1,0.2));
+        model.addAttribute("product_details",validSDU2.validCartProductList());
 
 
         return "custom_cart";
