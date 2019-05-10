@@ -19,14 +19,13 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
-public class LoginController {
+public class LoginControllerJv {
 
     private CustomerService customerService;
     private PasswordEncryptionService passwordEncryptionService;
-    private ProductRepository productRepository;
 
 
-    LoginController(CustomerService customerService, PasswordEncryptionService passwordEncryptionService){
+    LoginControllerJv(CustomerService customerService, PasswordEncryptionService passwordEncryptionService){
         this.passwordEncryptionService = passwordEncryptionService;
         this.customerService = customerService;
     }
@@ -76,7 +75,8 @@ public class LoginController {
                 if(passwordEncryptionService.checkPassword(loginForm.getPasswordPlain(),localAccount.getEncryptedPassword()))
                 {
                     System.out.println("Valid user");
-                    CartV2 cartV2 = new CartV2();
+                    CartV2 cartV2 = null;
+                    cartV2 = (CartV2)session.getAttribute("cart");
                     localCustV2.getAccount();
                     cartV2.setCustomerV2(localCustV2); // this will set just the customer
 

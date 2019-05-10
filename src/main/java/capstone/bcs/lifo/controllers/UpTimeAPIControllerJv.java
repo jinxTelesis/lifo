@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-public class UpTimeAPIController {
+//@RestController
+public class UpTimeAPIControllerJv {
 
     private UptimeBoardcastImpl uptimeBoardcast;
 
     @Autowired
-    public UpTimeAPIController(UptimeBoardcastImpl uptimeBoardcast){
+    public UpTimeAPIControllerJv(UptimeBoardcastImpl uptimeBoardcast){
         this.uptimeBoardcast = uptimeBoardcast;
     }
 

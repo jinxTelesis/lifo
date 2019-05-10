@@ -1,6 +1,5 @@
 package capstone.bcs.lifo.controllers;
 
-
 import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.stereotype.Controller;
@@ -31,12 +30,5 @@ public class LegalNoticeController {
         model.addAttribute("carttotal",validSDU.getCartTotal());
         return "legal_notice";
     }
-
-
-//    @RequestMapping("/legal_notice/{id}")
-//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-//        model.addAttribute("LoginForm", new LoginForm());
-//        return "redirect:" + "/legal_notice";
-//    }
 
 }

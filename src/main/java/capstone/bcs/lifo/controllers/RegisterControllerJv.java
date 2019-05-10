@@ -6,6 +6,7 @@ import capstone.bcs.lifo.commands.RegistrationForm;
 import capstone.bcs.lifo.model.*;
 import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.services.CustomerService;
+import capstone.bcs.lifo.util.SessionTransitionUtil;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,19 +18,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-@Controller
-public class RegisterController {
+
+//@Controller
+public class RegisterControllerJv {
 
 
     private CustomerService customerService;
     private CartV2Repository cartV2Repository;
 
-    RegisterController(CustomerService customerService, CartV2Repository cartV2Repository) {
+    RegisterControllerJv(CustomerService customerService, CartV2Repository cartV2Repository) {
         this.customerService = customerService;
         this.cartV2Repository = cartV2Repository;
     }
@@ -68,6 +66,10 @@ public class RegisterController {
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String saveOrUpdate(Model model,@Valid RegistrationForm registrationForm, BindingResult bindingResult, HttpSession session) {
+        SessionTransitionUtil sU = new SessionTransitionUtil();
+        session = sU.AnonSession(session);
+
+
         model.addAttribute("LoginForm", new LoginForm());
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
@@ -81,16 +83,21 @@ public class RegisterController {
         else
         {
             System.out.println("The new customer form got called");
-            CustomerV2 customerV2 = customerService.saveOrUpdateRegistrationForm(registrationForm);
-            CartV2 cartV2 = new CartV2();// this is the outer
-            List<CartProductV2> productList = new ArrayList<>();
-            CartProductV2 cartProductV2 = new CartProductV2();
-            cartProductV2.setCartV2(cartV2);
-            productList.add(cartProductV2);
-            cartV2.setProductList(productList);
-            cartV2.setCustomerV2(customerV2);
 
-            cartV2Repository.save(cartV2);
+            // the registration form is being altered to save session data
+
+            CustomerV2 customerV2 = customerService.saveOrUpdateRegistrationForm(registrationForm);
+            
+            // get session cart and pull cart details from it
+            CartV2 localCart = (CartV2)session.getAttribute("cart");
+            localCart.setAnnonoymousAccount(false);
+            localCart.setCustomerV2(customerV2);
+
+            // saves the session again
+            session.setAttribute("cart",localCart); // after registration we go to cart
+            // session now have user details
+
+            cartV2Repository.save(localCart);
 
             return "product_summary"; // this needs to be a new page for success
         }

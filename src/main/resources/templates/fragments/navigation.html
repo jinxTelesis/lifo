@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+
+
     <!-- Navigation section start ====================================================================== -->
     <div id="header" th:fragment="navigation">
             <div class="container">
@@ -9,7 +11,7 @@
                     <div class="span6">
                         <div class="pull-right">
                             <span class="btn btn-mini" th:text="${carttotal}">$0.00</span>
-                            <a href="product_summary" th:href="@{'/cart/3/2/d'}">
+                            <a href="product_summary" th:href="@{'/cart/5/5/d'}">
                             <span  class="btn btn-mini btn-primary" th:text="${'['+cartsize+']' + ' Items in your cart'}">
                             <i class="icon-shopping-cart icon-white" ></i> cart Items</span> </a>
                         </div>
@@ -39,11 +41,11 @@
                         </form>
                         <ul id="topMenu" class="nav pull-right">
                             <li class=""><a href="index"  th:href="@{'/index'}">Home</a></li>
-                            <li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
+                            <li class=""><a href="special_offer"  th:href="@{'/special_product_details/1'}">Specials Offers</a></li>
                             <li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
                             <li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
                             <li class="">
-                                <a href="#login" th:href="@{'/login'}" role="button" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+                                <a href="#login" th:href="@{'/login'}" role="button" style="padding-right:0"><span id="loginBtn" class="btn btn-large btn-success">Login</span></a>
                             </li>
                         </ul>
                     </div>

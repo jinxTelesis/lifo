@@ -1,6 +1,5 @@
 package capstone.bcs.lifo.controllers;
 
-
 import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.services.ProductService;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
@@ -14,46 +13,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class ProductDetailsController {
+public class SpecialProductDetailsController {
 
 
     private ProductService productService;
 
     @Autowired
-    ProductDetailsController(ProductService productService){
+    SpecialProductDetailsController(ProductService productService){
         this.productService = productService;
     }
 
-    @RequestMapping("/product_details")
+    @RequestMapping("special_product_details")
     public String getPage(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());
         model.addAttribute("product", productService.findById(Long.valueOf(1l)));
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
         model.addAttribute("carttotal",validSDU.getCartTotal());
-        return "product_details";
+        return "special_product_details";
     }
 
-    @RequestMapping("/products/product_details")
+    @RequestMapping("/special_product_details/special_product_details")
     public String getPageHotFix(Model model,HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
         model.addAttribute("cartsize",validSDU.getProductListSize());
         model.addAttribute("carttotal",validSDU.getCartTotal());
-        return "product_details";
+        return "special_product_details";
     }
 
-    @RequestMapping("/products/products/product_details")
-    public String getPageHotFix2(Model model,HttpSession session){
-        model.addAttribute("LoginForm", new LoginForm());
-        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
-        model.addAttribute("cartsize",validSDU.getProductListSize());
-        model.addAttribute("carttotal",validSDU.getCartTotal());
-        return "product_details";
-    }
-
-
-    @RequestMapping("/product_details/{productID}")
+    @RequestMapping("/special_product_details/{productID}")
     public String getPageOrder(HttpServletRequest request, @PathVariable String productID, Model model, HttpSession session){
         model.addAttribute("product", productService.findById(Long.valueOf(productID)));
         model.addAttribute("LoginForm", new LoginForm());
@@ -61,7 +50,6 @@ public class ProductDetailsController {
         model.addAttribute("cartsize",validSDU.getProductListSize());
         model.addAttribute("carttotal",validSDU.getCartTotal());
         String referer = request.getHeader("Referer");
-        return "product_details";
+        return "special_product_details";
     }
-
 }

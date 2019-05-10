@@ -17,7 +17,8 @@
 
 <!-- Sidebar ================================================== -->
 <div id="sidebar" class="span3" th:fragment="sidebar">
-    <div class="well well-small"><a id="myCart" href="product_summary" th:href="@{'/product_summary'}">
+    <div class="well well-small"><a id="myCart" href="product_summary" th:href="@{'/cart/5/5/d'}">
+        <!--/*@thymesVar id="cartsize" type=""*/-->
         <img src="/images/ico-cart.png" th:text="${cartsize}"  alt="cart"> Items in your cart <span class="badge badge-warning pull-right" th:text="${carttotal}"></span></a></div>
     <ul id="sideManu" class="nav nav-tabs nav-stacked">
         <li class="subMenu open"><a> ELECTRONICS</a>
@@ -98,17 +99,17 @@
     </ul>
     <br/>
     <div class="thumbnail">
-        <img src="/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera"/>
+        <img src="/images/products/panasonic.jpg" th:src="@{'/images/realproducts/george_foreman.jpg'}"alt=" George Foreman Grill"/>
         <div class="caption">
-            <h5>Panasonic</h5>
-            <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" onclick="window.location.href = '/cart/2/2/d';">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" onclick="window.location.href = '/cart/2/2/d';">$222.00</a></h4>
+            <h5>George Foreman Grill</h5>
+            <h4 style="text-align:center"><a class="btn" href="product_details" th:href="@{'/product_details/32'}" > <i class="icon-zoom-in"></i></a> <a class="btn" onclick="window.location.href = '/cart/2/32/d';">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" onclick="window.location.href = '/cart/2/32/d';">$222.00</a></h4>
         </div>
     </div><br/>
     <div class="thumbnail">
-        <img src="/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
+        <img src="/images/products/kindle.png" th:src="@{'/images/realproducts/shamwow.jpg'}" title="Shamwow" alt="Shamwow">
         <div class="caption">
-            <h5>Kindle</h5>
-            <h4 style="text-align:center"><a class="btn" href="product_details"> <i class="icon-zoom-in"></i></a> <a class="btn" onclick="window.location.href = '/cart/2/2/d';">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" onclick="window.location.href = '/cart/2/2/d';">$222.00</a></h4>
+            <h5>ShamWoW!</h5>
+            <h4 style="text-align:center"><a class="btn" href="product_details" th:href="@{'/product_details/14'}"> <i class="icon-zoom-in"></i></a> <a class="btn" onclick="window.location.href = '/cart/2/14/d';">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" onclick="window.location.href = '/cart/2/14/d';">$222.00</a></h4>
         </div>
     </div><br/>
     <div class="thumbnail">

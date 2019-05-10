@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@Controller
-public class ComponentsController {
+//@Controller
+public class ComponentsControllerJv {
 
     @RequestMapping("/components")
     public String getPage(Model model, HttpSession session){
@@ -31,12 +31,4 @@ public class ComponentsController {
         model.addAttribute("carttotal",validSDU.getCartTotal());
         return "examples/components";
     }
-
-
-//    @RequestMapping("/components/{id}")
-//    public String getPageVar(HttpServletRequest request, @PathVariable("id") Integer id, Model model) {
-//        model.addAttribute("LoginForm", new LoginForm());
-//        return "redirect:" + "/components";
-//    }
-
 }
