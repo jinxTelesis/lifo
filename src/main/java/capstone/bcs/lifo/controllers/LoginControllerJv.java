@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-//@Controller
+@Controller
 public class LoginControllerJv {
 
     private CustomerService customerService;
