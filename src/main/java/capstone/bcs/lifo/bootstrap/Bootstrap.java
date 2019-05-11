@@ -53,6 +53,8 @@ public class Bootstrap //implements ApplicationListener<ContextRefreshedEvent> {
 
     private List<Product> getProducts() {
 
+        // this just loads products it is disabled on the repository level
+
         List<Product> products = new ArrayList<>(2);
 
         Product p1GeorgeFormanGrill = new Product();

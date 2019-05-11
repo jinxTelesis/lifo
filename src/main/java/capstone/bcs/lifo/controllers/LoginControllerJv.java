@@ -5,7 +5,9 @@ import capstone.bcs.lifo.commands.LoginForm;
 import capstone.bcs.lifo.model.Account;
 import capstone.bcs.lifo.model.CartV2;
 import capstone.bcs.lifo.model.CustomerV2;
+import capstone.bcs.lifo.repositories.CartV2Repository;
 import capstone.bcs.lifo.repositories.ProductRepository;
+import capstone.bcs.lifo.services.CartService;
 import capstone.bcs.lifo.services.CustomerService;
 import capstone.bcs.lifo.services.PasswordEncryptionService;
 import capstone.bcs.lifo.util.ValidSessionDataUtil;
@@ -23,11 +25,13 @@ public class LoginControllerJv {
 
     private CustomerService customerService;
     private PasswordEncryptionService passwordEncryptionService;
+    private CartService cartService;
 
 
-    LoginControllerJv(CustomerService customerService, PasswordEncryptionService passwordEncryptionService){
+    LoginControllerJv(CustomerService customerService, PasswordEncryptionService passwordEncryptionService, CartService cartService){
         this.passwordEncryptionService = passwordEncryptionService;
         this.customerService = customerService;
+        this.cartService = cartService;
     }
 
     @RequestMapping("/login")
@@ -75,11 +79,22 @@ public class LoginControllerJv {
                 if(passwordEncryptionService.checkPassword(loginForm.getPasswordPlain(),localAccount.getEncryptedPassword()))
                 {
                     System.out.println("Valid user");
-                    CartV2 cartV2 = null;
-                    cartV2 = (CartV2)session.getAttribute("cart");
-                    localCustV2.getAccount();
-                    cartV2.setCustomerV2(localCustV2); // this will set just the customer
 
+                    //ToDO intergrate both
+//                    CartV2 cartV2 = null;
+//                    cartV2 = (CartV2)session.getAttribute("cart"); // this transfers the session cart
+//                    // need to add session cart to any stored cart
+//
+//                    localCustV2.getAccount();
+//                    cartV2.setCustomerV2(localCustV2); // this will set just the customer
+//
+//                    session.setAttribute("cart",cartV2);
+                    //ToDO integrate both
+
+                    CartV2 cartV2 = null;
+                    cartV2 = cartService.findByUserName(loginForm.getUserName()); // this part not found?
+                    // this is throwing a npe at the wrong point
+                    cartV2.setCustomerV2(localCustV2);
                     session.setAttribute("cart",cartV2);
                     return "success";
                 }

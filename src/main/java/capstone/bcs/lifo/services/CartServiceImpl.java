@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -42,4 +43,18 @@ public class CartServiceImpl implements CartService {
     public void deleteById(Long idToDelete) {
         cartV2Repository.deleteById(idToDelete);
     }
+
+    @Override
+    public CartV2 findByUserName(String username){
+        List<CartV2> cartList = new ArrayList<>();
+        cartV2Repository.findAll().iterator().forEachRemaining(cartList::add);
+
+        List<CartV2> cartV2ResultList = cartList.stream()
+                .filter(cartV2 -> cartV2.getCustomerV2().getAccount().getUsername().equals(username))
+                .collect(Collectors.toList());
+        CartV2 cartV2ReturnValue = cartV2ResultList.get(0);
+        return cartV2ReturnValue;
+
+    }
+
 }
