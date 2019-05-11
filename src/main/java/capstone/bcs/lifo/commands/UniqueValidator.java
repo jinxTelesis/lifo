@@ -10,6 +10,10 @@ import javax.validation.ConstraintValidatorContext;
 
 public class UniqueValidator implements ConstraintValidator<ValidateTest,String>{
 
+
+    // this is a annotation validator this returns the test cases for email and user name uniqueness
+    // this imo is the coolest thing in the project because it extends the language 
+
     private ValidState validState;
     private CustomerService customerService;
 

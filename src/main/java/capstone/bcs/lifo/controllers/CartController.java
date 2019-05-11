@@ -102,63 +102,11 @@ public class CartController {
     }
 
 
-//    @RequestMapping("/cart/{id}")
-//    public String getPageVar(HttpServletRequest request,HttpSession session,@PathVariable("id") String id, Model model) {
-//        String referer = request.getHeader("Referer");
-//        model.addAttribute("LoginForm", new LoginForm());
-//
-//
-//        //CartOld cart = null;
-//        SimpleCart cart = null;
-//
-//        if(session.getAttribute("cart") != null)
-//        {
-//            //cart = (CartOld)session.getAttribute("cart");
-//            cart = (SimpleCart)session.getAttribute("cart");
-//        }else{
-//            System.out.println("you need to login first buddy from /cart/{id}!");
-//            //return "redirect:" + "product_summary";
-//            return "invalid_product_summary";
-//        }
-//
-//        //return "product_summary";
-//        return "redirect:" + "product_summary";
-//    }
-
-//    @RequestMapping("/cart/{ida}/{idb}")
-//    public String getPageVarVar(HttpServletRequest request,@PathVariable("ida") String id,@PathVariable("idb") String idb, Model model) {
-//        String referer = request.getHeader("Referer");
-//        model.addAttribute("LoginForm", new LoginForm());
-//        //return "/product_summary";
-//        return "product_summary";
-//    }
-
-
-//    @RequestMapping("/cart/{ida}/{idb}/{idc}/{idr}/{idd}/{ide}/{idf}")
-//    public String getPagExtendVar(HttpServletRequest request,HttpSession session,@PathVariable("ida") String ida,
-//                                  @PathVariable("idb") String idb,@PathVariable("idc") String idc, Model model,@PathVariable("idr") String idr,
-//                                  @PathVariable("idd") String idd,@PathVariable("ide") String ide,@PathVariable("idf") String idf) {
-//        return "fragments/blank";
-//    }
-//
-//    @RequestMapping({"/cart/{ida}/{idb}/{idc}"})
-//    public String getPageVarVarVar(HttpServletRequest request, HttpSession session, @PathVariable("ida") String ida,
-//                                   @PathVariable("idb") String idb, @PathVariable("idc") String idc, Model model, RedirectAttributes redirectAttributes) throws Exception {
-//        String referer = request.getHeader("Referer");
-//        ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
-//
-//
-//
-//        return "custom_cart";
-//    }
 
     @RequestMapping({"/cart/{ida}/{idb}/{idc}"})
     public String getPageVarVarVar(HttpServletRequest request,HttpSession session,@PathVariable("ida") String ida,
                                    @PathVariable("idb") String idb,@PathVariable("idc") String idc, Model model, RedirectAttributes redirectAttributes) throws Exception {
         String referer = request.getHeader("Referer");
-
-//        SessionTransitionUtil sU = new SessionTransitionUtil();
-//        session = sU.AnonSession(session);
 
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
 
@@ -280,6 +228,15 @@ public class CartController {
             localCart.setProductList(productList);
             // now just persist to session
             session.setAttribute("cart",localCart);
+
+            // this was just added
+            //TODO this was just added
+            if(localCart.getAnnonoymousAccount() == false)
+            {
+                cartV2Repository.save(localCart);
+            }
+
+
         }
 
         if(a == 2) // a is operation b is the product number
@@ -309,11 +266,17 @@ public class CartController {
 
             cartV2.setProductList(productList);
 
+            // this was just added
+            //TODO
+            if(cartV2.getAnnonoymousAccount() == false)
+            {
+                cartV2Repository.save(cartV2);
+            }
+
         }
 
         if(a == 3)
         {
-            // lets deal with this one problem at a time
             System.out.println("remove all products of a type block hit");
 
             // this only has one product? it didn't update per each session
@@ -327,7 +290,6 @@ public class CartController {
             cartProductV2.setProductPrice(productInfoLocal.getProductPrice());
             cartProductV2.setProductNumber(1);
 
-            // change this to Stream API
 
             List<CartProductV2> collectedList = removeAll(productList,cartProductV2);
 
@@ -335,6 +297,17 @@ public class CartController {
             localCart.setProductList(collectedList);
             // now just persist to session
             session.setAttribute("cart",localCart);
+
+            // need to update the cart in the repo now without detachement
+
+            // this was just added
+            //TODO this was just added
+            if(localCart.getAnnonoymousAccount() == false)
+            {
+                cartV2Repository.save(localCart);
+            }
+
+
         }
 
         if(a == 20)
@@ -359,6 +332,15 @@ public class CartController {
             // adds to database ignore
             // will the actual save break the session
             // is this the same session?
+
+            // this was just added
+
+            //TODO this was just added
+            if(cartV2.getAnnonoymousAccount() == false)
+            {
+                cartV2Repository.save(cartV2);
+            }
+
         }
 
 

@@ -11,4 +11,6 @@ public interface CartService {
     CartV2 findById(Long l);
 
     void deleteById(Long idToDelete);
+
+    CartV2 findByUserName(String username);
 }
