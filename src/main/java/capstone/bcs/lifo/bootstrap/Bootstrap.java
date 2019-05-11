@@ -15,6 +15,13 @@ import java.util.List;
 @Component
 public class Bootstrap //implements ApplicationListener<ContextRefreshedEvent> {
 {
+
+    // this class is for development purposes if there is no database this will create on from in memory data
+    // this is a convince class that helps resolve database issues, it was used extensively to develop the project
+    // but is not needed in the final version
+
+
+
 //    private final ProductRepository productRepository;
 //    //private final AccountRepository accountRepository;
 //    //private final OrderRepository orderRepository;

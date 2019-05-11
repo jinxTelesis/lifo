@@ -13,6 +13,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableJpaRepositories("capstone.bcs.lifo.repositories")
 public class SecurityConfig // extends WebSecurityConfigurerAdapter{
 {
+
+    // this is the password encryption bean the spring security one is commented out because
+    // if you miss one page it can create weird issues
+
     @Bean
     public StrongPasswordEncryptor strongPasswordEncryptor(){
         StrongPasswordEncryptor passwordEncryptorencryptor = new StrongPasswordEncryptor();

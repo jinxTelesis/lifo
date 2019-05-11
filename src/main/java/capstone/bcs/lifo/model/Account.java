@@ -1,12 +1,18 @@
 package capstone.bcs.lifo.model;
 
 
+import capstone.bcs.lifo.commands.ValidState;
+import capstone.bcs.lifo.commands.ValidateTest;
+
 import javax.persistence.*;
 
 @Embeddable
 public class Account {
 
+    @Column(unique = true)
     private String username;
+
+
     private Boolean active;
 
     @Transient

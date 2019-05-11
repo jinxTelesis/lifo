@@ -8,6 +8,8 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class RestConfig {
 
+    // configuration bean to set up rest templates
+
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder){
         return builder.build();

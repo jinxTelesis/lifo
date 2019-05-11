@@ -14,6 +14,8 @@ public class CustomerV2 {
 
     private String pFirstName;
     private String pLastName;
+
+    @Column(unique = true)
     private String pEmail;
 
     private String pDoB;

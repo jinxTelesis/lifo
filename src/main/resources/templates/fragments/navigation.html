@@ -45,7 +45,7 @@
                             <li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
                             <li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
                             <li class="">
-                                <a href="#login" th:href="@{'/login'}" role="button" style="padding-right:0"><span id="loginBtn" class="btn btn-large btn-success">Login</span></a>
+                                <a href="#login" th:href="@{'/login'}" role="button" style="padding-right:0"><span id="loginBtn" th:id="loginBtn" th:onclick="changeButton()"  class="btn btn-large btn-success">Login</span></a>
                             </li>
                         </ul>
                     </div>
