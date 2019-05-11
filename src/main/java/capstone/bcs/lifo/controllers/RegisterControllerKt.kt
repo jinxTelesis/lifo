@@ -87,7 +87,7 @@ class RegisterController internal constructor(private val customerService: Custo
 
             cartV2Repository.save(localCart)
 
-            return "product_summary" // this needs to be a new page for success
+            return "login" // this needs to be a new page for success
         }
     }
 

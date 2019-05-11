@@ -13,6 +13,8 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @Component
 public class ProductAssembler implements ResourceAssembler<Product,Resource<Product>> {
 
+    // this is a resource assembler for hateos which does data conversion to format to the APIs standards
+
     @Override
     public Resource<Product> toResource(Product entity) {
         return new Resource<>(entity,

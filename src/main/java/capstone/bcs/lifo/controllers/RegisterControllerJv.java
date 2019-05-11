@@ -87,6 +87,8 @@ public class RegisterControllerJv {
             // the registration form is being altered to save session data
 
             CustomerV2 customerV2 = customerService.saveOrUpdateRegistrationForm(registrationForm);
+
+
             
             // get session cart and pull cart details from it
             CartV2 localCart = (CartV2)session.getAttribute("cart");

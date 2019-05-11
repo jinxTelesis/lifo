@@ -5,9 +5,13 @@ import javax.validation.constraints.Size;
 
 public class RegistrationForm {
 
+    // this is a validation form to make sure the binding result on the web controller catches certain user input
+    // this is used for the register controller
+
     // == account ==
     @NotEmpty
     @Size(min = 6, max = 100)
+    @ValidateTest(ValidState.USERNAME)
     private String username;
 
     @NotEmpty
@@ -29,6 +33,7 @@ public class RegistrationForm {
 
     @NotEmpty
     @Size(min = 3, max = 100)
+    @ValidateTest(ValidState.EMAIL)
     private String pEmail;
 
     //    @NotEmpty
