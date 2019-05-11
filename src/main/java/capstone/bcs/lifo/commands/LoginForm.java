@@ -5,6 +5,8 @@ import javax.validation.constraints.Size;
 
 public class LoginForm {
 
+    // this is a validation form to make sure the binding result on the web controller catches certain user input
+
     @NotEmpty
     @Size(min = 4, max = 100)
     private String userName;

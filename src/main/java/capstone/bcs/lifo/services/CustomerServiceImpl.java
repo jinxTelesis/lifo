@@ -90,4 +90,18 @@ public class CustomerServiceImpl implements CustomerService {
 
         return customerV2Return;
     }
+
+    @Override
+    public CustomerV2 getByEmail(String email) {
+        List<CustomerV2> customerList = new ArrayList<>();
+        customerV2Repository.findAll().iterator().forEachRemaining(customerList::add);
+
+        List<CustomerV2> customerV2ResultList = customerList.stream()
+                .filter(customerV2 -> customerV2.getpEmail().equals(email))
+                .collect(Collectors.toList());
+        CustomerV2 customerV2Return = customerV2ResultList.get(0);
+        return customerV2Return;
+    }
+
+
 }

@@ -19,4 +19,6 @@ public interface CustomerService {
 
     CustomerV2 getByUserName(String userName);
 
+    CustomerV2 getByEmail(String email);
+
 }
