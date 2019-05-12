@@ -14,6 +14,12 @@ import javax.servlet.http.HttpSession
 class IndexControllerKt @Autowired // intention
 internal constructor(private val productService: ProductService) {
 
+    /**
+     * the index controller is for the home page, and mappings someone might type in manually
+     * it will bring up product data or display it in the reverse order
+     *
+     */
+
     @RequestMapping("/", "/index", "/.html", "/index.html")
     fun getIndex(model: Model, session: HttpSession): String {
         var session = session

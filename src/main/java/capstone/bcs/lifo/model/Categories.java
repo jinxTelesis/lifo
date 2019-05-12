@@ -9,6 +9,10 @@ import java.util.Date;
 
 public class Categories {
 
+    /** for product categories, which would be used for a fuller version of the site
+
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int categories_id;

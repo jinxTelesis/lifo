@@ -11,6 +11,12 @@ import java.util.Date;
 
 public class Coupons {
 
+    /**
+        this is for coupon codes to be entered into the cart page
+        the UI elements for this are in place but the functionality is not coded
+        into the project yet
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int coupon_id;

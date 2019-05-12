@@ -7,6 +7,12 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Address {
 
+    /**
+     * this is an embeddable JPA/Hibernate object
+     * it stores Address information and is used in CartV2
+     */
+
+
     private String aAddress;
     private String aAddress2;
     private String aCity;

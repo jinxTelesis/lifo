@@ -6,6 +6,12 @@ import javax.servlet.http.HttpSession;
 
 public class SessionTransitionUtil {
 
+    /**
+     * Utility class to check the session state
+     *
+     *
+     */
+
     public boolean validSession(HttpSession session){
         if(session != null) {
             return true;

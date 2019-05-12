@@ -14,6 +14,11 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LogoutController {
 
+    /**
+     * logout controller clears session data so someone new can login and shop
+     * it does not have to be a separate controller but i believe that is best practices
+     */
+
     private ProductService productService;
 
     @Autowired

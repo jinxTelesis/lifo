@@ -10,6 +10,11 @@ import javax.servlet.http.HttpSession
 @Controller
 class NormalController {
 
+    /**
+     * This is purely for dev information purposes and is not a displayable page
+     * It displays elements of the bootstrap so we know what to code where
+     */
+
     @RequestMapping("/normal")
     fun getPage(model: Model, session: HttpSession): String {
         model.addAttribute("LoginForm", LoginForm())

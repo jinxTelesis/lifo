@@ -18,6 +18,12 @@ import javax.validation.Valid;
 @Controller
 public class ProductSummaryController {
 
+    /** this controller was a trial run for our cart
+     * it worked rather well, it was picked because it was the
+     * best formatted page for adding and removing items
+     * All mappings to it should be removed but if you type in the hyperlink it should work
+     */
+
     private CustomerService customerService;
     private PasswordEncryptionService passwordEncryptionService;
 

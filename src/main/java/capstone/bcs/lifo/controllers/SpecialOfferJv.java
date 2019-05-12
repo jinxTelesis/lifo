@@ -15,6 +15,14 @@ import javax.servlet.http.HttpSession;
 //@Controller
 public class SpecialOfferJv {
 
+    /**
+     * this controller is a repeat of the basic products page
+     * the key difference here is the special price offerings
+     * map to different hyperlinks so the cart will be informed
+     * it is the lower price version of the product
+     * This Java version of the controller is disabled and the Kotlin version runs
+     */
+
     private final ProductService productService;
 
     public SpecialOfferJv(ProductService productService) {

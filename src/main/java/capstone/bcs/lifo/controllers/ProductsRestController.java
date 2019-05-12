@@ -10,6 +10,11 @@ import java.util.List;
 @RestController
 public class ProductsRestController {
 
+    /**
+     * The products rest controller is my first attempt at an api/rest data
+     * it does work and but the formatting is not great
+     */
+
     private final ProductService productService;
 
     public ProductsRestController(ProductService productService) {

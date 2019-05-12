@@ -11,6 +11,12 @@ import javax.servlet.http.HttpSession
 @Controller
 class ContactControllerKt {
 
+    /**
+     * this is the contact controller, it display mostly static content
+     * about the website it passed http session with user cart info and the model to the page
+     *
+     */
+
     @RequestMapping("/contact")
     fun getPage(model: Model, session: HttpSession): String {
         model.addAttribute("LoginForm", LoginForm())

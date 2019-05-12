@@ -23,6 +23,14 @@ import javax.validation.Valid;
 //@Controller
 public class RegisterControllerJv {
 
+    /**
+     * the registration controller works with a posted user form
+     * the form uses registration form validator that i wrote
+     * if the binding results don't match you don't get to enter any data into the database
+     * the form now containers custom validators which are within the config package
+     * the Java version is disabled but intentionally left in and the kotlin version is running
+     */
+
 
     private CustomerService customerService;
     private CartV2Repository cartV2Repository;

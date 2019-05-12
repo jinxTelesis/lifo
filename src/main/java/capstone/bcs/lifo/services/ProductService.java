@@ -7,6 +7,12 @@ import java.util.Set;
 
 public interface ProductService {
 
+    /**
+     * Interface for the ProductService
+     * This is to follow best practices with regard to SOLID
+     *
+     */
+
     List<Product> getProducts();
 
     Product findById(Long l);

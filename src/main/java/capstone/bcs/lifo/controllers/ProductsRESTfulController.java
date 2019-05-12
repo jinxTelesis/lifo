@@ -19,6 +19,14 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @RestController
 public class ProductsRESTfulController {
 
+    /**
+     * this is based off the hatoes library which comes with a data format assembler
+     * this was a little tricky to use a first but it will reformat the data into
+     * a beautiful and easy to use display
+     * if you issue curl commands Get/Delete at those addresses it will
+     * change the LIFO database, tested about 30-40 times and it works great
+     */
+
     private final ProductRepository productRepository;
     private final ProductAssembler assembler;
 

@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PasswordEncryptionServiceImpl implements PasswordEncryptionService {
 
+    /**
+     * the encryption service is third party, this just uses what was provided
+     * by the SecurityConfig class in the configuration package.
+     */
+
     private StrongPasswordEncryptor strongPasswordEncryptor;
 
     PasswordEncryptionServiceImpl(StrongPasswordEncryptor strongPasswordEncryptor) {

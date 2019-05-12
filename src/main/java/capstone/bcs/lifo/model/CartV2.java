@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 @Entity
 public class CartV2 {
 
+    /** this is the cart for the sessions
+     */
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name="cart_version2_id")

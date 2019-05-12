@@ -5,4 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CartV2Repository extends CrudRepository<CartV2,Long> {
 
+    /** these are all crud repositories they abstract writing specific JDBC commands
+
+     */
+
 }

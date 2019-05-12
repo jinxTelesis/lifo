@@ -2,6 +2,11 @@ package capstone.bcs.lifo.model.nonentity;
 
 public class ProductDetails {
 
+    /** this is used to pass data without being a database / session entity
+     * this is just a POJO
+      */
+
+
     private double totalPrice;
     private double productTax = 0.2;
     private double productDiscount = 0.1;

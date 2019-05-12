@@ -13,6 +13,12 @@ import java.util.stream.Collectors;
 @Service
 public class CartServiceImpl implements CartService {
 
+    /** CartServiceImpl implements CartService
+     * the service is a convenience class to abstract some of the search operations
+     * this removes it from directly accessing the repository
+
+     */
+
     private final CartV2Repository cartV2Repository;
 
     public CartServiceImpl(CartV2Repository cartV2Repository) {
@@ -21,10 +27,8 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<CartV2> getCarts() {
-        //List<CartOld> cartList = new ArrayList<>();
         List<CartV2> cartV2 = new ArrayList<>();
         cartV2Repository.findAll().iterator().forEachRemaining(cartV2::add);
-        //cartRespository.findAll().iterator().forEachRemaining(cartList::add);
         return cartV2;
     }
 

@@ -23,6 +23,13 @@ import javax.validation.Valid;
 @Controller
 public class LoginControllerJv {
 
+    /**
+     * the login controller handles validation of a correct users by checking what
+     * was entered in within the form and then passed to the encryption service
+     * a later version is going to pass a database version of the cart to the session
+     *
+     */
+
     private CustomerService customerService;
     private PasswordEncryptionService passwordEncryptionService;
     private CartService cartService;

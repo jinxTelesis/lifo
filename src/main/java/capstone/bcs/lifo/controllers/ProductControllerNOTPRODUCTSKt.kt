@@ -17,6 +17,11 @@ import javax.servlet.http.HttpSession
 class ProductControllerNOTPRODUCTS @Autowired // intention only
 internal constructor(private val productService: ProductService) {
 
+    /**
+     * this controller displays specific products when a request is mapped to /product/ and it corresponding
+     * number in the database the. This is the running version not the java one
+     */
+
 
     @RequestMapping("/product/{id}")
     fun getProductByIdHotFix(request: HttpServletRequest, @PathVariable id: String, model: Model, session: HttpSession): String {

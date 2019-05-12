@@ -15,6 +15,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Repeatable(ValidateTest.List.class)
 public @interface ValidateTest {
+
+    // this is an extension of the java language specifically the @annotations
+    // target is what the @annotation applies to
+    // the constraints are checked by UniqueValidator.class
+
     String message() default "dres custom error thrown";
 
     Class<?>[] groups() default { };

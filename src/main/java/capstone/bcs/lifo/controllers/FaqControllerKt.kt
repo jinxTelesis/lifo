@@ -10,6 +10,11 @@ import javax.servlet.http.HttpSession
 @Controller
 class FaqControllerKt {
 
+    /**
+     * the faq controller just serves static content and passes the session data
+    *   the forms are for the nav page
+     */
+
     @RequestMapping("/faq")
     fun getPage(model: Model, session: HttpSession): String {
         model.addAttribute("LoginForm", LoginForm())

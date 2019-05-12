@@ -22,6 +22,14 @@ import javax.validation.Valid
 @Controller
 class RegisterController internal constructor(private val customerService: CustomerService, private val cartV2Repository: CartV2Repository) {
 
+    /**
+     * the registration controller works with a posted user form
+     * the form uses registration form validator that i wrote
+     * if the binding results don't match you don't get to enter any data into the database
+     * the form now containers custom validators which are within the config package
+
+     */
+
 
     @RequestMapping("/register")
     fun oldCustomer(model: Model, session: HttpSession): String {

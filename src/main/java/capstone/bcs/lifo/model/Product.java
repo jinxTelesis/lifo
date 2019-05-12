@@ -10,6 +10,12 @@ import java.util.function.ToLongFunction;
 @Entity
 public class Product implements Comparator<Product>{
 
+    /** this is the products that are in the database
+        the api could add more products if the correct formated json was supplied to the curl commands
+        however this would only work if there was a existing image on the site as there is no way
+        to bring images into the project while it is running currently
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
