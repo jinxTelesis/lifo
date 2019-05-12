@@ -17,94 +17,158 @@
 
 <!-- Sidebar ================================================== -->
 <div id="sidebar" class="span3" th:fragment="sidebar">
-    <div class="well well-small"><a id="myCart" href="product_summary" th:href="@{'/cart/5/5/d'}">
-        <!--/*@thymesVar id="cartsize" type=""*/-->
-        <img src="/images/ico-cart.png" th:text="${cartsize}"  alt="cart"> Items in your cart <span class="badge badge-warning pull-right" th:text="${carttotal}"></span></a></div>
+    <div class="well well-small"><a id="myCart" href="/cart/5/5/d" th:href="@{'/#'}">
+            <img src="/images/ico-cart.png" th:text="${cartsize}"  alt="cart"> Items
+            <span class="badge badge-warning pull-right" th:text="${carttotal}"></span>
+        </a>
+    </div>
     <ul id="sideManu" class="nav nav-tabs nav-stacked">
-        <li class="subMenu open"><a> ELECTRONICS</a>
+        <li id="menu1" class="subMenu"><a> ACCESSORIES</a>
             <ul>
-                <li><a id="ref1" class="active"></a><a class="active" th:href="@{'/products/0'}" ><i class="icon-chevron-right"></i>Cameras</a></li>
-                <li><a id="ref2" th:href="@{'/products/1'}"><i class="icon-chevron-right"></i>Computers, Tablets & laptop</a></li>
-                <li><a th:href="@{'/products/2'}"><i class="icon-chevron-right"></i>Mobile Phone</a></li>
-                <li><a href="product_details" th:href="@{'/products/3'}"><i class="icon-chevron-right"></i>Sound & Vision</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/1'}"><i class="icon-chevron-right"></i>Bark Off</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/2'}"><i class="icon-chevron-right"></i>Clever Grip</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/3'}"><i class="icon-chevron-right"></i>Tiddy Bear</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/49'}"><i class="icon-chevron-right"></i>Night Sight Glasses</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/52'}"><i class="icon-chevron-right"></i>Arctic Hat</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/53'}"><i class="icon-chevron-right"></i>Turbo Pump</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/80'}"><i class="icon-chevron-right"></i>Pops A Dent</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/81'}"><i class="icon-chevron-right"></i>Lint Magic</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/82'}"><i class="icon-chevron-right"></i>Bed Bug Blockade</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/83'}"><i class="icon-chevron-right"></i>Buck Light</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/84'}"><i class="icon-chevron-right"></i>Couch Coaster</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/85'}"><i class="icon-chevron-right"></i>Atomic Beam Highlight</a></li>
             </ul>
         </li>
-        <li class="subMenu open"><a> ACCESSORIES</a>
-            <ul>
-                <li><a class="active"></a><a class="active" href="product_details" th:href="@{'/products/4'}"><i class="icon-chevron-right"></i>Cameras</a></li>
-                <li><a href="product_details" th:href="@{'/products/5'}"><i class="icon-chevron-right"></i>Computers, Tablets & laptop</a></li>
-                <li><a href="product_details" th:href="@{'/products/6'}"><i class="icon-chevron-right"></i>Mobile Phone</a></li>
-                <li><a href="product_details" th:href="@{'/products/0'}"><i class="icon-chevron-right"></i>Sound & Vision</a></li>
-                <li><a class="active"></a><a class="active" href="products" th:href="@{'/products/1'}"><i class="icon-chevron-right"></i>Bark off</a></li>
-                <li><a href="products" th:href="@{'/products/2'}"><i class="icon-chevron-right"></i>Clever Grip</a></li>
-                <li><a href="products" th:href="@{'/products/3'}"><i class="icon-chevron-right"></i>Tiddy Bear</a></li>
-                <li><a href="products" th:href="@{'/products/4'}"><i class="icon-chevron-right"></i>Remote Control Caddy</a></li>
-            </ul>
-        </li>
-        <li class="subMenu"><a> APPLIANCES</a>
+        <li id="menu2" class="subMenu"><a> APPLIANCES</a>
             <ul style="display:none">
-                <li><a href="products" th:href="@{'/products/5'}"><i class="icon-chevron-right"></i>Crosswave</a></li>
-                <li><a href="products" th:href="@{'/products/6'}"><i class="icon-chevron-right"></i>Portable AC</a></li>
-                <li><a href="products" th:href="@{'/products/0'}"><i class="icon-chevron-right"></i>Magic Bullet</a></li>
-                <li><a href="products" th:href="@{'/products/1'}"><i class="icon-chevron-right"></i>Shark Steam Mop</a></li>
-                <li><a href="products" th:href="@{'/products/2'}"><i class="icon-chevron-right"></i>The Clapper</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/4'}"><i class="icon-chevron-right"></i>Crosswave</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/5'}"><i class="icon-chevron-right"></i>Haier Portable Air</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/6'}"><i class="icon-chevron-right"></i>Magic Bullet</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/10'}"><i class="icon-chevron-right"></i>Shark Steam Mop</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/11'}"><i class="icon-chevron-right"></i>The Clapper</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/86'}"><i class="icon-chevron-right"></i>Star Night Laser</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/87'}"><i class="icon-chevron-right"></i>Handy Heater</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/88'}"><i class="icon-chevron-right"></i>Air Hawk</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/89'}"><i class="icon-chevron-right"></i>Night Hawk</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/90'}"><i class="icon-chevron-right"></i>Aqua Tunes</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/91'}"><i class="icon-chevron-right"></i>One Charger</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/92'}"><i class="icon-chevron-right"></i>Pocket Mouse</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/93'}"><i class="icon-chevron-right"></i>Sensor Bite</a></li>
             </ul>
         </li>
-        <li><a href="product_details" th:href="@{'/products/0'}">CLEANING</a></li>
-        <li class="subMenu">
+        <li id="menu3" class="subMenu"><a> CLEANING</a>
             <ul style="display:none">
-                <li><a href="product_details" th:href="@{'/products/3'}"><i class="icon-chevron-right"></i>Angoves</a></li>
-                <li><a href="product_details" th:href="@{'/products/4'}"><i class="icon-chevron-right"></i>Bouchard Aine & Fils</a></li>
-                <li><a href="product_details" th:href="@{'/products/5'}"><i class="icon-chevron-right"></i>French Rabbit</a></li>
-                <li><a href="product_details" th:href="@{'/products/6'}"><i class="icon-chevron-right"></i>Louis Bernard</a></li>
-                <li><a href="product_details" th:href="@{'/products/0'}"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box)</a></li>
-                <li><a href="product_details" th:href="@{'/products/1'}"><i class="icon-chevron-right"></i>Other Liquors & Wine</a></li>
-                <li><a href="product_details" th:href="@{'/products/2'}"><i class="icon-chevron-right"></i>Garden</a></li>
-                <li><a href="product_details" th:href="@{'/products/3'}"><i class="icon-chevron-right"></i>Khao Shong</a></li>
-                <li><a href="products" th:href="@{'/products/4'}"><i class="icon-chevron-right"></i>Kaboom Foam Tastic</a></li>
-                <li><a href="products" th:href="@{'/products/5'}"><i class="icon-chevron-right"></i>OxiClean</a></li>
-                <li><a href="products" th:href="@{'/products/6'}"><i class="icon-chevron-right"></i>Roto Sweep</a></li>
-                <li><a href="products" th:href="@{'/products/0'}"><i class="icon-chevron-right"></i>Sani Sticks</a></li>
-                <li><a href="products" th:href="@{'/products/1'}"><i class="icon-chevron-right"></i>Scrub Daddy</a></li>
-                <li><a href="products" th:href="@{'/products/2'}"><i class="icon-chevron-right"></i>Shamwow!</a></li>
-                <li><a href="products" th:href="@{'/products/3'}"><i class="icon-chevron-right"></i>True Touch</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/12'}"><i class="icon-chevron-right"></i>Kaboom Foam-Tastic</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/13'}"><i class="icon-chevron-right"></i>OxiClean</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/14'}"><i class="icon-chevron-right"></i>Roto Sweep</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/15'}"><i class="icon-chevron-right"></i>Sani Sticks</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/16'}"><i class="icon-chevron-right"></i>Scrub Daddy</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/17'}"><i class="icon-chevron-right"></i>Shamwow!</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/18'}"><i class="icon-chevron-right"></i>True Touch</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/70'}"><i class="icon-chevron-right"></i>BaseBoard Buddy</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/71'}"><i class="icon-chevron-right"></i>Dryer Max Dryer Balls</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/72'}"><i class="icon-chevron-right"></i>Hydro Rug</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/73'}"><i class="icon-chevron-right"></i>Zip Trim Cordless Trimmer</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/74'}"><i class="icon-chevron-right"></i>Dust Daddy</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/75'}"><i class="icon-chevron-right"></i>FabriClear</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/76'}"><i class="icon-chevron-right"></i>Clean Reach</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/77'}"><i class="icon-chevron-right"></i>Turbo Scrub</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/78'}"><i class="icon-chevron-right"></i>Breath Easy Humidifier</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/79'}"><i class="icon-chevron-right"></i>Spin Spa Body Brush</a></li>
+
             </ul>
         </li>
-        <li><a href="product_details" th:href="@{'/products/4'}">HARDWARE</a></li>
-        <li class="subMenu">
+        <li id="menu4" class="subMenu"><a >HARDWARE</a>
             <ul style="display:none">
-                <li><a href="products" th:href="@{'/products/5'}"><i class="icon-chevron-right"></i>Flex Tape</a></li>
-                <li><a href="products" th:href="@{'/products/6'}"><i class="icon-chevron-right"></i>Hercules Hooks</a></li>
-                <li><a href="products" th:href="@{'/products/0'}"><i class="icon-chevron-right"></i>Mighty Putty</a></li>
-                <li><a href="products" th:href="@{'/products/1'}"><i class="icon-chevron-right"></i>Pop-it 4 tier</a></li>
-                <li><a href="products" th:href="@{'/products/2'}"><i class="icon-chevron-right"></i>Pressure Joe</a></li>
-                <li><a href="products" th:href="@{'/products/3'}"><i class="icon-chevron-right"></i>Rodent Sheriff</a></li>
-                <li><a href="products" th:href="@{'/products/4'}"><i class="icon-chevron-right"></i>Zapp Light</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/19'}"><i class="icon-chevron-right"></i>Flex Tape</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/20'}"><i class="icon-chevron-right"></i>Hercules Hooks</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/21'}"><i class="icon-chevron-right"></i>Mighty Putty</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/22'}"><i class="icon-chevron-right"></i>Pressure Joe</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/23'}"><i class="icon-chevron-right"></i>Rodent Sheriff</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/24'}"><i class="icon-chevron-right"></i>Zapp Light</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/50'}"><i class="icon-chevron-right"></i>Tiger Wrench</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/57'}"><i class="icon-chevron-right"></i>Lizard Cam</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/58'}"><i class="icon-chevron-right"></i>Flow Cable</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/59'}"><i class="icon-chevron-right"></i>Flex Mat</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/60'}"><i class="icon-chevron-right"></i>Micro Mechanic</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/61'}"><i class="icon-chevron-right"></i>Tac Light</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/62'}"><i class="icon-chevron-right"></i>Cop Cam</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/63'}"><i class="icon-chevron-right"></i>Pocket Jump Starter</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/64'}"><i class="icon-chevron-right"></i>Portable Breathalyzer</a></li>
             </ul>
         </li>
-        <li><a href="product_details" th:href="@{'/products/5'}">HEALTH & BEAUTY</a></li>
-        <li class="subMenu">
+        <li id="menu5" class="subMenu"><a >HEALTH & BEAUTY</a>
             <ul style="display:none">
-                <li><a href="products" th:href="@{'/products/6'}"><i class="icon-chevron-right"></i>Bowflex</a></li>
-                <li><a href="products" th:href="@{'/products/0'}"><i class="icon-chevron-right"></i>GLH Hair System</a></li>
-                <li><a href="products" th:href="@{'/products/1'}"><i class="icon-chevron-right"></i>Hawaii Chair</a></li>
-                <li><a href="products" th:href="@{'/products/2'}"><i class="icon-chevron-right"></i>InStyler Max 2</a></li>
-                <li><a href="products" th:href="@{'/products/3'}"><i class="icon-chevron-right"></i>Kush</a></li>
-                <li><a href="products" th:href="@{'/products/4'}"><i class="icon-chevron-right"></i>Rejuvenique Electic Facial</a></li>
-                <li><a href="products" th:href="@{'/products/5'}"><i class="icon-chevron-right"></i>Shake Weight</a></li>
-                <li><a href="products" th:href="@{'/products/6'}"><i class="icon-chevron-right"></i>Sweatin' to the Oldies</a></li>
-                <li><a href="products" th:href="@{'/products/0'}"><i class="icon-chevron-right"></i>ThighMaster</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/25'}"><i class="icon-chevron-right"></i>Bowflex</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/26'}"><i class="icon-chevron-right"></i>GLH Hair System</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/27'}"><i class="icon-chevron-right"></i>Hawaii Chair</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/28'}"><i class="icon-chevron-right"></i>InStyler Max 2</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/29'}"><i class="icon-chevron-right"></i>Kush</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/30'}"><i class="icon-chevron-right"></i>Proactiv</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/31'}"><i class="icon-chevron-right"></i>Rejuvenique Facial Mask</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/32'}"><i class="icon-chevron-right"></i>Shake Weight</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/33'}"><i class="icon-chevron-right"></i>Sweatin' to the Oldies</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/34'}"><i class="icon-chevron-right"></i>ThighMaster</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/94'}"><i class="icon-chevron-right"></i>Walkfit Platinum Orthotics</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/95'}"><i class="icon-chevron-right"></i>Perfect Smile Veneers</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/96'}"><i class="icon-chevron-right"></i>Simply Straight</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/97'}"><i class="icon-chevron-right"></i>Strutz Cushioned Arch</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/98'}"><i class="icon-chevron-right"></i>DermaSuctio</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/99'}"><i class="icon-chevron-right"></i>EZ Makeup Glasses</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/100'}"><i class="icon-chevron-right"></i>MicroTouch Solo</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/101'}"><i class="icon-chevron-right"></i>Sonic Pic Dental Cleaning</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/102'}"><i class="icon-chevron-right"></i>3 Second Brow</a></li>
+
+            </ul>
+        </li>
+        <li id="menu6" class="subMenu"><a>HOME</a>
+            <ul style="display:none">
+                <li><a href="product_details" th:href="@{'/product_details/7'}"><i class="icon-chevron-right"></i>Ginsu Knives</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/35'}"><i class="icon-chevron-right"></i>George Foreman Grill</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/36'}"><i class="icon-chevron-right"></i>Slap Chop</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/37'}"><i class="icon-chevron-right"></i>Chia Pet</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/38'}"><i class="icon-chevron-right"></i>Solar Landscape Light</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/39'}"><i class="icon-chevron-right"></i>ShoeDini</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/40'}"><i class="icon-chevron-right"></i>Snuggie</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/41'}"><i class="icon-chevron-right"></i>Tub Shroom</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/42'}"><i class="icon-chevron-right"></i>Wearable Towel</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/51'}"><i class="icon-chevron-right"></i>Cami Secret</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/54'}"><i class="icon-chevron-right"></i>Diamotech Fry Pan</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/55'}"><i class="icon-chevron-right"></i>Perfect Bacon Bowl</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/56'}"><i class="icon-chevron-right"></i>Hidden Wall Safe</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/65'}"><i class="icon-chevron-right"></i>Stretchable Seat Cover</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/66'}"><i class="icon-chevron-right"></i>Arctic Air</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/67'}"><i class="icon-chevron-right"></i>Clean Step Mat</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/68'}"><i class="icon-chevron-right"></i>Pocket Hose Top Brass</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/69'}"><i class="icon-chevron-right"></i>Egg Sitter</a></li>
+
+
+            </ul>
+        </li>
+        <li id="menu7" class="subMenu"><a>TOYS</a>
+            <ul style="display:none">
+                <li><a href="product_details" th:href="@{'/product_details/8'}"><i class="icon-chevron-right"></i>Bendaroos</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/9'}"><i class="icon-chevron-right"></i>Magic Sand</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/43'}"><i class="icon-chevron-right"></i>Floam</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/44'}"><i class="icon-chevron-right"></i>Fusgigi</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/45'}"><i class="icon-chevron-right"></i>Mood Sand</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/46'}"><i class="icon-chevron-right"></i>Pillow Pets</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/47'}"><i class="icon-chevron-right"></i>Potty Putter</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/48'}"><i class="icon-chevron-right"></i>Zhu Zhu Pets</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/103'}"><i class="icon-chevron-right"></i>Magic Tracks RC Race</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/104'}"><i class="icon-chevron-right"></i>Magic Tracks Extreme</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/105'}"><i class="icon-chevron-right"></i>Magic Tracks Extreme Mega</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/106'}"><i class="icon-chevron-right"></i>Zoom Tubes</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/107'}"><i class="icon-chevron-right"></i>Dream Tents</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/108'}"><i class="icon-chevron-right"></i>Night Brites Slippers</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/109'}"><i class="icon-chevron-right"></i>Mustache Pacifier</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/110'}"><i class="icon-chevron-right"></i>MagicPad</a></li>
+                <li><a href="product_details" th:href="@{'/product_details/111'}"><i class="icon-chevron-right"></i>Outlander Trail Tent</a></li>
+
             </ul>
         </li>
     </ul>
     <br/>
-    <div class="thumbnail">
-        <img src="/images/products/panasonic.jpg" th:src="@{'/images/realproducts/george_foreman.jpg'}"alt=" George Foreman Grill"/>
-        <div class="caption">
-            <h5>George Foreman Grill</h5>
-            <h4 style="text-align:center"><a class="btn" href="product_details" th:href="@{'/product_details/32'}" > <i class="icon-zoom-in"></i></a> <a class="btn" onclick="window.location.href = '/cart/2/32/d';">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" onclick="window.location.href = '/cart/2/32/d';">$222.00</a></h4>
-        </div>
-    </div><br/>
     <div class="thumbnail">
         <img src="/images/products/kindle.png" th:src="@{'/images/realproducts/shamwow.jpg'}" title="Shamwow" alt="Shamwow">
         <div class="caption">

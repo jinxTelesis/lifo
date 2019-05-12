@@ -43,7 +43,7 @@
                     <li class="active">Products You Liked</li>
                 </ul>
 
-                <h3 th:text="${username}">Products Name</span>
+                <h3 th:text="${username+'s cart'} ?: 'Guests cart summary'">Products Name</span>
 
                 </h3>
                 <div class="row">
@@ -175,8 +175,7 @@
                         </td>
                     </tr>
                 </table>
-
-                <h3 th:text="${username}"></h3>
+                    <h3 th:text="${username + 's cart summary'}"></h3>
                 <table class="table table-responsive">
                     <thead>
                     <tr>
@@ -194,12 +193,12 @@
                         <td colspan="2"> </td>
                     </tr>
                     <tr th:each="product_detail : ${product_details}">
-                        <td><span th:text="${product_detail?.getProductName()}">Product</span> </td>
-                        <td><span th:text="${product_detail?.getDescription1()}">Description</span> </td>
-                        <td><span th:text="${product_detail?.getProductPrice()}">Price</span> </td>
-                        <td><span th:text="${product_detail?.getProductDiscount()}">Discount</span> </td>
-                        <td><span th:text="${product_detail?.getProductTax()}">Tax</span> </td>
-                        <td><span th:text="${product_detail?.getTotalPrice()}">Total</span> </td>
+                        <td><span th:text="${product_detail.getProductName()}">Product</span> </td>
+                        <td><span th:text="${product_detail.getDescription1()}">Description</span> </td>
+                        <td><span th:text="${product_detail.getProductPrice()}">Price</span> </td>
+                        <td><span th:text="${product_detail.getProductDiscount()}">Discount</span> </td>
+                        <td><span th:text="${product_detail.getProductTax()}">Tax</span> </td>
+                        <td><span th:text="${product_detail.getTotalPrice()}">Total</span> </td>
                     </tr>
 
                     <tr>

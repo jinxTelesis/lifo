@@ -36,6 +36,7 @@ public class Product implements Comparator<Product>{
     @Lob
     private String description4;
 
+
     public Product(){
 
     }

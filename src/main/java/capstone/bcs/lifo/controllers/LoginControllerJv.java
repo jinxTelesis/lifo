@@ -43,6 +43,7 @@ public class LoginControllerJv {
         return "login";
     }
 
+
     @RequestMapping(value = "/login_form",method = RequestMethod.POST) // two post methods have mapping issues
     public String validateUser2Invalid(Model model, @Valid LoginForm loginForm, BindingResult bindingResult, HttpSession session){
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
@@ -64,7 +65,7 @@ public class LoginControllerJv {
                     localCustV2 = customerService.getByUserName(loginForm.getUserName());
                 } catch (IndexOutOfBoundsException e)
                 {
-                    System.out.println("the database had zero users in it");
+                    System.out.println("User Not Found");
                     return "login";
                 }
                 System.out.println(loginForm.getUserName());

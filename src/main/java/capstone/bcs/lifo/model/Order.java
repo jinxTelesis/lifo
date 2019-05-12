@@ -12,19 +12,24 @@ public class Order {
 
     // adding and address object so most of this can be removed
 
+    private long CustomerID;
     private Double amount;
     // should this be split up
     private String address1;
     private String address2;
-    private Double zip;
+    private String zip;
     private String state;
     private String country;
     private String customerEmail;
     private String customerName;
     private String customerPhone;
+    private Date OrderDate;
+    private String paymentMethod;
 
 
-
+    public Long getOrderId() {
+        return orderId;
+    }
 
     public Double getAmount() {
         return amount;
@@ -50,11 +55,11 @@ public class Order {
         this.address2 = address2;
     }
 
-    public Double getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(Double zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 
@@ -98,11 +103,32 @@ public class Order {
         this.customerPhone = customerPhone;
     }
 
+    public long getCustomerID() {
+        return CustomerID;
+    }
+
+    public void setCustomerID(long customerID) {
+        CustomerID = customerID;
+    }
+
+    public Date getOrderDate() {
+        return OrderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        OrderDate = orderDate;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
 
 
-
-
-    // Order Details needs join to products
+// Order Details needs join to products
     // Order Details needs join to
 
 
