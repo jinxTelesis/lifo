@@ -69,26 +69,10 @@
 			<div class="span9">
 				<ul class="breadcrumb">
 					<li><a href="index" th:href="@{'/index'}">Home</a> <span class="divider">/</span></li>
-					<span th:switch="${productCat}">
-						<li class="active" th:case="0">Accessories</li>
-						<li class="active" th:case="1">Appliances</li>
-						<li class="active" th:case="2">Cleaning</li>
-						<li class="active" th:case="3">Hardware</li>
-						<li class="active" th:case="4">Health & Beauty</li>
-						<li class="active" th:case="5">Homewares</li>
-						<li class="active" th:case="6">Toys</li>
-					</span>
+					<li class="active">Topsellers</li>
+
 				</ul>
-				<div th:switch="${productCat}">
-					<h3 th:case="0">Accessories<small class="pull-right"> 12 products are available </small></h3>
-					<h3 th:case="1">Appliances<small class="pull-right"> 14 products are available </small></h3>
-					<h3 th:case="2">Cleaning<small class="pull-right"> 17 products are available </small></h3>
-					<h3 th:case="3">Hardware<small class="pull-right"> 16 products are available </small></h3>
-					<h3 th:case="4">Health & Beauty<small class="pull-right"> 19 products are available </small></h3>
-					<h3 th:case="5">Homewares<small class="pull-right"> 18 products are available </small></h3>
-					<h3 th:case="6">Toys<small class="pull-right"> 17 products are available </small></h3>
-					<h3 th:case="*">Product Name<small class="pull-right"> 111 products are available </small></h3>
-				</div>
+				<h3 >Top Sellers<small class="pull-right"> 12 products are available </small></h3>
 
 				<hr class="soft"/>
 				<p>You’ve seen ‘em… we’ve got ‘em! If you’ve ever shopped infomercials, you know that some of the best
@@ -103,10 +87,10 @@
 						<label class="control-label alignL">Sort By </label>
 						<select id="sortorder">
 							<option > Select Sort Order</option>
-							<option value="/products/desc" th:href="@{'/products/desc'}">Name: A to Z</option>
-							<option value="/products/asec" th:href="@{'/products/asec'}">Name: Z - A</option>
-							<option value="/products/asec/price" th:href="@{'/products/asc/price'}">Price: low to high</option>
-							<option value="/products/desc/price" th:href="@{'/products/desc/price'}">Price: high to low</option>
+							<option value="/topsellers/desc" >Name: A to Z</option>
+							<option value="/topsellers/asec" >Name: Z - A</option>
+							<option value="/topsellers/asec/price" >Price: low to high</option>
+							<option value="/topsellers/desc/price" >Price: high to low</option>
 						</select>
 					</div>
 				</form>

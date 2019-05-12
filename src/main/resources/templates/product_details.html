@@ -42,8 +42,19 @@
 	<div class="span9">
     <ul class="breadcrumb">
     <li><a href="index" th:href="@{'/index'}">Home</a> <span class="divider">/</span></li>
-    <li><a href="products" th:href="@{'/products'}">Products</a> <span class="divider">/</span></li>
-    <li class="active">product Details</li>
+		<span th:switch="${product?.productCat}">
+			<li th:case="0">Accessories<span class="divider">/</span></li>
+			<li th:case="1">Appliances<span class="divider">/</span></li>
+			<li th:case="2">Cleaning<span class="divider">/</span></li>
+			<li th:case="3">Hardware<span class="divider">/</span></li>
+			<li th:case="4">Health & Beauty<span class="divider">/</span></li>
+			<li th:case="5">Homewares<span class="divider">/</span></li>
+			<li th:case="6">Toys<span class="divider">/</span></li>
+		</span>
+
+		<li class="active" th:text="${product?.productName}">product Details</li>
+		</span>
+
     </ul>
 
 	<div class="row">

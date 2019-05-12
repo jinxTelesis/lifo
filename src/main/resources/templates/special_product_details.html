@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head  th:replace="fragments/header :: header">
     <!-- Bootstrap style -->
-    <link href="../../static/css/bootstrap.min.css"
-          th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../../static/css/base.css"
-          th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>
-    <!-- Bootstrap style responsive -->
-    <link href="../../static/css/bootstrap-responsive.min.css"
-          th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>
-    <link href="../../static/css/font-awesome.css"
-          th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">
-    <!-- Google-code-prettify -->
+<!--    <link href="../../static/css/bootstrap.min.css"-->
+<!--          th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>-->
+<!--    <link href="../../static/css/base.css"-->
+<!--          th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>-->
+<!--    &lt;!&ndash; Bootstrap style responsive &ndash;&gt;-->
+<!--    <link href="../../static/css/bootstrap-responsive.min.css"-->
+<!--          th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>-->
+<!--    <link href="../../static/css/font-awesome.css"-->
+<!--          th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">-->
+<!--    &lt;!&ndash; Google-code-prettify &ndash;&gt;-->
 
-    <!--<link href="../js/google-code-prettify/prettify.css"
-          th:href="@{js/google-code-prettify/prettify.css}" rel="stylesheet"/>-->
+<!--    &lt;!&ndash;<link href="../js/google-code-prettify/prettify.css"-->
+<!--          th:href="@{js/google-code-prettify/prettify.css}" rel="stylesheet"/>&ndash;&gt;-->
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--    &lt;!&ndash; Latest compiled and minified JavaScript &ndash;&gt;-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"-->
+<!--            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
 
-    <script src="/webjars/jquery/3.3.1-2 /jquery.js"></script>
+<!--    <script src="/webjars/jquery/3.3.1-2 /jquery.js"></script>-->
 
 
 </head>
@@ -42,9 +42,18 @@
             <div class="span9">
                 <ul class="breadcrumb">
                     <li><a href="index" th:href="@{'/index'}">Home</a> <span class="divider">/</span></li>
-                    <li><a href="products" th:href="@{'/products'}">Products</a> <span class="divider">/</span></li>
-                    <li class="active">product Details</li>
-                </ul>
+                    <li><a href="index" th:href="@{'/index'}">Home</a> <span class="divider">/</span></li>
+                    <span th:switch="${product?.productCat}">
+                        <li th:case="0">Accessories<span class="divider">/</span></li>
+                        <li th:case="1">Appliances<span class="divider">/</span></li>
+                        <li th:case="2">Cleaning<span class="divider">/</span></li>
+                        <li th:case="3">Hardware<span class="divider">/</span></li>
+                        <li th:case="4">Health & Beauty<span class="divider">/</span></li>
+                        <li th:case="5">Homewares<span class="divider">/</span></li>
+                        <li th:case="6">Toys<span class="divider">/</span></li>
+                    </span>
+                    <li class="active" th:text="${product?.productName}">product Details</li>
+                    </span>
 
                 <div class="row">
                     <div id="gallery" class="span3">
@@ -133,8 +142,8 @@
     <!-- Footer section end =============================================== -->
 
     <!-- Site script section start =============================================== -->
-    <div class="container" th:replace="fragments/sitescripts :: sitescripts">
-    </div>
+<!--    <div class="container" th:replace="fragments/sitescripts :: sitescripts">-->
+<!--    </div>-->
     <!-- Site script section end =============================================== -->
 
 
