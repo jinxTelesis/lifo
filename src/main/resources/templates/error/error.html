@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+
+</head>
+<body>
+<!-- Navigation section start ====================================================================== -->
+<div th:replace="fragments/navigation :: navigation">
+</div>
+<!-- Navigation section end ====================================================================== -->
+
+<!-- Header End====================================================================== -->
+<div id="mainBody">
+	<div class="container">
+	<div class="row">
+<!--		&lt;!&ndash; Sidebar Section Start ================================================== &ndash;&gt;-->
+<!--		<div th:replace="fragments/sidebar :: sidebar">-->
+<!--		</div>-->
+<!--		&lt;!&ndash; Sidebar Section End =============================================== &ndash;&gt;-->
+
+	<div class="span12" id="mainCol">
+    <ul class="breadcrumb">
+		<li><a href="index">Home</a> <span class="divider">/</span></li>
+		<li class="active">Error 404</li>
+    </ul>
+	<h3> Page Not Found</h3>
+	<hr class="soft"/>
+
+
+	<p>
+		<img src="/images/error/error404.png" >
+</p>
+
+</div>
+</div></div>
+</div>
+<!-- MainBody End ============================= -->
+<!-- Footer section start =============================================== -->
+<div class="container" th:replace="fragments/footer :: footer">
+</div>
+<!-- Footer section end =============================================== -->
+
+<!-- Site script section start =============================================== -->
+<div class="container" th:replace="fragments/sitescripts :: sitescripts">
+</div>
+<!-- Site script section end =============================================== -->
+	
+
+</body>
+</html>

@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<!-- Bootstrap style -->
-	<link href="../../static/css/bootstrap.min.css"
-		  th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
-	<link href="../../static/css/base.css"
-		  th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>
-	<!-- Bootstrap style responsive -->
-	<link href="../../static/css/bootstrap-responsive.min.css"
-		  th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>
-	<link href="../../static/css/font-awesome.css"
-		  th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">
-	<!-- Google-code-prettify -->
+<head th:replace="fragments/header :: header">
+<!--	&lt;!&ndash; Bootstrap style &ndash;&gt;-->
+<!--	<link href="../../static/css/bootstrap.min.css"-->
+<!--		  th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>-->
+<!--	<link href="../../static/css/base.css"-->
+<!--		  th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>-->
+<!--	&lt;!&ndash; Bootstrap style responsive &ndash;&gt;-->
+<!--	<link href="../../static/css/bootstrap-responsive.min.css"-->
+<!--		  th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>-->
+<!--	<link href="../../static/css/font-awesome.css"-->
+<!--		  th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">-->
+<!--	&lt;!&ndash; Google-code-prettify &ndash;&gt;-->
 
-	<!--<link href="../js/google-code-prettify/prettify.css"
-          th:href="@{js/google-code-prettify/prettify.css}" rel="stylesheet"/>-->
+<!--	&lt;!&ndash;<link href="../js/google-code-prettify/prettify.css"-->
+<!--          th:href="@{js/google-code-prettify/prettify.css}" rel="stylesheet"/>&ndash;&gt;-->
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--	&lt;!&ndash; Latest compiled and minified JavaScript &ndash;&gt;-->
+<!--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"-->
+<!--			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
 
-	<script src="/webjars/jquery/3.3.1-2 /jquery.js"></script>
+<!--	<script src="/webjars/jquery/3.3.1-2 /jquery.js"></script>-->
 
 
 </head>
@@ -44,22 +44,22 @@
 					<li><a href="index.html" th:href="@{'/index'}">Home</a> <span class="divider">/</span></li>
 					<li class="active">Terms and Conditions</li>
 				</ul>
-				<h5>CONDITIONS OF USE</h5><br/><p>
+				<h5>CONDITIONS OF USE</h5><p>
 				Welcome to our online store! LIFO and its associates provide their services to you subject to the following conditions. If you visit or shop within this website, you accept these conditions. Please read them carefully. ​</p>
 
-				<h5>PRIVACY</h5><br/><p>
-				Please review our Privacy Notice, which also governs your visit to our website, to understand our practices.</p>
+				<h5>PRIVACY</h5><p>
+				Please review our Privacy Policy, which also governs your visit to our website, to understand our practices.</p>
 
-				<h5>ELECTRONIC COMMUNICATIONS</h5><br/><p>
+				<h5>ELECTRONIC COMMUNICATIONS</h5><p>
 				When you visit LIFO or send e-mails to us, you are communicating with us electronically. You consent to receive communications from us electronically. We will communicate with you by e-mail or by posting notices on this site. You agree that all agreements, notices, disclosures and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing.</p>
 
-				<h5>COPYRIGHT</h5><br/><p>
+				<h5>COPYRIGHT</h5><p>
 				All content included on this site, such as text, graphics, logos, button icons, images, audio clips, digital downloads, data compilations, and software, is the property of LIFO or its content suppliers and protected by international copyright laws. The compilation of all content on this site is the exclusive property of LIFO, with copyright authorship for this collection by LIFO, and protected by international copyright laws.</p>
 
-				<h5>TRADE MARKS</h5><br/><p>
+				<h5>TRADE MARKS</h5><p>
 				LIFOs trademarks and trade dress may not be used in connection with any product or service that is not LIFOs, in any manner that is likely to cause confusion among customers, or in any manner that disparages or discredits LIFO. All other trademarks not owned by LIFO or its subsidiaries that appear on this site are the property of their respective owners, who may or may not be affiliated with, connected to, or sponsored by LIFO or its subsidiaries.</p>
 
-				<h5>LICENSE AND SITE ACCESS</h5><br/><p>
+				<h5>LICENSE AND SITE ACCESS</h5><p>
 				LIFO grants you a limited license to access and make personal use of this site and not to download (other than page caching) or modify it, or any portion of it, except with express written consent of LIFO. This license does not include any resale or commercial use of this site or its contents: any collection and use of any product listings, descriptions, or prices: any derivative use of this site or its contents: any downloading or copying of account information for the benefit of another merchant: or any use of data mining, robots, or similar data gathering and extraction tools. This site or any portion of this site may not be reproduced, duplicated, copied, sold, resold, visited, or otherwise exploited for any commercial purpose without express written consent of LIFO. You may not frame or utilize framing techniques to enclose any trademark, logo, or other proprietary information (including images, text, page layout, or form) of LIFO and our associates without express written consent. You may not use any meta tags or any other "hidden text" utilizing LIFOs name or trademarks without the express written consent of LIFO. Any unauthorized use terminates the permission or license granted by LIFO. You are granted a limited, revocable, and nonexclusive right to create a hyperlink to the home page of LIFO so long as the link does not portray LIFO, its associates, or their products or services in a false, misleading, derogatory, or otherwise offensive matter. You may not use any LIFO logo or other proprietary graphic or trademark as part of the link without express written permission.</p>
 
 				<h5>YOUR MEMBERSHIP ACCOUNT</h5><br/><p>
@@ -85,7 +85,7 @@
 				<h5>SITE POLICIES, MODIFICATION, AND SEVERABILITY</h5><br/><p>
 				Please review our other policies, such as our Shipping and Returns policy, posted on this site. These policies also govern your visit to LIFO. We reserve the right to make changes to our site, policies, and these Conditions of Use at any time. If any of these conditions shall be deemed invalid, void, or for any reason unenforceable, that condition shall be deemed severable and shall not affect the validity and enforceability of any remaining condition.</p>
 
-				<h5>QUESTIONS:</h5><br/><p>
+				<h5>QUESTIONS:</h5><p>
 				Questions regarding our Conditions of Usage, Privacy Policy, or other policy related material can be directed to our support staff by clicking on the "Contact Us" link in the side menu. Or you can email us at: info@LIFO.com</p>
 			</div>
 		</div></div>
@@ -98,8 +98,8 @@
 <!-- Footer section end =============================================== -->
 
 <!-- Site script section start =============================================== -->
-<div class="container" th:replace="fragments/sitescripts :: sitescripts">
-</div>
+<!--<div class="container" th:replace="fragments/sitescripts :: sitescripts">-->
+<!--</div>-->
 <!-- Site script section end =============================================== -->
 
 

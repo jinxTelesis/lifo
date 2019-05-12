@@ -3,11 +3,10 @@ $(document).ready(function(){
 	/* carousel of home page animation */
 	$('#myCarousel').carousel({
 	  interval: 4000
-	})
+	});
 	 $('#featured').carousel({
 	  interval: 4000
-	})
-
+	});
 	$(function() {
 		$('#gallery a').lightBox();
 	});
@@ -41,6 +40,7 @@ $(document).ready(function(){
 		}
 	});
 	var ul = $('#sidebar > ul');
+
 	$('#sidebar > a').click(function(e)
 	{
 		e.preventDefault();

@@ -19,38 +19,42 @@
                 a href="login">ORDER HISTORY</a>
                 ––>
             </div>--->
-            <div class="span3">
+            <div class="span3 pull-left">
                 <h5>INFORMATION</h5>
-                <a href="contact" th:href="@{'/contact'}">CONTACT</a>
-                <a href="register" th:href="@{'/register'}">REGISTRATION</a>
+                <a href="register" th:href="@{'/register'}">REGISTER</a>
+                <a href="faq" th:href="@{'/faq'}">FAQ</a>
+                <a href="contact" th:href="@{'/contact'}">CONTACT US</a>
+            </div>
+            <div class="span3 pull-left">
+                <h5>LEGAL</h5>
                 <a href="legal_notice" th:href="@{'/legal_notice'}">LEGAL NOTICE</a>
                 <a href="tac" th:href="@{'/tac'}">TERMS AND CONDITIONS</a>
-                <a href="faq" th:href="@{'/faq'}">FAQ</a>
-
+                <a href="tac" th:href="@{'/privacy'}">PRIVACY POLICY</a>
             </div>
-            <div class="span3">
+            <div class="span2 pull-left">
                 <h5>OUR OFFERS</h5>
                 <a href="#" th:href="@{'/products/special_offer/1'}">NEW PRODUCTS</a>
                 <a href="#" th:href="@{'/products/special_offer/2'}">TOP SELLERS</a>
-                <a href="#" th:href="@{'/products/special_offer/2'}">GREAT DEALS</a>
                 <a href="../special_offer" th:href="@{'/products/special_offer/3'}">SPECIAL OFFERS</a>
 
             </div>
-            <div class="span3">
-                <h5>Partners & Products</h5>
-                <a href="#" th:href="@{'/products/special_offer/5'}">SUPPLIERS</a>
-                <a href="#" th:href="@{'/products/special_offer/4'}">PARTNERS</a>
-                <a href="#" th:href="@{'/products/special_offer/4'}">AFFILIATES</a>
-                <a href="#" th:href="@{'/products/special_offer/4'}">MANUFACTURERS</a>
-            </div>
-            <div id="socialMedia" class="span3 pull-right">
+
+            <div id="socialMedia" class="span4 pull-right">
                 <h5>SOCIAL MEDIA </h5>
-                <a href="https://www.facebook.com/lifo.astv.9" th:href="@{'https://www.facebook.com/lifo.astv.9'}"><img width="60" height="60" src="/images/facebook.png" title="facebook" alt="facebook"/></a>
-                <a href="https://twitter.com/LIFO57688434"  th:href="@{'https://twitter.com/LIFO57688434'}"><img width="60" height="60" src="/images/twitter.png" title="twitter" alt="twitter"/></a>
-                <!--<a href="https://www.instagram.com/lifoastv/"><img width="60" height="60" src="images/youtube.png" title="youtube" alt="youtube"/></a>-->
+                <a th:href="@{'https://www.facebook.com/lifo.astv.9'}" th:target="_blank"><img width="60" height="60" src="/images/facebook.png" title="facebook" alt="facebook"/></a>
+                <a th:href="@{'https://twitter.com/LIFO57688434'}" th:target="_blank"><img width="60" height="60" src="/images/twitter.png" title="twitter" alt="twitter"/></a>
+                <a th:href="@{'https://www.instagram.com/lifoastv/'}" th:target="_blank"><img width="60" height="60" src="/images/instagram.png" title="instagram" alt="instagram"/></a>
+                <a th:href="@{'/#'}"><img width="60" height="60" src="/images/lifo_rlogo.png" title="lifo" alt="lifo round"/></a>
+
+            </div>
+
+        </div>
+        <br/>
+        <div  class="row">
+            <div class="span12 pull-left">
+            <strong>Team Latest In First Out (LIFO) - Michael, Andre, Erick, Zenetta - BCS430W Capstone &copy; 2019 </strong>
             </div>
         </div>
-        <p class="pull-right">&copy; 2019 Team LIFO Capstone</p>
     </div><!-- Container End -->
 </div>
 
