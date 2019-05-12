@@ -113,3 +113,5 @@ INSERT product (product_cat, product_name, product_price, product_image, descrip
 
 INSERT customerv2 (active,encrypted_password,user_role,username,a_additional_info,a_address,a_address2,a_city,a_country,a_home_phone,a_mobile_phone,a_state,a_zip,p_dob,p_email,p_first_name,p_last_name) VALUES (true,'38CPb85GBXZPIRM3HGICXQ7WhrosX0tZ+BcUxOp9916XhjLLBLac46n3hFJ9ry+U','customer','Michael',null,'1 Lane',null,'Town',null,'631-555-5555','631-555-5555','NY','11743','4/28/19','mike@lifo.website','Michael','Hern');
 
+
+
