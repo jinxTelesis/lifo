@@ -1,6 +1,19 @@
 
 $(document).ready(function(){
 
+
+    $('#selection').change(function(e){
+        // this function runs when a user selects an option from a <select> element
+        location = $("#selection option:selected").val();
+        console.log($("#selection option:selected").val());
+    });
+
+    $('#sortorder').change(function(e){
+        // this function runs when a user selects an option from a <select> element
+        location = $("#sortorder option:selected").val();
+        console.log($("#sortorder option:selected").val());
+    });
+
     $('#registration').validate({
         rules: {
             email: {
@@ -50,4 +63,11 @@ $(document).ready(function(){
         yearRange : '1920:2006',
         dateFormat : 'mm-dd-yy',
     });
+
+
+    // function validateEmail(email) {
+    //     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //     return re.test(email);
+    // }
+
 });

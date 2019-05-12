@@ -6,7 +6,7 @@ INSERT product (product_cat, product_name, product_price, product_image, descrip
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (1, 'Magic Bullet', 39.99, 'magic_bullet.jpg', 'The perfect machine for all your smoothie, or blending needs. Easily portable.', 'As Seen on TV Magic Bullet, 17-Piece set:Chops, mixes, blends grinds and more1 high-torque power base2 stainless steel blades1 tall cup1 short cup2 shaker / steamer tops2 stay-fresh resealable lids4', '22oz oversized mugs4 colored lip rings for mugs17-piece blender with 100-page recipe book includedDoes kitchen jobs in 10 seconds or less The As Seen on TV Magic Bullet Express Blender and', null);
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (1, 'Shark Steam Mop', 119.99, 'shark_steam_mop.jpg', 'Steam cleans and sanitizes your floor. Great for hard wood, and removes grease and grime.', 'Shark Steam Pocket Mop... Patented 2-sided cleaning "pocket": clean with one side, and sanitize with the other for faster, more effective cleaning; Quick Release Mop Heads allow for easy cleaning of all spaces;', 'Longer cord and larger water tank for faster, longer cleaning. Includes the following: Rectangle Pocket Head, 20ft Power Cord, 1 Rectangle pockets and Filling flask. comes with one washable microfiber cleaing pads.', null);
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (1, 'The Clapper', 17.99, 'clapper.jpg', 'Great and easy way to turn off electronics without moving from where you are.', 'Control 1 or 2 things at the same time by simply clapping your hands.;Great for lamps and Christmas tree lights! CLAP ON, CLAP OFF;2 CLAPS/3 CLAPS SETTING:', 'connect to the 2 or 3 clap outlet, then activate each one with 2 or 3 claps respectively.;Features Clap Detection Lights: Lights glow in sequence when proper claps are detected.', null);
-INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (2, 'Kaboom Foam-Tastic Cleaner', 13.99, 'Kaboom.jpg', 'A powerful cleaner that eliminates bathroom stains, buildups and soap scum, no hard scrubbing necessary.', 'Tired of tough scrubbing? Try Kaboom Foam-Tastic, a foaming cleaner that changes color to let you know the surface is clean. As it sprays on blue, the', 'OxiClean stain-fighting bubbles get to work powering through soap scum, hard water, and calcium and lime stains. When it turns white you just wipe away to reveal a deep clean and a sparkling shine with absolutely no dull residue left behind.', '2.6 x 2.6 x 9.5 inches ; 1.4 pounds');
+INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (2, 'Kaboom Foam-Tastic Cleaner', 13.99, 'kaboom.jpg', 'A powerful cleaner that eliminates bathroom stains, buildups and soap scum, no hard scrubbing necessary.', 'Tired of tough scrubbing? Try Kaboom Foam-Tastic, a foaming cleaner that changes color to let you know the surface is clean. As it sprays on blue, the', 'OxiClean stain-fighting bubbles get to work powering through soap scum, hard water, and calcium and lime stains. When it turns white you just wipe away to reveal a deep clean and a sparkling shine with absolutely no dull residue left behind.', '2.6 x 2.6 x 9.5 inches ; 1.4 pounds');
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (2, 'OxiClea', 9.99, 'oxiclean.jpg', 'A cleaning product that uses the power of oxygen to remove tough stains. Works great with clothes, and doesnt cause colors to bleed.', 'OxiClean Versatile Stain Remover Chlorine Free.', 'Concentrated! 99% Active stain fighters. 156+ loads. Now concentrated! Use less per load vs. previous formula! For all machines including HE.', '7.1 x 5.4 x 8 inches ; 7.22 pounds');
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (2, 'Roto Sweep', 19.99, 'sweep.jpg', 'hard floor sweeper that is a broom and dust pan all in one. Only works in one direction, but great for edging.', 'INTRODUCING THE ROTO SWEEP The Hard Floor sweeper from the Fuller Brush company! It&rsquo;s a rotating broom with a built-in dust pan that puts the power of cleaning any mess into the palm of your hand!', 'HOW IT WORKS - Manually push sweeper forward to collect dirt and debris. No bags, filters, batteries or electricity cords required. -', '15.5 x 8.7 x 3.9 inches ; 1.9 pounds');
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (2, 'Sani Sticks', 9.99, 'san_stick.jpg', 'A safe and powerful drain cleaner that cleans, deodorizes and prevents clogs in any kind of plumbing.', 'SMART CLEANING: Sani Sticks cleaner, deodorizer and clog preventer are a powerful, safe and efficient way to eliminate embarrassing, foul odors from drains and helps to prevent clog backups in sinks and showers. Its non-toxic formula is gentle and safe on septic tanks and is available in multiple scents and count varieties.', 'ONE STICK IS ALL IT TAKES: Made with powerful, natural enzymes, each Sani Stick slowly releases a super concentrated blend of powerful enzymes that will eliminate organic deposits and grease build up for 30 days.', '4.9 x 1.8 x 6.3 inches ; 8.5 ounces');
@@ -84,7 +84,7 @@ INSERT product (product_cat, product_name, product_price, product_image, descrip
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (0, 'Couch Coster', 19.99, 'Couch_Coaster.jpg', 'Couch Coaster is the ultimate drink holder for your couches and chairs. Couch Coaster keeps your furniture safe from spills and beverage within reach. This one-size-fits-all drink coaster securely holds all your favorite drinks, hot or cold, on your sofa, couch, armchair or recliner. Your beverage stays upright, secure and within reach.', null, null, null);
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (0, 'Atomic Beam Headlight', 39.99, 'Atomic_Beam.jpg', 'Do''t get stuck in the dark! Atomic Beam Headlight is the ultra-bright tactical headlight. The military uses some of the most powerful lighting in the world, and now that technology is yours to use at home with Atomic Beam Headlight! Atomic Beam Headlight is stronger and brighter than regular flashlights.', null, null, null);
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (1, 'Star Night Laser', 59.99, 'Star_Night.jpg', 'The most spectacular way to decorate your home instantly! Just plug them in, point and thousands of big, bold breathtaking stars appear right before your eyes! The secret is advanced laser light technology that creates a dramatic 3-D effect. You will feel like you are in the middle of a cosmic star field. With 8 different design patterns to choose from- brilliant red, super bright green, or click BOTH for red and green!', 'Choose between the original Star Night lights (solid) and the Star Night Motion Lights which blink, flash and even give you a carousel of fun patterns to light up your home.', null, null);
-INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (1, 'Handy Heater', 59.99, 'Handy_Heat.jpg', 'Handy Heater plugs right into any outlet without taking up any space to give you a warm and cozy place to relax! It''s the quick, easy way to heat up to 250 square feet without expensive heating bills.', 'Turn cold and chilly spaces into warm and cozy places for just pennies a day. Just set the digital thermostat to the temperature you want, and Handy Heater will turn on and off automatically.', null, null);
+INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (1, 'Handy Heater', 59.99, 'handy_Heat.jpg', 'Handy Heater plugs right into any outlet without taking up any space to give you a warm and cozy place to relax! It''s the quick, easy way to heat up to 250 square feet without expensive heating bills.', 'Turn cold and chilly spaces into warm and cozy places for just pennies a day. Just set the digital thermostat to the temperature you want, and Handy Heater will turn on and off automatically.', null, null);
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (1, 'Air Hawk w/ Bonus Battery', 79.99, 'Air_Hawk.jpg', 'Air Hawk is a cordless, handheld air compressor that pulls in outside air and compresses it into the tire. It''s fast, easy to use, and extremely convenient. No more driving to the gas station or pulling out a large air compressor just to fill your tires.', 'Air Hawk features a built-in digital pressure gauge, and you can set it to automatically turn off once the desired pressure is reached.', null, null);
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (1, 'Night Hawk', 49.99, 'Night_Hawk.jpg', 'Keep your home safe and secure with Night Hawk, the specially designed, super bright LED outdoor motion-sensor security spotlight! This powerful 450 lumen LED spotlight illuminates up to 675 sq. ft. of dark areas around your home. Night Hawk is motion activated from up to 36 feet away and automatically shuts off after 20 seconds of no motion. The sensor also keeps the spotlight from activating during the day.', 'Great for unlit outdoor areas around your home like backyards, sheds, doorways, garages, driveways, patios, decks and more! Perfect for indoor use in closets, under stair anywhere you need light.', null, null);
 INSERT product (product_cat, product_name, product_price, product_image, description1, description2, description3, product_dimensions) VALUES (1, 'Aqua Tunes', 39.99, 'Aqua_Tunes.jpg', 'Aqua Tunes lets you stream hours of music in wet environments. It''s universally compatible with all Android, iPhone, Windows Phone, iPad, tablets, iPods, MP3/MP4 players, or any device that supports audio over Bluetooth.', 'Aqua Tunes water-resistant design and built-in suction cup makes it great for showers and bath tubs, at the beach or pool, in the kitchen, or anywhere outdoors. And it does more than just stream music - Aqua Tunes has a built-in microphone and can also be used as a hands-free speakerphone!', null, null);
@@ -126,9 +126,9 @@ CREATE TABLE reviews (
                          last_modified datetime,
                          reviews_status tinyint(1) NOT NULL default '0',
                          reviews_read int(5) NOT NULL default '0',
-                         PRIMARY KEY (reviews_id),
-                         KEY idx_reviews_products_id (products_id),
-                         KEY idx_reviews_customers_id (customers_id)
+                         PRIMARY KEY (reviews_id)
+#                          KEY idx_reviews_products_id (products_id),
+#                          KEY idx_reviews_customers_id (customers_id)
 );
 
 
@@ -144,16 +144,16 @@ CREATE TABLE tax_rates (
 
 DROP TABLE IF EXISTS specials;
 CREATE TABLE specials (
-                          specials_id int NOT NULL auto_increment,
-                          products_id int NOT NULL,
+                          specials_id int auto_increment,
+                          products_id int NULL,
                           specials_new_products_price decimal(15,4) NOT NULL,
                           specials_date_added datetime,
                           specials_last_modified datetime,
                           expires_date datetime,
                           date_status_change datetime,
                           status int(1) NOT NULL DEFAULT '1',
-                          PRIMARY KEY (specials_id),
-                          KEY idx_specials_products_id (products_id)
+                          PRIMARY KEY (specials_id)
+#                           KEY idx_specials_products_id (products_id)
 );
 
 DROP TABLE IF EXISTS whos_online;
@@ -166,8 +166,8 @@ CREATE TABLE whos_online (
                              time_last_click varchar(14) NOT NULL,
                              last_page_url text NOT NULL,
                              host_address text NOT NULL,
-                             user_agent varchar(255) NOT NULL default '',
-                             KEY idx_whos_online_session_id (session_id)
+                             user_agent varchar(255) NOT NULL default ''
+#                              KEY idx_whos_online_session_id (session_id)
 ) ;
 
 DROP TABLE IF EXISTS sessions;
@@ -188,11 +188,11 @@ CREATE TABLE featured (
                           date_status_change datetime default NULL,
                           status int(1) NOT NULL default '1',
                           featured_date_available date NOT NULL default '0001-01-01',
-                          PRIMARY KEY  (featured_id),
-                          KEY idx_status_zen (status),
-                          KEY idx_products_id_zen (products_id),
-                          KEY idx_date_avail_zen (featured_date_available),
-                          KEY idx_expires_date_zen (expires_date)
+                          PRIMARY KEY  (featured_id)
+#                           KEY idx_status_zen (status),
+#                           KEY idx_products_id_zen (products_id),
+#                           KEY idx_date_avail_zen (featured_date_available),
+#                           KEY idx_expires_date_zen (expires_date)
 );
 
 DROP TABLE IF EXISTS coupons;
@@ -212,10 +212,10 @@ CREATE TABLE coupons (
                          date_created datetime NOT NULL default '0001-01-01 00:00:00',
                          date_modified datetime NOT NULL default '0001-01-01 00:00:00',
                          coupon_order_limit int(4) NOT NULL default 0,
-                         PRIMARY KEY (coupon_id),
-                         KEY idx_active_type_zen (coupon_active,coupon_type),
-                         KEY idx_coupon_code_zen (coupon_code),
-                         KEY idx_coupon_type_zen (coupon_type)
+                         PRIMARY KEY (coupon_id)
+#                          KEY idx_active_type_zen (coupon_active,coupon_type),
+#                          KEY idx_coupon_code_zen (coupon_code),
+#                          KEY idx_coupon_type_zen (coupon_type)
 );
 
 DROP TABLE IF EXISTS categories;
@@ -228,8 +228,8 @@ CREATE TABLE categories (
                             date_added datetime,
                             last_modified datetime,
                             categories_status tinyint(1) NOT NULL default '1',
-                            PRIMARY KEY (categories_id),
-                            KEY idx_categories_parent_id (parent_id)
+                            PRIMARY KEY (categories_id)
+#                             KEY idx_categories_parent_id (parent_id)
 );
 
 DROP TABLE IF EXISTS coupon_redeem_track;
@@ -240,8 +240,8 @@ CREATE TABLE coupon_redeem_track (
                                      redeem_date datetime NULL,
                                      redeem_ip varchar(40) NULL,
                                      order_id int NULL,
-                                     PRIMARY KEY  (unique_id),
-                                     KEY idx_coupon_id_track (coupon_id)
+                                     PRIMARY KEY  (unique_id)
+#                                      KEY idx_coupon_id_track (coupon_id)
 );
 
 
@@ -279,9 +279,9 @@ CREATE TABLE orders (
                         ip_address varchar(96) NOT NULL default '',
                         order_weight float default NULL,
                         last_modified datetime,
-                        PRIMARY KEY (orders_id),
-                        KEY idx_orders_customers_id (customers_id),
-                        KEY idx_status_orders_cust (orders_status,orders_id,customers_id),
-                        KEY idx_date_purchased (date_purchased),
-                        KEY idx_cust_id_orders_id (customers_id,orders_id)
+                        PRIMARY KEY (orders_id)
+#                         KEY idx_orders_customers_id (customers_id),
+#                         KEY idx_status_orders_cust (orders_status,orders_id,customers_id),
+#                         KEY idx_date_purchased (date_purchased),
+#                         KEY idx_cust_id_orders_id (customers_id,orders_id)
 );

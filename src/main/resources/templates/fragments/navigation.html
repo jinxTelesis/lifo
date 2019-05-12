@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <!-- Bootstrap style -->
+    <link href="../../static/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../../static/css/base.css"
+          th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>
+    <!-- Bootstrap style responsive -->
+    <link href="../../static/css/bootstrap-responsive.min.css"
+          th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>
+    <link href="../../static/css/font-awesome.css"
+          th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">
+
+    <link href="../../static/css/jquery-ui.min.css"
+          th:href="@{/css/jquery-ui.min.css}" rel="stylesheet" type="text/css">
+
+    <script src="/../js/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <script src="/../js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="/../js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/../js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="/../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/../js/google-code-prettify/prettify.js" ></script>
+    <script src="/../js/jquery.lightbox-0.5.js"></script>	<script src="/js/bootshop.js"></script>
+
+    <script src="/../js/lifofunctions.js" type="text/javascript"></script>
+
+</head>
+
+
     <!-- Navigation section start ====================================================================== -->
     <div id="header" th:fragment="navigation">
             <div class="container">
                 <div id="welcomeLine" class="row">
-                    <div class="span6">Welcome! <strong th:text="${LoginForm?.getUserName()}"> Guest</strong></div>
+                    <div class="span6">Welcome! <strong th:text="${username}"> Guest</strong></div>
                     <div class="span6">
                         <div class="pull-right">
                             <span class="btn btn-mini" th:text="${carttotal}">$0.00</span>
@@ -23,29 +51,36 @@
                         <span class="icon-bar"></span>
                     </a>
                     <div class="navbar-inner">
+                        <div class="span2">
                         <a class="brand" href="/products"  th:href="@{'/index'}"><img src="/images/logo.png" alt="Bootsshop"/></a>
-                        <form class="form-inline navbar-search" method="post" th:action="@{'/products/'}">
-                            <input id="srchFld" class="srchTxt" type="text" />
-                            <select class="srchTxt">
-                                <option th:value="${'/products/0'}" th:href="@{'/products/0'}">ACCESSORIES </option>
-                                <option th:value="${'/products/1'}" th:href="@{'/products/1'}">APPLIANCES </option>
-                                <option th:value="${'/products/2'}" th:href="@{'/products/2'}">CLEANING </option>
-                                <option th:value="${'/products/3'}" th:href="@{'/products/3'}">HARDWARE </option>
-                                <option th:value="${'/products/4'}" th:href="@{'/products/4'}">HEATH & BEAUTY </option>
-                                <option th:value="${'/products/5'}" th:href="@{'/products/5'}">HOMEWARES </option>
-                                <option th:value="${'/products/6'}" th:href="@{'/products/6'}">TOYS </option>
-                            </select>
-                            <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-                        </form>
+                        </div>
+                        <div class="span4">
+
+                            <form class="form-inline navbar-search" >
+                                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <select id="selection">
+                                    <option>Browse By Category</option>
+                                    <option value="/products/0" th:href="@{'/products/0'}">ACCESSORIES </option>
+                                    <option value="/products/1" th:href="@{'/products/1'}">APPLIANCES </option>
+                                    <option value="/products/2" th:href="@{'/products/2'}">CLEANING </option>
+                                    <option value="/products/3" th:href="@{'/products/3'}">HARDWARE </option>
+                                    <option value="/products/4" th:href="@{'/products/4'}">HEATH & BEAUTY </option>
+                                    <option value="/products/5" th:href="@{'/products/5'}">HOMEWARES </option>
+                                    <option value="/products/6" th:href="@{'/products/6'}">TOYS </option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="span5 pull-right">
                         <ul id="topMenu" class="nav pull-right">
                             <li class=""><a href="index"  th:href="@{'/index'}">Home</a></li>
                             <li class=""><a href="special_offer"  th:href="@{'/special_offer'}">Specials Offers</a></li>
                             <li class=""><a href="contact" th:href="@{'/contact'}">Contact</a></li>
                             <li class=""><a href="register" th:href="@{'/register'}">Register</a></li>
                             <li class="">
-                                <a href="#login" th:href="@{'/login'}" role="button" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+                                <a href="#login" th:href="@{'/login'}" role="button" style="padding-right:0"><span id="loginBtn" th:id="loginBtn" th:onclick="changeButton()"  class="btn btn-large btn-success">Login</span></a>
                             </li>
                         </ul>
+                        </div>
                     </div>
 
                 </div>
