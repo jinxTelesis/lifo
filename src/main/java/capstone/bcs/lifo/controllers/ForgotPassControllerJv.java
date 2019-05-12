@@ -13,6 +13,12 @@ import javax.servlet.http.HttpSession;
 //@Controller
 public class ForgotPassControllerJv {
 
+    /**
+     * this is for the forget pass page which was removed from the hyperlinks
+     * in sprint5. Will be reimplemented soon. the Java version is not the running version
+     * the Kotlin one is, this is for the others programmers reference
+     */
+
     @RequestMapping("/forgetpass")
     public String getPage(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());

@@ -17,6 +17,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class ProductDetailsController {
 
+    /**
+     * the product details controller displays a product details page
+     * which lists all the attributes of the product, these attributes show up in a large
+     * number of pages as buttons or icons within larger pages
+     */
+
 
     private ProductService productService;
 

@@ -16,6 +16,11 @@ import javax.servlet.http.HttpSession
 class CompareControllerKt internal constructor(private val cartV2Repository: CartV2Repository, private val customerV2Repository: CustomerV2Repository,
                                              private val cartProductV2Repository: CartProductV2Repository, private val productService: ProductService) {
 
+    /**
+     * this is for the compare products page
+     *
+     */
+
     @RequestMapping("/compare")
     fun getPage(model: Model, session: HttpSession): String {
         var session = session

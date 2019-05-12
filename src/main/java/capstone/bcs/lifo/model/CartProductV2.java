@@ -8,6 +8,11 @@ import java.util.Objects;
 @Entity
 public class CartProductV2 {
 
+    /**
+        this is a Hibernate/JPA entity that is used mainly in the session data
+        it can be persisted in the database
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCart")

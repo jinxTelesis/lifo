@@ -15,6 +15,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class SpecialProductDetailsController {
 
+    /**
+     * the product details page needed different mappings for the specials page
+     * this is a copy of product details with those mappings
+     * the page servers up products info
+     */
+
 
     private ProductService productService;
 

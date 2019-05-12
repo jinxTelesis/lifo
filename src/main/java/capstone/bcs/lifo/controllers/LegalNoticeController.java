@@ -13,6 +13,11 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LegalNoticeController {
 
+    /**
+     * this controller is for the plain text legal notice
+     * the form and attributes are for navbar
+     */
+
     @RequestMapping("/legal_notice")
     public String getPage(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());

@@ -14,6 +14,13 @@ import javax.servlet.http.HttpSession;
 //@Controller
 public class TacControllerJv {
 
+    /**
+     * This is a plain text page controller
+     * it is disabled and the Kotlin version runs
+     *
+     *
+     */
+
     @RequestMapping("/tac")
     public String getPage(Model model, HttpSession session) {
         model.addAttribute("LoginForm", new LoginForm());

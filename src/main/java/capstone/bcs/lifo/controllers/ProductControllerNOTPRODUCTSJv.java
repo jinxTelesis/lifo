@@ -16,6 +16,11 @@ import javax.servlet.http.HttpSession;
 //@Controller
 public class ProductControllerNOTPRODUCTSJv {
 
+    /**
+     * this controller displays specific products when a request is mapped to /product/ and it corresponding
+     * number in the database the java version is disabled and the kotlin version is the on currently running
+     */
+
     private ProductService productService;
 
 

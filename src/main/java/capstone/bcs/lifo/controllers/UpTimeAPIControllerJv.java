@@ -12,6 +12,13 @@ import java.util.List;
 //@RestController
 public class UpTimeAPIControllerJv {
 
+    /**
+     * this is the first attempt at api style information
+     * it just measures uptime using a task scheduler event
+     * The java version is disabled and the kotlin version is
+     * currently running
+     */
+
     private UptimeBoardcastImpl uptimeBoardcast;
 
     @Autowired

@@ -10,6 +10,11 @@ import java.util.ArrayList
 class UpTimeAPIControllerKt @Autowired
 constructor(private val uptimeBoardcast: UptimeBoardcastImpl) {
 
+    /**
+     * this is the first attempt at api style information
+     * it just measures uptime using a task scheduler event
+     */
+
     @RequestMapping("/uptime")
     fun uptime(): List<String> {
         var uptime2: MutableList<String> = ArrayList()

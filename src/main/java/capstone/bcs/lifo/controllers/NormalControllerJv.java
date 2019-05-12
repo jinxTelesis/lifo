@@ -14,6 +14,13 @@ import javax.servlet.http.HttpSession;
 //@Controller
 public class NormalControllerJv {
 
+    /**
+     * This is purely for dev information purposes and is not a displayable page
+     * this version is disabled also and is being supplied by the Kotlin controller
+     * this source was left in because the entire team is not working with Kotlin
+     *
+     */
+
     @RequestMapping("/normal")
     public String getPage(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());

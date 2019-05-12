@@ -11,6 +11,10 @@ import javax.servlet.http.HttpSession
 @Component
 class ReviewControllerKt internal constructor(private val productService: ProductService) {
 
+    /**
+     * this maps to a page erik wrote
+     */
+
     @RequestMapping("/review/{id}")
     fun getProductById(model: Model, @PathVariable id: Int?, session: HttpSession): String {
         model.addAttribute("product", productService.findById(Integer.toUnsignedLong(id!!)))

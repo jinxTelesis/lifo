@@ -10,6 +10,10 @@ import javax.servlet.http.HttpSession
 @Controller
 class TacController {
 
+    /**
+     * this is a plain text page displaying our terms and conditions
+     */
+
     @RequestMapping("/tac")
     fun getPage(model: Model, session: HttpSession): String {
         model.addAttribute("LoginForm", LoginForm())

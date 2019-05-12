@@ -19,6 +19,11 @@ import javax.servlet.http.HttpSession;
 //@Controller
 public class CompareControllerJv {
 
+    /**
+     * this is for the compare products page, this is disabled and the kotlin version is
+     * what currently maps the page
+     */
+
     private CartV2Repository cartV2Repository;
     private CustomerV2Repository customerV2Repository;
     private CartProductV2Repository cartProductV2Repository;

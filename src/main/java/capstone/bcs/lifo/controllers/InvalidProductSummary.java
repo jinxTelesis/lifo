@@ -19,6 +19,12 @@ import javax.validation.Valid;
 @Controller
 public class InvalidProductSummary {
 
+    /**
+     * this was used as an early demo version of the cart, it has been deprecated
+     * it is being left in incase we left one of the 500 mappings in by mistake
+     * it will be removed after the final project is submitted and the project is just personal
+     */
+
     @Controller
     public class ProductSummaryController {
 

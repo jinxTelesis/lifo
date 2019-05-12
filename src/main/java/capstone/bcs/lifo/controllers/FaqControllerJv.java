@@ -14,6 +14,13 @@ import javax.servlet.http.HttpSession;
 //@Controller
 public class FaqControllerJv {
 
+    /**
+     * the faq controller is all static content, it does however pass the session data
+     * the java version is currently disabled and the kotlin version is the running one
+     *
+     *
+     */
+
     @RequestMapping("/faq")
     public String getPage(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());

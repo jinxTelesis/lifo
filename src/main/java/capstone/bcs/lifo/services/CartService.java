@@ -6,6 +6,12 @@ import java.util.List;
 
 public interface CartService {
 
+    /**
+     * Interface for the CartService
+     * This is to follow best practices with regard to SOLID
+     *
+     */
+
     List<CartV2> getCarts();
 
     CartV2 findById(Long l);

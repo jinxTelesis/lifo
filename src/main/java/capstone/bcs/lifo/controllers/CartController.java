@@ -29,8 +29,12 @@ import java.util.stream.Collectors;
 @Controller
 public class CartController {
 
-    // some of these are not being used right now but the flushing to database is off
-    // they will be used when that is corrected.
+    /**
+     * this adds data to the various parts of the cart session
+     * code 1 is delete code 2 is add code 3 is remove all
+     * code 10 is neutral mapping this is a work in progress
+     * and needs the most attention
+     */
 
     private ProductService productService;
     private ProductRepository productRepository;

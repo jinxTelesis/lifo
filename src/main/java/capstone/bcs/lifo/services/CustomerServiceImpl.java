@@ -17,6 +17,14 @@ import java.util.stream.Collectors;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+    /** CustomerServiceImpl implements CustomerService
+     * the service is a convenience class to abstract some of the search operations
+     * this removes it from directly accessing the repository
+
+     */
+
+
+
     private final PasswordEncryptionService passwordEncryptionService;
     private final CustomerV2Repository customerV2Repository;
     private final RegistrationFormToCustomerNAccount registrationFormToCustomerNAccount;

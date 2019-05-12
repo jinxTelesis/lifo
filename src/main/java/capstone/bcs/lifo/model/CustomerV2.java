@@ -7,6 +7,11 @@ import javax.persistence.*;
 @Entity
 public class CustomerV2 {
 
+    /**
+        this is the session data the site uses for customer
+        it contains expendables and has referential integrity regarding cartV2
+    */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerId")

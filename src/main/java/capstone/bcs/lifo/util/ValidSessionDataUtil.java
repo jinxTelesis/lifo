@@ -10,6 +10,12 @@ import java.util.List;
 
 public class ValidSessionDataUtil {
 
+    /**
+      *  utility class the prodvice information back for the web controllers
+       * and to provide null safety , the functions that are not being used right now
+     * are going to be implemented in the shipping page
+     */
+
     HttpSession localSession = null;
     CartV2 cartV2 = null;
     double cartTotal = 0;

@@ -18,6 +18,11 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class ProductsController {
 
+    /**
+     * the products controller displays all the products and will sort them
+     * in a number of different orders
+     */
+
     private ProductService productService;
 
     @Autowired

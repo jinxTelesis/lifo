@@ -7,6 +7,11 @@ import java.util.Date;
 
 public class DeliveryStatus {
 
+    /**
+     * this is for the shipping page which is not implemented yet
+     * it is part of our stretch goals
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long deliveryID;

@@ -10,6 +10,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class RegistrationFormToCustomerNAccount {
 
+    /**
+     * as the name implies this is a converter from a registration form
+     * to customerV2
+     */
+
     static final String CUSTOMER = "customer";
 
     public CustomerV2 convert(RegistrationForm registrationForm) {

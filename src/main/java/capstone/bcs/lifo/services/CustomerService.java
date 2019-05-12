@@ -7,6 +7,12 @@ import java.util.List;
 
 public interface CustomerService {
 
+    /**
+     * Interface for the CustomerService
+     * This is to follow best practices with regard to SOLID
+     *
+     */
+
     List<CustomerV2> getCustomers();
 
     CustomerV2 getById(Long l);

@@ -7,4 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ProductRepository extends JpaRepository<Product,Long> {
 
+    /** these are all crud repositories they abstract writing specific JDBC commands
+
+     */
+
 }

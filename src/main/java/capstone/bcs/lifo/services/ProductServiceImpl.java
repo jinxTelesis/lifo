@@ -12,6 +12,12 @@ import java.util.*;
 @Service
 public class ProductServiceImpl implements ProductService {
 
+    /** ProductServiceImpl implements ProductService
+     * the service is a convenience class to abstract some of the search operations
+     * this removes it from directly accessing the repository
+
+     */
+
     private final ProductRepository productRepository;
 
 

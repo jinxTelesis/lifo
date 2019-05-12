@@ -13,6 +13,10 @@ import javax.servlet.http.HttpSession;
 //@Component
 public class ReviewControllerJv {
 
+    /**
+     * this maps to a page erik wrote the kotlin version currently runs
+     */
+
     private ProductService productService;
 
     ReviewControllerJv(ProductService productService){

@@ -12,6 +12,13 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class PrivacyController {
 
+    /**
+     * This is for our privacy policy page
+     *
+     *
+     *
+     */
+
     @RequestMapping("/privacy")
     public String getPage(Model model, HttpSession session){
         model.addAttribute("LoginForm", new LoginForm());

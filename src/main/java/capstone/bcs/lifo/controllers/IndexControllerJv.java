@@ -17,6 +17,12 @@ import javax.servlet.http.HttpSession;
 //@Controller
 public class IndexControllerJv {
 
+    /**
+     * the index controller is for the home page, and mappings someone might type in manually
+     * it will bring up product data or display it in the reverse order
+     * this java version of the controller is disabled right now but the Kotlin version runs
+     */
+
     private ProductService productService;
 
     @Autowired // intention

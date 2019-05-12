@@ -12,6 +12,12 @@ import javax.servlet.http.HttpSession;
 
 //@Controller
 public class ComponentsControllerJv {
+    /**
+     * this controller is to display bootstrap components
+     * just for our personal reference in developing the site
+     * this is disabled currently with the removal of //@Controller
+     * the Kotlin version is enabled
+     */
 
     @RequestMapping("/components")
     public String getPage(Model model, HttpSession session){

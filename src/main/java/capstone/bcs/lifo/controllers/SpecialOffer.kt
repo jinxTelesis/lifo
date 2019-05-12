@@ -16,6 +16,13 @@ import javax.servlet.http.HttpSession
 @Controller
 class SpecialOfferKt(val productService: ProductService) {
 
+    /**
+     * this controller is a repeat of the basic products page
+     * the key difference here is the special price offerings
+     * map to different hyperlinks so the cart will be informed
+     * it is the lower price version of the product
+     */
+
 
     @RequestMapping("/special_offer_backup")
     fun getSpecialPage(model: Model, httpSession: HttpSession):String {

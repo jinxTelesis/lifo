@@ -9,6 +9,11 @@ import javax.persistence.*;
 @Embeddable
 public class Account {
 
+    /**
+     * this is an embeddable JPA/Hibernate object
+     * it tracks account information
+     */
+
     @Column(unique = true)
     private String username;
 

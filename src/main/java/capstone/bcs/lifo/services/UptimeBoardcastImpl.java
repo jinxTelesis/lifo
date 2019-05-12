@@ -11,6 +11,10 @@ import java.util.List;
 @Service
 public class UptimeBoardcastImpl implements UptimeBroadcastService {
 
+    /** UptimeBroadCastImpl
+     * this implements springs task scheduler to report uptime to serialized web controller
+     */
+
 
     // this would normally be an int but wanted something to transfer between sister site via api
     // as json or xml

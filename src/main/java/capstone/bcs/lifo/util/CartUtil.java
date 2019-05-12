@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 
 public class CartUtil {
 
+    /**
+        class with utility functions
+     */
+
     public List<CartProductV2> removeAll(List<CartProductV2> list, CartProductV2 cartProductV2){
         return list.parallelStream()
                 .filter(p -> !Objects.equals(p, cartProductV2))

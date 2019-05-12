@@ -12,6 +12,12 @@ import java.util.Optional;
 @Service
 public class OrderDetailServiceImpl implements OrderDetailService{
 
+    /** OrderDetailsServiceImpl implements OrderDetailsService
+     * the service is a convenience class to abstract some of the search operations
+     * this removes it from directly accessing the repository
+
+     */
+
     private final OrderDetailRepository orderDetailRepository;
 
     public OrderDetailServiceImpl(OrderDetailRepository orderDetailRepository) {
