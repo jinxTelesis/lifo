@@ -1,5 +1,7 @@
 package capstone.bcs.lifo.commands;
 
+import io.swagger.models.auth.In;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -12,14 +14,17 @@ public class RegistrationForm {
     @NotEmpty
     @Size(min = 6, max = 100)
     @ValidateTest(ValidState.USERNAME)
+    @InvalidateErik(PreventErikStates.PREVENT_USERNAME)
     private String username;
 
     @NotEmpty
     @Size(min = 8, max = 80)
+    @InvalidateErik(PreventErikStates.PREVENT_PASSWORD)
     private String passwordPlain;
 
     @NotEmpty
     @Size(min =8, max = 80)
+    @InvalidateErik(PreventErikStates.PREVENT_PASSWORD)
     private String passwordConformation;
 
 
@@ -30,14 +35,17 @@ public class RegistrationForm {
     // customer
     @NotEmpty
     @Size(min =2, max = 50)
+    @InvalidateErik(PreventErikStates.PREVENT_USERNAME)
     private String pFirstName;
 
     @NotEmpty
     @Size(min = 3, max = 50)
+    @InvalidateErik(PreventErikStates.PREVENT_USERNAME)
     private String pLastName;
 
     @NotEmpty
     @Size(min = 3, max = 100)
+    @InvalidateErik(PreventErikStates.PREVENT_EMAIL)
     @ValidateTest(ValidState.EMAIL)
     private String pEmail;
 
@@ -48,6 +56,7 @@ public class RegistrationForm {
     // == this is for the address ==
     @NotEmpty
     @Size(min = 5, max = 50)
+    @InvalidateErik(PreventErikStates.PREVENT_ADDRESS)
     private String aAddress;
 
     // == can be empty ==
@@ -56,6 +65,7 @@ public class RegistrationForm {
 
     @NotEmpty
     @Size(min =3, max = 50)
+    @InvalidateErik(PreventErikStates.PREVENT_CITY)
     private String aCity;
 
     @NotEmpty
@@ -64,6 +74,7 @@ public class RegistrationForm {
 
     @NotEmpty
     @Size(min = 5, max = 10)
+    @InvalidateErik(PreventErikStates.PREVENT_ZIP)
     private String aZip;
 
     // == can be empty ==
@@ -75,10 +86,12 @@ public class RegistrationForm {
 
     @NotEmpty
     @Size(min = 7, max = 14)
+    @InvalidateErik(PreventErikStates.PREVENT_PHONENUMBER)
     private String aHomePhone;
 
     @NotEmpty
     @Size(min = 7, max = 14)
+    @InvalidateErik(PreventErikStates.PREVENT_PHONENUMBER)
     private String aMobilePhone;
 
     public String getpFirstName() {

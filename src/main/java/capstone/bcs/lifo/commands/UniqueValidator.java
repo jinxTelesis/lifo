@@ -35,18 +35,23 @@ public class UniqueValidator implements ConstraintValidator<ValidateTest,String>
         }
 
         boolean isValid = true;
+        String username = "";
 
         if(validState == ValidState.USERNAME && object != null)
         {
 
             try{
                 CustomerV2 local = customerService.getByUserName(object);
-                String username = local.getAccount().getUsername();
+                if(local.getAccount().getUsername() != null)
+                {
+                    username = local.getAccount().getUsername();
+                }
+
                 if(object.equals(username))
                 {
                     isValid = false;
                 }
-            } catch (IndexOutOfBoundsException e)
+            } catch (Exception e)
             {
                 isValid = true;
             }
@@ -62,7 +67,7 @@ public class UniqueValidator implements ConstraintValidator<ValidateTest,String>
                 if (object.equals(email)) {
                     isValid = false;
                 }
-            } catch (IndexOutOfBoundsException e) {
+            } catch (Exception e) {
                 isValid = true;
             }
         }

@@ -90,11 +90,18 @@ public class CustomerServiceImpl implements CustomerService {
         // write this to service layer
         List<CustomerV2> customersList = new ArrayList<>();
         customerV2Repository.findAll().iterator().forEachRemaining(customersList::add);
+        CustomerV2 customerV2Return = null;
 
-        List<CustomerV2> customerV2ResultList = customersList.stream()
-                .filter(customerV2 -> customerV2.getAccount().getUsername().equals(userName))
-                .collect(Collectors.toList());
-        CustomerV2 customerV2Return = customerV2ResultList.get(0);
+        try{
+            List<CustomerV2> customerV2ResultList = customersList.stream()
+                    .filter(customerV2 -> customerV2.getAccount().getUsername().equals(userName))
+                    .collect(Collectors.toList());
+            customerV2Return = customerV2ResultList.get(0);
+        }catch(NullPointerException e)
+        {
+
+        }
+
 
         return customerV2Return;
     }
