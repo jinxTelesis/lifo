@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+<!--    &lt;!&ndash; Bootstrap style &ndash;&gt;-->
+<!--    <link href="../../static/css/bootstrap.min.css"-->
+<!--          th:href="@{/css/bootstrap.min.css}" id="callCss" rel="stylesheet" type="text/css" media="all"/>-->
+<!--    <link href="../../static/css/base.css"-->
+<!--          th:href="@{/css/base.css}" rel="stylesheet" media="screen"/>-->
+<!--    &lt;!&ndash; Bootstrap style responsive &ndash;&gt;-->
+<!--    <link href="../../static/css/bootstrap-responsive.min.css"-->
+<!--          th:href="@{/css/bootstrap-responsive.min.css}" rel="stylesheet"/>-->
+<!--    <link href="../../static/css/font-awesome.css"-->
+<!--          th:href="@{/css/font-awesome.css}" rel="stylesheet" type="text/css">-->
+<!--    &lt;!&ndash; Google-code-prettify &ndash;&gt;-->
+
+<!--    &lt;!&ndash;<link href="../js/google-code-prettify/prettify.css"-->
+<!--          th:href="@{js/google-code-prettify/prettify.css}" rel="stylesheet"/>&ndash;&gt;-->
+
+<!--    &lt;!&ndash; Latest compiled and minified JavaScript &ndash;&gt;-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"-->
+<!--            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+
+<!--    <script src="/webjars/jquery/3.3.1-2 /jquery.js"></script>-->
+</head>
+<body>
+<!-- Navigation section start ====================================================================== -->
+<div th:replace="fragments/navigation :: navigation">
+</div>
+<!-- Navigation section end ====================================================================== -->
+
+<!-- Header End====================================================================== -->
+<div id="mainBody">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Section Start ================================================== -->
+            <div th:replace="fragments/sidebar :: sidebar">
+            </div>
+            <!-- Sidebar Section End =============================================== -->
+
+            <div class="span9">
+                <ul class="breadcrumb">
+                    <li><a href="index" th:href="@{'/cart/3/2/d'}">Shopping Cart</a> <span class="divider">/</span></li>
+                    <li class="active">Products You Liked</li>
+                </ul>
+
+                <h3 th:text="${username+'s cart'} ?: 'Guests cart summary'">Products Name</span>
+
+                </h3>
+                <div class="row">
+                    <div class="span3">
+                        <img src="/images/shopping_cart.png" height="100" width="100" class="pull-left">
+                    </div>
+                    <div class="span2">
+                        <h1>
+                            <span class="btn btn-primary" th:width="100" th:height="100" th:text="${'Pretax total is ' + carttotal}"><i class="alert-danger"></i></span>
+                        </h1>
+
+                    </div>
+                    <div class="span3">
+                        <div class=".e-image-image">
+                            <img src="/images/shopping_cart.png" height="100" width="100" class="pull-right" >
+                        </div>
+                    </div>
+                </div>
+                <hr class="soft"/>
+                <p>
+                    Order now for 50% off normal shipping. Two day shipping is also 25% off till next monday! Check out our specials on Bark Off and Remote Control caddy
+                </p>
+                <hr class="soft"/>
+                <!--                <form class="form-horizontal span6">-->
+                <!--                    <div class="control-group">-->
+                <!--                        <label class="control-label alignL">Sort By </label>-->
+                <!--                        <select>-->
+                <!--                            <option th:href="@{'/products/0'}">Name: A to Z</option>-->
+                <!--                            <option th:href="@{'/indexRev'}">Name: Z - A</option>-->
+                <!--                            <option>Price: low to high</option>-->
+                <!--                            <option>Price: high to low</option>-->
+                <!--                        </select>-->
+                <!--                    </div>-->
+                <!--                </form>-->
+
+<!--                <div id="myTab" class="pull-right">-->
+<!--                    <a href="#blockView" th:href="@{'#blockView'}" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>-->
+<!--                    <a href="#listView" th:href="@{'#listView'}"data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>-->
+<!--                </div>-->
+<!--                <br class="clr"/>-->
+<!--                <div class="tab-content">-->
+<!--                    <div class="tab-pane active" id="listView">-->
+<!--                        <div th:each="product, it : ${products}">-->
+<!--                            <div th:if="${(it.count gt 0 and it.count lt 10)}">-->
+<!--                                <div th:replace="fragments/custom_cart_div :: products_div_list">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="tab-pane " id="blockView">-->
+<!--                        <div class="thumbnails">-->
+<!--                            <div class="span3" >-->
+<!--                                <div th:each="product, it : ${products}">-->
+<!--                                    <div th:if="${(it.count gt 0 and it.count lt 4)}">-->
+<!--                                        <div th:replace="fragments/custom_cart_div :: products_div_grid">-->
+<!--                                            </br>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <div class="span3">-->
+<!--                                <div th:each="product, it : ${products}">-->
+<!--                                    <div th:if="${(it.count gt 3 and it.count lt 7)}">-->
+<!--                                        <div th:replace="fragments/custom_cart_div :: products_div_grid">-->
+<!--                                            </br>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <div class="span3">-->
+<!--                                <div th:each="product, it : ${products}">-->
+<!--                                    <div th:if="${(it.count gt 6 and it.count lt 10)}">-->
+<!--                                        <div th:replace="fragments/custom_cart_div :: products_div_grid">-->
+<!--                                            </br>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <table class="table table-bordered">-->
+<!--                    <tbody>-->
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <form class="form-horizontal">-->
+<!--                                <div class="control-group">-->
+<!--                                    <label class="control-label"><strong> DISCOUNT CODE: </strong> </label>-->
+<!--                                    <div class="controls">-->
+<!--                                        <input type="text" class="input-medium" placeholder="CODE">-->
+<!--                                        <button type="submit" th:href="index" class="btn"> ADD </button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+
+<!--                    </tbody>-->
+<!--                </table>-->
+
+<!--                <table class="table table-bordered">-->
+<!--                    <tr><th>ESTIMATE YOUR SHIPPING </th></tr>-->
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            <form class="form-horizontal">-->
+<!--                                <div class="control-group">-->
+<!--                                    <label class="control-label" for="inputCountry">Country </label>-->
+<!--                                    <div class="controls">-->
+<!--                                        <input type="text" id="inputCountry" placeholder="Country">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="control-group">-->
+<!--                                    <label class="control-label" for="inputPost">Post Code/ Zipcode </label>-->
+<!--                                    <div class="controls">-->
+<!--                                        <input type="text" id="inputPost" placeholder="Postcode">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="control-group">-->
+<!--                                    <div class="controls">-->
+<!--                                        <button type="submit" th:href="index" class="btn">ESTIMATE </button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                <h3 th:text="${username + 's cart summary'}"></h3>-->
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>Tax</th>
+                        <th>Total Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:if="${product_details.empty}">
+                        <td colspan="2"> </td>
+                    </tr>
+                    <tr th:each="product_detail : ${product_details}">
+                        <td><span th:text="${product_detail.getProductName()}">Product</span> </td>
+                        <td><span th:text="${product_detail.getDescription1()}">Description</span> </td>
+                        <td><span th:text="${product_detail.getProductPrice()}">Price</span> </td>
+                        <td><span th:text="${product_detail.getProductDiscount()}">Discount</span> </td>
+                        <td><span th:text="${product_detail.getProductTax()}">Tax</span> </td>
+                        <td><span th:text="${product_detail.getTotalPrice()}">Total</span> </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="6" style="text-align:right">Total Price:	</td>
+                        <td th:text="${carttotal}"> $0.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right">Total Discount:	</td>
+                        <td th:text="${discount}"> $0.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align:right">Total Tax:	</td>
+                        <td th:text="${tax}"> $0.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" th:text="${'TOTAL ($'+carttotal+' - $'+discount+' + $'+tax+' ='}" style="text-align:right"><strong>TOTAL ($0 - $0 + $0) =</strong></td>
+                        <td class="label label-important" th:text="${'$'+final_price}" style="display:block"> <strong> $0.00 </strong></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- MainBody End ============================= -->
+<!-- Footer section start =============================================== -->
+<div class="container" th:replace="fragments/footer :: footer">
+</div>
+<!-- Footer section end =============================================== -->
+
+<!-- Site script section start =============================================== -->
+<!--<div class="container" th:replace="fragments/sitescripts :: sitescripts">-->
+<!--</div>-->
+<!-- Site script section end =============================================== -->
+<!-- Site script section end =============================================== -->
+
+
+</body>
+</html>

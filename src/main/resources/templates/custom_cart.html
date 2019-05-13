@@ -79,10 +79,10 @@
                 <!--                    </div>-->
                 <!--                </form>-->
 
-                <div id="myTab" class="pull-right">
-                    <a href="#blockView" th:href="@{'#blockView'}" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
-                    <a href="#listView" th:href="@{'#listView'}"data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
-                </div>
+<!--                <div id="myTab" class="pull-right">-->
+<!--                    <a href="#blockView" th:href="@{'#blockView'}" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>-->
+<!--                    <a href="#listView" th:href="@{'#listView'}"data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>-->
+<!--                </div>-->
                 <br class="clr"/>
                 <div class="tab-content">
                     <div class="tab-pane active" id="listView">
@@ -154,12 +154,12 @@
                     <tr>
                         <td>
                             <form class="form-horizontal">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputCountry">Country </label>
-                                    <div class="controls">
-                                        <input type="text" id="inputCountry" placeholder="Country">
-                                    </div>
-                                </div>
+<!--                                <div class="control-group">-->
+<!--                                    <label class="control-label" for="inputCountry">Country </label>-->
+<!--                                    <div class="controls">-->
+<!--                                        <input type="text" id="inputCountry" placeholder="Country">-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="control-group">
                                     <label class="control-label" for="inputPost">Post Code/ Zipcode </label>
                                     <div class="controls">
@@ -168,39 +168,19 @@
                                 </div>
                                 <div class="control-group">
                                     <div class="controls">
-                                        <button type="submit" th:href="index" class="btn">ESTIMATE </button>
+                                        <button type="submit" th:href="@{'/index'}" class="btn">ESTIMATE </button>
                                     </div>
                                 </div>
                             </form>
                         </td>
                     </tr>
+
                 </table>
-                    <h3 th:text="${username + 's cart summary'}"></h3>
+
+<!--                <hr class="soft"/>-->
+
                 <table class="table table-responsive">
-                    <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Discount</th>
-                        <th>Tax</th>
-                        <th>Total Price</th>
-                    </tr>
-                    </thead>
                     <tbody>
-
-                    <tr th:if="${product_details.empty}">
-                        <td colspan="2"> </td>
-                    </tr>
-                    <tr th:each="product_detail : ${product_details}">
-                        <td><span th:text="${product_detail.getProductName()}">Product</span> </td>
-                        <td><span th:text="${product_detail.getDescription1()}">Description</span> </td>
-                        <td><span th:text="${product_detail.getProductPrice()}">Price</span> </td>
-                        <td><span th:text="${product_detail.getProductDiscount()}">Discount</span> </td>
-                        <td><span th:text="${product_detail.getProductTax()}">Tax</span> </td>
-                        <td><span th:text="${product_detail.getTotalPrice()}">Total</span> </td>
-                    </tr>
-
                     <tr>
                         <td colspan="6" style="text-align:right">Total Price:	</td>
                         <td th:text="${carttotal}"> $0.00</td>
@@ -219,6 +199,57 @@
                     </tr>
                     </tbody>
                 </table>
+                <div class="span6 pull-right">
+                <h2>
+<!--                    <span class="btn btn-primary" th:width="100" th:height="100" th:text="${'Pretax total is ' + carttotal}"><i class="alert-danger"></i></span>&nbsp;&nbsp;-->
+                    <a type="submit" th:href="@{'/checkout'}" class="btn">Proceed To Checkout </a>
+                </h2>
+                </div>
+                <br />
+<!--                    <h3 th:text="${username + 's cart summary'}"></h3>-->
+<!--                <table class="table table-responsive">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th>Product</th>-->
+<!--                        <th>Description</th>-->
+<!--                        <th>Price</th>-->
+<!--                        <th>Discount</th>-->
+<!--                        <th>Tax</th>-->
+<!--                        <th>Total Price</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+
+<!--                    <tr th:if="${product_details.empty}">-->
+<!--                        <td colspan="2"> </td>-->
+<!--                    </tr>-->
+<!--                    <tr th:each="product_detail : ${product_details}">-->
+<!--                        <td><span th:text="${product_detail.getProductName()}">Product</span> </td>-->
+<!--                        <td><span th:text="${product_detail.getDescription1()}">Description</span> </td>-->
+<!--                        <td><span th:text="${product_detail.getProductPrice()}">Price</span> </td>-->
+<!--                        <td><span th:text="${product_detail.getProductDiscount()}">Discount</span> </td>-->
+<!--                        <td><span th:text="${product_detail.getProductTax()}">Tax</span> </td>-->
+<!--                        <td><span th:text="${product_detail.getTotalPrice()}">Total</span> </td>-->
+<!--                    </tr>-->
+
+<!--                    <tr>-->
+<!--                        <td colspan="6" style="text-align:right">Total Price:	</td>-->
+<!--                        <td th:text="${carttotal}"> $0.00</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td colspan="6" style="text-align:right">Total Discount:	</td>-->
+<!--                        <td th:text="${discount}"> $0.00</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td colspan="6" style="text-align:right">Total Tax:	</td>-->
+<!--                        <td th:text="${tax}"> $0.00</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td colspan="6" th:text="${'TOTAL ($'+carttotal+' - $'+discount+' + $'+tax+' ='}" style="text-align:right"><strong>TOTAL ($0 - $0 + $0) =</strong></td>-->
+<!--                        <td class="label label-important" th:text="${'$'+final_price}" style="display:block"> <strong> $0.00 </strong></td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
             </div>
         </div>
     </div>
