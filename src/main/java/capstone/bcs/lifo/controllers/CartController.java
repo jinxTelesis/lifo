@@ -105,17 +105,12 @@ public class CartController {
         return "product_summary";
     }
 
-
-
     @RequestMapping({"/cart/{ida}/{idb}/{idc}"})
     public String getPageVarVarVar(HttpServletRequest request,HttpSession session,@PathVariable("ida") String ida,
                                    @PathVariable("idb") String idb,@PathVariable("idc") String idc, Model model, RedirectAttributes redirectAttributes) throws Exception {
         String referer = request.getHeader("Referer");
 
         ValidSessionDataUtil validSDU = new ValidSessionDataUtil(session);
-
-
-
 
         CartV2 cartV2 = null;
         Integer a = null;
@@ -150,7 +145,6 @@ public class CartController {
             System.out.println("tax" + validSDU.validCartProductList());
             System.out.println("product_details" + validSDU.validCartProductList());
 
-
             model.addAttribute("cartsize",validSDU.getProductListSize());
             //model.addAttribute("cartsize",0);
             model.addAttribute("carttoal",validSDU.getCartTotal());
@@ -169,7 +163,6 @@ public class CartController {
             return "custom_cart";
 
         }
-
 
         if(session.getAttribute("cart") != null)
         {
